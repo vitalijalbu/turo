@@ -1,0 +1,31 @@
+{
+  "name": "resthotels",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@mantine/core": "^5.10.0",
+    "@mantine/dropzone": "^5.10.0",
+    "@mantine/form": "^5.10.0",
+    "@mantine/hooks": "^5.10.0",
+    "@mantine/modals": "^5.10.0",
+    "@mantine/notifications": "^5.10.0",
+    "@tabler/icons": "^1.119.0",
+    "leaflet": "^1.9.3",
+    "next": "13.1.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-leaflet": "^4.2.0",
+    "sass": "^1.57.1",
+    "swiper": "^8.4.5"
+  },
+  "devDependencies": {
+    "eslint": "8.31.0",
+    "eslint-config-next": "13.1.2"
+  }
+}

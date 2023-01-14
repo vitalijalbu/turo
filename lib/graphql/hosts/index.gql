@@ -1,0 +1,9 @@
+import { gql } from 'graphql-request';
+
+const query = gql`query {
+  users(group: "hosts") {
+    id
+    fullName
+  }
+}
+`

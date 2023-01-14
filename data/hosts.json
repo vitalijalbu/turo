@@ -1,0 +1,21 @@
+{
+    "data": {
+        "users": [{
+                "id": "1",
+                "totalListings": "1",
+                "fullName": "Demo demo",
+                "dateUpdated": "2022-03-01T04:24:21-08:00",
+                "dateCreated": "2021-12-27T07:42:33-08:00",
+                "photoUrl": "https://via.placeholder.com/80"
+            },
+            {
+                "id": "61",
+                "totalListings": "61",
+                "fullName": "Demo demo",
+                "dateUpdated": "2022-02-24T12:20:58-08:00",
+                "dateCreated": "2022-02-23T12:35:34-08:00",
+                "photoUrl": "https://via.placeholder.com/80"
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "data": {
+      "categories": [
+        {
+          "id": "31",
+          "title": "Ristoranti",
+          "slug": "ristoranti",
+          "image_url": "https://beta.resthotels.it/uploads/static/static-restaurant.jpeg"
+        },
+        {
+          "id": "32",
+          "title": "Hotel",
+          "slug": "hotel",
+          "image_url": "https://beta.resthotels.it/uploads/static/static-hotel.jpeg"
+        }
+      ]
+    }
+  }

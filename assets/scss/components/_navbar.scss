@@ -1,0 +1,58 @@
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.navbar, .navbars {
+    z-index: 500;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.navbar {
+    --f7-navbar-large-collapse-progress: 0;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    height: calc(var(--f7-navbar-height) + var(--f7-safe-area-top));
+    color: var(--f7-navbar-text-color,var(--f7-bars-text-color));
+    font-size: var(--f7-navbar-font-size);
+}
+.navbar-inner {
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: var(--f7-safe-area-top) calc(var(--f7-navbar-inner-padding-right) + var(--f7-safe-area-right)) 0 calc(var(--f7-navbar-inner-padding-left) + var(--f7-safe-area-left));
+    transform: translate3d(0,0,0);
+    z-index: 10;
+}
+.navbar .left, .navbar .right {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.navbar .title {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 10;
+    font-weight: var(--f7-navbar-title-font-weight);
+    display: inline-block;
+    line-height: var(--f7-navbar-title-line-height);
+    text-align: var(--f7-navbar-title-text-align);
+    font-size: var(--f7-navbar-title-font-size);
+    margin-left: var(--f7-navbar-title-margin-left);
+    margin-right: var(--f7-navbar-title-margin-left);
+}

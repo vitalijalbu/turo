@@ -1,0 +1,19 @@
+.map-button {
+    background: url(https://beta.resthotels.it/uploads/static/map-button-bg.png) center center #E5E5E5;
+    height: auto;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid var(--f7-border-color);
+    & .button{
+        margin: auto;
+    }
+}
+.search-page_filters{
+    margin: 0;
+}
+#map-popup{
+    height: 100%;
+    width: 100%;
+}
+

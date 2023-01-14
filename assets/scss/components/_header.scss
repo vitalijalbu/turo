@@ -1,0 +1,12 @@
+#site-menu {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    width: 100%;
+    right: auto;
+    left: auto;
+    height: 60px;
+    z-index: 100;
+    max-width: 1440px;
+    border-bottom: 1px solid var(--border-color);
+}

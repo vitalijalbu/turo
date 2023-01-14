@@ -1,0 +1,16 @@
+{
+    "data": {
+      "categories": [
+        {
+          "id": "31",
+          "title": "Vendita",
+          "slug": "sale"
+        },
+        {
+          "id": "32",
+          "title": "Affitto",
+          "slug": "rent"
+        }
+      ]
+    }
+  }

@@ -1,0 +1,19 @@
+.main-footer {
+    background: #121212;
+    color: #fafafa !important;
+    padding: 60px 0px;
+    li > a,
+    .block-title {
+        color: #fafafa;
+    }
+    hr{
+        border-top: 1px solid rgb(255 255 255 / 10%);
+    }
+}
+
+.footer__link {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 15px;
+    display: block;
+}
