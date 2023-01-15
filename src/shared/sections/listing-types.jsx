@@ -4,7 +4,7 @@ import typeList from '@/data/types.json';
 import Link from 'next/link';
 
 
-const ListingsType = () => {
+const ListingTypes = () => {
 
 
   return (
@@ -16,7 +16,7 @@ const ListingsType = () => {
     
        <Grid>
         {typeList.data.categories.map((data, i) => (
-          <Grid.Col span={3}>
+          <Grid.Col span={4}>
          <Card
       shadow="sm"
       component="a"
@@ -50,4 +50,4 @@ const ListingsType = () => {
   );
 };
 
-export default ListingsType;
+export default ListingTypes;

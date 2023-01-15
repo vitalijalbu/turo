@@ -12,6 +12,12 @@
           "title": "Hotel",
           "slug": "hotel",
           "image_url": "https://beta.resthotels.it/uploads/static/static-hotel.jpeg"
+        },
+        {
+          "id": "32",
+          "title": "Immobile commerciale",
+          "slug": "commercial",
+          "image_url": "https://beta.resthotels.it/uploads/static/static-hotel.jpeg"
         }
       ]
     }

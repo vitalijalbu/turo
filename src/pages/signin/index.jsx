@@ -10,6 +10,7 @@ import {
   Divider,
   Checkbox,
   Anchor,
+  Container,
   Stack
 } from "@mantine/core"
 //import { GoogleButton, TwitterButton } from "/@shared/Common/SocialButtons"
@@ -33,6 +34,7 @@ const Index = () => {
 
   return (
     <div className="page">
+      <Container>
     <Paper radius="md" p="xl" withBorder>
       <Text size="lg" weight={500}>
         Welcome to Mantine, {type} with
@@ -110,6 +112,7 @@ const Index = () => {
         </Group>
       </form>
     </Paper>
+    </Container>
     </div>
   )
 }

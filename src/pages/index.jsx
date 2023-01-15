@@ -4,7 +4,7 @@ import Services from "@/shared/common/Services";
 import Faqs from "@/shared/common/Faqs";
 import Features from "@/shared/common/Features";
 import SpotlightListings from "@/shared/Search/SpotlightListings";
-import ListingsType from "@/shared/common/ListingsType";
+import ListingTypes from "@/shared/sections/listing-types";
 import LocationsLinks from "@/shared/common/LocationsLinks";
 import PromoBanner from "@/shared/snippets/hero-banner";
 import { Container, Title, Text, Grid, Card, Image } from "@mantine/core";
@@ -44,7 +44,7 @@ const Home = () => {
       </section>
       </Container>
       <Features />
-      <ListingsType />
+      <ListingTypes />
       <Services />
       <SpotlightListings />
       <PromoBanner 
