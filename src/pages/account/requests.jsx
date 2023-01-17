@@ -12,17 +12,14 @@ import {
 import ItemCard from "@/shared/Search/ItemCard";
 import Head from "@/shared/components/account/Head";
 import Entries from "@/data/entries.json";
-import Link from 'next/link';
+import Link from "next/link";
 
 const Listings = () => {
   return (
- <div className="page">
-           <Head 
-      title={"I miei annunci"} 
-      primaryAction={{
-        url: '/hosting/create',
-        content: 'Crea un nuovo annuncio',
-      }}/>
+    <div className="page">
+      <Head
+        title={"Richieste"}
+      />
       <Container size="xl">
         <Grid>
           <Grid.Col md={12}>
