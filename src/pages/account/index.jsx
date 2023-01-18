@@ -10,12 +10,13 @@ const Account = () => {
         title={"Benvenuto User"}
         primaryAction={{
           url: "/hosting/create",
-          content: "Save",
+          content: "Crea annuncio",
         }}
       />
       <Container size="xl">
         <Grid>
-          <Grid.Col md={6} lg={3} xs={6}></Grid.Col>
+          <Grid.Col md={6} lg={9} xs={6}>
+            ciao</Grid.Col>
 
           <Grid.Col md={6} lg={3} xs={6}>
             <Card shadwo="sm">

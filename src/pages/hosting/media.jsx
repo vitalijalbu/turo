@@ -13,7 +13,7 @@ import SideNav from "@/shared/hosting/SideNav";
 import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 
 
-const Settings = () => {
+const Media = () => {
   const theme = useMantineTheme();
   return (
     <div className="page" id="searchPage">
@@ -62,4 +62,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Media;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Text, Title} from "@mantine/core";
-import ItemCard from "@/shared/Search/ItemCard";
+import ItemCard from "@/shared/search/listing-card";
 import Entries from "@/data/entries.json";
 import Link from 'next/link';
 

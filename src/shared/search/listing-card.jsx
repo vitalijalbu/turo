@@ -35,15 +35,15 @@ const Item = ({ data }) => {
       </Text>
 
       <Group>
-        <div className="item-card_data">
+        <div className="listing-card_data">
           <span>icon</span>
           <span>demo</span>
         </div>
-        <div className="item-card_data">
+        <div className="listing-card_data">
           <span>icon</span>
           <span>demo</span>
         </div>
-        <div className="item-card_data">
+        <div className="listing-card_data">
           <span>icon</span>
           <span>demo</span>
         </div>

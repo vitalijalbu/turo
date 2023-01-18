@@ -11,9 +11,11 @@ import {
   Checkbox,
   Anchor,
   Container,
+  Grid,
   Stack
-} from "@mantine/core"
-//import { GoogleButton, TwitterButton } from "/@shared/Common/SocialButtons"
+} from "@mantine/core";
+import IconGoogle from "@/shared/common/IconGoogle";
+import IconFacebook from "@/shared/common/IconFacebook";
 
 const Index = () => {
   const [type, toggle] = useToggle(["login", "register"])
@@ -35,14 +37,16 @@ const Index = () => {
   return (
     <div className="page">
       <Container>
+      <Grid>
+          <Grid.Col span={6}>
     <Paper radius="md" p="xl" withBorder>
       <Text size="lg" weight={500}>
         Welcome to Mantine, {type} with
       </Text>
 
       <Group grow mb="md" mt="md">
-        {/*<GoogleButton radius="xl">Google</GoogleButton>
-        <TwitterButton radius="xl">Twitter</TwitterButton>*/}
+        <IconGoogle/>
+        <IconFacebook/>
       </Group>
 
       <Divider label="Or continue with email" labelPosition="center" my="lg" />
@@ -112,6 +116,8 @@ const Index = () => {
         </Group>
       </form>
     </Paper>
+    </Grid.Col>
+    </Grid>
     </Container>
     </div>
   )

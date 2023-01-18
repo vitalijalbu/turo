@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Title, Button } from '@mantine/core';
-import MapBlock from "@/shared/Search/MapBlock";
-import Filters from "@/shared/Search/Filters";
-import PopupMap from "@/shared/Search/PopupMap";
-import PopupFilters from "@/shared/Search/PopupFilters";
-import SectionList from "@/shared/Search/SectionList";
+import MapBlock from "@/shared/search/MapBlock";
+import FiltersHorizontal from "@/shared/search/filters-horizontal";
+//import PopupMap from "@/shared/search/PopupMap";
+//import PopupFilters from "@/shared/search/PopupFilters";
+import SectionList from "@/shared/search/listings-section";
 
 
 const Search = () => {
@@ -20,19 +20,21 @@ const Search = () => {
 
   return (
     <>
-     {popupMap && <PopupMap opened={popupMap} toggle={toggleMapPopup}/>}
-     {PopupFilters && <PopupMap opened={popupFilters} toggle={toggleFilterPopup}/>}
+     {/*popupMap && <PopupMap opened={popupMap} toggle={toggleMapPopup}/>*/}
+     {/*PopupFilters && <PopupMap opened={popupFilters} toggle={toggleFilterPopup}/>/*/}
     <div className="page" id="searchPage">
       <Container size="xl">
-        <Grid gutter="lg">
-          <Grid.Col span={3}>
+        <Grid>
+          <Grid.Col span={12}>
           <Title>Filtri</Title>
            <div className="medium-only">
             <MapBlock/>
-            <Filters/>
+            <FiltersHorizontal/>
             </div>
           </Grid.Col>
-          <Grid.Col span={9}>
+          </Grid>
+          <Grid>
+          <Grid.Col span={12}>
           <Title large>Risultati ricerca</Title>
             <SectionList/>
           </Grid.Col>

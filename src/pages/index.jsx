@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import SearchForm from "@/shared/FormFields/SearchForm";
+import SearchForm from "@/shared/form-fields/SearchForm";
 import Services from "@/shared/common/Services";
 import Faqs from "@/shared/common/Faqs";
 import Features from "@/shared/common/Features";
-import SpotlightListings from "@/shared/Search/SpotlightListings";
+import SpotlightListings from "@/shared/search/SpotlightListings";
 import ListingTypes from "@/shared/sections/listing-types";
 import LocationsLinks from "@/shared/common/LocationsLinks";
 import PromoBanner from "@/shared/snippets/hero-banner";

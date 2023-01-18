@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "@mantine/form";
 import {
   Container,
   Grid,
-  Title,
-  Button,
-  Card,
+  Table,
+  Checkbox,
+  TextInput, 
   NumberInput,
-  TextInput,
+  ScrollArea,
+  Group,
+  Avatar,
+  Button,
+  Text,
 } from "@mantine/core";
-//import HelpBox from "@/shared/hosting/HelpBox";
+import Head from "@/shared/components/account/Head";
+import Entries from "@/data/entries.json";
+import Link from 'next/link';
+import { useRouter } from "next/router";
+import Toolbar from "@/shared/hosting/edit/toolbar";
 
-const Settings = () => {
+const Index = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  
   const form = useForm({
     initialValues: { name: "", email: "", age: 0 },
 
@@ -26,14 +37,16 @@ const Settings = () => {
   });
 
   return (
-    <div className="page" id="searchPage">
+ <div className="page">
+           <Head 
+      title={`Modifica annuncio #${id}`} 
+      breadcrumbs={{url: "/account/listings"}}/>
+     <Toolbar/>
       <Container size="xl">
-        <Grid gutter="lg">
-          <Grid.Col span={9}>
-            <Title large>Crea un nuovo annuncio</Title>
-            <Card withBorder>
-              <form onSubmit={form.onSubmit(console.log)}>
-                <Card.Section inheritPadding py="md">
+        <Grid>
+          <Grid.Col md={8}>
+          <form onSubmit={form.onSubmit(console.log)}>
+
                   <TextInput
                     label="Name"
                     placeholder="Name"
@@ -53,22 +66,14 @@ const Settings = () => {
                     max={99}
                     {...form.getInputProps("age")}
                   />
-                </Card.Section>
-                <Card.Section inheritPadding py="md">
+
                   <Button type="submit" mt="sm">
-                    Indietro
+                    Annulla
                   </Button>
                   <Button type="submit" mt="sm">
                     Salva
                   </Button>
-                </Card.Section>
               </form>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={3}>
-            <div className="medium-only">
-              
-            </div>
           </Grid.Col>
         </Grid>
       </Container>
@@ -76,4 +81,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Index;

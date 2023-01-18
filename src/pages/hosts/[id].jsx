@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import HostListings from "@/shared/Hosts/HostListings";
+import HostListings from "@/shared/hosts/HostListings";
 import {
   Container,
   Grid,

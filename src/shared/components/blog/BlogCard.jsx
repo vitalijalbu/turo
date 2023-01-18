@@ -18,7 +18,7 @@ const BlogCard = ({ props }) => {
        <ItemSwiper/>
        </CardHeader>
         <CardContent>
-          <h2 className="item-card_title m-0">{props.title}</h2>
+          <h2 className="listing-card_title m-0">{props.title}</h2>
         </CardContent>
         <CardFooter>
           <p className="text-price">

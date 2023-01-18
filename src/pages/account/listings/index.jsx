@@ -7,9 +7,9 @@ import {
   ScrollArea,
   Group,
   Avatar,
+  Tabs,
   Text,
 } from "@mantine/core";
-import ItemCard from "@/shared/Search/ItemCard";
 import Head from "@/shared/components/account/Head";
 import Entries from "@/data/entries.json";
 import Link from 'next/link';
@@ -24,6 +24,16 @@ const Listings = () => {
         content: 'Crea un nuovo annuncio',
       }}/>
       <Container size="xl">
+      <Grid>
+            <Grid.Col span={12}>
+            <Tabs defaultValue="active">
+      <Tabs.List>
+        <Tabs.Tab value="active">Annunci attivi</Tabs.Tab>
+        <Tabs.Tab value="archived">Annunci archiviati</Tabs.Tab>
+      </Tabs.List>
+    </Tabs>
+    </Grid.Col>
+    </Grid>
         <Grid>
           <Grid.Col md={12}>
             <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
@@ -36,8 +46,21 @@ const Listings = () => {
               </thead>
               <tbody>
               <tr key={'item.id'}>
-                    <td>
-                    </td>
+              <td>
+        <Group spacing="sm">
+          <Avatar size={40} src="{item.avatar}" radius={40} />
+          <div>
+            <Link href={`listings/edit/1000`}>
+            <Text size="sm" weight={500}>
+              NOME
+            </Text>
+            <Text color="dimmed" size="xs">
+              CTRETED
+            </Text>
+            </Link>
+          </div>
+        </Group>
+      </td>
                     <td>
                       <Group spacing="sm">
                         <Avatar size={26} src="https://via.placeholder.com/80" radius={26} />
@@ -46,7 +69,6 @@ const Listings = () => {
                         </Text>
                       </Group>
                     </td>
-                    <td>{'item.email'}</td>
                     <td>{'item.job'}</td>
                   </tr>
               </tbody>

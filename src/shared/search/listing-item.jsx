@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Group, Button, Badge, Text, Title } from "@mantine/core";
+import { Group, Button, Badge, Text, Title, Divider, Avatar, ActionIcon } from "@mantine/core";
 import ItemSwiper from "./ItemSwiper";
 import Link from "next/link";
+import { IconHeart, IconShare, IconPlus } from '@tabler/icons';
 
 const ItemList = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
@@ -23,7 +24,13 @@ const ItemList = ({ data }) => {
         )}
         {/**/}
         <div className="item-inner gallery">
-          <ItemSwiper />
+        <div className="img-responsive-wrapper">
+          <div className="img-responsive">
+            <figure className="img-wrapper">
+              <img src="https://via.placeholder.com/1200x800"/>
+            </figure>
+          </div>
+        </div>
         </div>
         <div className="item-inner item-cell">
           <div className="item-row display-flex justify-content-space-between align-items-center">
@@ -34,20 +41,8 @@ const ItemList = ({ data }) => {
             </a>
             <div className="">
               <div className="item-actions">
-                <Button
-                  raised
-                  small
-                  iconF7="heart"
-                  className="rounded"
-                  onClick={addToFavorite}
-                ></Button>
-                <Button
-                  raised
-                  small
-                  iconF7="square_arrow_up"
-                  className="rounded"
-                  onClick={addToFavorite}
-                ></Button>
+              <ActionIcon variant="transparent"><IconHeart size={16} /></ActionIcon>
+              <ActionIcon variant="transparent"><IconShare size={16} /></ActionIcon>
               </div>
             </div>
           </div>
@@ -86,30 +81,33 @@ const ItemList = ({ data }) => {
               </Group>
             </div>
           </div>
+          <Divider my="sm" />
           <div className="item-row display-flex justify-content-space-between align-items-center">
             <div className="item-cell">
-              <div className="hosting-footer">
-                <div className="item-avatar">
-                  <img
-                    src="https://via.placeholder.com/80x80"
-                    width="34"
-                    height="34"
-                    className=""
-                  />
-                </div>
-                <div className="item-name">Host demo</div>
-              </div>
+            <Group>
+        <Avatar src="https://via.placeholder.com/80" radius="xl" />
+
+        <div style={{ flex: 1 }}>
+          <Text size="sm" weight={500}>
+            Demo agenzia
+          </Text>
+
+          <Text color="dimmed" size="xs">
+            aggiunto
+          </Text>
+        </div>
+      </Group>
             </div>
             <div className="item-cell text-right">
-              <Button
+              
+              <Link href="/hosts/100"><Button
                 color="blue"
-                iconF7="plus"
-                href="/hosts/1000"
-                target="_blank"
+                leftIcon={<IconPlus/>}
                 round
               >
                 Annunci del venditore
               </Button>
+              </Link>
             </div>
           </div>
         </div>

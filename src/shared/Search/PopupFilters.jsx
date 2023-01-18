@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Modal, Button, Group } from '@mantine/core';
 import Types from "@/data/types.json";
 import Operation from "@/data/types.json";
-import AddressField from '../FormFields/AddressField';
+import AddressField from '../form-fields/AddressField';
 
 
 const FiltersPopup = ({ opened, close }) => {

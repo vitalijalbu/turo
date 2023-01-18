@@ -14,7 +14,7 @@ import {
   f7,
 } from "framework7-react";
 import Entries from '@/data/entries.json';
-import ItemSwiper from "../Search/ItemSwiper";
+import ItemSwiper from "../search/ItemSwiper";
 
 const Example = () => {
 

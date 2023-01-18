@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Text, Title, RangeSlider } from '@mantine/core';
-import ItemList from "./ItemList";
+import ItemList from "./listing-item";
 import Entries from "@/data/entries.json";
 
 const SectionList = () => {

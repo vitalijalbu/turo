@@ -172,6 +172,9 @@ const SiteMenu = () => {
             <Link href="/" className={classes.link}>
               Home
             </Link>
+            <Link href="/search" className={classes.link}>
+              Ricerca
+            </Link>
             <HoverCard
               width={600}
               position="bottom"
@@ -180,7 +183,7 @@ const SiteMenu = () => {
               withinPortal
             >
               <HoverCard.Target>
-                <a href="#" className={classes.link}>
+                <Link href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
                       Features
@@ -190,7 +193,7 @@ const SiteMenu = () => {
                       color={theme.fn.primaryColor()}
                     />
                   </Center>
-                </a>
+                </Link>
               </HoverCard.Target>
 
               <HoverCard.Dropdown sx={{ overflow: "hidden" }}>
@@ -226,17 +229,12 @@ const SiteMenu = () => {
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
-            <a href="#" className={classes.link}>
-              Learn
-            </a>
-            <a href="#" className={classes.link}>
-              Academy
-            </a>
+
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Link href="/signin"><Button variant="default">Accedi</Button></Link>
+            <Link href="/hosting/create"><Button>Crea un annuncio</Button></Link>
           </Group>
 
           <Burger
@@ -246,7 +244,7 @@ const SiteMenu = () => {
           />
         </Group>
       </Header>
-
+{/* Drawer MENU */}
       <Drawer
         opened={drawerOpened}
         onClose={closeDrawer}
@@ -262,9 +260,9 @@ const SiteMenu = () => {
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
 
-          <a href="#" className={classes.link}>
+          <Link href="#" className={classes.link}>
             Home
-          </a>
+          </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
@@ -274,12 +272,12 @@ const SiteMenu = () => {
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="#" className={classes.link}>
+          <Link href="#" className={classes.link}>
             Learn
-          </a>
-          <a href="#" className={classes.link}>
+          </Link>
+          <Link href="#" className={classes.link}>
             Academy
-          </a>
+          </Link>
 
           <Divider
             my="sm"

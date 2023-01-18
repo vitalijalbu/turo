@@ -9,12 +9,12 @@ import {
   Avatar,
   Text,
 } from "@mantine/core";
-import ItemCard from "@/shared/Search/ItemCard";
+import ItemCard from "@/shared/search/listing-card";
 import Head from "@/shared/components/account/Head";
 import Entries from "@/data/entries.json";
 import Link from "next/link";
 
-const Listings = () => {
+const Index = () => {
   return (
     <div className="page">
       <Head
@@ -55,4 +55,4 @@ const Listings = () => {
   );
 };
 
-export default Listings;
+export default Index;

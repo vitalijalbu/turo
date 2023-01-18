@@ -1,12 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, AspectRatio } from "@mantine/core";
 import Link from "next/link";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const PopupMap = ({ opened, close }) => {
-  const position = [45.60522, 10.5141089];
-
+  useEffect(() => {
+    const position = [45.60522, 10.5141089];
+  }, []);
   return (
     <Modal size="100%" opened={opened} onClose={close}>
       <div className="modal-content">
