@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { Group, Button, Badge, Text, Title, Divider, Avatar, ActionIcon } from "@mantine/core";
-import ItemSwiper from "./ItemSwiper";
+import { showNotification } from '@mantine/notifications';
 import Link from "next/link";
 import { IconHeart, IconShare, IconPlus } from '@tabler/icons';
 
 const ItemList = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
 
-  const addToFavorite = (e) => {
-    e.preventDefault();
-    f7.toast.show({
-      text: "L'annuncio è stato aggiunto ai preferiti.",
-      horizontalPosition: "center",
-      closeTimeout: 2500,
+  const addToFavorite = () => {
+    showNotification({
+      title: "L'annuncio è stato aggiunto ai preferiti.",
+      autoClose: 2500,
     });
   };
 
@@ -41,7 +39,7 @@ const ItemList = ({ data }) => {
             </a>
             <div className="">
               <div className="item-actions">
-              <ActionIcon variant="transparent"><IconHeart size={16} /></ActionIcon>
+              <ActionIcon variant="transparent"><IconHeart size={16} onClick={() => addToFavorite()}/></ActionIcon>
               <ActionIcon variant="transparent"><IconShare size={16} /></ActionIcon>
               </div>
             </div>
@@ -66,15 +64,15 @@ const ItemList = ({ data }) => {
           <div className="item-row">
             <div className="item-cell list-item_excerpt">
               <Group>
-                <div className="item-card_data">
+                <div className="listing-card_data">
                   <span>icon</span>
                   <span>demo</span>
                 </div>
-                <div className="item-card_data">
+                <div className="listing-card_data">
                   <span>icon</span>
                   <span>demo</span>
                 </div>
-                <div className="item-card_data">
+                <div className="listing-card_data">
                   <span>icon</span>
                   <span>demo</span>
                 </div>

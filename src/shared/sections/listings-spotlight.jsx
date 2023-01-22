@@ -11,7 +11,7 @@ const SpotlightListings = () => {
           <Container size="xl">
           <div className="section-title">
           <Group position="apart">
-        <Title order={1}>In evidenza</Title>
+        <Title order={1}>Annunci in evidenza</Title>
         </Group>
     </div>
     <Grid>

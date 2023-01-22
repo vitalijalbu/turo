@@ -65,7 +65,7 @@ const Pricing = () => (
       center
       icon={
         <ThemeIcon color="gray" size={24} radius="xl">
-          <i class="f7-icons">checkmark_alt</i>
+          ico
         </ThemeIcon>
       }
     >

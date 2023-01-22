@@ -1,6 +1,6 @@
 @import './_variables.scss';
-@import './icons.scss';
 @import './components/_spacing.scss';
+@import './components/_search-form.scss';
 @import './components/_navbar.scss';
 @import './components/_footer.scss';
 @import './components/_hero.scss';
@@ -87,11 +87,14 @@ html, body{
     height: 100%;
     width: 100%;
 }
-#__next, main {
+#main-app {
     height: 100%;
     width: 100%;
     margin: 0 auto;
+    max-width: 1440px;
 }
+
+
 a, a *{
     text-decoration: none;
     color: initial;

@@ -32,7 +32,12 @@
 //position: absolute;
 }
 .item-inner.gallery {
-max-width: 35%;
+  max-width: 35%;
+    display: block !important;
+}
+.item-inner.listing-body {
+  padding-left: 20px;
+    display: block !important;
 }
 .list-item_swiper{
 height: 0px;

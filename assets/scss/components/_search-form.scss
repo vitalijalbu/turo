@@ -1,0 +1,14 @@
+.search-form_box {
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    & .search-form_btn{
+        text-align: right;
+        max-width: 20%;
+    }
+    & .search-form_city {
+        max-width: calc(90% - 8px) !important;
+        flex-grow: 1;
+    }
+    
+}

@@ -1,11 +1,13 @@
 import { useToggle, upperFirst } from "@mantine/hooks"
-import { useForm } from "@mantine/form"
+import { useForm } from "@mantine/form";
+import Link from "next/link";
 import {
   TextInput,
   PasswordInput,
   Text,
   Paper,
   Group,
+  Center,
   Button,
   Divider,
   Checkbox,
@@ -38,18 +40,21 @@ const Index = () => {
     <div className="page">
       <Container>
       <Grid>
-          <Grid.Col span={6}>
-    <Paper radius="md" p="xl" withBorder>
+          <Grid.Col className="mx-auto" span={6}>
+    <Paper radius="md" p="xl">
       <Text size="lg" weight={500}>
         Welcome to Mantine, {type} with
       </Text>
 
       <Group grow mb="md" mt="md">
-        <IconGoogle/>
-        <IconFacebook/>
+      <Button leftIcon={<IconGoogle />} variant="default">
+          Accedi con Google
+        </Button><Button leftIcon={<IconFacebook />} variant="default">
+        Accedi con Facebook
+        </Button>
       </Group>
 
-      <Divider label="Or continue with email" labelPosition="center" my="lg" />
+      <Divider label="Oppure continua con la mail" labelPosition="center" my="lg" />
 
       <form onSubmit={form.onSubmit(() => {})}>
         <Stack>
@@ -88,30 +93,17 @@ const Index = () => {
               "Password should include at least 6 characters"
             }
           />
-
-          {type === "register" && (
-            <Checkbox
-              label="I accept terms and conditions"
-              checked={form.values.terms}
-              onChange={event =>
-                form.setFieldValue("terms", event.currentTarget.checked)
-              }
-            />
-          )}
         </Stack>
 
         <Group position="apart" mt="xl">
-          <Anchor
+          <Link
             component="button"
             type="button"
             color="dimmed"
-            onClick={() => toggle()}
+            href="/register"
             size="xs"
-          >
-            {type === "register"
-              ? "Already have an account? Login"
-              : "Don't have an account? Register"}
-          </Anchor>
+          >Don't have an account? Register
+          </Link>
           <Button type="submit">{upperFirst(type)}</Button>
         </Group>
       </form>

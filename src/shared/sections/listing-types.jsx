@@ -15,7 +15,7 @@ const ListingTypes = () => {
     </div>
     
        <Grid>
-        {typeList.data.categories.map((data, i) => (
+        {typeList.map((data, i) => (
           <Grid.Col span={4}>
          <Card
       shadow="sm"

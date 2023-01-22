@@ -15,7 +15,6 @@ const Item = ({ data }) => {
     <Card
       shadow="sm"
       p="xl"
-      radius="md"
       component="a"
       href={"/listings/12312321"}
       target="_blank"

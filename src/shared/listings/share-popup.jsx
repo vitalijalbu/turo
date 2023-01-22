@@ -47,7 +47,7 @@ const SharePopup = ({ opened, toggle }) => {
         <ul>
           {socialLinks.map((item, i) => (
             <li>
-              <a href={item.url} class="item-link item-content">
+              <a href={item.url} className="item-link item-content">
                 <div className="item-content">
                   <div className="item-media">
                     <img src={item.iconUrl} />

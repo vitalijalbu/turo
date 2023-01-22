@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Accordion, Button, RangeSlider, Checkbox } from '@mantine/core';
 import Types from "@/data/types.json";
 import Operation from "@/data/types.json";
-import AddressField from '@/shared/form-fields/AddressField';
+import AddressField from '@/shared/form-fields/search-form';
 
 const Filters = () => {
   const [priceMin, setPriceMin] = useState(200);
