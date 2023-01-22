@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import HostListings from "@/shared/hosts/HostListings";
+import HostListings from "@/shared/hosts/host-listings";
 import {
   Container,
   Grid,
@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 const View = () => {
   const router = useRouter();
-  const { pid } = router.query;
+  const { id } = router.query;
 
   const [loading, setLoading] = useState(false);
   const [popupReach, setReachPopup] = useState(false);

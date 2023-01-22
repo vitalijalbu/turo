@@ -19,7 +19,6 @@ import {
 import ContactPopup from "@/shared/listings/ContactPopup";
 import SharePopup from "@/shared/listings/share-popup";
 import Gallery from "@/shared/listings/Gallery";
-import RelatedListings from "@/shared/search/related-listings";
 import { IconCornerRightUp, IconHeart } from '@tabler/icons';
 
 import Link from "next/link";
