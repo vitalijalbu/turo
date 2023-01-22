@@ -1,8 +1,28 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import hostsList from '@/data/hosts.json';
 import { Container, Grid, Avatar, Title, Text, Button, Paper } from '@mantine/core';
+import { findAction } from "@/lib/graphql/queries/hosts";
 
 const Index = () => {
+  const[loading, setLoading] = useState(false);
+  const[data, setData] = useState([]);
+
+
+/* params API here */
+ useEffect(() => { 
+    (async () => {
+      const users = await findAction()
+      .then(({ data }) => {
+        console.log('✅ received-data')
+        setData(data?.data || []);
+      })
+      .catch((err) => {
+        console.log('🐛 BUG'. err);
+        setLoading(false);
+      });
+    })();
+  }, []);
+
 
 
   return (

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Grid, Container, Divider, Group, Anchor, Title, Text } from "@mantine/core";
+import { Grid, Container, Divider, Group, Title, Text } from "@mantine/core";
+import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons';
+
+
 const Navigation = [
   {
     id: "utils",
@@ -87,14 +90,14 @@ const Footer = () => {
               >
                 {nav.links.map((link, l) => (
                   <li key={l}>
-                    <Anchor
+                    <Link
                       className="footer__link"
-                      href={link.url}
+                      href={link.url ?? '#'}
                       key={l}
                       
                     >
                       {link.label}
-                    </Anchor>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -108,15 +111,16 @@ const Footer = () => {
           <Grid.Col span={6}>
             <Group>
               <Text>Seguici sui social</Text>
-              <Link href="#"><Anchor>fb</Anchor></Link>
-              <Anchor>World!</Anchor>
-              <Anchor>World!</Anchor>
+              <Link href="#"><IconBrandInstagram/></Link>
+              <Link href="#"><IconBrandFacebook/></Link>
+              <Link href="#"><IconBrandLinkedin/></Link>
+              <Link href="#"><IconBrandTwitter/></Link>
             </Group>        
           </Grid.Col>          
           <Grid.Col span={6}>
             <Group>
-                <Link href="/legal/cookies"><Anchor>Cookies</Anchor></Link>
-                <Link href="/legal/privacy-policy"><Anchor>Privacy policy</Anchor></Link>
+                <Link href="/legal/cookies">Cookies</Link>
+                <Link href="/legal/privacy-policy">Privacy policy</Link>
             </Group>        
           </Grid.Col>
         </Grid>

@@ -29,36 +29,26 @@ const Settings = () => {
     <div className="page" id="searchPage">
       <Container size="xl">
         <Grid gutter="lg">
-          <Grid.Col span={9}>
+          <Grid.Col span={6}>
             <Title large>Crea un nuovo annuncio</Title>
-            <Card withBorder>
+            <Card>
               <form onSubmit={form.onSubmit(console.log)}>
                 <Card.Section inheritPadding py="md">
                   <TextInput
-                    label="Name"
-                    placeholder="Name"
-                    {...form.getInputProps("name")}
-                  />
-                  <TextInput
-                    mt="sm"
-                    label="Email"
-                    placeholder="Email"
-                    {...form.getInputProps("email")}
+                    label="Titolo annuncio"
+                    placeholder="Inserisci titolo"
+                    {...form.getInputProps("title")}
                   />
                   <NumberInput
                     mt="sm"
-                    label="Age"
-                    placeholder="Age"
+                    label="Prezzo"
+                    placeholder="Prezzo"
                     min={0}
-                    max={99}
-                    {...form.getInputProps("age")}
+                    {...form.getInputProps("price")}
                   />
                 </Card.Section>
                 <Card.Section inheritPadding py="md">
-                  <Button type="submit" mt="sm">
-                    Indietro
-                  </Button>
-                  <Button type="submit" mt="sm">
+                  <Button type="submit" mt="sm" radius="xl">
                     Salva
                   </Button>
                 </Card.Section>

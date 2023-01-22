@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { Container, Button, AspectRatio, Image, Grid, Accordion } from '@mantine/core';
 import faqList from '@/data/faqs.json';
 import Link from 'next/link';
+import { IconArrowUpRight } from "@tabler/icons";
+
 
 const Faqs = () => {
 
@@ -30,7 +32,7 @@ const Faqs = () => {
       </Accordion>
 
       <Link href="/help" target="_blank" passHref>
-    <Button compact className="mt-1" component="a" target="_blank" rel="noopener noreferrer" variant="outline" rightIcon={<i className="f7-icons">arrow_up_right_square</i>}>Vai al centro supporto</Button>
+    <Button compact className="mt-1" component="a" target="_blank" rel="noopener noreferrer" variant="outline" rightIcon={<IconArrowUpRight/>}>Vai al centro supporto</Button>
     </Link>
     </Grid.Col>
 

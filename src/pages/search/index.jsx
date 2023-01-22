@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Title, Button } from '@mantine/core';
+import { Container, Grid, Title, Group } from '@mantine/core';
 import MapBlock from "@/shared/search/MapBlock";
 import FiltersHorizontal from "@/shared/search/filters-horizontal";
 //import PopupMap from "@/shared/search/PopupMap";

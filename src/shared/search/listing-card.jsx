@@ -8,7 +8,6 @@ import {
   CardFooter,
   Group,
 } from "@mantine/core";
-import ItemSwiper from "./ItemSwiper";
 
 const Item = ({ data }) => {
   return (

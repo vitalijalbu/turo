@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IconArrowLeft } from "@tabler/icons";
 
 const Head = (props) => {
-  console.log("props", props);
+  //console.log("props", props);
   return (
     <section className="page-heading">
       <Container size="xl">
@@ -19,7 +19,7 @@ const Head = (props) => {
           <Group position="apart">
             <Title order={1}>{props.title}</Title>
             {props.primaryAction && (
-              <Button>{props.primaryAction.content}</Button>
+              <Button><Link href={props.primaryAction.url}>{props.primaryAction.content}</Link></Button>
             )}
           </Group>
         </div>

@@ -234,7 +234,7 @@ const SiteMenu = () => {
 
           <Group className={classes.hiddenMobile}>
             <Link href="/login"><Button variant="default">Accedi</Button></Link>
-            <Link href="/hosting/create"><Button>Crea un annuncio</Button></Link>
+            <Link href="/hosting/create"><Button color="dark">Crea un annuncio</Button></Link>
           </Group>
 
           <Burger
