@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Title, Group } from '@mantine/core';
-import MapBlock from "@/shared/search/MapBlock";
+
 import FiltersHorizontal from "@/shared/search/filters-horizontal";
 //import PopupMap from "@/shared/search/PopupMap";
 //import PopupFilters from "@/shared/search/PopupFilters";
@@ -28,7 +28,6 @@ const Search = () => {
           <Grid.Col span={12}>
           <Title>Filtri</Title>
            <div className="medium-only">
-            <MapBlock/>
             <FiltersHorizontal/>
             </div>
           </Grid.Col>

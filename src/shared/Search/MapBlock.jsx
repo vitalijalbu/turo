@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Accordion, Button, RangeSlider, Checkbox } from '@mantine/core';
-import Types from "@/data/types.json";
-import Operation from "@/data/types.json";
+
 
 
 const MapBlock = () => {

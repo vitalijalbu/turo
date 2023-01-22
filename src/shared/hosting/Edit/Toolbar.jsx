@@ -2,7 +2,7 @@
 import { useRouter } from "next/router"
 import { Container, Grid, Tabs } from "@mantine/core"
 
-const Toolbar = (props) => {
+const Toolbar = () => {
     const router = useRouter();
   return (
     <div className="pt-0">
