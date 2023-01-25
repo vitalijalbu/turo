@@ -1,9 +1,8 @@
-import { forwardRef } from "react"
-import { Paper, Button, Select, Group, Avatar, Text, Autocomplete } from "@mantine/core"
-import typeList from '@/data/types.json';
-import { useForm } from '@mantine/form';
+import { useState, forwardRef } from "react"
+import { Group, Avatar, Text, Autocomplete } from "@mantine/core"
+import { getLocation } from "@/lib/api/geojson";
 
-
+/*
 const charactersList = [
   {
     image: "https://img.icons8.com/clouds/256/000000/futurama-bender.png",
@@ -27,42 +26,59 @@ const charactersList = [
     description: "Not just a sponge"
   }
 ]
-
-const data = charactersList.map(item => ({ ...item, value: item.label }))
-
-
-const AutoCompleteItem = forwardRef(
-  ({ description, value, image, ...others }, ref) => (
-    <div ref={ref} {...others}>
-      <Group noWrap>
-        <Avatar src={image} />
-
-        <div>
-          <Text>{value}</Text>
-          <Text size="xs" color="dimmed">
-            {description}
-          </Text>
-        </div>
-      </Group>
-    </div>
-  )
-);
+*/
 
 
 
 const AddressField = () => { 
+  const [loading, setLoading] = useState(false);
+  const [geojson, setGeoData] = useState([]);
+  const [city, setCity] = useState();
+
+
+  /* Query API here */
+  async function handleChange(value){
+    setCity(value);
+    console.log('geocity', value);
+    await getLocation(value)
+      .then(({ data }) => {
+        setLoading(true);
+        setGeoData(data);
+        console.log('geojson', data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const data = geojson.map(item => ({ ...item, value: item.display_name }))
+
+
+    const AutoCompleteItem = forwardRef(
+      ({ description, value, image, ...others }, ref) => (
+        <div ref={ref} {...others} className="autocomplete-item_grid">
+          <Group noWrap>
+            <Avatar src="https://dummyimage.com/80" />
+            <div>
+              <Text>{value}</Text>
+            </div>
+          </Group>
+        </div>
+      )
+    );
+
+
 
   return (
-<Autocomplete
-      label="Choose employee of the month"
+  <Autocomplete
+      size="md"
+      loading={loading}
+      label="Cerca per città"
       placeholder="Inserisci città o località"
       itemComponent={AutoCompleteItem}
       data={data}
-      filter={(value, item) =>
-        item.value.toLowerCase().includes(value.toLowerCase().trim()) ||
-        item.description.toLowerCase().includes(value.toLowerCase().trim())
-      }
-      radius={'xl'}
+      value={city}
+      onChange={(value) => handleChange(value)}
     />
   )
 }

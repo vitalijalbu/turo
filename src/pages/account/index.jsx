@@ -16,7 +16,8 @@ const Account = () => {
       <Container size="xl">
         <Grid>
           <Grid.Col md={6} lg={9} xs={6}>
-            ciao</Grid.Col>
+          <h2 className="page-title">Novità di questa settimana</h2>
+          </Grid.Col>
 
           <Grid.Col md={6} lg={3} xs={6}>
             <Card shadwo="sm">

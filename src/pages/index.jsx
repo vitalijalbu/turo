@@ -10,7 +10,22 @@ import PromoBanner from "@/shared/snippets/hero-banner";
 import { Container, Title, Text, Grid, Card, Image } from "@mantine/core";
 
 
-const Home = () => {
+import graphQLClient from "@/lib/graphql/client";
+import { FIND_ALL } from "@/lib/graphql/queries/listings";
+
+
+export async function getStaticProps(context) {
+  const data = await graphQLClient.request(FIND_ALL)
+
+  return {
+    props: { data }
+  }
+}
+const Home = ({data}) => {
+
+  const[loading, setLoading] = useState(false);
+  console.log('received-data', {data});
+
   return (
     <div className="page">
       <Container size="xl">

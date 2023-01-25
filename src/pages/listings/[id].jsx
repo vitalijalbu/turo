@@ -19,7 +19,7 @@ import {
 import ContactPopup from "@/shared/listings/ContactPopup";
 import SharePopup from "@/shared/listings/share-popup";
 import Gallery from "@/shared/listings/Gallery";
-import { IconCornerRightUp, IconHeart } from '@tabler/icons';
+import { IconCornerRightUp, IconHeart } from '@tabler/icons-react';
 
 import Link from "next/link";
 import dynamic from "next/dynamic";

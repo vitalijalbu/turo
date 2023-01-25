@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from "react";
-import hostsList from '@/data/hosts.json';
 import { Container, Grid, Avatar, Title, Text, Button, Paper } from '@mantine/core';
-import { findAction } from "@/lib/graphql/queries/hosts";
+import graphQLClient from "@/lib/graphql/client";
+import { FIND_ALL } from "@/lib/graphql/queries/hosts";
 
-const Index = () => {
+
+export async function getStaticProps(context) {
+  const data = await graphQLClient.request(FIND_ALL)
+
+  return {
+    props: { data }
+  }
+}
+
+const Index = ({data}) => {
+
+  
   const[loading, setLoading] = useState(false);
-  const[data, setData] = useState([]);
-
-
-/* params API here */
- useEffect(() => { 
-    (async () => {
-      const users = await findAction()
-      .then(({ data }) => {
-        console.log('✅ received-data')
-        setData(data?.data || []);
-      })
-      .catch((err) => {
-        console.log('🐛 BUG'. err);
-        setLoading(false);
-      });
-    })();
-  }, []);
-
+  console.log('received-data', {data});
 
 
   return (
@@ -32,7 +26,7 @@ const Index = () => {
         <Title order={1}>Agenzie</Title>
     </div>
     <Grid>
-      {hostsList.data.users.map((data, i) => (
+      {data.users.map((data, i) => (
         <Grid.Col span={3}>
      <Paper
      radius="md"
@@ -45,7 +39,7 @@ const Index = () => {
        {data.fullName}
      </Text>
      <Text align="center" color="dimmed" size="sm">
-      {"Annunci online " + data.totalListings}
+      {"Annunci online " + data.id}
      </Text>
 
      <Button component="a"

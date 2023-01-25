@@ -9,7 +9,7 @@ import {
   Avatar,
   Text,
 } from "@mantine/core";
-import ItemCard from "@/shared/search/listing-card";
+import ItemCard from "@/shared/snippets/listing-card";
 import Head from "@/shared/components/account/Head";
 import Entries from "@/data/entries.json";
 import Link from "next/link";

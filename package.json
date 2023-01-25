@@ -1,6 +1,8 @@
 {
   "name": "resthotels",
   "version": "1.0.0",
+  "private": true,
+  "proxy": "https://beta.resthotels.it/api/v1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +20,8 @@
     "@mantine/hooks": "^5.10.0",
     "@mantine/modals": "^5.10.0",
     "@mantine/notifications": "^5.10.0",
-    "@tabler/icons": "^1.119.0",
+    "@tabler/icons-react": "^2.0.0",
+    "axios": "^1.2.3",
     "graphql-request": "^5.1.0",
     "leaflet": "^1.9.3",
     "next": "13.1.2",

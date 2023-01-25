@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Avatar, Text, Button, Paper } from '@mantine/core';
-import ItemCard from "../search/listing-card";
+import ItemCard from "../snippets/listing-card";
 import Entries from "@/data/entries.json";
 const HostListings = () => {
 

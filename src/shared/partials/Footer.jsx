@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
 import { Grid, Container, Divider, Group, Title, Text } from "@mantine/core";
-import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons';
+import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-react';
 
 
 const Navigation = [

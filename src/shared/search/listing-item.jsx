@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Group, Button, Badge, Text, Title, Divider, Avatar, ActionIcon } from "@mantine/core";
 import { showNotification } from '@mantine/notifications';
 import Link from "next/link";
-import { IconHeart, IconShare, IconPlus } from '@tabler/icons';
+import { IconHeart, IconShare, IconPlus } from '@tabler/icons-react';
 
 const ItemList = ({ data }) => {
   const [favorite, setFavorite] = useState(false);

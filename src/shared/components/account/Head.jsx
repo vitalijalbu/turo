@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Anchor, Group, Text, Title } from "@mantine/core";
 import Link from "next/link";
-import { IconArrowLeft } from "@tabler/icons";
+import { IconArrowLeft } from '@tabler/icons-react';;
 
 const Head = (props) => {
   //console.log("props", props);

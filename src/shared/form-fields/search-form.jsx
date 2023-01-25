@@ -22,7 +22,7 @@ const SearchForm = () => {
   const form = useForm({
     initialValues: {
       email: '',
-      termsOfService: false,
+      type: 'hotel'
     },
 
     validate: {
@@ -34,20 +34,22 @@ const SearchForm = () => {
     <Paper shadow="xs" radius="xl" p="xl">
           <Group spacing="lg" className="search-form_box">
         <div className="search-form_city">
- <AddressField/>
+  <AddressField />
     </div>
     <div className="search-form_type">
     <Select
-  label="Choose employee of the month"
+    size="md"
+  label="Tipologia"
   placeholder="Seleziona tipo"
   itemComponent={SelectItem}
+  name="type"
   data={typeList.map(type => ({ ...type, value: type.title}))}
   radius={'xl'}
 />
 
     </div>    
     <div className="search-form_btn">
-      <Button type="primary" radius={'xl'}>
+      <Button type="primary" size="md">
       Cerca
     </Button>
     </div>

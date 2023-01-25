@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Container, Button, AspectRatio, Image, Grid, Accordion } from '@mantine/core';
 import faqList from '@/data/faqs.json';
 import Link from 'next/link';
-import { IconArrowUpRight } from "@tabler/icons";
+import { IconArrowUpRight } from '@tabler/icons-react';;
 
 
 const Faqs = () => {

@@ -7,16 +7,17 @@ import {
   CardContent,
   CardFooter,
   Group,
+  Badge,
 } from "@mantine/core";
+import { IconStairs } from '@tabler/icons-react';
 
 const Item = ({ data }) => {
   return (
     <Card
-      shadow="sm"
+      withBorder
       p="xl"
       component="a"
-      href={"/listings/12312321"}
-      target="_blank"
+      href={`/listings/${data.id}`}
     >
       <Card.Section>
         <Image
@@ -25,17 +26,23 @@ const Item = ({ data }) => {
           alt="No way!"
         />
       </Card.Section>
+      <Card.Section>
+      <Group>
+        <div className="listing-card_data">
+          {data.badge && (<Badge>{data.badge}</Badge>)}
+      </div> 
+      </Group> 
       <Text mt="xs" variant="link" component="a" href={'/search?location='+data.slug} size="sm">
         {data.location}
       </Text>
       <Text weight={500} size="lg" mt="md">
         {data.title}
       </Text>
-
+      </Card.Section>
       <Group>
         <div className="listing-card_data">
-          <span>icon</span>
-          <span>demo</span>
+          <span><IconStairs/></span>
+          <span>{data.totalFloors}</span>
         </div>
         <div className="listing-card_data">
           <span>icon</span>
@@ -48,6 +55,9 @@ const Item = ({ data }) => {
       </Group>
       <Text color="blue" mt="xs" size="md" weight={600}>
         {data.pricing}
+      </Text>  
+      <Text color="blue" mt="xs" size="md" weight={600}>
+        {data.author?.fullName}
       </Text>
     </Card>
   );
