@@ -17,7 +17,7 @@ import Head from "@/shared/components/account/Head";
 import Entries from "@/data/entries.json";
 import Link from 'next/link';
 import { useRouter } from "next/router";
-import Toolbar from "@/shared/hosting/edit/toolbar";
+import Toolbar from "@/shared/hosting/toolbar";
 
 const Index = () => {
   const router = useRouter();
