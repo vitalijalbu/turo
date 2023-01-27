@@ -5,6 +5,8 @@ import graphQLClient from "@/lib/graphql/client";
 import { FIND_SPOTLIGHT } from "@/lib/graphql/queries/listings";
 import { request, gql } from 'graphql-request'
 import { IconAward } from '@tabler/icons-react';
+
+
 const SpotlightListings = () => {
   const[data, setData] = useState([]);
   console.log('✅ received-listings', data)
