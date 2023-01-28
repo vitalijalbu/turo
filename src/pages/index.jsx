@@ -14,17 +14,7 @@ import graphQLClient from "@/lib/graphql/client";
 import { FIND_ALL } from "@/lib/graphql/queries/listings";
 
 
-export async function getStaticProps(context) {
-  const data = await graphQLClient.request(FIND_ALL)
-
-  return {
-    props: { data }
-  }
-}
-const Home = ({data}) => {
-
-  const[loading, setLoading] = useState(false);
-  console.log('received-data', {data});
+const Home = () => {
 
   return (
     <div className="page">

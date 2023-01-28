@@ -47,7 +47,7 @@ const ListingTypes = () => {
     </Grid>
       </Container>
     </section>
-  );
-};
+  )
+}
 
 export default ListingTypes;

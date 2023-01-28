@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Avatar, Title, Text, Button, Paper } from '@mantine/core';
+import { Container, Grid, Title, Text } from '@mantine/core';
 import graphQLClient from "@/lib/graphql/client";
 import { FIND_ALL } from "@/lib/graphql/queries/hosts";
-
+import HostCard from "@/shared/sections/host-card";
 
 export async function getStaticProps(context) {
   const data = await graphQLClient.request(FIND_ALL)
@@ -13,11 +13,9 @@ export async function getStaticProps(context) {
 }
 
 const Index = ({data}) => {
-
-  
   const[loading, setLoading] = useState(false);
-  console.log('received-data', {data});
 
+  if (!data.users.length) return (<Text strong>Nessun dato</Text>);
 
   return (
 <div className="page">
@@ -26,29 +24,9 @@ const Index = ({data}) => {
         <Title order={1}>Agenzie</Title>
     </div>
     <Grid>
-      {data.users.map((data, i) => (
-        <Grid.Col span={3}>
-     <Paper
-     radius="md"
-     withBorder
-     p="lg"
-      key={data.id}
-   >
-     <Avatar src={data.photoUrl} size={120} radius={120} mx="auto" />
-     <Text align="center" size="lg" weight={500} mt="md">
-       {data.fullName}
-     </Text>
-     <Text align="center" color="dimmed" size="sm">
-      {"Annunci online " + data.id}
-     </Text>
-
-     <Button component="a"
-      target="_blank"
-      rel="noopener noreferrer"
-      href={"/hosts/"+data.id} variant="default" fullWidth mt="md" >
-       Vedi Agenzia
-     </Button>
-   </Paper>
+      {data.users.map((host, i) => (
+        <Grid.Col md={6} lg={3} xs={6}>
+          <HostCard data={host} key={i}/>
    </Grid.Col>
       ))} 
       </Grid>
