@@ -36,7 +36,6 @@ const AutoCompleteItem = forwardRef(
     <div ref={ref} {...others}>
       <Group noWrap>
         <Avatar src={image} />
-
         <div>
           <Text>{value}</Text>
           <Text size="xs" color="dimmed">
@@ -50,7 +49,7 @@ const AutoCompleteItem = forwardRef(
 
 
 
-const AddressField = () => { 
+const TypeField = () => { 
 
   return (
 <Autocomplete
@@ -66,4 +65,4 @@ const AddressField = () => {
     />
   )
 }
-export default AddressField;
+export default TypeField;

@@ -86,9 +86,8 @@ const ListingItem = ({ data }) => {
           <Text size="sm" weight={500}>
           <Link href={`/hosts/${data.author.id}`}>{data.author.fullName}</Link>
           </Text>
-
           <Text color="dimmed" size="xs">
-            aggiunto
+            {`Creato il ${data.postDate}`}
           </Text>
         </div>
       </Group>

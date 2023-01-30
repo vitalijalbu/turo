@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import {
-  Accordion,
   Button,
-  Grid,
   Group,
-  Select,
   RangeSlider,
-  Checkbox,
 } from "@mantine/core";
 import Types from "@/data/types.json";
 import Operation from "@/data/types.json";
 import AddressField from "@/shared/form-fields/address-field";
+import TypeField from "@/shared/form-fields/type-field";
 import { IconAdjustmentsHorizontal } from '@tabler/icons-react';
 
 
@@ -33,7 +30,7 @@ const FiltersHorizontal = ({ params, filtersPopup }) => {
           <AddressField />
         </div>
         <div className="filters-block">
-          tipo
+          <TypeField/>
         </div>
         <div className="filters-block">
         <RangeSlider

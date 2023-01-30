@@ -10,38 +10,48 @@ import {
   Card,
 } from "@mantine/core";
 import { useRouter } from "next/router";
+import graphQLClient from "@/lib/graphql/client";
+import { GET_HOST } from "@/lib/graphql/queries/hosts";
 
-const View = () => {
-  const router = useRouter();
-  const { id } = router.query;
+// export const revalidate = false
+const getNewsDetail = async (slug) => {
+  return await graphQLClient.request(GET_HOST)
+}
 
-  const [loading, setLoading] = useState(false);
+
+const View = async ({ params }) => {
+  const { entry } = await getNewsDetail(params.id, {});
+
+  if (!entry) {
+    notFound()
+  }
+  /*const [loading, setLoading] = useState(false);
   const [popupReach, setReachPopup] = useState(false);
   const [popupShare, setSharePopup] = useState(false);
   const [form, setFormValues] = useState({});
 
-  /* Toggle Item Popup */
+  /* Toggle Item Popup 
   const openReachPopup = () => {
     setReachPopup(true);
   };
   const closeReachPopup = () => {
     setReachPopup(false);
   };
-  /* Toggle Item Popup */
+  /* Toggle Item Popup 
   const openSharePopup = () => {
     setSharePopup(true);
   };
   const closeSharePopup = () => {
     setSharePopup(false);
-  };
+  };*/
 
-  /* Input change parent state */
+  /* Input change parent state 
   const changeHandler = (e) => {
     e.preventDefault();
     setFormValues((prevState) => {
       return { ...prevState, [e.target.name]: e.target.value };
     });
-  };
+  };*/
   return (
     <div className="page">
       <Container size="xl">
@@ -92,3 +102,14 @@ const View = () => {
 };
 
 export default View;
+
+
+export const generateStaticParams = async () => {
+  const { entries } = await graphQLClient.request(GET_ALL_HOSTS);
+
+  if (entries) {
+    return entries.map(entry => ({
+      id: [entry?.id]
+    }))
+  }
+}

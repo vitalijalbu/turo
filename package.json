@@ -22,6 +22,7 @@
     "@mantine/notifications": "^5.10.2",
     "@tabler/icons-react": "^2.1.2",
     "axios": "^1.2.6",
+    "framework7": "^7.1.2",
     "graphql-request": "^5.1.0",
     "leaflet": "^1.9.3",
     "next": "13.1.6",

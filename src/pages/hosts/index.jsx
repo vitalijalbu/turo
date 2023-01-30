@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Title, Text } from "@mantine/core";
 import graphQLClient from "@/lib/graphql/client";
-import { FIND_ALL } from "@/lib/graphql/queries/hosts";
+import { GET_ALL_HOSTS } from "@/lib/graphql/queries/hosts";
 import HostCard from "@/shared/sections/host-card";
 
 export async function getStaticProps(context) {
-  const data = await graphQLClient.request(FIND_ALL);
+  const data = await graphQLClient.request(GET_ALL_HOSTS);
 
   return {
     props: { data },

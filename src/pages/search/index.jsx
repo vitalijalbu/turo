@@ -64,7 +64,7 @@ const Search = ({ data }) => {
           </Grid>
           <Grid>
           <Grid.Col span={12}>
-          <Title large>Risultati ricerca</Title>
+          <Title large>22 risultati trovati</Title>
             <SectionList data={data}/>
           </Grid.Col>
         </Grid>

@@ -15,9 +15,9 @@ const ListingSwiper = ({ media }) => {
       pagination={{
         dynamicBullets: true,
       }}
-      modules={[Navigation, Pagination]}
-      className="mySwiper"
-    >
+      modules={[Navigation, Pagination]} className="mySwiper">
+      {Array.isArray(media) && media.length > 0 ? (
+        <>
       {media.map((photo, i) => (
         <SwiperSlide className="img-responsive-wrapper" key={i}>
           <div className="img-responsive">
@@ -26,7 +26,16 @@ const ListingSwiper = ({ media }) => {
             </figure>
           </div>
         </SwiperSlide>
-      ))}
+      ))
+      }</>) : (
+        <SwiperSlide className="img-responsive-wrapper" key={1}>
+        <div className="img-responsive">
+        <figure className="img-wrapper">
+          <img src="/img/placeholder.svg" />
+        </figure>
+      </div>
+      </SwiperSlide>
+      )}
     </Swiper>
   );
 };
