@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Text, Title, RangeSlider } from '@mantine/core';
-import ItemList from "./listing-item";
-import Entries from "@/data/entries.json";
+import ListingItem from "../snippets/listing-item";
 
-const SectionList = () => {
+
+const SectionList = ({data}) => {
 
   return (
     <div className="list no-chevron no-hairlines no-hairlines-between">
-      {Array.isArray(Entries.data.entries) ? (
+      {Array.isArray(data.entries) ? (
         <ul className="list-properties">
-          {Entries.data.entries.map((item, i) => (
-             <ItemList data={item}/>
+          {data.entries.map((item, i) => (
+             <ListingItem data={item}/>
           ))}
           </ul>
       ) : (

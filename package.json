@@ -21,11 +21,11 @@
     "@mantine/modals": "^5.10.2",
     "@mantine/notifications": "^5.10.2",
     "@tabler/icons-react": "^2.1.2",
-    "axios": "^1.2.5",
+    "axios": "^1.2.6",
     "graphql-request": "^5.1.0",
     "leaflet": "^1.9.3",
     "next": "13.1.6",
-    "next-auth": "^4.18.10",
+    "next-auth": "^4.19.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-leaflet": "^4.2.0",
@@ -33,7 +33,7 @@
     "swiper": "^8.4.6"
   },
   "devDependencies": {
-    "eslint": "8.32.0",
+    "eslint": "8.33.0",
     "eslint-config-next": "13.1.6"
   }
 }

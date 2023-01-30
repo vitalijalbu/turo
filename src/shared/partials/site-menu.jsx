@@ -175,6 +175,9 @@ const SiteMenu = () => {
             <Link href="/search" className={classes.link}>
               Ricerca
             </Link>
+            <Link href="/requests" className={classes.link}>
+              Richieste
+            </Link>
             <HoverCard
               width={600}
               position="bottom"
@@ -186,7 +189,7 @@ const SiteMenu = () => {
                 <Link href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Features
+                      Altro
                     </Box>
                     <IconChevronDown
                       size={16}
@@ -218,13 +221,13 @@ const SiteMenu = () => {
                   <Group position="apart">
                     <div>
                       <Text weight={500} size="sm">
-                        Get started
+                       Pubblica un annuncio
                       </Text>
                       <Text size="xs" color="dimmed">
                         Their food sources have decreased, and their numbers
                       </Text>
                     </div>
-                    <Button variant="default">Get started</Button>
+                    <Link href="/login"><Button color="dark">Crea annuncio ora</Button></Link>
                   </Group>
                 </div>
               </HoverCard.Dropdown>

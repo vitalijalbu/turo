@@ -3,8 +3,10 @@ import { Group, Button, Badge, Text, Title, Divider, Avatar, ActionIcon } from "
 import { showNotification } from '@mantine/notifications';
 import Link from "next/link";
 import { IconHeart, IconShare, IconPlus } from '@tabler/icons-react';
+import ListingSwiper from "./listing-swiper";
+import { IconStairs } from "@tabler/icons-react";
 
-const ItemList = ({ data }) => {
+const ListingItem = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
 
   const addToFavorite = () => {
@@ -17,24 +19,18 @@ const ItemList = ({ data }) => {
   return (
     <li>
       <div className="item-content p-0">
-        {data.badge && (
-          <Chip color="primary" text={data.badge} className="item-ribbon" />
-        )}
-        {/**/}
-        <div className="item-inner gallery">
-        <div className="img-responsive-wrapper">
-          <div className="img-responsive">
-            <figure className="img-wrapper">
-              <img src="https://via.placeholder.com/1200x800"/>
-            </figure>
-          </div>
+      <div className="listing-card_badge">
+          {data.badge && <Badge>{data.badge}</Badge>}
         </div>
+        <div className="item-inner gallery">
+
+        <ListingSwiper media={data?.media_photos} />
         </div>
         <div className="item-inner item-cell">
           <div className="item-row display-flex justify-content-space-between align-items-center">
             <a href={"/listings/" + data.id}>
               <div className="item-cell">
-                <h3>{data.title}</h3>
+                <h3>{data?.title}</h3>
               </div>
             </a>
             <div className="">
@@ -46,7 +42,7 @@ const ItemList = ({ data }) => {
           </div>
           <div className="item-row">
             <div className="item-cell">
-              <span className="text-meta">{data.type}</span>
+              <span className="text-meta">{data.property_type}</span>
             </div>
           </div>
           <div className="item-row">
@@ -64,18 +60,19 @@ const ItemList = ({ data }) => {
           <div className="item-row">
             <div className="item-cell list-item_excerpt">
               <Group>
-                <div className="listing-card_data">
-                  <span>icon</span>
-                  <span>demo</span>
-                </div>
-                <div className="listing-card_data">
-                  <span>icon</span>
-                  <span>demo</span>
-                </div>
-                <div className="listing-card_data">
-                  <span>icon</span>
-                  <span>demo</span>
-                </div>
+              {data.total_floors ?? (
+          <div className="listing-card_data">
+            <span>
+              <IconStairs />
+            </span>
+            <span>{data.total_floors}</span>
+          </div>
+        )}
+        {data.property_status ?? (
+          <div className="listing-card_data">
+            <span>{data.property_status}</span>
+          </div>
+        )}
               </Group>
             </div>
           </div>
@@ -83,11 +80,11 @@ const ItemList = ({ data }) => {
           <div className="item-row display-flex justify-content-space-between align-items-center">
             <div className="item-cell">
             <Group>
-        <Avatar src="https://via.placeholder.com/80" radius="xl" />
+        <Avatar src={data.author.photo?.url ?? null} radius="xl" />
 
         <div style={{ flex: 1 }}>
           <Text size="sm" weight={500}>
-            Demo agenzia
+          <Link href={`/hosts/${data.author.id}`}>{data.author.fullName}</Link>
           </Text>
 
           <Text color="dimmed" size="xs">
@@ -97,9 +94,10 @@ const ItemList = ({ data }) => {
       </Group>
             </div>
             <div className="item-cell text-right">
-              
-              <Link href="/hosts/100"><Button
-                color="blue"
+            <Link href={`/hosts/${data.author.id}`}>
+              <Button
+                color="yellow"
+                variant="outline"
                 leftIcon={<IconPlus/>}
                 round
               >
@@ -114,4 +112,4 @@ const ItemList = ({ data }) => {
   );
 };
 
-export default ItemList;
+export default ListingItem;

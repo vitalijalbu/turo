@@ -5,7 +5,7 @@ import Operation from "@/data/types.json";
 import AddressField from '../form-fields/search-form';
 
 
-const FiltersPopup = ({ opened, close }) => {
+const PopupFilters = ({ opened, close }) => {
   const [priceMin, setPriceMin] = useState(200);
   const [priceMax, setPriceMax] = useState(1200);
 
@@ -34,4 +34,4 @@ const FiltersPopup = ({ opened, close }) => {
   );
 };
 
-export default FiltersPopup;
+export default PopupFilters;

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, Button, RangeSlider, Checkbox } from '@mantine/core';
-import Types from "@/data/types.json";
-import Operation from "@/data/types.json";
-import AddressField from '@/shared/form-fields/search-form';
+import { Accordion, Button, RangeSlider, Checkbox, Text } from '@mantine/core';
+import graphQLClient from "@/lib/graphql/client";
+import { GET_LISTING_TYPES } from "@/lib/graphql/queries/categories";
 
-const Filters = () => {
+
+const FiltersDrawer = () => {
+  const [loading, setLoading] = useState(false);
+  const [types, setTypes] = useState([]);
   const [priceMin, setPriceMin] = useState(200);
   const [priceMax, setPriceMax] = useState(1200);
 
@@ -13,21 +15,22 @@ const Filters = () => {
     setPriceMax(values[100]);
   };
 
-       /* Toggle Item Popup */
-       const openMapPopup = () => {
-        setMapPopup(true);
-      };
-      const closeMapPopup = () => {
-        setMapPopup(false);
-      }; 
-
- /* Toggle Filters Popup */
-       const openFiltersPopup = () => {
-        setFiltersPopup(true);
-      };
-      const closeFiltersPopup = () => {
-        setFiltersPopup(false);
-      }; 
+  async function getData() {
+    try {
+      const response = await graphQLClient.request(GET_LISTING_TYPES);
+      if (response) {
+        setTypes(response);
+      }
+    } catch (err) {
+      console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+  
+    useEffect(() => {
+      getData();
+    }, []);
 
   return (
     <div>
@@ -35,15 +38,21 @@ const Filters = () => {
       <Accordion.Item value="type">
         <Accordion.Control>Tipologia</Accordion.Control>
         <Accordion.Panel>
-        <Checkbox label="Ristorante" />
-        <Checkbox label="Hotel" />
-        <Checkbox label="Costruzioni" />
+        {types.length ? (
+          <>
+        {types?.categories?.map((type, i) => (
+            <Checkbox label={type.title} key={i} />
+          ))
+          }
+          </>) : (
+            <Text>Nessuna tipologia qui</Text>
+          )}
         </Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value="location">
         <Accordion.Control>Dove ?</Accordion.Control>
         <Accordion.Panel>
-         <AddressField/>
+
         </Accordion.Panel>
       </Accordion.Item>
 
@@ -62,11 +71,13 @@ const Filters = () => {
       </Accordion.Item>
 
      
-
+      <Button radius={"xl"} color="dark">
+            Cerca
+          </Button>
     </Accordion>
         </div>
   );
       
 };
 
-export default Filters;
+export default FiltersDrawer;

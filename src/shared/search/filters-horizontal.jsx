@@ -11,37 +11,24 @@ import {
 import Types from "@/data/types.json";
 import Operation from "@/data/types.json";
 import AddressField from "@/shared/form-fields/address-field";
+import { IconAdjustmentsHorizontal } from '@tabler/icons-react';
 
-const FiltersHorizontal = () => {
+
+const FiltersHorizontal = ({ params, filtersPopup }) => {
   const [priceMin, setPriceMin] = useState(200);
   const [priceMax, setPriceMax] = useState(1200);
+
 
   const onPriceChange = (values) => {
     setPriceMin(values[0]);
     setPriceMax(values[100]);
   };
 
-  /* Toggle Item Popup */
-  const openMapPopup = () => {
-    setMapPopup(true);
-  };
-  const closeMapPopup = () => {
-    setMapPopup(false);
-  };
-
-  /* Toggle Filters Popup */
-  const openFiltersPopup = () => {
-    setFiltersPopup(true);
-  };
-  const closeFiltersPopup = () => {
-    setFiltersPopup(false);
-  };
 
   return (
     <div>
        <form>
       <Group spacing="lg" grow>
-       
         <div className="filters-block">
           <AddressField />
         </div>
@@ -50,17 +37,16 @@ const FiltersHorizontal = () => {
         </div>
         <div className="filters-block">
         <RangeSlider
-      
-      marks={[
-        { value: 20, label: '20%' },
-        { value: 50, label: '50%' },
-        { value: 80, label: '80%' },
-      ]}
-    />
+        marks={[
+          { value: 20, label: '20%' },
+          { value: 50, label: '50%' },
+          { value: 80, label: '80%' },
+        ]}
+      />
         </div>
-        <div className="filters-block">
-          <Button type="primary" radius={"xl"}>
-            Cerca
+        <div className="filters-block text-right">
+          <Button onClick={filtersPopup} radius={"xl"} leftIcon={<IconAdjustmentsHorizontal/>} variant="outline" color="dark">
+            Altri filtri
           </Button>
         </div>
         </Group>

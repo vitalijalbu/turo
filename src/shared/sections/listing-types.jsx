@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Grid,
@@ -6,16 +6,16 @@ import {
   Card,
   Image,
   Group,
-  Anchor,
+  Text,
 } from "@mantine/core";
 import Link from "next/link";
 import graphQLClient from "@/lib/graphql/client";
-import { GET_LISTING_TYPES } from "@/lib/graphql/queries/general";
+import { GET_LISTING_TYPES } from "@/lib/graphql/queries/categories";
 
 const ListingTypes = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(false);
-  console.log("✅ received-listings", data);
+  const [data, setData] = useState([]);
+  console.log("✅ received-categories", data);
 
   async function getData() {
     try {
@@ -34,6 +34,8 @@ const ListingTypes = () => {
       getData();
     }, []);
 
+    if (!data) return <Text strong>Nessun dato</Text>;
+    
   return (
     <section className="section-content">
       <Container size="xl">
@@ -42,30 +44,17 @@ const ListingTypes = () => {
         </div>
 
         <Grid>
-          {typeList.map((data, i) => (
-            <Grid.Col md={6} lg={3} xs={6}>
-              <Card
-                shadow="sm"
-                component="a"
-                href={"/search?type=" + data.slug}
-                target="_blank"
-              >
-                <Card.Section>
-                  <Group>
-                    <Link href={"/search?type=" + data.slug}>
-                      <Image
-                        width={120}
-                        height={100}
-                        fit="cover"
-                        src={data.image_url}
-                        alt={data.title}
-                      />
-                    </Link>
-                    <Link href={"/search?type=" + data.slug}>
-                      <Title order={3}>{data.title}</Title>
-                    </Link>
-                  </Group>
-                </Card.Section>
+          {data?.categories?.map((type, i) => (
+            <Grid.Col md={6} lg={3} xs={6} key={i}>
+             <Card withBorder radius="md" p={0}>
+                <Group noWrap spacing={0}>
+                  <Image src={type?.media_url[0]?.url ?? '/img/placeholder.png'} height={140} width={140} />
+                  <Link href={"/search?type=" + type.slug}>
+                    <Text mt="xs" mb="md">
+                      {type.title}
+                    </Text>
+                  </Link>
+                </Group>
               </Card>
             </Grid.Col>
           ))}

@@ -3,11 +3,14 @@ import { Container, Grid, Group, Button, Title, Text } from "@mantine/core";
 import ItemCard from "@/shared/snippets/listing-card";
 import graphQLClient from "@/lib/graphql/client";
 import { FIND_SPOTLIGHT } from "@/lib/graphql/queries/listings";
+import Link from "next/link";
+import { IconArrowRight } from '@tabler/icons-react';
+
 
 const SpotlightListings = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(false);
-  console.log("✅ received-listings", data);
+
   /*
  async function getData() {
     try {
@@ -50,6 +53,7 @@ async function getData() {
         <div className="section-title">
           <Group position="apart">
             <Title order={1}>Annunci in evidenza</Title>
+            <Link href={'/search'}><Button radius={"xl"} rightIcon={<IconArrowRight/>} variant="outline" color="dark">Vedi di più</Button></Link>
           </Group>
         </div>
         <Grid>

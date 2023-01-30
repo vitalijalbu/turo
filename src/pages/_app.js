@@ -1,8 +1,8 @@
 import React from 'react';
 import { MantineProvider, createEmotionCache } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
-import '@/assets/scss/app.scss';
-import SiteMenu from '@/shared/partials/SiteMenu';
+import '@/assets/scss/index.scss';
+import SiteMenu from '@/shared/partials/site-menu';
 import Footer from '@/shared/partials/Footer';
 import { theme } from '../../lib/theme';
 

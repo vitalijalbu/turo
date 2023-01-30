@@ -47,9 +47,11 @@ const Home = () => {
         </Container>
       </section>
       </Container>
-      <Features />
+     
       <ListingTypes />
-      {/*<Services />*/}
+      {/*<Services />
+       <Features />
+       */}
       <SpotlightListings />
       <PromoBanner 
       imageUrl="https://content.loft.com.br/_next/static/images/hero-background@3x-24f8cc98fdfcb97739e347ef9a70f6bf.jpg"
