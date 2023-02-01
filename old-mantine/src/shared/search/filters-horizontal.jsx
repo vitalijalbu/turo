@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
-  Button,
-  Group,
-  RangeSlider,
-} from "@mantine/core";
-import Types from "@/data/types.json";
-import Operation from "@/data/types.json";
+  Button
+} from "framework7-react";
 import AddressField from "@/shared/form-fields/address-field";
 import TypeField from "@/shared/form-fields/type-field";
 import { IconAdjustmentsHorizontal } from '@tabler/icons-react';
@@ -25,7 +21,7 @@ const FiltersHorizontal = ({ params, filtersPopup }) => {
   return (
     <div>
        <form>
-      <Group spacing="lg" grow>
+      <div spacing="lg" grow>
         <div className="filters-block">
           <AddressField />
         </div>
@@ -46,7 +42,7 @@ const FiltersHorizontal = ({ params, filtersPopup }) => {
             Altri filtri
           </Button>
         </div>
-        </Group>
+        </div>
         </form>
       
     </div>

@@ -1,5 +1,5 @@
 
-import HomePage from '../pages/home.jsx';
+import Home from '../pages/';
 import AboutPage from '../pages/about.jsx';
 import FormPage from '../pages/form.jsx';
 
@@ -19,7 +19,7 @@ import NotFoundPage from '../pages/404.jsx';
 var routes = [
   {
     path: '/',
-    component: HomePage,
+    component: Home,
   },
   {
     path: '/about',
