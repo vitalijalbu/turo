@@ -1,37 +1,62 @@
-import React, { useState, useEffect } from "react";
-import { Container, Grid, Title, Text } from "@mantine/core";
-import graphQLClient from "@/lib/graphql/client";
-import { GET_ALL_HOSTS } from "@/lib/graphql/queries/hosts";
-import HostCard from "@/shared/sections/host-card";
+import React, { useState, useRef } from "react";
+import {
+  Page,
+  Navbar,
+  BlockTitle,
+  Block,
+  Popup,
+  NavRight,
+  NavTitle,
+  Button,
+  Card, CardContent, Link,
+  List,
+  ListItem,
+  Icon,
+  f7,
+} from "framework7-react";
+import typeList from '@/data/hosts.json';
 
-export async function getStaticProps(context) {
-  const data = await graphQLClient.request(GET_ALL_HOSTS);
 
-  return {
-    props: { data },
-  };
-}
+const Index = () => {
 
-const Index = ({ data }) => {
-  const [loading, setLoading] = useState(false);
-
-  if (!data) return <Text strong>Nessun dato</Text>;
 
   return (
-    <div className="page">
-      <Container size="xl">
-        <div className="section-title">
-          <Title order={1}>Agenzie</Title>
-        </div>
-        <Grid>
-          {data.users.map((host, i) => (
-            <Grid.Col md={6} lg={3} xs={6}>
-              <HostCard data={host} key={i} />
-            </Grid.Col>
-          ))}
-        </Grid>
-      </Container>
-    </div>
+    <Page>
+    <Block>
+      <BlockTitle large>Hosts</BlockTitle>
+    <div className="grid">
+      {typeList.data.users.map((data, i) => (
+       <div className="col-md-4 col-lg-3 col-xs-12">
+       <Card>
+       <CardContent className="card-content">
+           <div className="div">
+           <List mediaList noChevron>
+               <ListItem title="Hosting title" subtitle="Membro dal 20/02/2021" link="/hosts/1000">
+                 <img
+                   slot="media"
+                   className="avatar-img"
+                   src="https://via.placeholder.com/80"
+                 />
+               </ListItem>
+                     <ListItem
+                       title="Tipo account"
+                       link="/hosts/1000"
+                       after={"Agenzia"}
+                     /> 
+                     <ListItem
+                       title="Totale annunci"
+                       link="/hosts/1000"
+                       after={2}
+                     />
+               </List>
+           </div> 
+         </CardContent>
+         </Card>
+       </div>
+      ))} 
+      </div>
+      </Block>
+    </Page>
   );
 };
 

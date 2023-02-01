@@ -1,79 +1,97 @@
 import React from "react";
-import { useForm } from "@mantine/form";
 import {
-  Container,
-  Grid,
-  Title,
+  View,
+  Page,
+  Block,
+  BlockTitle,
+  BlockHeader,
+  Navbar,
+  NavLeft,
+  NavTitle,
+  NavTitleLarge,
+  NavRight,
+  Link,
+  ListInput,
+  Toggle,
   Button,
+  List,
+  ListItem,
+  Panel,
+  Icon,
   Card,
-  NumberInput,
-  TextInput,
-} from "@mantine/core";
-import SideNav from "@/shared/hosting/SideNav";
+  CardContent,
+  CardFooter
+} from "framework7-react";
+import SidePanel from "@/components/Hosting/SidePanel";
 
-const Settings = () => {
-  const form = useForm({
-    initialValues: { name: "", email: "", age: 0 },
 
-    // functions will be used to validate values at corresponding key
-    validate: {
-      name: (value) =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      age: (value) =>
-        value < 18 ? "You must be at least 18 to register" : null,
-    },
-  });
 
-  return (
-    <div className="page" id="searchPage">
-      <Container size="xl">
-        <Grid gutter="lg">
-          <Grid.Col span={3}>
-            <div className="medium-only">
-              <SideNav />
-            </div>
-          </Grid.Col>
-          <Grid.Col span={9}>
-            <Title large>Impostazioni account</Title>
-            <Card withBorder>
-              <form onSubmit={form.onSubmit(console.log)}>
-                <Card.Section inheritPadding py="md">
-                  <TextInput
-                    label="Name"
-                    placeholder="Name"
-                    {...form.getInputProps("name")}
-                  />
-                  <TextInput
-                    mt="sm"
-                    label="Email"
-                    placeholder="Email"
-                    {...form.getInputProps("email")}
-                  />
-                  <NumberInput
-                    mt="sm"
-                    label="Age"
-                    placeholder="Age"
-                    min={0}
-                    max={99}
-                    {...form.getInputProps("age")}
-                  />
-                </Card.Section>
-                <Card.Section inheritPadding py="md">
-                  <Button type="submit" mt="sm">
-                    Indietro
-                  </Button>
-                  <Button type="submit" mt="sm">
-                    Salva
-                  </Button>
-                </Card.Section>
-              </form>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Container>
+const Financial = () => (
+ <Page>
+    <div className="container pt-4">
+      <div className="grid">
+        <div className="col-md-4">
+          <SidePanel/>
+          </div>
+        <div className="col-md-8">
+        <BlockTitle>Finanze</BlockTitle>
+              <BlockHeader>
+                Il tuo annuncio verrà esaminato dal nostro staff prima di
+                essere online.
+              </BlockHeader>
+        <Block>
+          <Card className="bordered">
+            <CardContent>
+              <BlockTitle>Cifre</BlockTitle>
+              <List>
+                <ListInput
+                  label="Titolo annuncio"
+                  type="text"
+                  naeme="title"
+                  outline
+                  floatingLabel
+                  clearButton
+                />
+                <ListInput
+                  label="Descizione breve"
+                  type="text"
+                  info="Massimo 80 caratteri"
+                  clearButton
+                  outline
+                  floatingLabel
+                />
+                <ListInput
+                  label="Fatturato anno precedente"
+                  type="number"
+                  info="Cifra in €"
+                  outline
+                  floatingLabel
+                  clearButton
+                />   
+                <ListInput
+                  label="Spese condominio"
+                  type="number"
+                  info="Cifra in €"
+                  outline
+                  floatingLabel
+                  clearButton
+                />
+              </List>
+            </CardContent>
+            <CardFooter className="align-content-space-between">
+            <Button outline>
+              Indietro
+            </Button>
+            <Button fill>
+              Continua
+            </Button>
+          </CardFooter>
+          </Card>
+          </Block>
+        </div>
+      </div>
     </div>
-  );
-};
+            </Page>
+);
 
-export default Settings;
+export default Financial;

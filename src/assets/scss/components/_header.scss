@@ -1,0 +1,17 @@
+.appbar {
+    position: fixed;
+}
+
+.header-menu_items {
+    margin-bottom: 15px;
+    & .item-title {
+        font-weight: 500;
+    }
+}
+
+.nav-item {
+    margin-left: 4px;
+}
+.appbar-inner.container {
+    position: relative;
+}

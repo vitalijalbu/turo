@@ -1,0 +1,35 @@
+{
+        "data": [{
+                "id": "1",
+                "slug": "milano",
+                "title": "Milano",
+                "dateUpdated": "2022-03-01T04:24:21-08:00",
+                "dateCreated": "2021-12-27T07:42:33-08:00",
+                "photoUrl": "https://via.placeholder.com/80"
+            },
+            {
+                "id": "612",
+                "slug": "brescia",
+                "title": "Brescia",
+                "dateUpdated": "2022-02-24T12:20:58-08:00",
+                "dateCreated": "2022-02-23T12:35:34-08:00",
+                "photoUrl": "https://via.placeholder.com/80"
+            },
+            {
+                "id": "613",
+                "slug": "napoli",
+                "title": "Napoli",
+                "dateUpdated": "2022-02-24T12:20:58-08:00",
+                "dateCreated": "2022-02-23T12:35:34-08:00",
+                "photoUrl": "https://via.placeholder.com/80"
+            },
+            {
+                "id": "613",
+                "slug": "roma",
+                "title": "Roma",
+                "dateUpdated": "2022-02-24T12:20:58-08:00",
+                "dateCreated": "2022-02-23T12:35:34-08:00",
+                "photoUrl": "https://via.placeholder.com/80"
+            }
+        ]
+}

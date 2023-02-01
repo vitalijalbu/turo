@@ -1,0 +1,16 @@
+{
+    "data": {
+        "entry": {
+            "id": "17",
+            "title": "Demo listing one",
+            "description": "Demo listing one",
+            "postDate": "2021-12-29T10:10:00-08:00",
+            "slug": "demo-listing-one",
+            "status": "live",
+            "author": {
+                "id": "1",
+                "fullName": "Super Admin"
+            }
+        }
+    }
+}

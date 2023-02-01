@@ -1,0 +1,128 @@
+{
+    "type": "FeatureCollection",
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+    "places": [{
+            "type": "Feature",
+            "properties": {
+                "place_id": 283684439,
+                "osm_type": "relation",
+                "osm_id": 44915,
+                "display_name": "Milano, Lombardia, Italia",
+                "place_rank": 16,
+                "category": "boundary",
+                "type": "administrative",
+                "importance": 0.8390652078701348,
+                "icon": "https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png"
+            },
+            "bbox": [
+                9.0408867,
+                45.3867381,
+                9.2781103,
+                45.5358482
+            ],
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.1896346,
+                    45.4641943
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "place_id": 162009,
+                "osm_type": "node",
+                "osm_id": 151356328,
+                "display_name": "Milan, Rock Island County, Illinois, 61264, Stati Uniti d'America",
+                "place_rank": 18,
+                "category": "place",
+                "type": "town",
+                "importance": 0.5336004840035907,
+                "icon": "https://nominatim.openstreetmap.org/ui/mapicons//poi_place_town.p.20.png"
+            },
+            "bbox": [-90.6120803,
+                41.413089, -90.5320803,
+                41.493089
+            ],
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-90.5720803,
+                    41.453089
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "place_id": 284670190,
+                "osm_type": "relation",
+                "osm_id": 126023,
+                "display_name": "Milan, Rock Island County, Illinois, 61624, Stati Uniti d'America",
+                "place_rank": 16,
+                "category": "boundary",
+                "type": "administrative",
+                "importance": 0.5336004840035907,
+                "icon": "https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png"
+            },
+            "bbox": [-90.6056696,
+                41.4093846, -90.5226205,
+                41.4640686
+            ],
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-90.567538044595,
+                    41.4367011
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "place_id": 285341636,
+                "osm_type": "relation",
+                "osm_id": 8064429,
+                "display_name": "Milan, Le Granit, Estrie, Québec, G0Y 1E0, Canada",
+                "place_rank": 16,
+                "category": "boundary",
+                "type": "administrative",
+                "importance": 0.52322557465216,
+                "icon": "https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png"
+            },
+            "bbox": [-71.2349335,
+                45.5226815, -71.0517677,
+                45.6553487
+            ],
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.1226629,
+                    45.5897389
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "place_id": 284502870,
+                "osm_type": "relation",
+                "osm_id": 130160,
+                "display_name": "Milan, Sumner County, Kansas, Stati Uniti d'America",
+                "place_rank": 16,
+                "category": "boundary",
+                "type": "administrative",
+                "importance": 0.5173706367022327,
+                "icon": "https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png"
+            },
+            "bbox": [-97.67862,
+                37.254294, -97.670343,
+                37.263645
+            ],
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-97.6739404,
+                    37.2597433
+                ]
+            }
+        }
+    ]
+}

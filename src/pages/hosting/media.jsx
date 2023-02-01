@@ -1,60 +1,144 @@
-import React from "react";
-import { useForm } from "@mantine/form";
-import {
-  Container,
-  Grid,
-  Group,
-  Title,
-  Button,
-  Card,
-  NumberInput,
-  Text, useMantineTheme,
-} from "@mantine/core";
-
-import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@mantine/dropzone';
-
+import React, { useEffect, useState } from "react";
+import { Page, Button, List, ListInput, BlockTitle, ListItem, ListItemRow, Toggle, ListItemCell,  Icon, BlockHeader, Block, Row, Col, Card, CardContent, CardFooter } from "framework7-react";
+import SidePanel from "@/components/Hosting/SidePanel";
+import {useDropzone} from 'react-dropzone';
 
 const Media = () => {
-  const theme = useMantineTheme();
+  const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
+  
+  const files = acceptedFiles.map(file => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
   return (
-    <div className="page" id="searchPage">
-      <Container size="xl">
-        <Grid gutter="lg">
-          <Grid.Col span={9}>
-            <Title large>Impostazioni account</Title>
-            <Card withBorder>
-            <Dropzone
-      onDrop={(files) => console.log('accepted files', files)}
-      onReject={(files) => console.log('rejected files', files)}
-      maxSize={3 * 1024 ** 2}
-      accept={IMAGE_MIME_TYPE}
-    >
-      <Group position="center" spacing="xl" style={{ minHeight: 220, pointerEvents: 'none' }}>
-        <Dropzone.Accept>
-          
-        </Dropzone.Accept>
-        <Dropzone.Reject>
-          
-        </Dropzone.Reject>
-        <Dropzone.Idle>
-        </Dropzone.Idle>
-
-        <div>
-          <Text size="xl" inline>
-            Drag images here or click to select files
-          </Text>
-          <Text size="sm" color="dimmed" inline mt={7}>
-            Attach as many files as you like, each file should not exceed 5mb
-          </Text>
+    <Page>
+    <div className="container pt-4">
+      <div className="grid">
+        <div className="col-md-4">
+          <SidePanel/>
+          </div>
+        <div className="col-md-8">
+        <BlockTitle>Foto</BlockTitle>
+              <BlockHeader>
+                Il tuo annuncio verrà esaminato dal nostro staff prima di
+                essere online.
+              </BlockHeader>
+        <Card className="bordered">
+            <CardContent>
+              <BlockTitle>Pubblica annuncio su resthotels</BlockTitle>
+              <BlockHeader>
+                Il tuo annuncio verrà esaminato dal nostro staff prima di
+                essere online.
+              </BlockHeader>
+              <section className="container">
+      <div {...getRootProps({className: 'dropzone'})}>
+        <input {...getInputProps()} />
+        <p>Drag 'n' drop some files here, or click to select files</p>
+      </div>
+      <aside>
+        <h4>Files</h4>
+        <ul>{files}</ul>
+      </aside>
+    </section>
+            </CardContent>
+            <CardFooter className="align-content-space-between">
+            <Button outline>
+              Indietro
+            </Button>
+            <Button fill>
+              Continua
+            </Button>
+          </CardFooter>
+          </Card>        <BlockTitle>Foto Pianimetria</BlockTitle>
+              <BlockHeader>
+                Il tuo annuncio verrà esaminato dal nostro staff prima di
+                essere online.
+              </BlockHeader>
+        <Card className="bordered">
+            <CardContent>
+              <BlockTitle>Pubblica annuncio su resthotels</BlockTitle>
+              <BlockHeader>
+                Il tuo annuncio verrà esaminato dal nostro staff prima di
+                essere online.
+              </BlockHeader>
+              <section className="container">
+      <div {...getRootProps({className: 'dropzone'})}>
+        <input {...getInputProps()} />
+        <p>Drag 'n' drop some files here, or click to select files</p>
+      </div>
+      <aside>
+        <h4>Files</h4>
+        <ul>{files}</ul>
+      </aside>
+    </section>
+            </CardContent>
+            <CardFooter className="align-content-space-between">
+            <Button outline>
+              Indietro
+            </Button>
+            <Button fill>
+              Continua
+            </Button>
+          </CardFooter>
+          </Card>
+        <BlockTitle>Media</BlockTitle>
+              <BlockHeader>
+                Il tuo annuncio verrà esaminato dal nostro staff prima di
+                essere online.
+              </BlockHeader>
+        <Block>
+          <Card className="bordered">
+            <CardContent>
+              <BlockTitle>Video</BlockTitle>
+              <List>
+                <ListInput
+                  label="Titolo annuncio"
+                  type="text"
+                  naeme="title"
+                  outline
+                  floatingLabel
+                  clearButton
+                />
+              </List>
+            </CardContent>
+            <CardFooter>
+              <Button fill>
+                Salva
+              </Button>
+            </CardFooter>
+          </Card>
+          <BlockTitle>Virtual Tour</BlockTitle>
+              <BlockHeader>
+                Il tuo annuncio verrà esaminato dal nostro staff prima di
+                essere online.
+              </BlockHeader>
+          <Card className="bordered">
+            <CardContent>
+              <BlockTitle>URL</BlockTitle>
+              <List>
+                <ListInput
+                  label="Titolo annuncio"
+                  type="text"
+                  naeme="title"
+                  outline
+                  floatingLabel
+                  clearButton
+                />
+              </List>
+            </CardContent>
+            <CardFooter>
+              <Button fill>
+                Salva
+              </Button>
+            </CardFooter>
+          </Card>
+          </Block>
         </div>
-      </Group>
-    </Dropzone>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Container>
+      </div>
     </div>
+            </Page>
   );
-};
+  };
 
 export default Media;
