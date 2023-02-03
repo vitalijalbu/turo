@@ -1,90 +1,79 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "@mantine/form";
 import {
-  View,
-  Page,
-  Block,
-  BlockTitle,
-  BlockHeader,
-  Navbar,
-  NavLeft,
-  NavTitle,
-  NavTitleLarge,
-  NavRight,
-  Link,
-  ListInput,
-  Toggle,
+  Container,
+  Grid,
+  Title,
   Button,
-  List,
-  ListItem,
-  Panel,
-  Stepper,
   Card,
-  CardContent,
-  CardFooter
-} from "framework7-react";
-import SidePanel from "@/components/Hosting/SidePanel";
+  NumberInput,
+  TextInput,
+} from "@mantine/core";
+import SideNav from "@/shared/hosting/SideNav";
 
+const Settings = () => {
+  const form = useForm({
+    initialValues: { name: "", email: "", age: 0 },
 
+    // functions will be used to validate values at corresponding key
+    validate: {
+      name: (value) =>
+        value.length < 2 ? "Name must have at least 2 letters" : null,
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      age: (value) =>
+        value < 18 ? "You must be at least 18 to register" : null,
+    },
+  });
 
-const FloorPlan = () => {
-  const [applesCount, setApplesCount] = useState(0);
-  const [orangesCount, setOrangesCount] = useState(0);
-
-  return(
-<Page>
-    <div className="container pt-4">
-      <div className="grid">
-        <div className="col-md-4">
-          <SidePanel/>
-          </div>
-        <div className="col-md-8">
-        <BlockTitle>Prezzi</BlockTitle>
-  <BlockHeader>Descrivi la tua proprietà</BlockHeader>
-        <Block>
-        <Card className="bordered">
-        <List noHairlines>
-            <List>
-              <ListItem title={`Camere ${applesCount}`}>
-                <Stepper
-                  buttonsOnly={true}
-                  large
-                  outline
-                  slot="after"
-                  onStepperChange={setApplesCount}
-                />
-              </ListItem>
-              <ListItem title={`Camere ${orangesCount}`}>
-                <Stepper
-                  buttonsOnly={true}
-                  large
-                  outline
-                  slot="after"
-                  onStepperChange={setOrangesCount}
-                />
-              </ListItem>
-            </List>
-          </List>
-<CardFooter className="align-content-space-between">
-  <Button outline>
-    Indietro
-  </Button>
-  <Button fill>
-    Continua
-  </Button>
-</CardFooter>
-</Card>
-          </Block>
-        </div>
-      </div>
+  return (
+    <div className="page" id="searchPage">
+      <Container size="xl">
+        <Grid gutter="lg">
+          <Grid.Col span={3}>
+            <div className="medium-only">
+              <SideNav />
+            </div>
+          </Grid.Col>
+          <Grid.Col span={9}>
+            <Title large>Impostazioni account</Title>
+            <Card withBorder>
+              <form onSubmit={form.onSubmit(console.log)}>
+                <Card.Section inheritPadding py="md">
+                  <TextInput
+                    label="Name"
+                    placeholder="Name"
+                    {...form.getInputProps("name")}
+                  />
+                  <TextInput
+                    mt="sm"
+                    label="Email"
+                    placeholder="Email"
+                    {...form.getInputProps("email")}
+                  />
+                  <NumberInput
+                    mt="sm"
+                    label="Age"
+                    placeholder="Age"
+                    min={0}
+                    max={99}
+                    {...form.getInputProps("age")}
+                  />
+                </Card.Section>
+                <Card.Section inheritPadding py="md">
+                  <Button type="submit" mt="sm">
+                    Indietro
+                  </Button>
+                  <Button type="submit" mt="sm">
+                    Salva
+                  </Button>
+                </Card.Section>
+              </form>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Container>
     </div>
-            </Page>
-)
-  }
+  );
+};
 
-
-export default FloorPlan;
-
-
-
-
-
+export default Settings;

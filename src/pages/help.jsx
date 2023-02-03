@@ -1,28 +1,19 @@
-import React from 'react';
-import { Page, List, ListItem, Row, Col, Block, BlockTitle, f7 } from 'framework7-react';
+import React, { useState, useEffect } from "react";
+import { Container, Title } from '@mantine/core';
+import PageHead from "@/shared/common/PageHead";
 
-  const Help = (props) => {
-    const { f7route, f7router } = props;
-    console.log('path', f7route.path);
-    return (
-    <Page>
-      <div className='container'>
-        <Row>
-          <Col>
-          <h1>Page support</h1>
-        <p>Requested content not found.</p>
-          </Col>
-          <Col>
-          <BlockTitle>Azioni</BlockTitle>
-        <List>
-        <ListItem title="Chiamaci" link="#" after="+390023992"></ListItem>
-        <ListItem title="Contattaci" link="mailto:support@ceebo.com?subject=Assistenza" external after="support@ceebo.com"></ListItem>
-        </List>
-          </Col>
-        </Row>
+const Help = () => {
+  return (
+    <div className="page">
+       <PageHead title="Aiuto" imageUrl="https://images.unsplash.com/photo-1563393934034-21b781d905ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80"/>
+    <Container size="xl">
+      <div className="section-title">
+        <Title order={1}>Aiuto</Title>
       </div>
-    </Page>
-    );
+      </Container>
+    </div>
+    
+  );
 };
 
 export default Help;

@@ -1,141 +1,34 @@
-# My App
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Framework7 CLI Options
+## Getting Started
 
-Framework7 app created with following options:
+First, run the development server:
 
-```
-{
-  "cwd": "/Users/elenabelecci/Documents/GitHub/f7-react",
-  "type": [
-    "web"
-  ],
-  "name": "My App",
-  "framework": "react",
-  "template": "single-view",
-  "bundler": "vite",
-  "cssPreProcessor": "less",
-  "theming": {
-    "customColor": false,
-    "color": "#007aff",
-    "darkTheme": false,
-    "iconFonts": true,
-    "fillBars": false
-  },
-  "customBuild": true,
-  "customBuildConfig": {
-    "rtl": false,
-    "darkTheme": true,
-    "lightTheme": true,
-    "themes": [
-      "ios",
-      "aurora"
-    ],
-    "components": [
-      "appbar",
-      "dialog",
-      "popup",
-      "login-screen",
-      "popover",
-      "actions",
-      "sheet",
-      "toast",
-      "preloader",
-      "progressbar",
-      "sortable",
-      "swipeout",
-      "accordion",
-      "contacts-list",
-      "virtual-list",
-      "list-index",
-      "timeline",
-      "tabs",
-      "panel",
-      "card",
-      "chip",
-      "form",
-      "input",
-      "checkbox",
-      "radio",
-      "toggle",
-      "range",
-      "stepper",
-      "smart-select",
-      "grid",
-      "calendar",
-      "picker",
-      "infinite-scroll",
-      "pull-to-refresh",
-      "lazy",
-      "data-table",
-      "fab",
-      "searchbar",
-      "messages",
-      "messagebar",
-      "swiper",
-      "photo-browser",
-      "notification",
-      "autocomplete",
-      "tooltip",
-      "gauge",
-      "skeleton",
-      "menu",
-      "color-picker",
-      "treeview",
-      "text-editor",
-      "area-chart",
-      "pie-chart",
-      "breadcrumbs",
-      "elevation",
-      "typography"
-    ]
-  }
-}
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-## Install Dependencies
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-First of all we need to install dependencies, run in terminal
-```
-npm install
-```
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## NPM Scripts
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-* 🔥 `start` - run development server
-* 🔧 `dev` - run development server
-* 🔧 `build` - build web app for production
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Vite
+## Learn More
 
-There is a [Vite](https://vitejs.dev) bundler setup. It compiles and bundles all "front-end" resources. You should work only with files located in `/src` folder. Vite config located in `vite.config.js`.
-## Assets
+To learn more about Next.js, take a look at the following resources:
 
-Assets (icons, splash screens) source images located in `assets-src` folder. To generate your own icons and splash screen images, you will need to replace all assets in this directory with your own images (pay attention to image size and format), and run the following command in the project directory:
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-```
-framework7 assets
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-Or launch UI where you will be able to change icons and splash screens:
+## Deploy on Vercel
 
-```
-framework7 assets --ui
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-
-
-## Documentation & Resources
-
-* [Framework7 Core Documentation](https://framework7.io/docs/)
-
-* [Framework7 React Documentation](https://framework7.io/react/)
-
-* [Framework7 Icons Reference](https://framework7.io/icons/)
-* [Community Forum](https://forum.framework7.io)
-
-## Support Framework7
-
-Love Framework7? Support project by donating or pledging on:
-- Patreon: https://patreon.com/framework7
-- OpenCollective: https://opencollective.com/framework7
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

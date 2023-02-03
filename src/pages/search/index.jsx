@@ -1,75 +1,84 @@
 import React, { useState, useEffect } from "react";
-import { Page, Link, BlockTitle, Block, Button, f7} from "framework7-react";
-import Filters from "@/shared/search/filters";
-import ListingItem from "@/shared/snippets/listing-item";
+import { Container, Grid, Title, Group, Button, Drawer } from '@mantine/core';
+import graphQLClient from "@/lib/graphql/client";
 import { GET_LISTINGS } from "@/lib/graphql/queries/search";
+import FiltersDrawer from "@/shared/search/filters-drawer";
+import { IconBellRinging } from '@tabler/icons-react';
 
 
-const Search = () => {
+export async function getStaticProps(context) {
+  const data = await graphQLClient.request(GET_LISTINGS);
+
+  return {
+    props: { data },
+  };
+}
+
+import FiltersHorizontal from "@/shared/search/filters-horizontal";
+//import PopupMap from "@/shared/search/PopupMap";
+//import PopupFilters from "@/shared/search/PopupFilters";
+import SectionList from "@/shared/search/listings-section";
+import { showNotification } from '@mantine/notifications';
+
+const Search = ({ data }) => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  //console.log("✅ received-entries", data);
+  const [params, setFiltersParams] = useState(false);
+  const [popupMap, setMapPopup] = useState(false);
+  const [opened, setOpened] = useState(false);
+  const [favorite, setFavorite] = useState(false);
 
-  async function getData() {
-    try {
-      const response = await graphQLClient.request(GET_LISTINGS);
-      if (response) {
-        setData(response);
-      }
-    } catch (err) {
-      console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
-    } finally {
-      setLoading(false);
-    }
-  }
-  
-    useEffect(() => {
-      getData();
-    }, []);
+  const addToFavorite = () => {
+    showNotification({
+      title: 'La ricerca è stata salvata',
+      autoClose: 2500,
+    });
+  };
 
-    if (!data.entries) return <Block strong>Nessun dato</Block>;
-    
 
-  const alertSave = (e) => {
-    e.preventDefault();
-    f7.toast.show({
-      text: "La ricerca è stata salvata.",
-      horizontalPosition: "center",
-      closeTimeout: 2000,
-    })
-  }
+    /* Toggle Item Popup */
+    const openMapPopup = () => {
+      setMapPopup(true);
+    };
+
   return (
-    <Page>
-      <div className="container pt-4">
-        <div className="grid">
-        <div className="col-12">
-          <BlockTitle large>Filtri</BlockTitle>
-           <div className="medium-only"><Filters/></div>
-          </div>
-          </div>
-          <div className="grid">
-          <div className="col-12">
-          <BlockTitle large>Risultati ricerca</BlockTitle>
-          <Block>
-            {Array.isArray(data.entries) ? (
-              <div className="list no-chevron no-hairlines no-hairlines-between">
-              <ul className="list-properties">
-                {data.entries.map((item, i) => (
-                  <ListingItem data={item} key={i}/>
-                ))}
-                </ul>
-              </div>
-            ) : (
-              <Block strong>Nessun dato</Block>
-            )}
-          </Block>
-          </div>
-        </div>
-        <div id="fab-save_search">
-      <Button iconF7="bell" round fill onClick={alertSave}>Salva ricerca</Button>
+    <div className="page" id="searchPage">
+      <Container size="xl">
+      <Group spacing="lg" grow>
+       
+       <div className="filters-block">
+         22 risultati trovati
+       </div>
+       <div className="text-right">
+       <Button radius={"xl"} leftIcon={<IconBellRinging/>} variant="outline" color="dark" onClick={() => addToFavorite()}>
+           Salva ricerca
+          </Button>
+       </div>
+       </Group>
+        <Grid>
+          <Grid.Col span={12}>
+          <Title>Filtri</Title>
+           <div className="medium-only">
+            <FiltersHorizontal filtersPopup={ () => setOpened(!opened) }/>
+            </div>
+          </Grid.Col>
+          </Grid>
+          <Grid>
+          <Grid.Col span={12}>
+          <Title large>22 risultati trovati</Title>
+            <SectionList data={data}/>
+          </Grid.Col>
+        </Grid>
+      </Container>
+      <Drawer
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Filtri ricerca"
+        padding="xl"
+        size="xl"
+      >
+        <FiltersDrawer/>
+      </Drawer>
     </div>
-      </div>
-    </Page>
   );
 };
 

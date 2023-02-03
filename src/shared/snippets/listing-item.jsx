@@ -1,30 +1,20 @@
 import React, { useState } from "react";
-import {
-  Card,
-  Badge,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  Button,
-  Icon,
-  f7,
-  Link
-} from "framework7-react";
+import { Group, Button, Badge, Text, Title, Divider, Avatar, ActionIcon } from "@mantine/core";
+import { showNotification } from '@mantine/notifications';
+import Link from "next/link";
 import { IconHeart, IconShare, IconPlus } from '@tabler/icons-react';
 import ListingSwiper from "./listing-swiper";
 import { IconStairs } from "@tabler/icons-react";
 
 const ListingItem = ({ data }) => {
-  
+  const [favorite, setFavorite] = useState(false);
 
-  const addToFavorite = (e) => {
-    e.preventDefault();
-    f7.toast.show({
-      text: "L'annuncio è stato aggiunto ai preferiti.",
-      horizontalPosition: "center",
-      closeTimeout: 2500,
-    })
-  }
+  const addToFavorite = () => {
+    showNotification({
+      title: "L'annuncio è stato aggiunto ai preferiti.",
+      autoClose: 2500,
+    });
+  };
 
   return (
     <li>

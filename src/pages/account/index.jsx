@@ -1,76 +1,104 @@
 import React, { useState, useEffect } from "react";
-import Link from "framework7-react";
-import {
-  Page,
-  List,
-  ListItem,
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  BlockTitle,
-  Block,
-  Button,
-  Icon
-} from "framework7-react";
+import { Container, Grid, Card, Group, Text, Title} from "@mantine/core";
+import Head from "@/shared/components/account/Head";
 
-import Overview from "@/components/Account/Overview";
-import PageHead from "@/components/Account/PageHead";
-import HostingServices from "@/components/Account/HostingServices";
-import Entries from "@/data/entries.json";
 
 const Account = () => {
   return (
-    <Page>
-      <PageHead title="Bentornato, User"/>
-      <section className="padding-vertical-xl">
-        <div className="container">
-          <div className="grid">
-            <div className="col-md-4">
-              <Card className="bordered">
-                <CardHeader>
-                  Annunci online
-                </CardHeader> 
-                <CardContent>
-                  Annunci online
-                </CardContent>
-              </Card>
-            </div>
-            </div>
-          <div className="grid">
-            <div className="col-md-8 col-xs-12">
-            <div className="display-flex justify-content-space-between align-items-center">
-              <BlockTitle>Ultimi annunci</BlockTitle>
-              <Button href="/account/listings" force={true}>Vedi tutti <Icon f7="arrow_right"/></Button>
+    <div className="page pt-0">
+      <Head
+        title={"Benvenuto User"}
+        primaryAction={{
+          url: "/hosting/create",
+          content: "Crea annuncio",
+        }}
+      />
+      <Container size="xl">
+        <Grid>
+          <Grid.Col md={6} lg={9} xs={6}>
+          <h2 className="page-title">Novità di questa settimana</h2>
+          </Grid.Col>
+
+          <Grid.Col md={6} lg={3} xs={6}>
+            <Card shadwo="sm">
+              <div className="list no-hairlines no-chevron">
+                <ul>
+                  <li className="">
+                    <a className="item-link" href="/reports">
+                      <div className="item-content">
+                        <div className="item-inner">
+                          <div className="item-title">Visite al profilo</div>
+                          <div className="item-after">
+                            <span>201</span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li className="">
+                    <a className="item-link" href="/settings">
+                      <div className="item-content">
+                        <div className="item-inner">
+                          <div className="item-title">Membro dal</div>
+                          <div className="item-after">
+                            <span>12-04-2022</span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li className="">
+                    <a className="item-link" href="/settings">
+                      <div className="item-content">
+                        <div className="item-inner">
+                          <div className="item-title">Tipo account</div>
+                          <div className="item-after">
+                            <span>Agenzia</span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li className="">
+                    <a className="item-link" href="/hosting/listings">
+                      <div className="item-content">
+                        <div className="item-inner">
+                          <div className="item-title">Totale annunci</div>
+                          <div className="item-after">
+                            <span>2</span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li className="">
+                    <a className="item-link" href="/settings/billing">
+                      <div className="item-content">
+                        <div className="item-inner">
+                          <div className="item-title">Piano</div>
+                          <div className="item-after">
+                            <span>Pro</span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li className="">
+                    <a className="item-link" href="/hosts/1000/">
+                      <div className="item-content">
+                        <div className="item-inner">
+                          <div className="item-title">Profilo pubblico</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
               </div>
-              {Array.isArray(Entries.data.entries) ? (
-                <List mediaList noHairlines>
-                  {Entries.data.entries.map((entry, i) => (
-                    <ListItem
-                      title={entry.title}
-                      subtitle="Item Subtitle"
-                      link={"/account/listings"}
-                    >
-                      <img
-                        slot="media"
-                        src="https://via.placeholder.com/80x80"
-                        className="thumb"
-                      />
-                    </ListItem>
-                  ))}
-                </List>
-              ) : (
-                <Block strong>Nessun dato</Block>
-              )}
-            </div>
-            <div className="col-md-4 col-xs-12">
-              <Overview />
-            </div>
-          </div>
-        </div>
-      </section>
-      <HostingServices/>
-    </Page>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Container>
+    </div>
   );
 };
 

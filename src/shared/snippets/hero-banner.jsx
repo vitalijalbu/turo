@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button } from 'framework7-react';
+import { Grid, Container, Group, Title, Text, Button } from '@mantine/core';
 
 
 const HeroBanner = (props) => {
 
   return (
     <section className="section-content">
-      <div className="container">
+      <Container size="xl">
       <div className="hero-wrapper dark overlay" style={{borderRadius: '12px'}}>
     {/* - img*/}
     <div className="img-responsive-wrapper">
@@ -20,20 +20,20 @@ const HeroBanner = (props) => {
         </div>
       </div>
     </div>
-    {/* - ps*/}
-    <div size="xl">
+    {/* - texts*/}
+    <Container size="xl">
       <div className="row">
         <div className="col-12">
-          <div className="hero-p-wrapper bg-dark">
-            {props.title &&  <h1>{props.title}</h1>}
-            {props.subtitle && <p>Cerca i migliori annunci</p>}
+          <div className="hero-text-wrapper bg-dark">
+            {props.title &&  <Title>{props.title}</Title>}
+            {props.subtitle && <Text>Cerca i migliori annunci</Text>}
             {props.primaryAction && <Button>{props.primaryAction}</Button>}
           </div>
         </div>
       </div>
+    </Container>
     </div>
-    </div>
-    </div>
+    </Container>
   </section>
 
   );

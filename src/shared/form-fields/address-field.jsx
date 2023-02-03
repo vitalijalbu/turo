@@ -1,76 +1,85 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
-import { List, ListInput, f7 } from "framework7-react";
+import { useState, forwardRef } from "react"
+import { Group, Avatar, Text, Autocomplete } from "@mantine/core"
+import { getLocation } from "@/lib/api/geojson";
 
-const AddressField = ({ label, name, placeholder, required, selectChange }) => {
-  const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState();
+/*
+const charactersList = [
+  {
+    image: "https://img.icons8.com/clouds/256/000000/futurama-bender.png",
+    label: "Bender Bending Rodríguez",
+    description: "Fascinated with cooking, though has no sense of taste"
+  },
 
-  //console.log('query', query);
+  {
+    image: "https://img.icons8.com/clouds/256/000000/futurama-mom.png",
+    label: "Carol Miller",
+    description: "One of the richest people on Earth"
+  },
+  {
+    image: "https://img.icons8.com/clouds/256/000000/homer-simpson.png",
+    label: "Homer Simpson",
+    description: "Overweight, lazy, and often ignorant"
+  },
+  {
+    image: "https://img.icons8.com/clouds/256/000000/spongebob-squarepants.png",
+    label: "Spongebob Squarepants",
+    description: "Not just a sponge"
+  }
+]
+*/
 
-  const autocompleteDropdownAjax = useRef(null);
-  const onPageBeforeRemove = () => {
-    // Destroy all autocompletes
-    autocompleteDropdownAjax.current.destroy();
+
+
+const AddressField = () => { 
+  const [loading, setLoading] = useState(false);
+  const [geojson, setGeoData] = useState([]);
+  const [city, setCity] = useState();
+
+
+  /* Query API here */
+  async function handleChange(value){
+    setCity(value);
+    console.log('geocity', value);
+    await getLocation(value)
+      .then(({ data }) => {
+        setLoading(true);
+        setGeoData(data);
+        console.log('geojson', data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  useEffect(() => {
-    autocompleteDropdownAjax.current = f7.autocomplete.create({
-      inputEl: "#autocomplete-dropdown",
-      openIn: "dropdown",
-      notFoundText: "Nessun indirizzo trovato",
-      autoFocus: true,
-      closeOnSelect: true,
-      expandInput: true, // expand input
-      preloader: true, // enable preloader
-      valueProperty: "long_name", // object's "value" property long_name
-      textProperty: "long_name", // object's "text" property long_name
-      dropdownPlaceholderText: "Inserisci l'indirizzo completo",
-      on: {
-        change: function (value) {
-          //console.log('Autocomplete change', value[0].long_name);
-          selectChange({ formatted_address: value[0].long_name });
-        },
-      },
-      source(query, render) {
-        var autocomplete = this;
-        const results = [];
-        addressSearch(query)
-          .then(({ data }) => {
-            autocomplete.preloaderHide();
-            //console.table(data);
-            //results.push(data?.data || []);
-            render(data);
-          })
-          .catch((err) => {
-            console.log("err", err);
-            f7.toast.show({
-              text: err.message,
-              horizontalPosition: "center",
-              closeTimeout: 2500,
-              cssClass: "danger",
-            });
-          });
-      },
-    });
-  }, []);
+  const data = geojson.map(item => ({ ...item, value: item.display_name }))
+
+
+    const AutoCompleteItem = forwardRef(
+      ({ description, value, image, ...others }, ref) => (
+        <div ref={ref} {...others} className="autocomplete-item_grid">
+          <Group noWrap>
+            <Avatar src="https://dummyimage.com/80" />
+            <div>
+              <Text>{value}</Text>
+            </div>
+          </Group>
+        </div>
+      )
+    );
+
+
 
   return (
-    <List form>
-      <ListInput
-        label={label}
-        name="formatted_address"
-        placeholder={placeholder}
-        clearButton
-        required={required}
-        validate
-        autoComplete={false}
-        value={query}
-        onInput={(e) => setQuery(e.target.value)}
-        type="text"
-        inputId="autocomplete-dropdown"
-      />
-    </List>
+  <Autocomplete
+      size="md"
+      loading={loading}
+      label="Cerca per città"
+      placeholder="Inserisci città o località"
+      itemComponent={AutoCompleteItem}
+      data={data}
+      value={city}
+      onChange={(value) => handleChange(value)}
+    />
   )
 }
-
 export default AddressField;

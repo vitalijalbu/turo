@@ -1,94 +1,29 @@
 import React from "react";
-import {
-  Page,
-  Block,
-  BlockTitle,
-  Navbar,
-  NavLeft,
-  NavTitle,
-  NavTitleLarge,
-  NavRight,
-  Link,
-  Card,
-  CardContent,
-  ListItemRow,
-  ListItemCell,
-  ListInput,
-  Toggle,
-  Button,
-  List,
-  ListItem,
-  Icon,
-  View,
-  CardFooter,
-} from "framework7-react";
-import SideNav from "@/components/Settings/SideNav";
+import { Container, Grid, Title, Text, Paper, Button } from '@mantine/core';
+import SideNav from "@/shared/components/settings/SideNav";
 
-const Security = () => (
-  <Page>
-    <div className="container pt-4">
-      <div className="grid">
-        <div className="col-md-4">
-          <SideNav />
-        </div>
-        <div className="col-md-8">
-          <BlockTitle>Password & Sicurezza</BlockTitle>
-          <Card className="bordered">
-            <CardContent>
-              <List>
-                <ListItemRow>
-                  <ListItemCell>
-                    <ListInput
-                      label="Nome"
-                      type="text"
-                      placeholder="Your name"
-                      clearButton
-                    />
-                  </ListItemCell>
-                  <ListItemCell>
-                    <ListInput
-                      label="Cognome"
-                      type="text"
-                      placeholder="Cognome"
-                      clearButton
-                    />
-                  </ListItemCell>
-                </ListItemRow>
-                <ListInput
-                  label="E-mail"
-                  type="email"
-                  placeholder="Indirizzo e-mail"
-                  clearButton
-                />
-                <ListInput
-                  label="Telefono"
-                  type="number"
-                  placeholder="Telefono"
-                  clearButton
-                />
 
-                <ListItem>
-                  <span>
-                    Tipologia account
-                    <span className="item-text">
-                      Ricevi aggiornamenti e promozioni
-                    </span>
-                  </span>
-                  <Toggle></Toggle>
-                </ListItem>
-              </List>
-              </CardContent>
-<CardFooter>
-              <Button fill>
-                Salva
-              </Button>
-              </CardFooter>
-            
-          </Card>
-        </div>
-      </div>
-    </div>
-  </Page>
+
+const Settings = () => (
+  <div className="page" id="searchPage">
+  <Container size="xl">
+    <Grid gutter="lg">
+      <Grid.Col span={3}>
+       <div className="medium-only"><SideNav/></div>
+      </Grid.Col>
+      <Grid.Col span={9}>
+      <Title large>Account & sicurezza</Title>
+      <Paper radius="lg" p="lg" withBorder>
+      <Text>Paper is the most basic ui component</Text>
+      <Text>
+        Use it to create cards, dropdowns, modals and other components that require background
+        with shadow
+      </Text>
+    </Paper>
+      </Grid.Col>
+    </Grid>
+  </Container>
+</div>
 );
 
-export default Security;
+export default Settings;

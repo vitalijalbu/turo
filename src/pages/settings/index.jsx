@@ -1,94 +1,79 @@
 import React from "react";
+import { useForm } from "@mantine/form";
 import {
-  Page,
-  Block,
-  BlockTitle,
-  Navbar,
-  NavLeft,
-  NavTitle,
-  NavTitleLarge,
-  NavRight,
-  Link,
-  Card,
-  CardContent,
-  ListItemRow,
-  ListItemCell,
-  ListInput,
-  Toggle,
+  Container,
+  Grid,
+  Title,
   Button,
-  List,
-  ListItem,
-  Icon,
-  View,
-  CardFooter,
-} from "framework7-react";
-import SideNav from "@/components/Settings/SideNav";
+  Card,
+  NumberInput,
+  TextInput,
+} from "@mantine/core";
+import SideNav from "@/shared/components/settings/SideNav";
 
-const Settings = () => (
-  <Page>
-    <div className="container pt-4">
-      <div className="grid">
-        <div className="col-md-4">
-          <SideNav />
-        </div>
-        <div className="col-md-8">
-          <BlockTitle>Il mio account</BlockTitle>
-          <Card className="bordered">
-            <CardContent>
-              <List>
-                <ListItemRow>
-                  <ListItemCell>
-                    <ListInput
-                      label="Nome"
-                      type="text"
-                      placeholder="Your name"
-                      clearButton
-                    />
-                  </ListItemCell>
-                  <ListItemCell>
-                    <ListInput
-                      label="Cognome"
-                      type="text"
-                      placeholder="Cognome"
-                      clearButton
-                    />
-                  </ListItemCell>
-                </ListItemRow>
-                <ListInput
-                  label="E-mail"
-                  type="email"
-                  placeholder="Indirizzo e-mail"
-                  clearButton
-                />
-                <ListInput
-                  label="Telefono"
-                  type="number"
-                  placeholder="Telefono"
-                  clearButton
-                />
+const Settings = () => {
+  const form = useForm({
+    initialValues: { name: "", email: "", age: 0 },
 
-                <ListItem>
-                  <span>
-                    Tipologia account
-                    <span className="item-text">
-                      Ricevi aggiornamenti e promozioni
-                    </span>
-                  </span>
-                  <Toggle></Toggle>
-                </ListItem>
-              </List>
-              </CardContent>
-<CardFooter>
-              <Button fill>
-                Salva
-              </Button>
-              </CardFooter>
-            
-          </Card>
-        </div>
-      </div>
+    // functions will be used to validate values at corresponding key
+    validate: {
+      name: (value) =>
+        value.length < 2 ? "Name must have at least 2 letters" : null,
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      age: (value) =>
+        value < 18 ? "You must be at least 18 to register" : null,
+    },
+  });
+
+  return (
+    <div className="page" id="searchPage">
+      <Container size="xl">
+        <Grid gutter="lg">
+          <Grid.Col span={3}>
+            <div className="medium-only">
+              <SideNav />
+            </div>
+          </Grid.Col>
+          <Grid.Col span={9}>
+            <Title large>Impostazioni account</Title>
+            <Card withBorder>
+              <form onSubmit={form.onSubmit(console.log)}>
+                <Card.Section inheritPadding py="md">
+                  <TextInput
+                    label="Name"
+                    placeholder="Name"
+                    {...form.getInputProps("name")}
+                  />
+                  <TextInput
+                    mt="sm"
+                    label="Email"
+                    placeholder="Email"
+                    {...form.getInputProps("email")}
+                  />
+                  <NumberInput
+                    mt="sm"
+                    label="Age"
+                    placeholder="Age"
+                    min={0}
+                    max={99}
+                    {...form.getInputProps("age")}
+                  />
+                </Card.Section>
+                <Card.Section inheritPadding py="md">
+                  <Button type="submit" mt="sm">
+                    Indietro
+                  </Button>
+                  <Button type="submit" mt="sm">
+                    Salva
+                  </Button>
+                </Card.Section>
+              </form>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Container>
     </div>
-  </Page>
-);
+  );
+};
 
 export default Settings;

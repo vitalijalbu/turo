@@ -1,16 +1,19 @@
 
 
 import React, { useState } from "react";
-import {
-  Block
-} from "framework7-react";
+import { AspectRatio, Button } from '@mantine/core';
+import Link from 'next/link';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css'
+import 'leaflet/dist/leaflet.css';
+
+
 const Map = ({ props }) => {
 
 const position = [45.60522,10.5141089];
-
+if (typeof window !== 'undefined') {
   return (
+    <div>
+    <AspectRatio ratio={16 / 9}>
     <div className="map-container">
 <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
     <TileLayer
@@ -24,8 +27,13 @@ const position = [45.60522,10.5141089];
     </Marker>
   </MapContainer>
     </div>
-
+    </AspectRatio>  
+    <Link href="https://www.google.com/maps" target="_blank" passHref>
+    <Button compact className="mt-1" component="a" target="_blank" rel="noopener noreferrer" variant="outline" rightIcon={<i className="f7-icons">arrow_up_right_square</i>}>Apri in Google Maps</Button>
+    </Link>
+    </div>
   );
-};
+}
+}
 
 export default Map;

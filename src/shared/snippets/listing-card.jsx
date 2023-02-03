@@ -1,56 +1,47 @@
 import React, { useState } from "react";
 import {
+  Text,
+  Row,
   Card,
-  Badge,
-  CardHeader,
+  Image,
   CardContent,
   CardFooter,
-  Button,
-  Icon,
-  f7,
-  Link
-} from "framework7-react";
+  Group,
+  Badge,
+} from "@mantine/core";
 import { IconStairs } from "@tabler/icons-react";
-
+import Link from "next/link";
 import ListingSwiper from "./listing-swiper";
 
-const ListingCard = ({ data }) => {
- 
-
-  const addToFavorite = (e) => {
-    e.preventDefault();
-    f7.toast.show({
-      text: "L'annuncio è stato aggiunto ai preferiti.",
-      horizontalPosition: "center",
-      closeTimeout: 2500,
-    })
-  }
-  
+const Item = ({ data }) => {
   return (
-    <Card className="media-card">
-    <CardHeader className="card-img">
+    <Card withBorder p="xl">
+      <Card.Section>
+        <div className="listing-card_badge">
+          {data.badge && <Badge>{data.badge}</Badge>}
+        </div>
+        <Link href={`/listings/${data.id}`}>
           <ListingSwiper media={data?.media_photos} />
-      <div className="card-actions favorite">
-        <Button
-          raised
-          small
-          iconF7="heart"
-          className="rounded"
-          onClick={addToFavorite}
-        ></Button>
-      </div>
-    </CardHeader>
-    <CardContent padding>
-    {data.badge && <Badge>{data.badge}</Badge>}
-    </CardContent>
-     <CardContent padding>
-      <Link href={"/listings/" + data.id}><span className="text-meta">{data.type}</span></Link>
-      <Link href={"/listings/" + data.id}><h2 className="card-title m-0">{data.title}</h2></Link>
-      <Link href={"/listings/" + data.id}>
-        <span className="text-meta link">{data.location}</span>
-      </Link>
-      <div className="d-flex justify-content-between">
-      {data.total_floors ?? (
+        </Link>
+      </Card.Section>
+      <Card.Section>
+        <Link href={`/listings/${data.id}`}>
+          <Text
+            mt="xs"
+            variant="link"
+            component="a"
+            href={"/search?location=" + data.slug}
+            size="sm"
+          >
+            {data.location}
+          </Text>
+          <Text weight={500} size="lg" mt="md">
+            {data.title}
+          </Text>
+        </Link>
+      </Card.Section>
+      <Group>
+        {data.total_floors ?? (
           <div className="listing-card_data">
             <span>
               <IconStairs />
@@ -63,13 +54,12 @@ const ListingCard = ({ data }) => {
             <span>{data.property_status}</span>
           </div>
         )}
-      </div>
-    </CardContent>
-    <CardFooter padding={false}>
-      <span className="text-price"> {data.pricing ? data.pricing : "Trattativa riservata"}</span>
-    </CardFooter>
-  </Card>
-  )
-}
+      </Group>
+      <Text color="blue" mt="xs" size="md" weight={600}>
+        {data.pricing ? data.pricing : "Trattativa riservata"}
+      </Text>
+    </Card>
+  );
+};
 
-export default ListingCard;
+export default Item;

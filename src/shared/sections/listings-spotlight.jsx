@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "framework7-react";
-import ListingCard from "@/shared/snippets/listing-card";
+import { Container, Grid, Group, Button, Title, Text } from "@mantine/core";
+import ItemCard from "@/shared/snippets/listing-card";
 import graphQLClient from "@/lib/graphql/client";
 import { FIND_SPOTLIGHT } from "@/lib/graphql/queries/listings";
+import Link from "next/link";
 import { IconArrowRight } from '@tabler/icons-react';
 
 
-const ListingsSpotlight = () => {
+const SpotlightListings = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(false);
 
@@ -44,27 +45,27 @@ async function getData() {
     getData();
   }, []);
 
-  if (!data) return <p strong>Nessun dato</p>;
+  if (!data) return <Text strong>Nessun dato</Text>;
 
   return (
     <section id="spotlight-listings" className="padding-vertical">
-      <div className="container">
-        <div className="section-h1">
-          <div position="apart">
-            <h1 order={1}>Annunci in evidenza</h1>
-            <a href={'/search'}><Button radius={"xl"} rightIcon={<IconArrowRight/>} variant="outline" color="dark">Vedi di più</Button></a>
-          </div>
+      <Container size="xl">
+        <div className="section-title">
+          <Group position="apart">
+            <Title order={1}>Annunci in evidenza</Title>
+            <Link href={'/search'}><Button radius={"xl"} rightIcon={<IconArrowRight/>} variant="outline" color="dark">Vedi di più</Button></Link>
+          </Group>
         </div>
-        <div className="grid">
+        <Grid>
           {data.entries.map((item, i) => (
-            <div className="col-md-3">
-              <ListingCard data={item} key={i} />
-            </div>
+            <Grid.Col md={6} lg={3} xs={6}>
+              <ItemCard data={item} key={i} />
+            </Grid.Col>
           ))}
-        </div>
-      </div>
+        </Grid>
+      </Container>
     </section>
   );
 };
 
-export default ListingsSpotlight;
+export default SpotlightListings;
