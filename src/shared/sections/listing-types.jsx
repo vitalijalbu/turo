@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
   Container,
-  Grid,
-  Title,
-  Card,
-  Image,
-  Group,
-  Text,
-} from "@mantine/core";
+  Row,
+  Col
+} from "reactstrap";
 import Link from "next/link";
 import graphQLClient from "@/lib/graphql/client";
 import { GET_LISTING_TYPES } from "@/lib/graphql/queries/categories";
@@ -39,26 +35,36 @@ const ListingTypes = () => {
   return (
     <section className="section-content">
       <Container size="xl">
-        <div className="section-title">
-          <Title order={1}>Sfoglia annunci</Title>
+        <div className="section-head">
+          <h1 className="section-title">Sfoglia annunci</h1>
         </div>
 
-        <Grid>
+        <Row>
           {data?.categories?.map((type, i) => (
-            <Grid.Col md={6} lg={3} xs={6} key={i}>
-             <Card withBorder radius="md" p={0}>
-                <Group noWrap spacing={0}>
-                  <Image src={type?.media_url[0]?.url ?? '/img/placeholder.png'} height={140} width={140} />
-                  <Link href={"/search?type=" + type.slug}>
-                    <Text mt="xs" mb="md">
-                      {type.title}
-                    </Text>
-                  </Link>
-                </Group>
-              </Card>
-            </Grid.Col>
+            <Col md={6} lg={4} xs={6} key={i}>
+                <div className="card border rounded-3 overflow-hidden">
+                  <div className="row g-0 align-items-center">
+                    <div className="col-sm-6">
+                      <img
+                        src={type?.media_url[0]?.url ?? '/img/placeholder.png'}
+                        className="card-img rounded-0"
+                        alt=""
+                      />
+                    </div>
+                    <div className="col-sm-6">
+                      <div className="card-body px-3">
+                        <h6 className="card-title">
+                          <a href="offer-detail.html" className="stretched-link">
+                          {type.title}
+                          </a>
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </Col>
           ))}
-        </Grid>
+        </Row>
       </Container>
     </section>
   );

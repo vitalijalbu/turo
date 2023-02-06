@@ -1,115 +1,104 @@
 import { useToggle, upperFirst } from "@mantine/hooks"
-import { useForm } from "@mantine/form";
+
 import Link from "next/link";
 import {
-  TextInput,
-  PasswordInput,
-  Text,
-  Paper,
-  Group,
-  Center,
-  Button,
-  Divider,
-  Checkbox,
-  Anchor,
   Container,
-  Grid,
-  Stack
-} from "@mantine/core";
+  Row,
+  Col
+} from "reactstrap";
 import IconGoogle from "@/shared/common/IconGoogle";
 import IconFacebook from "@/shared/common/IconFacebook";
 
 const Index = () => {
   const [type, toggle] = useToggle(["login", "register"])
-  const form = useForm({
-    initialValues: {
-      email: "",
-      name: "",
-      password: "",
-      terms: true
-    },
 
-    validate: {
-      email: val => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
-      password: val =>
-        val.length <= 6 ? "Password should include at least 6 characters" : null
-    }
-  })
 
   return (
     <div className="page">
       <Container>
-      <Grid>
-          <Grid.Col className="mx-auto" span={6}>
-    <Paper radius="md" p="xl">
-      <Text size="lg" weight={500}>
-        Welcome to Mantine, {type} with
-      </Text>
+  <Row>
+    <Col className="m-auto">
+          {/* Information */}
+          <div className="col-lg-6 order-1">
+            <div className="p-4 p-sm-7">
+              {/* Logo */}
+              <a href="index.html">
+                <img
+                  className="h-50px mb-4"
+                  src="assets/images/logo-icon.svg"
+                  alt="logo"
+                />
+              </a>
+              {/* Title */}
+              <h1 className="mb-2 h3">Welcome back</h1>
+              <p className="mb-0">
+                New here?<a href="sign-up.html"> Create an account</a>
+              </p>
+              {/* Form START */}
+              <form className="mt-4 text-start">
+                {/* Email */}
+                <div className="mb-3">
+                  <label className="form-label">Enter email id</label>
+                  <input type="email" className="form-control" />
+                </div>
+                {/* Password */}
+                <div className="mb-3 position-relative">
+                  <label className="form-label">Enter password</label>
+                  <input
+                    className="form-control fakepassword"
+                    type="password"
+                    id="psw-input"
+                  />
+                  <span className="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
+                    <i className="fakepasswordicon fas fa-eye-slash cursor-pointer p-2" />
+                  </span>
+                </div>
+                {/* Remember me */}
+                <div className="mb-3 d-sm-flex justify-content-between">
+                  <div>
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="rememberCheck"
+                    />
+                    <label className="form-check-label" htmlFor="rememberCheck">
+                      Remember me?
+                    </label>
+                  </div>
+                  <a href="forgot-password.html">Forgot password?</a>
+                </div>
+                {/* Button */}
+                <div>
+                  <button type="submit" className="btn btn-primary w-100 mb-0">
+                    Login
+                  </button>
+                </div>
+                {/* Divider */}
+                <div className="position-relative my-4">
+                  <hr />
+                  <p className="small bg-mode position-absolute top-50 start-50 translate-middle px-2">
+                    Or sign in with
+                  </p>
+                </div>
+                {/* Google and facebook button */}
+                <div className="vstack gap-3">
+                  <a href="#" className="btn btn-light mb-0">
+                    <i className="fab fa-fw fa-google text-google-icon me-2" />
+                    Sign in with Google
+                  </a>
+                  <a href="#" className="btn btn-light mb-0">
+                    <i className="fab fa-fw fa-facebook-f text-facebook me-2" />
+                    Sign in with Facebook
+                  </a>
+                </div>
+              </form>
+              {/* Form END */}
+            </div>
+          </div>
+    </Col>
+  </Row>
 
-      <Group grow mb="md" mt="md">
-      <Button leftIcon={<IconGoogle />} variant="default">
-          Accedi con Google
-        </Button><Button leftIcon={<IconFacebook />} variant="default">
-        Accedi con Facebook
-        </Button>
-      </Group>
 
-      <Divider label="Oppure continua con la mail" labelPosition="center" my="lg" />
-
-      <form onSubmit={form.onSubmit(() => {})}>
-        <Stack>
-          {type === "register" && (
-            <TextInput
-              label="Name"
-              placeholder="Your name"
-              value={form.values.name}
-              onChange={event =>
-                form.setFieldValue("name", event.currentTarget.value)
-              }
-            />
-          )}
-
-          <TextInput
-            required
-            label="Email"
-            placeholder="hello@mantine.dev"
-            value={form.values.email}
-            onChange={event =>
-              form.setFieldValue("email", event.currentTarget.value)
-            }
-            error={form.errors.email && "Invalid email"}
-          />
-
-          <PasswordInput
-            required
-            label="Password"
-            placeholder="Your password"
-            value={form.values.password}
-            onChange={event =>
-              form.setFieldValue("password", event.currentTarget.value)
-            }
-            error={
-              form.errors.password &&
-              "Password should include at least 6 characters"
-            }
-          />
-        </Stack>
-
-        <Group position="apart" mt="xl">
-          <Link
-            component="button"
-            type="button"
-            color="dimmed"
-            href="/register"
-            size="xs"
-          >Don't have an account? Register
-          </Link>
-          <Button type="submit">{upperFirst(type)}</Button>
-        </Group>
-      </form>
-    </Paper>
-    </Grid.Col>
-    </Grid>
     </Container>
     </div>
   )

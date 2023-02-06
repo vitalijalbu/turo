@@ -10,7 +10,7 @@ import {
   Tabs,
   Text,
 } from "@mantine/core";
-import Head from "@/shared/components/account/Head";
+import Head from "@/shared/account/Head";
 import Entries from "@/data/entries.json";
 import Link from 'next/link';
 

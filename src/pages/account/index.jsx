@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Card, Group, Text, Title} from "@mantine/core";
-import Head from "@/shared/components/account/Head";
+import Head from "@/shared/account/Head";
 
 
 const Account = () => {

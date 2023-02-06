@@ -2,114 +2,92 @@ import React, { useState, useEffect } from "react";
 import HostListings from "@/shared/hosts/host-listings";
 import {
   Container,
-  Grid,
+  Row,
   Title,
   Avatar,
-  Text,
+  p,
   Button,
   Card,
-} from "@mantine/core";
+} from "reactstrap";
 import { useRouter } from "next/router";
 import graphQLClient from "@/lib/graphql/client";
 import { GET_HOST } from "@/lib/graphql/queries/hosts";
+import { getHostDetails } from "@/lib/graphql/queries/hosts";
+import PupupContact from "@/shared/components/popup-contact";
 
-// export const revalidate = false
-const getNewsDetail = async (slug) => {
-  return await graphQLClient.request(GET_HOST)
-}
-
-
-const View = async ({ params }) => {
-  const { entry } = await getNewsDetail(params.id, {});
-
-  if (!entry) {
-    notFound()
-  }
-  /*const [loading, setLoading] = useState(false);
-  const [popupReach, setReachPopup] = useState(false);
+const View = async () => {
+  
+  const [loading, setLoading] = useState(false);
+  const [popupContact, setContactPopup] = useState(false);
   const [popupShare, setSharePopup] = useState(false);
   const [form, setFormValues] = useState({});
 
-  /* Toggle Item Popup 
-  const openReachPopup = () => {
-    setReachPopup(true);
+  /* Toggle Item Popup */
+  const toggleContactPopup = () => {
+    setContactPopup(true);
   };
-  const closeReachPopup = () => {
-    setReachPopup(false);
-  };
-  /* Toggle Item Popup 
-  const openSharePopup = () => {
-    setSharePopup(true);
-  };
-  const closeSharePopup = () => {
-    setSharePopup(false);
-  };*/
-
-  /* Input change parent state 
-  const changeHandler = (e) => {
-    e.preventDefault();
-    setFormValues((prevState) => {
-      return { ...prevState, [e.target.name]: e.target.value };
+  
+  useEffect(() => {
+    getHostDetails()
+    .then((res){
+      console.log('res', res);
     });
-  };*/
+  }, [])
+
   return (
+    <>
+    {!popupContact && (<PupupContact/>)}
     <div className="page">
-      <Container size="xl">
-        <Grid>
-          <Grid.Col span={3}>
+    <div className="page-content">
+      <Container>
+        <Row>
+          <Col md={3}>
             <Card shadow="sm" withBorder p="xl">
-              <Avatar
-                src="https://via.placeholder.com/80"
-                size={120}
-                radius={120}
-                mx="auto"
-              />
-              <Text align="center" size="lg" weight={500} mt="md">
-                Esempio
-              </Text>
-              <Text align="center" color="dimmed" size="sm">
+            <div className="text-center mb-3">
+              {/* Avatar */}
+              <div className="avatar avatar-xl mb-2">
+                <img
+                  className="avatar-img rounded-circle border border-2 border-white"
+                  src="/img/placeholder.svg"
+                  alt=""
+                />
+              </div>
+              <h6 className="mb-0">Jacqueline Miller</h6>
+              <a href="#" className="text-reset text-primary-hover small">
+                hello@gmail.com
+              </a>
+              <hr />
+            </div>
+
+              <p align="center" color="dimmed" size="sm">
                 {"Annunci online 2"}
-              </Text>
-              <Text align="center" color="dimmed" size="sm">
+              </p>
+              <p align="center" color="dimmed" size="sm">
                 {"Annunci online 2"}
-              </Text>
-              <Text size="xs">
-              Scopri perché confermare le informazioni dell'account contribuisce a garantire la sicurezza della community di Resthotels.
-              </Text>
+              </p>
 
               <Button
-                component="a"
-                target="_blank"
-                rel="noopener noreferrer"
-                /*href={"/hosts/"+data.id}*/ variant="default"
-                fullWidth
-                mt="md"
+                block
               >
                 Contatta Agenzia
               </Button>
             </Card>
-          </Grid.Col>
-          <Grid.Col span={9}>
-            <div className="section-title">
-              <Title order={1}>Annunci</Title>
+          </Col>
+          <Col md={9}>
+            <div className="section-head">
+              <h1 className="page-title">Annunci</h1>
             </div>
             <HostListings />
-          </Grid.Col>
-        </Grid>
+          </Col>
+        </Row>
       </Container>
     </div>
-  );
-};
+    </div>
+    </>
+  )
+}
 
 export default View;
 
 
-export const generateStaticParams = async () => {
-  const { entries } = await graphQLClient.request(GET_ALL_HOSTS);
 
-  if (entries) {
-    return entries.map(entry => ({
-      id: [entry?.id]
-    }))
-  }
-}

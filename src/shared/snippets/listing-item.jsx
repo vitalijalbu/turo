@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Group, Button, Badge, Text, Title, Divider, Avatar, ActionIcon } from "@mantine/core";
+import { Card, Button } from "reactstrap";
 import { showNotification } from '@mantine/notifications';
 import Link from "next/link";
-import { IconHeart, IconShare, IconPlus } from '@tabler/icons-react';
+import { IconHeart, IconShare, IconPlus, IconStairs } from '@tabler/icons-react';
 import ListingSwiper from "./listing-swiper";
-import { IconStairs } from "@tabler/icons-react";
+
 
 const ListingItem = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
@@ -17,98 +17,86 @@ const ListingItem = ({ data }) => {
   };
 
   return (
-    <li>
-      <div className="item-content p-0">
-      <div className="listing-card_badge">
-          {data.badge && <Badge>{data.badge}</Badge>}
-        </div>
-        <div className="item-inner gallery">
-
+    <Card className="p-2 mb-3">
+    <div className="row g-0">
+      {/* Card img */}
+      <div className="col-md-5 position-relative">
+        {/* Slider START */}
         <ListingSwiper media={data?.media_photos} />
-        </div>
-        <div className="item-inner item-cell">
-          <div className="item-row display-flex justify-content-space-between align-items-center">
-            <a href={"/listings/" + data.id}>
-              <div className="item-cell">
-                <h3>{data?.title}</h3>
-              </div>
-            </a>
-            <div className="">
-              <div className="item-actions">
-              <ActionIcon variant="transparent"><IconHeart size={16} onClick={() => addToFavorite()}/></ActionIcon>
-              <ActionIcon variant="transparent"><IconShare size={16} /></ActionIcon>
-              </div>
-            </div>
+        {/* Slider END */}
+      </div>
+      {/* Card body */}
+      <div className="col-md-7">
+        <div className="card-body py-md-2 d-flex flex-column h-100 position-relative">
+          {/* Rating and buttons */}
+          <div className="d-flex justify-content-between align-items-center">
+            <ul className="list-inline mb-0">
+              <li className="list-inline-item me-0 small">
+                <i className="fa-solid fa-star text-warning" />
+              </li>
+              <li className="list-inline-item me-0 small">
+                <i className="fa-solid fa-star text-warning" />
+              </li>
+              <li className="list-inline-item me-0 small">
+                <i className="fa-solid fa-star text-warning" />
+              </li>
+              <li className="list-inline-item me-0 small">
+                <i className="fa-solid fa-star text-warning" />
+              </li>
+              <li className="list-inline-item me-0 small">
+                <i className="fa-solid fa-star-half-alt text-warning" />
+              </li>
+            </ul>
+            <ul className="list-inline mb-0 z-index-2">
+              {/* Heart icon */}
+              <li className="list-inline-item">
+              <Button outline><IconHeart size={16} onClick={() => addToFavorite()}/></Button>
+              </li>
+              {/* Share icon */}
+              <li className="list-inline-item dropdown">
+              <Button outline><IconShare size={16} /></Button>
+              </li>
+            </ul>
           </div>
-          <div className="item-row">
-            <div className="item-cell">
-              <span className="text-meta">{data.property_type}</span>
-            </div>
-          </div>
-          <div className="item-row">
-            <div className="item-cell">
-              <span className="text-price">
-                {data.currency_code} {data.pricing}
-              </span>
-            </div>
-          </div>
-          <div className="item-row">
-            <div className="item-cell list-item_excerpt">
-              <span>{data.location}</span>
-            </div>
-          </div>
-          <div className="item-row">
-            <div className="item-cell list-item_excerpt">
-              <Group>
-              {data.total_floors ?? (
-          <div className="listing-card_data">
-            <span>
-              <IconStairs />
-            </span>
-            <span>{data.total_floors}</span>
-          </div>
-        )}
-        {data.property_status ?? (
-          <div className="listing-card_data">
-            <span>{data.property_status}</span>
-          </div>
-        )}
-              </Group>
-            </div>
-          </div>
-          <Divider my="sm" />
-          <div className="item-row display-flex justify-content-space-between align-items-center">
-            <div className="item-cell">
-            <Group>
-        <Avatar src={data.author.photo?.url ?? null} radius="xl" />
-
-        <div style={{ flex: 1 }}>
-          <Text size="sm" weight={500}>
-          <Link href={`/hosts/${data.author.id}`}>{data.author.fullName}</Link>
-          </Text>
-          <Text color="dimmed" size="xs">
-            {`Creato il ${data.postDate}`}
-          </Text>
-        </div>
-      </Group>
-            </div>
-            <div className="item-cell text-right">
-            <Link href={`/hosts/${data.author.id}`}>
-              <Button
-                color="yellow"
-                variant="outline"
-                leftIcon={<IconPlus/>}
-                round
-              >
-                Annunci del venditore
-              </Button>
-              </Link>
+          {/* Title */}
+          <h5 className="card-title mb-1">
+          <Link href={`/listings/${data.id}`}>{data.title}</Link>
+          </h5>
+          <small>
+            <i className="bi bi-geo-alt me-2" />
+            5855 W Century Blvd, Los Angeles - 90045
+          </small>
+          {/* Amenities */}
+          <ul className="nav nav-divider mt-3">
+            <li className="nav-item">Air Conditioning</li>
+            <li className="nav-item">Wifi</li>
+            <li className="nav-item">Kitchen</li>
+            <li className="nav-item">Pool</li>
+          </ul>
+          {/* List */}
+          <ul className="list-group list-group-borderless small mb-0 mt-2">
+            <li className="list-group-item d-flex text-success p-0">
+              <i className="bi bi-patch-check-fill me-2" />
+              Free Cancellation till 7 Jan 2022
+            </li>
+            <li className="list-group-item d-flex text-success p-0">
+              <i className="bi bi-patch-check-fill me-2" />
+              Free Breakfast
+            </li>
+          </ul>
+          {/* Price and Button */}
+          <div className="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
+            {/* Button */}
+            <div className="d-flex align-items-center">
+              <h5 className="fw-bold mb-0 me-1">{data.pricing ? data.pricing : "Trattativa riservata"}</h5>
             </div>
           </div>
         </div>
       </div>
-    </li>
-  );
-};
+    </div>
+  </Card>
+  
+  )
+}
 
 export default ListingItem;
