@@ -1,62 +1,68 @@
-import { useToggle, upperFirst } from "@mantine/hooks"
-
+import { useState } from "react";
 import Link from "next/link";
-import {
-  Container,
-  Row,
-  Col
-} from "reactstrap";
+import { Container, Row, Col, Button, Input } from "reactstrap";
 import IconGoogle from "@/shared/common/IconGoogle";
 import IconFacebook from "@/shared/common/IconFacebook";
+import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {
-  const [type, toggle] = useToggle(["login", "register"])
-
+  const [form, setFormValues] = useState({});
+  console.log('form', form)
+    /* Input change parent state */
+    const handleOnChange = (e) => {
+      setFormValues((prevState) => {
+        return { ...prevState, [e.target.name]: e.target.value };
+      });
+    };
 
   return (
     <div className="page">
       <Container>
-  <Row>
-    <Col className="m-auto">
-          {/* Information */}
-          <div className="col-lg-6 order-1">
-            <div className="p-4 p-sm-7">
-              {/* Logo */}
-              <a href="index.html">
-                <img
-                  className="h-50px mb-4"
-                  src="assets/images/logo-icon.svg"
-                  alt="logo"
-                />
-              </a>
+        <Row>
+          <Col className="mx-auto" md={4}>
               {/* Title */}
-              <h1 className="mb-2 h3">Welcome back</h1>
-              <p className="mb-0">
-                New here?<a href="sign-up.html"> Create an account</a>
-              </p>
+              <h1 className="mb-2 h3">Accedi al tuo account</h1>
+              {/* Google and facebook button */}
+              <div className="vstack gap-3">
+                <Button outline>
+                  <IconGoogle />
+                  Accedi con Google
+                </Button>
+                <Button outline>
+                  <IconFacebook />
+                  Accedi con Facebook
+                </Button>
+              </div>
+              {/* Divider */}
+              <div className="position-relative my-4">
+                <hr />
+                <p className="small bg-mode position-absolute top-50 start-50 translate-middle px-2">
+                  Oppure accedi
+                </p>
+              </div>
+
               {/* Form START */}
               <form className="mt-4 text-start">
                 {/* Email */}
                 <div className="mb-3">
-                  <label className="form-label">Enter email id</label>
-                  <input type="email" className="form-control" />
+                  <label className="form-label">Email</label>
+                  <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
                 </div>
                 {/* Password */}
                 <div className="mb-3 position-relative">
-                  <label className="form-label">Enter password</label>
-                  <input
-                    className="form-control fakepassword"
+                  <label className="form-label">Password</label>
+                  <Input
+                    className="form-control"
                     type="password"
+                    name="password"
+                    onChange={handleOnChange}
                     id="psw-input"
                   />
-                  <span className="position-absolute top-50 end-0 translate-middle-y p-0 mt-3">
-                    <i className="fakepasswordicon fas fa-eye-slash cursor-pointer p-2" />
-                  </span>
                 </div>
                 {/* Remember me */}
                 <div className="mb-3 d-sm-flex justify-content-between">
                   <div>
-                    <input
+                    <Input
                       type="checkbox"
                       className="form-check-input"
                       id="rememberCheck"
@@ -65,7 +71,7 @@ const Index = () => {
                       Remember me?
                     </label>
                   </div>
-                  <a href="forgot-password.html">Forgot password?</a>
+                  <Link href="/forgot-password">Password diemnticata?</Link>
                 </div>
                 {/* Button */}
                 <div>
@@ -73,34 +79,15 @@ const Index = () => {
                     Login
                   </button>
                 </div>
-                {/* Divider */}
-                <div className="position-relative my-4">
-                  <hr />
-                  <p className="small bg-mode position-absolute top-50 start-50 translate-middle px-2">
-                    Or sign in with
-                  </p>
-                </div>
-                {/* Google and facebook button */}
-                <div className="vstack gap-3">
-                  <a href="#" className="btn btn-light mb-0">
-                    <i className="fab fa-fw fa-google text-google-icon me-2" />
-                    Sign in with Google
-                  </a>
-                  <a href="#" className="btn btn-light mb-0">
-                    <i className="fab fa-fw fa-facebook-f text-facebook me-2" />
-                    Sign in with Facebook
-                  </a>
-                </div>
+                <p className="mt-3">
+                  Nom hai un account ?<Link href="/register"> Creane uno</Link>
+                </p>
               </form>
               {/* Form END */}
-            </div>
-          </div>
-    </Col>
-  </Row>
-
-
-    </Container>
+          </Col>
+        </Row>
+      </Container>
     </div>
-  )
-}
+  );
+};
 export default Index;

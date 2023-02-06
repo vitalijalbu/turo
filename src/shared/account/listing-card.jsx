@@ -7,6 +7,43 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import confirm from '@/shared/components/confirm/';
+import { actionArchive, actionDelete } from "@/lib/graphql/mutations/listings";
+  /* Confirm */
+  const handleDelete = () => {
+    confirm({
+      title: 'Sei sicuro di voler eliminare l\'annuncio?',
+      message: 'auth.logout_cta',
+      cancelText: 'Annulla',
+      confirmText: 'Elimina',
+      confirmColor: 'danger',
+    }).then((confirmed) => {
+      if (confirmed) {
+        dispatch(logout());
+        //history.push('/');
+        //window.location.href="/";
+      }
+    });
+  };
+
+    /* Confirm */
+    const handleArchive= () => {
+      confirm({
+        title: 'Sei sicuro di voler eliminare l\'annuncio?',
+        message: 'auth.logout_cta',
+        cancelText: 'Annulla',
+        confirmText: 'Elimina',
+        confirmColor: 'danger',
+      }).then((confirmed) => {
+        if (confirmed) {
+          dispatch(logout());
+          //history.push('/');
+          //window.location.href="/";
+        }
+      });
+    };
+  
+
 
 const ListingCard = ({ data }) => {
   return (
@@ -53,9 +90,9 @@ const ListingCard = ({ data }) => {
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem><Link href={`/account/listings/edit/${data.id}`}>Modifica</Link></DropdownItem>
-                    <DropdownItem>Archivia</DropdownItem>
+                    <DropdownItem onClick={handleArchive}>Archivia</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Elimina</DropdownItem>
+                    <DropdownItem onClick={handleDelete}>Elimina</DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </div>

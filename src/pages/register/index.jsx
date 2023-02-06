@@ -1,125 +1,115 @@
-import { useToggle, upperFirst } from "@mantine/hooks"
-import { useForm } from "@mantine/form";
+import { useState } from "react";
 import Link from "next/link";
-import {
-  TextInput,
-  PasswordInput,
-  Text,
-  Paper,
-  Group,
-  Center,
-  Button,
-  Divider,
-  Checkbox,
-  Container,
-  Grid,
-  Stack
-} from "@mantine/core";
+import { Container, Row, Col, Button, Input, FormGroup } from "reactstrap";
 import IconGoogle from "@/shared/common/IconGoogle";
 import IconFacebook from "@/shared/common/IconFacebook";
+import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {
-  const [type, toggle] = useToggle(["login", "register"])
-  const form = useForm({
-    initialValues: {
-      email: "",
-      name: "",
-      password: "",
-      terms: true
-    },
-
-    validate: {
-      email: val => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
-      password: val =>
-        val.length <= 6 ? "Password should include at least 6 characters" : null
-    }
-  })
+  const [form, setFormValues] = useState({});
+  console.log('form', form)
+    /* Input change parent state */
+    const handleOnChange = (e) => {
+      setFormValues((prevState) => {
+        return { ...prevState, [e.target.name]: e.target.value };
+      });
+    };
 
   return (
     <div className="page">
       <Container>
-      <Grid>
-          <Grid.Col className="mx-auto" span={6}>
-    <Paper radius="md" p="xl">
-      <Text size="lg" weight={500}>
-        Welcome to Mantine, {type} with
-      </Text>
+        <Row>
+          <Col className="mx-auto" md={4}>
+              {/* Title */}
+              <h1 className="mb-2 h3">Crea un account</h1>
+              {/* Google and facebook button */}
+              <div className="vstack gap-3">
+                <Button outline>
+                  <IconGoogle />
+                  Accedi con Google
+                </Button>
+                <Button outline>
+                  <IconFacebook />
+                  Accedi con Facebook
+                </Button>
+              </div>
+              {/* Divider */}
+              <div className="position-relative my-4">
+                <hr />
+                <p className="small bg-mode position-absolute top-50 start-50 translate-middle px-2">
+                  Oppure accedi
+                </p>
+              </div>
 
-      <Group grow mb="md" mt="md">
-      <Button leftIcon={<IconGoogle />} variant="default">
-          Accedi con Google
-        </Button><Button leftIcon={<IconFacebook />} variant="default">
-        Accedi con Facebook
-        </Button>
-      </Group>
-
-      <Divider label="Oppure continua con la mail" labelPosition="center" my="lg" />
-
-      <form onSubmit={form.onSubmit(() => {})}>
-        <Stack>
-
-            <TextInput
-              label="Name"
-              placeholder="Your name"
-              value={form.values.name}
-              onChange={event =>
-                form.setFieldValue("name", event.currentTarget.value)
-              }
-            />
-
-          <TextInput
-            required
-            label="Email"
-            placeholder="hello@mantine.dev"
-            value={form.values.email}
-            onChange={event =>
-              form.setFieldValue("email", event.currentTarget.value)
-            }
-            error={form.errors.email && "Invalid email"}
-          />
-
-          <PasswordInput
-            required
-            label="Password"
-            placeholder="Your password"
-            value={form.values.password}
-            onChange={event =>
-              form.setFieldValue("password", event.currentTarget.value)
-            }
-            error={
-              form.errors.password &&
-              "Password should include at least 6 characters"
-            }
-          />
-
-
-            <Checkbox
-              label="I accept terms and conditions"
-              checked={form.values.terms}
-              onChange={event =>
-                form.setFieldValue("terms", event.currentTarget.checked)
-              }
-            />
-        </Stack>
-
-        <Group position="apart" mt="xl">
-          <Link
-            component="button"
-            type="button"
-            color="dimmed"
-            href="/login"
-            size="xs"
-          >Already have an account? Login
-
-          </Link>
-          <Button type="submit">{upperFirst(type)}</Button>
-        </Group>
-      </form>
-    </Paper>
-    </Grid.Col>
-    </Grid>
-    </Container>
+              {/* Form START */}
+              <form className="mt-4 text-start">
+                <FormGroup>
+                  <Row>
+                    <Col>
+                    <label className="form-label">Nome</label>
+                    <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
+                    </Col>
+                    <Col>
+                    <label className="form-label">Cognome</label>
+                    <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
+                    </Col>
+                  </Row>
+                </FormGroup>
+                {/* Email */}
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
+                </div>
+                {/* Password */}
+                <div className="mb-3 position-relative">
+                  <label className="form-label">Password</label>
+                  <Input
+                    className="form-control"
+                    type="password"
+                    name="password"
+                    onChange={handleOnChange}
+                    id="psw-input"
+                  />
+                </div>
+                 {/* Password */}
+                 <div className="mb-3 position-relative">
+                  <label className="form-label">Conferma Password</label>
+                  <Input
+                    className="form-control"
+                    type="password"
+                    name="password"
+                    onChange={handleOnChange}
+                    id="psw-input"
+                  />
+                </div>
+                {/* Remember me */}
+                <div className="mb-3 d-sm-flex justify-content-between">
+                  <div>
+                    <Input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="rememberCheck"
+                    />
+                    <label className="form-check-label" htmlFor="rememberCheck">
+                      Accetto i temrmini e le condizioni
+                    </label>
+                  </div>
+                </div>
+                {/* Button */}
+                <div>
+                  <button type="submit" className="btn btn-primary w-100 mb-0">
+                    Login
+                  </button>
+                </div>
+                <p className="mt-3">
+                  Hai già un account ?<Link href="/login"> Accedi qui</Link>
+                </p>
+              </form>
+              {/* Form END */}
+          </Col>
+        </Row>
+      </Container>
     </div>
-  )
-}
+  );
+};
 export default Index;

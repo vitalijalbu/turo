@@ -9,6 +9,8 @@ import {
   IconListDetails , IconHeart, IconSettings, IconUserCircle,
   IconSearch,
 } from "@tabler/icons-react";
+import confirm from '@/shared/components/confirm/';
+
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -16,6 +18,23 @@ const Header = () => {
    /* actions */ 
   const openSideNav = () => setNavOpen(!navOpen);
   const openSearch = () => setsearchOpen(!searchOpen);
+
+  /* Confirm */
+  const handleLogout = () => {
+    confirm({
+      title: 'Sei sicuro di voler uscire?',
+      message: 'auth.logout_cta',
+      cancelText: 'Annulla',
+      confirmText: 'Esci',
+      confirmColor: 'primary',
+    }).then((confirmed) => {
+      if (confirmed) {
+        dispatch(logout());
+        //history.push('/');
+        //window.location.href="/";
+      }
+    });
+  };
 
   return (
     <>
@@ -45,6 +64,11 @@ const Header = () => {
                   Richieste
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link href="/login" className="nav-link px-2 link-dark">
+                  Login
+                </Link>
+              </li>
             </ul>
             <ul className="nav">
             <li className="nav-item">
@@ -66,7 +90,7 @@ const Header = () => {
                 <Link href="/account/settings"><IconSettings/> Impostazioni</Link>
               </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Esci</DropdownItem>
+                <DropdownItem onClick={handleLogout}>Esci</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             </li>
