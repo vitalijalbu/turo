@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Title, Group, Button, Drawer } from '@mantine/core';
+import { Container, Row, Col, Button } from "reactstrap";
 import graphQLClient from "@/lib/graphql/client";
 import { GET_LISTINGS } from "@/lib/graphql/queries/search";
 import FiltersDrawer from "@/shared/search/filters-drawer";
@@ -21,6 +21,9 @@ import SectionList from "@/shared/search/listings-section";
 import { showNotification } from '@mantine/notifications';
 
 const Search = ({ data }) => {
+  const [navOpen, setNavOpen] = useState(false);
+   /* actions */ 
+  const openSideNav = () => setNavOpen(!navOpen);
   const [loading, setLoading] = useState(false);
   const [params, setFiltersParams] = useState(false);
   const [popupMap, setMapPopup] = useState(false);
@@ -34,52 +37,39 @@ const Search = ({ data }) => {
     });
   };
 
-
-    /* Toggle Item Popup */
-    const openMapPopup = () => {
-      setMapPopup(true);
-    };
-
   return (
+    <> 
+    {navOpen && <FiltersDrawer opened={navOpen} toggle={openSideNav} />}
     <div className="page" id="searchPage">
-      <Container size="xl">
-      <Group spacing="lg" grow>
-       
+      <Container>
+      <Row>
        <div className="filters-block">
          22 risultati trovati
-       </div>
+        </div>
+       </Row>
        <div className="text-right">
-       <Button radius={"xl"} leftIcon={<IconBellRinging/>} variant="outline" color="dark" onClick={() => addToFavorite()}>
-           Salva ricerca
+       <Button outline color="dark" onClick={() => addToFavorite()}>
+       <IconBellRinging/> Salva ricerca
           </Button>
        </div>
-       </Group>
-        <Grid>
-          <Grid.Col span={12}>
-          <Title>Filtri</Title>
+        <Row>
+          <Col span={12}>
+          <h1>Filtri</h1>
            <div className="medium-only">
-            <FiltersHorizontal filtersPopup={ () => setOpened(!opened) }/>
+            <FiltersHorizontal filtersPopup={ openSideNav }/>
             </div>
-          </Grid.Col>
-          </Grid>
-          <Grid>
-          <Grid.Col span={12}>
-          <Title large>22 risultati trovati</Title>
+          </Col>
+          </Row>
+          <Row>
+          <Col span={12}>
+          <h1 large>22 risultati trovati</h1>
             <SectionList data={data}/>
-          </Grid.Col>
-        </Grid>
+          </Col>
+        </Row>
       </Container>
-      <Drawer
-        opened={opened}
-        onClose={() => setOpened(false)}
-        title="Filtri ricerca"
-        padding="xl"
-        size="xl"
-      >
-        <FiltersDrawer/>
-      </Drawer>
     </div>
-  );
-};
+    </>
+  )
+}
 
 export default Search;

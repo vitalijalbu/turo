@@ -4,24 +4,22 @@ import Link from "next/link";
 
 const HostCard = ({ data }) => {
   return (
-    <Paper radius="md" withBorder p="lg" key={data.id}>
-      <Avatar src={data.photo?.url ?? null} size={120} radius={120} mx="auto" />
-      <Text align="center" size="lg" weight={500} mt="md">
+  <div className="card bg-transparent text-center p-1 h-100">
+    {/* Image */}
+    <img
+      src={data.photo?.url ?? '/img/placeholder.svg'}
+      className="rounded-circle"
+      alt=""
+    />
+    <div className="card-body p-0 pt-3">
+      <h5 className="card-title">
+      <Link href={`/hosts/${data.id}`} rel="noopener noreferrer" target="_blank">
         {data.fullName}
-      </Text>
-      <Text align="center" color="dimmed" size="sm">
-        {`Annunci online ${data.id}`}
-      </Text>
-
-      <Button
-        variant="default"
-        fullWidth
-        mt="md"
-      >
-        <Link href={`/hosts/${data.id}`} rel="noopener noreferrer" target="_blank">Vedi Agenzia</Link>
-      </Button>
-    </Paper>
-  );
-};
+        </Link>
+      </h5>
+    </div>
+  </div>
+  )
+}
 
 export default HostCard;

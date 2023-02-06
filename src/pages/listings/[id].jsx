@@ -4,7 +4,7 @@ import { showNotification } from "@mantine/notifications";
 
 import { Container, Row, Col, Card, Button, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import PupupContact from "@/shared/components/popup-contact";
-import SharePopup from "@/shared/listings/share-popup";
+import PopupShare from "@/shared/listings/popup-share";
 import Gallery from "@/shared/listings/gallery";
 import { IconCornerRightUp, IconHeart, IconShare, IconPlus, IconStairs } from '@tabler/icons-react';
 import graphQLClient from "@/lib/graphql/client";
@@ -22,7 +22,7 @@ const View = () => {
   const {id}  = router.query;
   const [loading, setLoading] = useState(false);
   const [popupContact, setContactPopup] = useState(false);
-  const [popupShare, setSharePopup] = useState(false);
+  const [popupShare, setPopupShare] = useState(false);
   const [form, setFormValues] = useState({});
   const [data, setData] = useState({});
 
@@ -67,14 +67,14 @@ const View = () => {
     setContactPopup(!popupContact);
   };
   /* Toggle Item Popup */
-  const toggleSharePopup = () => {
-    setSharePopup(!popupShare);
+  const togglePopupShare = () => {
+    setPopupShare(!popupShare);
   };
 
   return (
     <>
       {popupShare && (
-        <SharePopup opened={popupShare} toggle={toggleSharePopup} />
+        <PopupShare opened={popupShare} toggle={togglePopupShare} />
       )}
       {popupContact && (
         <PupupContact opened={popupContact} toggle={toggleContactPopup} />
@@ -121,7 +121,7 @@ const View = () => {
               </li>
               {/* Share icon */}
               <li className="list-inline-item dropdown">
-              <Button outline onClick={() => toggleSharePopup()}><IconCornerRightUp /> Condividi</Button>
+              <Button outline onClick={() => togglePopupShare()}><IconCornerRightUp /> Condividi</Button>
               </li>
           </ul>
         </div>
@@ -167,38 +167,151 @@ const View = () => {
                   <p order={3}>Descrizione</p>
                 </div>
 
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
+
               </section>
               <section className="section-content" id="listingSpecifications">
                 <div className="section-title">
                   <p order={3}>Servizi</p>
                 </div>
-                <div position="apart">
-                  <div className="item-service_block">
-                    <span className="title">Locali</span>
-                    <span className="content">demo</span>
-                  </div>
-
-                  <div className="item-service_block">
-                    <span className="title">Piani</span>
-                    <span className="content">demo</span>
-                  </div>
-                  <div className="item-service_block">
-                    <span className="title">Stato</span>
-                    <span className="content">Ristrutturato</span>
-                  </div>
-                </div>
+                <div className="card bg-transparent">
+  {/* Card header */}
+  <div className="card-header border-bottom bg-transparent px-0 pt-0">
+    <h3 className="card-title mb-0">Amenities</h3>
+  </div>
+  {/* Card body START */}
+  <div className="card-body pt-4 p-0">
+    <div className="row g-4">
+      {/* Activities */}
+      <div className="col-sm-6">
+        <h6>
+          <i className="fa-solid fa-biking me-2" />
+          Activities
+        </h6>
+        {/* List */}
+        <ul className="list-group list-group-borderless mt-2 mb-0">
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Swimming pool
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Spa
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Kids' play area
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Gym
+          </li>
+        </ul>
+      </div>
+      {/* Payment Method */}
+      <div className="col-sm-6">
+        <h6>
+          <i className="fa-solid fa-credit-card me-2" />
+          Payment Method
+        </h6>
+        {/* List */}
+        <ul className="list-group list-group-borderless mt-2 mb-0">
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Credit card (Visa, Master card)
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Cash
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Debit Card
+          </li>
+        </ul>
+      </div>
+      {/* Services */}
+      <div className="col-sm-6">
+        <h6>
+          <i className="fa-solid fa-concierge-bell me-2" />
+          Services
+        </h6>
+        {/* List */}
+        <ul className="list-group list-group-borderless mt-2 mb-0">
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Dry cleaning
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Room Service
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Special service
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Waiting Area
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Secrete smoking area
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Concierge
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Laundry facilities
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Ironing Service
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Lift
+          </li>
+        </ul>
+      </div>
+      {/* Safety & Security */}
+      <div className="col-sm-6">
+        <h6>
+          <i className="bi bi-shield-fill-check me-2" />
+          Safety &amp; Security
+        </h6>
+        {/* List */}
+        <ul className="list-group list-group-borderless mt-2 mb-4 mb-sm-5">
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Doctor on Call
+          </li>
+        </ul>
+        <h6>
+          <i className="fa-solid fa-volume-up me-2" />
+          Staff Language
+        </h6>
+        {/* List */}
+        <ul className="list-group list-group-borderless mt-2 mb-0">
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            English
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Spanish
+          </li>
+          <li className="list-group-item pb-0">
+            <i className="fa-solid fa-check-circle text-success me-2" />
+            Hindi
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {/* Card body END */}
+</div>
 
               </section>
               <section className="section-content" id="listingMap">

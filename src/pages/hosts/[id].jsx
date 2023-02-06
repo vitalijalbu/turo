@@ -3,11 +3,9 @@ import HostListings from "@/shared/hosts/host-listings";
 import {
   Container,
   Row,
-  Title,
-  Avatar,
-  p,
+  Col,
   Button,
-  Card,
+  Card
 } from "reactstrap";
 import { useRouter } from "next/router";
 import graphQLClient from "@/lib/graphql/client";
@@ -15,9 +13,11 @@ import { GET_HOST } from "@/lib/graphql/queries/hosts";
 import { getHostDetails } from "@/lib/graphql/queries/hosts";
 import PupupContact from "@/shared/components/popup-contact";
 
-const View = async () => {
+const View = () => {
   
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState();
+  const [listings, setListings] = useState([]);
   const [popupContact, setContactPopup] = useState(false);
   const [popupShare, setSharePopup] = useState(false);
   const [form, setFormValues] = useState({});
@@ -29,10 +29,13 @@ const View = async () => {
   
   useEffect(() => {
     getHostDetails()
-    .then((res){
+    .then((res) => {
       console.log('res', res);
+      setData(res?.user);
+      setListings(res?.listings);
     });
-  }, [])
+  }, []);
+
 
   return (
     <>
@@ -52,32 +55,15 @@ const View = async () => {
                   alt=""
                 />
               </div>
-              <h6 className="mb-0">Jacqueline Miller</h6>
-              <a href="#" className="text-reset text-primary-hover small">
-                hello@gmail.com
-              </a>
-              <hr />
+              <h6 className="mb-0">{data?.fullName}</h6>
             </div>
-
-              <p align="center" color="dimmed" size="sm">
-                {"Annunci online 2"}
-              </p>
-              <p align="center" color="dimmed" size="sm">
-                {"Annunci online 2"}
-              </p>
-
-              <Button
-                block
-              >
-                Contatta Agenzia
-              </Button>
             </Card>
           </Col>
           <Col md={9}>
             <div className="section-head">
               <h1 className="page-title">Annunci</h1>
             </div>
-            <HostListings />
+            <HostListings data={listings}/>
           </Col>
         </Row>
       </Container>

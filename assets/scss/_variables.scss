@@ -1,31 +1,27 @@
 // Font Variable
 $font-sans-serif: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
 $swiper-navigation-size: 20px;
-$swiper-theme-color: #000;
+$swiper-theme-color: #121212;
 // Font Size
 $body-font-size: 14px;
+$--bs-link-color: #121212;
+$--bs-nav-link-color: #121212;
+
+// Avatar
+
+$avatar-size-base: 3rem;
+$avatar-size-xs: 2.1875rem;
+$avatar-size-sm: 2.5rem;
+$avatar-size-lg: 4rem;
+$avatar-size-xl: 5.125rem;
+$avatar-size-xxl: 8rem;
+$avatar-size-xxxl: 11rem;
+
+// Form font size
+$form-fs-lg: 1.2rem;
+$form-fs-md: 1rem;
+$form-fs-sm: 0.875rem;
 
 // Body Line Height
 $body-line-height: 1.6em;
 
-// Light Color Palettes
-$main-color: #fff;
-$base-color: #000;
-$base-color1: rgba(0, 0, 0, 0.95);
-$base-color2: rgba(0, 0, 0, 0.70);
-$base-color3: rgba(0, 0, 0, 0.4);
-$base-color4: #e5e5e5;
-$base-color5: rgba(0, 0, 0, 0.05);
-$base-color6: rgba(0, 0, 0, 0.02);
-$border-color: #d9d9d9;
-$border-color-dark: rgb(255 255 255 / 20%);
-// Accent color
-$accent-color1: #007aff; //Primary Blue /
-$accent-color2: #8e8e93; //Gray /
-$accent-color3: #5ac8fa; //Light Blue /
-$accent-color4: #34c759; //Green /
-$accent-color5: #ff3b30; //Red /
-$accent-color6: #ff9500; //Orange /
-$accent-color7: #5856d6; //Indigo
-$accent-color8: #af52de; //Purple
-// #af52de; //Purple

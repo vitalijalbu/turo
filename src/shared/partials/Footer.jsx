@@ -352,37 +352,7 @@ const Footer = () => {
             
             <a href="#">
               <img
-                src="assets/images/element/paypal.svg"
-                className="h-30px"
-                alt=""
-              />
-            </a>
-          </li>
-          <li className="list-inline-item">
-            
-            <a href="#">
-              <img
-                src="assets/images/element/visa.svg"
-                className="h-30px"
-                alt=""
-              />
-            </a>
-          </li>
-          <li className="list-inline-item">
-            
-            <a href="#">
-              <img
-                src="assets/images/element/mastercard.svg"
-                className="h-30px"
-                alt=""
-              />
-            </a>
-          </li>
-          <li className="list-inline-item">
-            
-            <a href="#">
-              <img
-                src="assets/images/element/expresscard.svg"
+                src="/img/payments@2x-300x43.png"
                 className="h-30px"
                 alt=""
               />

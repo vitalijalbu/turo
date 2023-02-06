@@ -1,83 +1,127 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, Button, RangeSlider, Checkbox, Text } from '@mantine/core';
+import Link from "next/link";
 import graphQLClient from "@/lib/graphql/client";
-import { GET_LISTING_TYPES } from "@/lib/graphql/queries/categories";
 
+import {
+  Offcanvas,
+  OffcanvasHeader,
+  OffcanvasBody,
+  Accordion,
+  UncontrolledAccordion,
+  AccordionItem,
+  AccordionHeader,
+  AccordionBody,
+  ListGroup,
+  ListGroupItem,
+  FormGroup,
+  Input,
+  Label 
+} from "reactstrap";
 
-const FiltersDrawer = () => {
+const SideMenu = ({ opened, toggle }) => {
   const [loading, setLoading] = useState(false);
-  const [types, setTypes] = useState([]);
-  const [priceMin, setPriceMin] = useState(200);
-  const [priceMax, setPriceMax] = useState(1200);
-
-  const onPriceChange = (values) => {
-    setPriceMin(values[0]);
-    setPriceMax(values[100]);
-  };
-
-  async function getData() {
-    try {
-      const response = await graphQLClient.request(GET_LISTING_TYPES);
-      if (response) {
-        setTypes(response);
-      }
-    } catch (err) {
-      console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
-    } finally {
-      setLoading(false);
+  const [data, setData] = useState(false);
+  const [open, setOpen] = useState("");
+  const toggleMenu = (id) => {
+    if (open === id) {
+      setOpen();
+    } else {
+      setOpen(id);
     }
   }
-  
-    useEffect(() => {
-      getData();
-    }, []);
+
+  const FOCUS_QUERY = `query{
+    categories(group: "news", show_in_menu:true) {
+      id
+      title
+      slug
+    }
+  }
+  `;
+
+
+
+
+async function getData() {
+  try {
+    const response = await graphQLClient.request(FOCUS_QUERY);
+    if (response) {
+      setData(response);
+    }
+  } catch (err) {
+    console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
+  } finally {
+    setLoading(false);
+  }
+}
+
+useEffect(() => {
+  getData();
+}, []);
+
+
 
   return (
-    <div>
-      <Accordion defaultValue="type">
-      <Accordion.Item value="type">
-        <Accordion.Control>Tipologia</Accordion.Control>
-        <Accordion.Panel>
-        {types.length ? (
-          <>
-        {types?.categories?.map((type, i) => (
-            <Checkbox label={type.title} key={i} />
-          ))
-          }
-          </>) : (
-            <Text>Nessuna tipologia qui</Text>
-          )}
-        </Accordion.Panel>
-      </Accordion.Item>
-      <Accordion.Item value="location">
-        <Accordion.Control>Dove ?</Accordion.Control>
-        <Accordion.Panel>
+    <div id="side-nav">
+      <Offcanvas isOpen={opened} toggle={toggle}>
+        <OffcanvasHeader toggle={toggle}>Altri filtri</OffcanvasHeader>
+        <OffcanvasBody>
+        <UncontrolledAccordion defaultOpen="1">
+        <AccordionItem>
+    <AccordionHeader targetId="1">
+      Tipologia
+    </AccordionHeader>
+    <AccordionBody accordionId="1">
+    <FormGroup check>
+    <Input type="checkbox" />
+    <Label check>
+      Vendita
+    </Label>
+    
+  </FormGroup>
+  <FormGroup check>
+    <Input type="checkbox" />
+    <Label check>
+      Affitto 
+    </Label>
+  </FormGroup>
+    </AccordionBody>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionHeader targetId="2">
+      Prezzi
+    </AccordionHeader>
+    <AccordionBody accordionId="2">
+      <strong>
+        This is the second item's accordion body.
+      </strong>
+      You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the{' '}
+      <code>
+        .accordion-body
+      </code>
+      , though the transition does limit overflow.
+    </AccordionBody>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionHeader targetId="3">
+      Accordion Item 3
+    </AccordionHeader>
+    <AccordionBody accordionId="3">
+      <strong>
+        This is the third item's accordion body.
+      </strong>
+      You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the{' '}
+      <code>
+        .accordion-body
+      </code>
+      , though the transition does limit overflow.
+    </AccordionBody>
+  </AccordionItem>
+</UncontrolledAccordion>
+        </OffcanvasBody>
+      </Offcanvas>
+    </div>
+  )
+}
 
-        </Accordion.Panel>
-      </Accordion.Item>
-
-      <Accordion.Item value="pricing">
-        <Accordion.Control>Prezzo</Accordion.Control>
-        <Accordion.Panel>
-        <RangeSlider
-      
-      marks={[
-        { value: 20, label: '20%' },
-        { value: 50, label: '50%' },
-        { value: 80, label: '80%' },
-      ]}
-    />
-        </Accordion.Panel>
-      </Accordion.Item>
-
-     
-      <Button radius={"xl"} color="dark">
-            Cerca
-          </Button>
-    </Accordion>
-        </div>
-  );
-      
-};
-
-export default FiltersDrawer;
+export default SideMenu;

@@ -3,7 +3,7 @@ import { MantineProvider, createEmotionCache } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
 import '@/assets/scss/index.scss';
 import Header from '@/shared/partials/header';
-import Footer from '@/shared/partials/Footer';
+import Footer from '@/shared/partials/footer';
 
 
 const appendCache = createEmotionCache({ key: 'mantine', prepend: false });

@@ -6,7 +6,7 @@ import SearchOverlay from "./search-overlay";
 import {
   IconHaze,
   IconMenu,
-  IconMessageCircle, IconBookmark, IconSettings, IconUserCircle,
+  IconListDetails , IconHeart, IconSettings, IconUserCircle,
   IconSearch,
 } from "@tabler/icons-react";
 
@@ -29,24 +29,27 @@ const Header = () => {
             >
               <img src="/img/logo.svg" className="site-logo"/>
             </Link>
-            <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li>
+            <ul className="nav col-md-auto mb-2 justify-content-center mb-md-0">
+              <li className="nav-item">
                 <Link href="/" className="nav-link px-2 link-dark">
                   Home
                 </Link>
               </li>
-              <li>
+              <li className="nav-item">
                 <Link href="/search" className="nav-link px-2 link-dark">
                   Ricerca
                 </Link>
               </li>
-              <li>
-                <Link href="/zone" className="nav-link px-2 link-dark">
-                  Zone
+              <li className="nav-item">
+                <Link href="/requests" className="nav-link px-2 link-dark">
+                  Richieste
                 </Link>
               </li>
             </ul>
             <ul className="nav">
+            <li className="nav-item">
+                  <Link href="/account/favorites" className="nav-link"><IconHeart/> Preferiti</Link>
+              </li>
               <li className="nav-item">
            <UncontrolledDropdown>
               <DropdownToggle nav caret>
@@ -57,13 +60,10 @@ const Header = () => {
                 <Link href="/account"><IconUserCircle/>Il mio acount</Link>
               </DropdownItem>
               <DropdownItem tag="a">
-                <Link href="/account/preferiti"><IconBookmark/> Preferiti</Link>
-              </DropdownItem>
-              <DropdownItem tag="a">
-                <Link href="/account/commenti"><IconMessageCircle/> Commenti</Link>
+                <Link href="/account/listings"><IconListDetails /> I miei annunci</Link>
               </DropdownItem>
               <DropdownItem tag="a" className="mt-2">
-                <Link href="/account/impostazioni"><IconSettings/> Impostazioni</Link>
+                <Link href="/account/settings"><IconSettings/> Impostazioni</Link>
               </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Esci</DropdownItem>

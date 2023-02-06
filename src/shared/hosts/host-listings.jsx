@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Avatar, Text, Button, Paper } from '@mantine/core';
+import { Row, Col } from "reactstrap";
 import ItemCard from "../snippets/listing-card";
-import Entries from "@/data/entries.json";
 
-const HostListings = ({listings}) => {
 
-  if(!listings && (<Text>Nessun annuncio ancora pubblicato</Text>));
+const HostListings = ({data}) => {
+
+  if(!data && (<Text>Nessun annuncio ancora pubblicato</Text>));
   return (
-    <section id="host-listings">
-      {Array.isArray(listings) ? (
-        <Grid>
-          {listings.map((item, i) => (
-            <Grid.Col span={6} key={i}>
+    <section id="host-data">
+      {Array.isArray(data) ? (
+        <Row>
+          {data.map((item, i) => (
+            <Col md={6} key={i}>
              <ItemCard data={item}/>
-             </Grid.Col>
+             </Col>
           ))}
-        </Grid>
+        </Row>
       ) : (
-        <Grid>Nessun dato</Grid>
+        <Row>Nessun dato</Row>
       )}
     </section>
   );

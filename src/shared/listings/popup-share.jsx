@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import { Modal, Button } from "@mantine/core";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-const SharePopup = ({ opened, toggle }) => {
+const PopupShare = ({ opened, toggle }) => {
   const socialLinks = [
     {
       label: "Facebook",
@@ -34,15 +34,11 @@ const SharePopup = ({ opened, toggle }) => {
   return (
     <Modal
       centered
-      title={'Condividi questo annuncio'}
-      size="md"
-      radius="md"
-      transition="scale-up"
-      transitionDuration={600}
-      transitionTimingFunction="ease"
-      opened={opened}
-      onClose={() => toggle()}
+      toggle={toggle}
+      isOpen={opened}
     >
+      <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalBody>
       <div className="list media-list">
         <ul>
           {socialLinks.map((item, i) => (
@@ -63,8 +59,9 @@ const SharePopup = ({ opened, toggle }) => {
           ))}
         </ul>
       </div>
+      </ModalBody>
     </Modal>
   );
 };
 
-export default SharePopup;
+export default PopupShare;

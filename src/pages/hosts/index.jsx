@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Title, Text } from "@mantine/core";
+import { Container, Row, Col } from "reactstrap";
 import graphQLClient from "@/lib/graphql/client";
 import { GET_ALL_HOSTS } from "@/lib/graphql/queries/hosts";
 import HostCard from "@/shared/sections/host-card";
@@ -20,16 +20,16 @@ const Index = ({ data }) => {
   return (
     <div className="page">
       <Container size="xl">
-        <div className="section-title">
-          <Title order={1}>Agenzie</Title>
+        <div className="section-head">
+          <h1 className="section-title">Agenzie</h1>
         </div>
-        <Grid>
+        <Row>
           {data.users.map((host, i) => (
-            <Grid.Col md={6} lg={3} xs={6}>
+            <Col md={6} lg={2} xs={6}>
               <HostCard data={host} key={i} />
-            </Grid.Col>
+            </Col>
           ))}
-        </Grid>
+        </Row>
       </Container>
     </div>
   );

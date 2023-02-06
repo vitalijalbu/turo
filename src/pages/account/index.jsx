@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Card, Group, Text, Title} from "@mantine/core";
-import Head from "@/shared/account/Head";
+import Head from "@/shared/account/head";
 
 
 const Account = () => {
@@ -16,7 +16,7 @@ const Account = () => {
       <Container size="xl">
         <Grid>
           <Grid.Col md={6} lg={9} xs={6}>
-          <h2 className="page-title">Novità di questa settimana</h2>
+          <h2 className="page-title">Bacheca</h2>
           </Grid.Col>
 
           <Grid.Col md={6} lg={3} xs={6}>

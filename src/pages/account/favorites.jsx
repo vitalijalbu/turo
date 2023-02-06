@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Group, Text, Title} from "@mantine/core";
+import { Container, Row, Col} from "reactstrap";
 import ItemCard from "@/shared/snippets/listing-card";
-import Head from "@/shared/account/Head";
+import Head from "@/shared/account/head";
 import Entries from "@/data/entries.json";
 import Link from 'next/link';
 
 const Favorites = () => {
   return (
     <div className="page pt-0">
-      <Head  title={"Preferiti"}/>
+      <Head title={"Preferiti"}/>
       <Container size="xl">
-<Grid>
+<Row>
 {Array.isArray(Entries.data.entries) ? (
    <> 
     {Entries.data.entries.map((item, i) => (
-      <Grid.Col md={6} lg={3} xs={6}>
+      <Col md={6} lg={3} xs={6}>
        <ItemCard data={item}/>
-       </Grid.Col>
+       </Col>
     ))}
   </>
 ) : (
-  <Text strong>Nessun dato</Text>
+  <p strong>Nessun dato</p>
 )}
-</Grid>
+</Row>
 </Container>
 </div>
   );

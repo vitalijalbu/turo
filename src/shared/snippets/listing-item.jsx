@@ -64,7 +64,7 @@ const ListingItem = ({ data }) => {
           </h5>
           <small>
             <i className="bi bi-geo-alt me-2" />
-            5855 W Century Blvd, Los Angeles - 90045
+            {data.location?.address}
           </small>
           {/* Amenities */}
           <ul className="nav nav-divider mt-3">

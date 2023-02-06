@@ -54,9 +54,9 @@ const ListingTypes = () => {
                     <div className="col-sm-6">
                       <div className="card-body px-3">
                         <h6 className="card-title">
-                          <a href="offer-detail.html" className="stretched-link">
+                          <Link href={`/search/?type=${type.slug}`} className="stretched-link">
                           {type.title}
-                          </a>
+                          </Link>
                         </h6>
                       </div>
                     </div>

@@ -1,6 +1,8 @@
-@import "~bootstrap/scss/bootstrap";
+
 @import './_variables';
-@import './components/_spacing';
+@import "~bootstrap/scss/bootstrap";
+
+@import './components/_avatar';
 @import './components/_search-form';
 @import './components/_navbar';
 @import './components/_footer';
@@ -14,4 +16,3 @@
 @import './pages/search';
 @import './pages/listing';
 @import './app';
-

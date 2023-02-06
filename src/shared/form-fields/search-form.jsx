@@ -1,10 +1,12 @@
-import { forwardRef } from "react"
-import { Card } from "reactstrap"
+import { useState } from "react"
+import { Card, Button, ButtonDropdownProps, ButtonGroup } from "reactstrap"
 import typeList from '@/data/types.json';
 import { useForm } from '@mantine/form';
 import AddressField from "./address-field";
-
+import TypeDropdown from "./type-dropdown";
 const SearchForm = () => { 
+  const [rSelected, setRSelected] = useState(null);
+
   const form = useForm({
     initialValues: {
       email: '',
@@ -18,55 +20,8 @@ const SearchForm = () => {
 
   return (
     <Card>
-<div className="form-control-bg-light bg-mode border p-4 rounded-3">
+<div className="bg-mode border p-4 rounded-3">
   <div className="row g-4">
-    {/* Nav tabs START */}
-    <div className="col-lg-6">
-      <div className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <div
-          className="form-check form-check-inline active"
-          id="cab-one-way-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#cab-one-way"
-          role="tab"
-          aria-controls="cab-one-way"
-          aria-selected="true"
-        >
-          <input
-            className="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadiocab1"
-            defaultValue="option1"
-            defaultChecked=""
-          />
-          <label className="form-check-label" htmlFor="inlineRadiocab1">
-            One Way
-          </label>
-        </div>
-        <div
-          className="form-check form-check-inline"
-          id="cab-round-way-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#cab-round-way"
-          role="tab"
-          aria-controls="cab-round-way"
-          aria-selected="false"
-        >
-          <input
-            className="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadiocab2"
-            defaultValue="option2"
-          />
-          <label className="form-check-label" htmlFor="inlineRadiocab2">
-            Round Trip
-          </label>
-        </div>
-      </div>
-    </div>
-    {/* Nav tabs END */}
   </div>
   {/* Tab content START */}
   <div className="tab-content mt-0" id="pills-tabContent">
@@ -83,7 +38,7 @@ const SearchForm = () => {
             {/* Pickup */}
             <div className="col-md-6 col-xl-4">
               <div className="form-size-lg">
-                <label className="form-label">Pickup</label>
+                <label className="form-label">Città</label>
                 <select
                   className="form-select js-choice"
                   data-search-enabled="true"
@@ -99,47 +54,38 @@ const SearchForm = () => {
             {/* Drop */}
             <div className="col-md-6 col-xl-4">
               <div className="form-size-lg">
-                <label className="form-label">Drop</label>
-                <select
-                  className="form-select js-choice"
-                  data-search-enabled="true"
-                  aria-label=".form-select-sm"
-                >
-                  <option value="">Select location</option>
-                  <option>San Jacinto, USA</option>
-                  <option selected="">North Dakota, Canada</option>
-                  <option>West Virginia, Paris</option>
-                </select>
+                <label className="form-label">Categoria</label>
+                <TypeDropdown/>
               </div>
-            </div>
-            {/* Date */}
-            <div className="col-md-6 col-xl-2">
-              <label className="form-label">Pickup Date</label>
-              <input
-                type="text"
-                className="form-control form-control-lg flatpickr"
-                defaultValue="20 Nov"
-                placeholder="Select date"
-              />
             </div>
             {/* Time */}
             <div className="col-md-6 col-xl-2">
-              <label className="form-label">Pickup time</label>
-              <input
-                type="text"
-                className="form-control form-control-lg flatpickr"
-                defaultValue="2:50 PM"
-                data-enabletime="true"
-                data-nocalendar="true"
-                placeholder="Select time"
-              />
+            <label className="form-label">Tipologia</label>
+             <ButtonGroup>
+        <Button
+          color="primary"
+          outline
+          onClick={() => setRSelected(1)}
+          active={rSelected === 1}
+        >
+          Affitto
+        </Button>
+        <Button
+          color="primary"
+          outline
+          onClick={() => setRSelected(2)}
+          active={rSelected === 2}
+        >
+          Vendita
+        </Button>
+      </ButtonGroup>
             </div>
           </div>
         </div>
         <div className="col-xl-2 d-grid mt-xl-auto">
-          <a className="btn btn-lg btn-primary mb-0" href="#">
-            Update
-          </a>
+          <Button type="submit" color="primary">
+            Cerca
+          </Button>
         </div>
       </form>
     </div>

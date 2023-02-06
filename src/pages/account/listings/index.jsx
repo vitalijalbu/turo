@@ -1,80 +1,70 @@
 import React, { useState, useEffect } from "react";
 import {
   Container,
-  Grid,
-  Table,
-  Checkbox,
-  ScrollArea,
+  Row,
+  Col,
   Group,
   Avatar,
-  Tabs,
-  Text,
-} from "@mantine/core";
-import Head from "@/shared/account/Head";
-import Entries from "@/data/entries.json";
-import Link from 'next/link';
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap";
+import Head from "@/shared/account/head";
+import { getUserListings } from "@/lib/graphql/queries/user";
+import Link from "next/link";
+import ListingCard from "@/shared/account/listing-card";
 
 const Listings = () => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState();
+
+  /* Toggle Item Popup */
+  const toggleContactPopup = () => {
+    setContactPopup(true);
+  };
+
+  useEffect(() => {
+    getUserListings().then((res) => {
+      setData(res?.entries);
+      console.log('entries', res)
+    });
+  }, []);
+
   return (
- <div className="page">
-           <Head 
-      title={"I miei annunci"} 
-      primaryAction={{
-        url: '/hosting/create',
-        content: 'Crea un nuovo annuncio',
-      }}/>
-      <Container size="xl">
-      <Grid>
-            <Grid.Col span={12}>
-            <Tabs defaultValue="active">
-      <Tabs.List>
-        <Tabs.Tab value="active">Annunci attivi</Tabs.Tab>
-        <Tabs.Tab value="archived">Annunci archiviati</Tabs.Tab>
-      </Tabs.List>
-    </Tabs>
-    </Grid.Col>
-    </Grid>
-        <Grid>
-          <Grid.Col md={12}>
-            <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
-              <thead>
-                <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Job</th>
-                </tr>
-              </thead>
-              <tbody>
-              <tr key={'item.id'}>
-              <td>
-        <Group spacing="sm">
-          <Avatar size={40} src="{item.avatar}" radius={40} />
-          <div>
-            <Link href={`listings/edit/1000`}>
-            <Text size="sm" weight={500}>
-              NOME
-            </Text>
-            <Text color="dimmed" size="xs">
-              CTRETED
-            </Text>
-            </Link>
-          </div>
-        </Group>
-      </td>
-                    <td>
-                      <Group spacing="sm">
-                        <Avatar size={26} src="https://via.placeholder.com/80" radius={26} />
-                        <Text size="sm" weight={500}>
-                          {'item.name'}
-                        </Text>
-                      </Group>
-                    </td>
-                    <td>{'item.job'}</td>
-                  </tr>
-              </tbody>
-            </Table>
-          </Grid.Col>
-        </Grid>
+    <div className="page">
+      <Head
+        title={"I miei annunci"}
+        primaryAction={{
+          url: "/hosting/create",
+          content: "Crea un nuovo annuncio",
+        }}
+      />
+      <Container>
+        <Row>
+          <Col span={12}>
+            <Nav pills>
+              <NavItem>
+                <NavLink href="#" active>Annunci attivi</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#">Annunci archiviati</NavLink>
+              </NavItem>
+            </Nav>
+          </Col>
+        </Row>
+        <section id="host-data">
+          {Array.isArray(data) ? (
+            <Row>
+              {data.map((item, i) => (
+                <Col md={12} key={i}>
+                  <ListingCard data={item} />
+                </Col>
+              ))}
+            </Row>
+          ) : (
+            <Row>Nessun dato</Row>
+          )}
+        </section>
       </Container>
     </div>
   );
