@@ -1,30 +1,34 @@
-import React from "react";
-import { Container, Grid, Title, Text, Paper } from '@mantine/core';
-import SideNav from "@/shared/components/settings/SideNav";
+import React from 'react';
+import Link from 'next/link';
+import { Container, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
+import { IconMessageCircle, IconBookmark } from '@tabler/icons-react';
+import SideNav from '@/shared/settings/side-nav';
+
+const Billing = () => {
 
 
+  return (
+    
+    <Container>
+    <div className="row g-5">
+    <div className="col-md-4">
+        <div className="position-sticky" style={{ top: "2rem" }}>
+          <div className="p-4">
+          <SideNav/>
+          </div>
+        </div>
+      </div>
+      <div className="col-md-8">
+        <h3 className="pb-4 mb-4 border-bottom">Fatturazione</h3>
+        <div>
 
-const Settings = () => (
-  <div className="page" id="searchPage">
-  <Container size="xl">
-    <Grid gutter="lg">
-      <Grid.Col span={3}>
-       <div className="medium-only"><SideNav/></div>
-      </Grid.Col>
-      <Grid.Col span={9}>
-      <Title large>Fatturazione</Title>
-      <Paper radius="lg" p="lg" withBorder>
-      <Text>Paper is the most basic ui component</Text>
-      <Text>
-        Use it to create cards, dropdowns, modals and other components that require background
-        with shadow
-      </Text>
-    </Paper>
+    </div>
+      </div>
+    
+    </div>
+    
+          </Container>
+  );
+};
 
-      </Grid.Col>
-    </Grid>
-  </Container>
-</div>
-);
-
-export default Settings;
+export default Billing;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid, Title, Text, Paper, Button } from '@mantine/core';
-import SideNav from "@/shared/components/settings/SideNav";
+import SideNav from "@/shared/settings/side-nav";
 
 
 

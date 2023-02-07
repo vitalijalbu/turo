@@ -56,7 +56,7 @@ const Listings = () => {
           {Array.isArray(data) ? (
             <Row>
               {data.map((item, i) => (
-                <Col md={12} key={i}>
+                <Col md={12} key={i} className="mb-3">
                   <ListingCard data={item} />
                 </Col>
               ))}

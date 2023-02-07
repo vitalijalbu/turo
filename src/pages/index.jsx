@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import SearchForm from "@/shared/form-fields/search-form";
-import Services from "@/shared/common/Services";
 import Faqs from "@/shared/common/Faqs";
 import Features from "@/shared/common/Features";
 import SpotlightListings from "@/shared/sections/listings-spotlight";
 import ListingTypes from "@/shared/sections/listing-types";
 //import LocationsLinks from "@/shared/common/LocationsLinks";
 import PromoBanner from "@/shared/snippets/hero-banner";
-import { Container, Title, Text, Grid, Card, Image } from "@mantine/core";
+import { Container,  } from "reactstrap";
 
 
 import graphQLClient from "@/lib/graphql/client";
@@ -37,9 +36,9 @@ const Home = () => {
           <div className="row">
             <div className="col-12">
               <div className="hero-text-wrapper bg-dark">
-                <Title>
+                <h1>
                   La piattaforma immobiliare per ristoranti e hotel.
-                </Title>
+                </h1>
                 <SearchForm />
               </div>
             </div>
@@ -49,7 +48,7 @@ const Home = () => {
       </Container>
      
       <ListingTypes />
-      {/*<Services />
+      {/*
        <Features />
        */}
       <SpotlightListings />

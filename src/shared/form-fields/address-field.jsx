@@ -15,13 +15,8 @@ const AddressField = ({ label, name, placeholder, required, readOnly, initialVal
 
   return (
     <FormGroup>
-      <Label>{label}</Label>
-      
+      <Label>Cerca per città</Label>
         <Input name={name} placeholder={placeholder} required={required} readOnly={readOnly} value={value} />
-      
-      <FormText color="muted">
-        Inserisci l'indirizzo completo del numero civico.
-      </FormText>
     </FormGroup>
   );
 };

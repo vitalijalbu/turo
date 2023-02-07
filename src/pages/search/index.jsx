@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import Link from "next/link";
+import { Container, Row, Col, Breadcrumb, BreadcrumbItem, Button, UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu, Dropdown, } from "reactstrap";
 import graphQLClient from "@/lib/graphql/client";
 import { GET_LISTINGS } from "@/lib/graphql/queries/search";
 import FiltersDrawer from "@/shared/search/filters-drawer";
-import { IconBellRinging } from '@tabler/icons-react';
+import { IconMap2 } from '@tabler/icons-react';
+import PopupMap from "@/shared/search/popup-map";
+import Filters from "@/shared/search/filters";
+import SectionList from "@/shared/search/listings-section";
+
 
 
 export async function getStaticProps(context) {
@@ -14,55 +19,62 @@ export async function getStaticProps(context) {
   };
 }
 
-import FiltersHorizontal from "@/shared/search/filters-horizontal";
-//import PopupMap from "@/shared/search/PopupMap";
-//import PopupFilters from "@/shared/search/PopupFilters";
-import SectionList from "@/shared/search/listings-section";
-import { showNotification } from '@mantine/notifications';
+
 
 const Search = ({ data }) => {
   const [navOpen, setNavOpen] = useState(false);
+  const [mapOpen, setMapOpen] = useState(false);
    /* actions */ 
   const openSideNav = () => setNavOpen(!navOpen);
+  const toggleMapPopup = () => setMapOpen(!mapOpen);
   const [loading, setLoading] = useState(false);
-  const [params, setFiltersParams] = useState(false);
-  const [popupMap, setMapPopup] = useState(false);
-  const [opened, setOpened] = useState(false);
-  const [favorite, setFavorite] = useState(false);
 
-  const addToFavorite = () => {
-    showNotification({
-      title: 'La ricerca è stata salvata',
-      autoClose: 2500,
-    });
-  };
 
   return (
     <> 
     {navOpen && <FiltersDrawer opened={navOpen} toggle={openSideNav} />}
+    {mapOpen && <PopupMap opened={mapOpen} toggle={toggleMapPopup} />}
     <div className="page" id="searchPage">
       <Container>
       <Row>
+        <Col>
+        <Breadcrumb>
+                  <BreadcrumbItem>
+                    <Link href="/">Home</Link>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <Link href={`/search`} active>Ricerca</Link>
+                  </BreadcrumbItem>
+                </Breadcrumb></Col>
+      <div className="d-flex justify-content-between align-items-center filters-subnav">
+        <div className="filters-block flex-grow-1">
        <div className="filters-block">
-         22 risultati trovati
-        </div>
-       </Row>
-       <div className="text-right">
-       <Button outline color="dark" onClick={() => addToFavorite()}>
-       <IconBellRinging/> Salva ricerca
-          </Button>
+       <Filters/>
        </div>
-        <Row>
-          <Col span={12}>
-          <h1>Filtri</h1>
-           <div className="medium-only">
-            <FiltersHorizontal filtersPopup={ openSideNav }/>
-            </div>
-          </Col>
-          </Row>
+       </div>
+         <div className="filters-block text-right">
+        <Button onClick={toggleMapPopup} color="dark" outline>Mostra la mappa <IconMap2/></Button>
+        </div>
+        </div>
+     
+       </Row>
           <Row>
           <Col span={12}>
-          <h1 large>22 risultati trovati</h1>
+            <div className="section-head d-flex justify-content-between align-items-center">
+            <div className="section-title"><h2>22 risultati trovati</h2></div>
+            <div className="section-action">
+            <UncontrolledDropdown>
+            <DropdownToggle caret outline>Ordina per</DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>Data creazione</DropdownItem>
+              <DropdownItem>Rilevanza</DropdownItem>
+              <DropdownItem>Sponsorizzati</DropdownItem>
+              <DropdownItem>Prezzo</DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+            </div>
+            </div>
+          
             <SectionList data={data}/>
           </Col>
         </Row>

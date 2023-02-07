@@ -1,12 +1,14 @@
 // Font Variable
-$font-sans-serif: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+$font-family-base: 'Work Sans', sans-serif;
+$headings-font-family: 'Work Sans', sans-serif;
+$font-family-sans-serif: 'Work Sans', sans-serif;
 $swiper-navigation-size: 20px;
 $swiper-theme-color: #121212;
 // Font Size
 $body-font-size: 14px;
 $--bs-link-color: #121212;
 $--bs-nav-link-color: #121212;
-
+$--bs-btn-border-radius: 999px;
 // Avatar
 
 $avatar-size-base: 3rem;

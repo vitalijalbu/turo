@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Group, Button, Title, Text } from "@mantine/core";
+import Link from "next/link";
+import { Container, Row, Col, Button } from "reactstrap";
 import ItemCard from "@/shared/snippets/listing-card";
 import graphQLClient from "@/lib/graphql/client";
 import { FIND_SPOTLIGHT } from "@/lib/graphql/queries/listings";
-import Link from "next/link";
 import { IconArrowRight } from '@tabler/icons-react';
 
 
@@ -45,24 +45,24 @@ async function getData() {
     getData();
   }, []);
 
-  if (!data) return <Text strong>Nessun dato</Text>;
+  if (!data) return <div strong>Nessun dato</div>;
 
   return (
     <section id="spotlight-listings" className="padding-vertical">
       <Container size="xl">
-        <div className="section-title">
-          <Group position="apart">
-            <Title order={1}>Annunci in evidenza</Title>
+      <Row>
+        <div className="section-head d-flex">
+            <h1 className="section-title">Annunci in evidenza</h1>
             <Link href={'/search'}><Button radius={"xl"} rightIcon={<IconArrowRight/>} variant="outline" color="dark">Vedi di più</Button></Link>
-          </Group>
-        </div>
-        <Grid>
+          </div>
+          </Row>
+        <Row>
           {data.entries.map((item, i) => (
-            <Grid.Col md={6} lg={3} xs={6}>
+            <Col md={6} lg={3} xs={6}>
               <ItemCard data={item} key={i} />
-            </Grid.Col>
+            </Col>
           ))}
-        </Grid>
+        </Row>
       </Container>
     </section>
   );

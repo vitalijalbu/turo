@@ -3,15 +3,15 @@ import { Row, Col, Button, Form, Input, Modal, ModalHeader, ModalBody, ModalFoot
 
 
 
-const PopupContact = ({ open, onSubmit, toggle, data }) => {
+const PopupContact = ({ opened, onSubmit, toggle, data }) => {
 
 
   return (
-    <Modal isOpen={open} toggle={toggle} centered={true} fade={false}>
+    <Modal isOpen={opened} toggle={toggle} centered={true} fade={false}>
     <ModalHeader
       toggle={toggle}
     >
-      {data ? 'Modifica cliente' : 'Crea nuovo cliente'}
+      {'Contatta l\'intersezionista'}
     </ModalHeader>
     <Form onValidSubmit={onSubmit} model={data || {}}>
       <ModalBody>

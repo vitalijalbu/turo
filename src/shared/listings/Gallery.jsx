@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import { ButtonGroup, Button } from "reactstrap";
-import MediaPopup from "@/shared/listings/MediaPopup";
+import PopupMedia from "@/shared/listings/popup-media";
 
 
 const Gallery = ({ props }) => {
@@ -14,7 +14,7 @@ const Gallery = ({ props }) => {
 
   return (
     <>
-    {popupMedia && <MediaPopup opened={popupMedia} toggle={toggleMediaPopup}/>}
+    {popupMedia && <PopupMedia opened={popupMedia} toggle={toggleMediaPopup}/>}
     <div className="it-grid-list-wrapper it-quilted-grid">
   <div className="grid-row grid">
     <div className="col-12 col-md-6">
@@ -88,10 +88,10 @@ const Gallery = ({ props }) => {
 
 
       <ButtonGroup className="gallery-cta">
-      <Button onClick={toggleMediaPopup}>Vedi più foto</Button>
-      <Button onClick={toggleMediaPopup}>Pianimetria</Button>
-      <Button onClick={toggleMediaPopup}>Video</Button>
-      <Button onClick={toggleMediaPopup}>360° Tour</Button>
+      <Button outline color="primary" onClick={toggleMediaPopup}>Vedi più foto</Button>
+      <Button outline color="primary" onClick={toggleMediaPopup}>Pianimetria</Button>
+      <Button outline color="primary" onClick={toggleMediaPopup}>Video</Button>
+      <Button outline color="primary" onClick={toggleMediaPopup}>360° Tour</Button>
     </ButtonGroup>
     </div>
     </div>

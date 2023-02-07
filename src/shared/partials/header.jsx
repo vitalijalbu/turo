@@ -5,7 +5,7 @@ import SideMenu from "./side-menu";
 import SearchOverlay from "./search-overlay";
 import {
   IconHaze,
-  IconMenu,
+  IconMessage2,
   IconListDetails , IconHeart, IconSettings, IconUserCircle,
   IconSearch,
 } from "@tabler/icons-react";
@@ -85,6 +85,9 @@ const Header = () => {
               </DropdownItem>
               <DropdownItem tag="a">
                 <Link href="/account/listings"><IconListDetails /> I miei annunci</Link>
+              </DropdownItem>              
+              <DropdownItem tag="a">
+                <Link href="/account/requests"><IconMessage2 /> Richieste</Link>
               </DropdownItem>
               <DropdownItem tag="a" className="mt-2">
                 <Link href="/account/settings"><IconSettings/> Impostazioni</Link>

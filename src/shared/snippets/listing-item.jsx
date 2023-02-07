@@ -22,7 +22,7 @@ const ListingItem = ({ data }) => {
       {/* Card img */}
       <div className="col-md-5 position-relative">
         {/* Slider START */}
-        <ListingSwiper media={data?.media_photos} />
+        <Link href={`/listings/${data.id}`}><ListingSwiper media={data?.media_photos} /></Link>
         {/* Slider END */}
       </div>
       {/* Card body */}
@@ -30,23 +30,15 @@ const ListingItem = ({ data }) => {
         <div className="card-body py-md-2 d-flex flex-column h-100 position-relative">
           {/* Rating and buttons */}
           <div className="d-flex justify-content-between align-items-center">
-            <ul className="list-inline mb-0">
-              <li className="list-inline-item me-0 small">
-                <i className="fa-solid fa-star text-warning" />
-              </li>
-              <li className="list-inline-item me-0 small">
-                <i className="fa-solid fa-star text-warning" />
-              </li>
-              <li className="list-inline-item me-0 small">
-                <i className="fa-solid fa-star text-warning" />
-              </li>
-              <li className="list-inline-item me-0 small">
-                <i className="fa-solid fa-star text-warning" />
-              </li>
-              <li className="list-inline-item me-0 small">
-                <i className="fa-solid fa-star-half-alt text-warning" />
-              </li>
-            </ul>
+                      {/* Title */}
+          <h3 className="card-title mb-1">
+          <Link href={`/listings/${data.id}`}>{data.title}</Link>
+          </h3>
+          <small>
+            <i className="bi bi-geo-alt me-2" />
+            {data.location?.parts?.city}
+          </small>
+          
             <ul className="list-inline mb-0 z-index-2">
               {/* Heart icon */}
               <li className="list-inline-item">
@@ -58,14 +50,15 @@ const ListingItem = ({ data }) => {
               </li>
             </ul>
           </div>
-          {/* Title */}
-          <h5 className="card-title mb-1">
-          <Link href={`/listings/${data.id}`}>{data.title}</Link>
-          </h5>
-          <small>
-            <i className="bi bi-geo-alt me-2" />
-            {data.location?.address}
-          </small>
+  <ul className="list-inline mb-0">
+              <li className="list-inline-item me-0 small">
+                ciao
+              </li>
+              <li className="list-inline-item me-0 small">
+               ico
+              </li>
+            </ul>
+
           {/* Amenities */}
           <ul className="nav nav-divider mt-3">
             <li className="nav-item">Air Conditioning</li>

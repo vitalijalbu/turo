@@ -9,7 +9,6 @@ const Head = (props) => {
   return (
 <section className="pt-4">
   <div className="container">
-    <div className="card rounded-3 border p-3 pb-2">
       {/* Avatar and info START */}
       <div className="d-sm-flex align-items-center">
         <div className="avatar avatar-xl mb-2 mb-sm-0">
@@ -76,7 +75,6 @@ const Head = (props) => {
       </div>
       {/* Nav links END */}
     </div>
-  </div>
 </section>
 
   );
