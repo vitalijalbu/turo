@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Button, Text, Avatar, Paper } from "@mantine/core";
+import { Button, Text, Avatar, Paper } from "reactstrap";
 import Link from "next/link";
 
 const HostCard = ({ data }) => {

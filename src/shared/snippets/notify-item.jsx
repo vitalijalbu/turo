@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Container, Group, Title, Text, Button } from '@mantine/core';
+import { Row, Container, Group, Title, Text, Button } from 'reactstrap';
 
 
 const NotifyItem = (props) => {

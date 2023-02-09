@@ -1,3 +1,4 @@
+import { IconMail, IconPhone } from "@tabler/icons-react";
 import React, { useState, useEffect } from "react";
 
 
@@ -42,11 +43,11 @@ const Contacts = () => {
           {/* Buttons */}
           <div className="d-grid gap-3 d-sm-block">
             <button className="btn btn-sm btn-primary-soft">
-              <i className="bi bi-phone me-2" />
+              <IconMail />
               +123 456 789
             </button>
             <button className="btn btn-sm btn-light">
-              <i className="bi bi-telephone me-2" />
+              <IconPhone/>
               +(222)4567 586
             </button>
           </div>
@@ -76,12 +77,6 @@ const Contacts = () => {
       {/* Contact item END */}
       {/* Contact item START */}
       <div className="col-xl-4 position-relative">
-        {/* Svg decoration */}
-        <figure className="position-absolute top-0 end-0 z-index-1 mt-n4 ms-n7">
-          <svg className="fill-warning" width="77px" height="77px">
-            <path d="M76.997,41.258 L45.173,41.258 L67.676,63.760 L63.763,67.673 L41.261,45.171 L41.261,76.994 L35.728,76.994 L35.728,45.171 L13.226,67.673 L9.313,63.760 L31.816,41.258 L-0.007,41.258 L-0.007,35.725 L31.816,35.725 L9.313,13.223 L13.226,9.311 L35.728,31.813 L35.728,-0.010 L41.261,-0.010 L41.261,31.813 L63.763,9.311 L67.676,13.223 L45.174,35.725 L76.997,35.725 L76.997,41.258 Z" />
-          </svg>
-        </figure>
         <div className="card card-body shadow text-center align-items-center h-100">
           {/* Icon */}
           <div className="icon-lg bg-orange bg-opacity-10 text-orange rounded-circle mb-2">
@@ -135,7 +130,7 @@ const Contacts = () => {
       <div className="col-lg-6">
         <div className="card bg-light p-4">
           <div className="card-header bg-light p-0 pb-3">
-            <h3 className="mb-0">Send us message</h3>
+            <h3 className="mb-0">Compila il form per la richiesta</h3>
           </div>
           {/* Card body START */}
           <div className="card-body p-0">

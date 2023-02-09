@@ -31,7 +31,7 @@ useEffect(() => {
       <Offcanvas isOpen={opened} toggle={toggle} direction="end">
         <OffcanvasHeader toggle={toggle}>Dettagli richiesta</OffcanvasHeader>
         <OffcanvasBody>
-        dettagli
+        dettagli richiesta
         </OffcanvasBody>
       </Offcanvas>
     </div>

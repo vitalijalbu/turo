@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Card, Group, Text, Title} from "@mantine/core";
-import Head from "@/shared/account/head";
+import { Container, Row, Col, Card, CardBody, CardHeader} from "reactstrap";
+import PageHead from "@/shared/account/page-head";
 
 
 const Account = () => {
   return (
-    <div className="page pt-0">
-      <Head
+    <div className="page">
+      <PageHead
         title={"Benvenuto User"}
-        primaryAction={{
+        nextAction={{
           url: "/hosting/create",
           content: "Crea annuncio",
         }}
       />
-      <Container size="xl">
-        <Grid>
-          <Grid.Col md={6} lg={9} xs={6}>
+      <div className="page-content">
+      <Container>
+        <Row>
+          <Col md={6} lg={9} xs={6}>
           <h2 className="page-title">Bacheca</h2>
-          </Grid.Col>
+          </Col>
 
-          <Grid.Col md={6} lg={3} xs={6}>
-            <Card shadwo="sm">
+          <Col md={6} lg={3} xs={6}>
+            <Card>
+            <CardHeader>
+              Anteprima
+            </CardHeader>
+            <CardBody>
               <div className="list no-hairlines no-chevron">
                 <ul>
                   <li className="">
@@ -28,7 +33,7 @@ const Account = () => {
                       <div className="item-content">
                         <div className="item-inner">
                           <div className="item-title">Visite al profilo</div>
-                          <div className="item-after">
+                          <div className="item-after text-primary">
                             <span>201</span>
                           </div>
                         </div>
@@ -40,7 +45,7 @@ const Account = () => {
                       <div className="item-content">
                         <div className="item-inner">
                           <div className="item-title">Membro dal</div>
-                          <div className="item-after">
+                          <div className="item-after text-primary">
                             <span>12-04-2022</span>
                           </div>
                         </div>
@@ -52,7 +57,7 @@ const Account = () => {
                       <div className="item-content">
                         <div className="item-inner">
                           <div className="item-title">Tipo account</div>
-                          <div className="item-after">
+                          <div className="item-after text-primary">
                             <span>Agenzia</span>
                           </div>
                         </div>
@@ -64,7 +69,7 @@ const Account = () => {
                       <div className="item-content">
                         <div className="item-inner">
                           <div className="item-title">Totale annunci</div>
-                          <div className="item-after">
+                          <div className="item-after text-primary">
                             <span>2</span>
                           </div>
                         </div>
@@ -76,7 +81,7 @@ const Account = () => {
                       <div className="item-content">
                         <div className="item-inner">
                           <div className="item-title">Piano</div>
-                          <div className="item-after">
+                          <div className="item-after text-primary">
                             <span>Pro</span>
                           </div>
                         </div>
@@ -94,10 +99,13 @@ const Account = () => {
                   </li>
                 </ul>
               </div>
+            </CardBody>
             </Card>
-          </Grid.Col>
-        </Grid>
+          </Col>
+        </Row>
       </Container>
+      </div>
+
     </div>
   );
 };

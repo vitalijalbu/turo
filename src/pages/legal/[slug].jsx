@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import LegalTabs from "@/shared/Other/LegalTabs";
 import {
   Container,
-  Grid,
+  Row,
   Title,
   Tabs
-} from "@mantine/core";
+} from "reactstrap";
 import { useRouter } from "next/router";
 
 const Cookies = () => {
@@ -13,11 +13,11 @@ const Cookies = () => {
 
   return (
     <div className="page">
-      <Container size="xl">
+      <Container>
       <LegalTabs/>
-        <Grid>
+        <Row>
           ciao testo
-        </Grid>
+        </Row>
       </Container>
     </div>
   );

@@ -5,48 +5,39 @@ import {
   Col
 } from "reactstrap";
 import Link from "next/link";
-import graphQLClient from "@/lib/graphql/client";
-import { GET_LISTING_TYPES } from "@/lib/graphql/queries/categories";
+import { getAllCategories } from "@/lib/graphql/queries/categories";
 
 const ListingTypes = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  console.log("✅ received-categories", data);
+  const [categories, setCategories] = useState([]);
 
-  async function getData() {
-    try {
-      const response = await graphQLClient.request(GET_LISTING_TYPES);
-      if (response) {
-        setData(response);
-      }
-    } catch (err) {
-      console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
-    } finally {
-      setLoading(false);
-    }
-  }
-  
     useEffect(() => {
-      getData();
+      getAllCategories()
+      .then((data) => {
+        setCategories(data?.categories);
+        console.log('🐝 API response CATEGORIES', data)
+      }).catch((error) => {
+        console.log(error);
+      });
     }, []);
 
-    if (!data) return <Text strong>Nessun dato</Text>;
+    if (!categories) return <p>Nessun dato</p>;
     
   return (
     <section className="section-content">
-      <Container size="xl">
+      <Container>
         <div className="section-head">
           <h1 className="section-title">Sfoglia annunci</h1>
         </div>
 
         <Row>
-          {data?.categories?.map((type, i) => (
-            <Col md={6} lg={4} xs={6} key={i}>
+          {categories?.map((category) => (
+            <Col md={6} lg={4} xs={6} key={category.id}>
                 <div className="card border rounded-3 overflow-hidden">
                   <div className="row g-0 align-items-center">
                     <div className="col-sm-6">
                       <img
-                        src={type?.media_url[0]?.url ?? '/img/placeholder.png'}
+                        src={category?.media_url[0]?.url ?? '/img/placeholder.png'}
                         className="card-img rounded-0"
                         alt=""
                       />
@@ -54,8 +45,8 @@ const ListingTypes = () => {
                     <div className="col-sm-6">
                       <div className="card-body px-3">
                         <h6 className="card-title">
-                          <Link href={`/search/?type=${type.slug}`} className="stretched-link">
-                          {type.title}
+                          <Link href={`/search/?category=${category.slug}`} className="stretched-link">
+                          {category.title}
                           </Link>
                         </h6>
                       </div>

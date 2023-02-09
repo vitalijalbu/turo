@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { showNotification } from "@mantine/notifications";
-
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { getListing } from "@/lib/graphql/queries/listings";
 import {
   Container,
   Row,
@@ -23,70 +24,34 @@ import {
   IconStairs,
   IconMapPin,
 } from "@tabler/icons-react";
-import graphQLClient from "@/lib/graphql/client";
-import Link from "next/link";
-import dynamic from "next/dynamic";
+import RelatedListings from "@/shared/sections/related-listings";
+
+
 
 const Map = dynamic(() => import("@/shared/listings/map"), {
   ssr: false,
 });
 
-const View = () => {
+const Page = () => {
   const router = useRouter();
   const { id } = router.query;
   const [loading, setLoading] = useState(false);
   const [popupContact, setContactPopup] = useState(false);
   const [popupShare, setPopupShare] = useState(false);
   const [form, setFormValues] = useState({});
-  const [data, setData] = useState({});
+  const [entry, setEntry] = useState(null);
+  const [related_entries, setRelatedEntries] = useState([]);
 
-  async function getData() {
-    const VIEW_QUERY = `query{
-      entry(id:"${id}") {
-        id
-        title
-        postDate @formatDateTime (format: "Y-m-d")
-        author{
-          id
-          fullName
-          username
-          photo{
-            url
-          }
-        }
-        ... on listings_default_Entry {
-          badge
-          excerpt
-          total_floors
-          media_photos{
-            url
-          }
-          property_status
-          pricing
-          location{
-            address
-            parts{
-              city
-          }
-          }
-        }
-      }
-    }
-  `;
-    try {
-      const response = await graphQLClient.request(VIEW_QUERY);
-      if (response) {
-        setData(response?.entry);
-      }
-    } catch (err) {
-      console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   useEffect(() => {
-    getData();
+    getListing(id)
+    .then((data) => {
+      setEntry(data?.entry);
+      setRelatedEntries(data?.related_listings);
+      console.log('🐝 API response', data)
+    }).catch((error) => {
+      console.log(error);
+    });
   }, []);
 
   /* Toggle Item Popup */
@@ -96,6 +61,9 @@ const View = () => {
   /* Toggle Item Popup */
   const togglePopupShare = () => {
     setPopupShare(!popupShare);
+  };
+  const addToFavorite = () => {
+    console.log('added')
   };
 
   return (
@@ -107,6 +75,7 @@ const View = () => {
         <PupupContact opened={popupContact} toggle={toggleContactPopup} />
       )}
       <div className="page">
+      <div className="page-content">
         <section className="py-0 pt-sm-5">
           <div className="container position-relative">
             {/* p and button START */}
@@ -119,16 +88,16 @@ const View = () => {
                   <BreadcrumbItem>
                     <Link href={`/search`}>Ricerca</Link>
                   </BreadcrumbItem>
-                  <BreadcrumbItem active>{data.title}</BreadcrumbItem>
+                  <BreadcrumbItem active>{entry?.title}</BreadcrumbItem>
                 </Breadcrumb>
                 {/* Meta */}
                 <div className="d-lg-flex justify-content-lg-between mb-1">
                   {/* p */}
                   <div className="mb-2 mb-lg-0">
-                    <h1 className="fs-2">{data.title}</h1>
+                    <h1 className="fs-2">{entry?.title}</h1>
                     {/* Location */}
                     <p className="fw-bold mb-0">
-                      {data?.location?.address}
+                      {entry?.location?.address}
                     </p>
                     <Link
                         href="#location"
@@ -167,32 +136,28 @@ const View = () => {
 
           <Row>
             <Col md={8}>
-              <section className="section-content" id="listingSpecifications">
+              <section className="section-content mb-3" id="listingSpecifications">
                 <div className="section-head">
-                  <h2 className="section-title">Descrizione</h2>
+                  <h4 className="section-title">Descrizione</h4>
                 </div>
-                <p>{data.excerpt}</p>
+                <p>{entry?.excerpt}</p>
               </section>              
               
-              <section className="section-content" id="listingSpecifications">
+              <section className="section-content mb-3" id="listingSpecifications">
                 <div className="section-title">
-                  {data.total_floors}
+                  {entry?.total_floors}
                 </div>
               </section>
-              <section className="section-content" id="listingSpecifications">
+              <section className="section-content mb-3" id="listingSpecifications">
                 <div className="section-title">
-                  <h2 className="section-title">Servizi</h2>
+                  <h4 className="section-title">Servizi</h4>
                 </div>
                 <div className="bg-transparent">
                   <div className="row g-4">
                     {/* Activities */}
                     <div className="col-sm-6">
-                      <h6>
-                        <i className="fa-solid fa-biking me-2" />
-                        Activities
-                      </h6>
                       {/* List */}
-                      <ul className="list-group list-group-borderless mt-2 mb-0">
+                      <ul className="list-group-flush  mt-2 mb-0">
                         <li className="list-group-item pb-0">
                           <i className="fa-solid fa-check-circle text-success me-2" />
                           Swimming pool
@@ -218,7 +183,7 @@ const View = () => {
                         Payment Method
                       </h6>
                       {/* List */}
-                      <ul className="list-group list-group-borderless mt-2 mb-0">
+                      <ul className="list-group  mt-2 mb-0">
                         <li className="list-group-item pb-0">
                           <i className="fa-solid fa-check-circle text-success me-2" />
                           Credit (Visa, Master )
@@ -240,7 +205,7 @@ const View = () => {
                         Services
                       </h6>
                       {/* List */}
-                      <ul className="list-group list-group-borderless mt-2 mb-0">
+                      <ul className="list-group  mt-2 mb-0">
                         <li className="list-group-item pb-0">
                           <i className="fa-solid fa-check-circle text-success me-2" />
                           Dry cleaning
@@ -286,7 +251,7 @@ const View = () => {
                         Safety &amp; Security
                       </h6>
                       {/* List */}
-                      <ul className="list-group list-group-borderless mt-2 mb-4 mb-sm-5">
+                      <ul className="list-group  mt-2 mb-4 mb-sm-5">
                         <li className="list-group-item pb-0">
                           <i className="fa-solid fa-check-circle text-success me-2" />
                           Doctor on Call
@@ -297,7 +262,7 @@ const View = () => {
                         Staff Language
                       </h6>
                       {/* List */}
-                      <ul className="list-group list-group-borderless mt-2 mb-0">
+                      <ul className="list-group  mt-2 mb-0">
                         <li className="list-group-item pb-0">
                           <i className="fa-solid fa-check-circle text-success me-2" />
                           English
@@ -315,14 +280,15 @@ const View = () => {
                   </div>
                 </div>
               </section>
-              <section className="section-content" id="listingMap">
+              <section className="section-content mb-3" id="listingMap">
                 <div className="section-title">
-                  <p order={3}>Posizione</p>
+                  <h4>Posizione</h4>
                 </div>
-                mappa
+                <Map/>
               </section>
             </Col>
             <Col md={4}>
+            <div className="position-sticky" style={{ top: "2rem" }}>
               <Card>
               <CardBody className="text-center">
                    {/* Image */}
@@ -332,7 +298,7 @@ const View = () => {
                   alt=""
                 />
                 <h5>
-                 {data?.author?.fullName}
+                 {entry?.author?.fullName}
                 </h5>
                 </CardBody>
                 <CardBody>
@@ -346,7 +312,7 @@ const View = () => {
                   </Button>
                 </div>
                 <div className="d-block">
-                  <Link href={`/hosts/${data.id}`} passHref>
+                  <Link href={`/hosts/${entry?.id}`} passHref>
                     <Button block color="primary" outline>
                       <IconPlus/> Annunci dell'inserzionista
                     </Button>
@@ -354,12 +320,15 @@ const View = () => {
                 </div>
                 </CardBody>
               </Card>
+              </div>
             </Col>
           </Row>
         </Container>
+      </div>
+      <RelatedListings entries={related_entries}/>
       </div>
     </>
   );
 };
 
-export default View;
+export default Page;

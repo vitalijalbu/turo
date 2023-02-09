@@ -8,6 +8,9 @@
 a {
     text-decoration: none;
 }
+.bg-mode {
+    background: #fff !important;
+}
 .card-grid .card-grid-sm {
     height: calc(200px - var(--bs-gutter-y) / 2);
 }
@@ -18,8 +21,13 @@ figure {
     margin: auto;
     max-width: 1600px;
 }
-.page{
+.page-content{
     padding: 50px 0;
+}
+.page-heading{
+    background-color: #fafafa;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 .dropdown-item {
     padding: 0 var(--bs-dropdown-item-padding-x);

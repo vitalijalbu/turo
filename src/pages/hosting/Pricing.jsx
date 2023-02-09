@@ -1,14 +1,14 @@
 import React from "react";
-import { useForm } from "@mantine/form";
+
 import {
   Container,
-  Grid,
+  Row,
   Title,
   Button,
   Card,
   NumberInput,
   TextInput,
-} from "@mantine/core";
+} from "reactstrap";
 import SideNav from "@/shared/hosting/SideNav";
 
 const Settings = () => {
@@ -27,15 +27,15 @@ const Settings = () => {
 
   return (
     <div className="page" id="searchPage">
-      <Container size="xl">
-        <Grid gutter="lg">
-          <Grid.Col span={3}>
+      <Container>
+        <Row gutter="lg">
+          <Col span={3}>
             <div className="medium-only">
               <SideNav />
             </div>
-          </Grid.Col>
-          <Grid.Col span={9}>
-            <Title large>Impostazioni account</Title>
+          </Col>
+          <Col span={9}>
+            <Title large>Impostazioni account</h1>
             <Card withBorder>
               <form onSubmit={form.onSubmit(console.log)}>
                 <Card.Section inheritPadding py="md">
@@ -69,8 +69,8 @@ const Settings = () => {
                 </Card.Section>
               </form>
             </Card>
-          </Grid.Col>
-        </Grid>
+          </Col>
+        </Row>
       </Container>
     </div>
   );

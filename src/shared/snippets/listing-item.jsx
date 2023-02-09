@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Card, Button } from "reactstrap";
-import { showNotification } from '@mantine/notifications';
 import Link from "next/link";
-import { IconHeart, IconShare, IconPlus, IconStairs } from '@tabler/icons-react';
+import { IconHeart, IconShare, IconPlus, IconStairs, IconMapPin } from '@tabler/icons-react';
 import ListingSwiper from "./listing-swiper";
 
 
@@ -10,10 +9,7 @@ const ListingItem = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
 
   const addToFavorite = () => {
-    showNotification({
-      title: "L'annuncio è stato aggiunto ai preferiti.",
-      autoClose: 2500,
-    });
+    console.log('added')
   };
 
   return (
@@ -28,18 +24,14 @@ const ListingItem = ({ data }) => {
       {/* Card body */}
       <div className="col-md-7">
         <div className="card-body py-md-2 d-flex flex-column h-100 position-relative">
+        <div className="d-flex justify-content-between align-items-center">
           {/* Rating and buttons */}
-          <div className="d-flex justify-content-between align-items-center">
-                      {/* Title */}
-          <h3 className="card-title mb-1">
-          <Link href={`/listings/${data.id}`}>{data.title}</Link>
-          </h3>
-          <small>
-            <i className="bi bi-geo-alt me-2" />
-            {data.location?.parts?.city}
-          </small>
-          
-            <ul className="list-inline mb-0 z-index-2">
+          <Link href={`/search?city=${data.location?.parts.city}`} className="mb-2">
+          <span>
+            <IconMapPin/> {data.location?.parts.city}
+          </span>
+          </Link>
+          <ul className="list-inline mb-0 z-index-2">
               {/* Heart icon */}
               <li className="list-inline-item">
               <Button outline><IconHeart size={16} onClick={() => addToFavorite()}/></Button>
@@ -49,40 +41,49 @@ const ListingItem = ({ data }) => {
               <Button outline><IconShare size={16} /></Button>
               </li>
             </ul>
-          </div>
-  <ul className="list-inline mb-0">
-              <li className="list-inline-item me-0 small">
-                ciao
-              </li>
-              <li className="list-inline-item me-0 small">
-               ico
-              </li>
-            </ul>
+            </div>
+                      {/* Title */}
+          <h5 className="card-title d-block">
+          <Link href={`/listings/${data.id}`}>{data.title}</Link>
+          </h5>
 
+          
+
+          
           {/* Amenities */}
-          <ul className="nav nav-divider mt-3">
-            <li className="nav-item">Air Conditioning</li>
-            <li className="nav-item">Wifi</li>
-            <li className="nav-item">Kitchen</li>
-            <li className="nav-item">Pool</li>
-          </ul>
-          {/* List */}
-          <ul className="list-group list-group-borderless small mb-0 mt-2">
-            <li className="list-group-item d-flex text-success p-0">
-              <i className="bi bi-patch-check-fill me-2" />
-              Free Cancellation till 7 Jan 2022
+          <ul className="list-group-flush mb-0 mt-2">
+            <li className="list-group-item d-flex py-1">
+              <IconStairs/>
+              {data.total_floors}
             </li>
-            <li className="list-group-item d-flex text-success p-0">
-              <i className="bi bi-patch-check-fill me-2" />
+            <li className="list-group-item d-flex py-1">
+            <IconStairs/>
               Free Breakfast
+            </li> 
+            <li className="list-group-item d-flex py-1">
+            {`Anno costruzione ${data?.year_construction}`}
             </li>
           </ul>
           {/* Price and Button */}
           <div className="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
             {/* Button */}
-            <div className="d-flex align-items-center">
+
+              <Link href={`/hosts/${data.author.id}`} target="_blank" className="d-flex align-items-center">
+                <div className="avatar avatar-sm">
+                  <img
+                    className="avatar-img rounded-circle"
+                    src="https://via.placeholder.com/80"
+                    alt="avatar"
+                  />
+                </div>
+                <div className="ms-2">
+										<h6 className="mb-0">{data.author.fullName}</h6>
+									</div>
+              </Link>
+    
+            <div className="d-flex align-items-center text-primary">
               <h5 className="fw-bold mb-0 me-1">{data.pricing ? data.pricing : "Trattativa riservata"}</h5>
-            </div>
+            </div> 
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-import { Button} from '@mantine/core';
+import { Button} from 'reactstrap';
 
 const About = () => {
   return (

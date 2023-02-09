@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
 import SearchForm from "@/shared/form-fields/search-form";
 import Faqs from "@/shared/common/Faqs";
-import Features from "@/shared/common/Features";
 import SpotlightListings from "@/shared/sections/listings-spotlight";
 import ListingTypes from "@/shared/sections/listing-types";
 //import LocationsLinks from "@/shared/common/LocationsLinks";
 import PromoBanner from "@/shared/snippets/hero-banner";
-import { Container,  } from "reactstrap";
+import { Container, Row } from "reactstrap";
 
-
-import graphQLClient from "@/lib/graphql/client";
-import { FIND_ALL } from "@/lib/graphql/queries/listings";
 
 
 const Home = () => {
 
   return (
     <div className="page">
-      <Container size="xl">
+      <Container>
       <section className="hero-wrapper dark overlay" style={{borderRadius: '12px'}}>
         {/* - img*/}
         <div className="img-responsive-wrapper">
@@ -32,7 +28,7 @@ const Home = () => {
           </div>
         </div>
         {/* - texts*/}
-        <Container size="xl">
+        <Container>
           <div className="row">
             <div className="col-12">
               <div className="hero-text-wrapper bg-dark">

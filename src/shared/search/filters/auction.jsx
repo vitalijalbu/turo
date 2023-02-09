@@ -21,7 +21,7 @@ const Action = () => {
         <h6 className="text-muted">Seleziona</h6>
         <FormGroup switch>
         <Input type="switch" role="switch" />
-        <Label check>Mostra annuncio all'asta</Label>
+        <Label check>Mostra annunci all'asta</Label>
       </FormGroup>
         <div className="d-flex justify-content-between mt-3">
           <Button color="secondary" className="mr-2" outline size="sm" onClick={handleCancel}>

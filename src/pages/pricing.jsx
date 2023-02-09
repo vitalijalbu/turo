@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Container,
-  Grid,
+  Row,
   Avatar,
   Title,
   Text,
@@ -9,7 +9,7 @@ import {
   Card,
   List,
   ThemeIcon,
-} from "@mantine/core";
+} from "reactstrap";
 import pricingList from "@/data/pricing-plans.json";
 
 

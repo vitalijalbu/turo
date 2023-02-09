@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Text, Title} from "@mantine/core";
+import { Container, Row, Col, Button } from "reactstrap";
 import ItemCard from "@/shared/snippets/listing-card";
 import Entries from "@/data/entries.json";
-import Link from 'next/link';
 
 const RelatedListings = () => {
 
   return (
     <section id="related-listings" className="padding-vertical">
-          <Container size="xl">
+          <Container>
           <div className="section-title">
-        <Title order={1}>Annunci simili</Title>
-        <Text>In base alle tue ricerche, pensiamo possano interessarti anche questi annunci</Text>
+        <h1>Annunci simili</h1>
+        <p>In base alle tue ricerche, pensiamo possano interessarti anche questi annunci</p>
     </div>
-    <Grid>
+    <Row>
       {Array.isArray(Entries.data.entries) ? (
          <> 
-          {Entries.data.entries.map((item, i) => (
-            <Grid.Col md={6} lg={3} xs={6}>
+          {Entries.data.entries.map((item) => (
+            <Col md={6} lg={3} xs={6} key={item.id}>
              <ItemCard data={item}/>
-             </Grid.Col>
+             </Col>
           ))}
         </>
       ) : (
-        <Text strong>Nessun dato</Text>
+        <p>Nessun dato</p>
       )}
-    </Grid>
+    </Row>
     </Container>
     </section>
   );

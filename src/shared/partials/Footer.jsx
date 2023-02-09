@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Grid, Container, Divider, Group, Title, Text } from "@mantine/core";
+import { Row, Container, Divider, Group, Title, Text } from "reactstrap";
 import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-react';
 
 
@@ -115,10 +115,9 @@ const Footer = () => {
                 {nav.links.map((link, l) => (
                   <li key={l} className="nav-item">
                     <Link
-                      className="nav-link"
+                      className="px-0 nav-link"
                       href={link.url ?? '#'}
                       key={l}
-                      
                     >
                       {link.label}
                     </Link>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Container, Group, Button, Title } from '@mantine/core';
+import { Row, Container, Group, Button, Title } from 'reactstrap';
 import Cities from "@/data/cities.json";
 import Link from 'next/link';
 
@@ -8,13 +8,13 @@ const LocationsLinks = () => {
 
   return (
     <section id="related-listings" className="section-content">
-        <Container size="xl">
+        <Container>
         <div className="section-title">
-        <Title order={1}>Città in primo piano</Title>
+        <h1>Città in primo piano</h1>
     </div>    
       {Array.isArray(Cities.data) ? (
-        <Grid>
-        <Grid.Col span={12}>
+        <Row>
+        <Col md={12}>
           <Group position="apart">
            {Cities.data.map((item, i) => (
             
@@ -24,11 +24,11 @@ const LocationsLinks = () => {
             
             ))}
             </Group>
-            </Grid.Col>
-            </Grid>
+            </Col>
+            </Row>
 
       ) : (
-        <Grid strong>Nessun dato</Grid>
+        <Row strong>Nessun dato</Row>
       )}
     </Container>
     </section>

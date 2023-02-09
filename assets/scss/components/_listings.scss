@@ -37,6 +37,7 @@
   top: 8px;
   margin-left: 5px;
 }
+
 .item-inner.gallery {
   max-width: 35%;
     display: block !important;
@@ -186,3 +187,9 @@ clip-path: polygon(0% 0%, 100% 0%, 0% 50%, 100% 100%, 0% 100%);
   }
 }
 
+.listing-card{
+  & img{
+    border-top-right-radius: $card-border-radius;
+    border-top-left-radius: $card-border-radius;
+  }
+}

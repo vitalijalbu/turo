@@ -7,6 +7,8 @@
     width: $avatar-size-base;
     position: relative;
     display: inline-block !important;
+    overflow: hidden;
+    border-radius: 50%;
   }
   
   .avatar-img {

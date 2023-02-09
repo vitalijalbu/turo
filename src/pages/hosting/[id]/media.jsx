@@ -1,5 +1,7 @@
 import React from "react";
-import { useForm } from "@mantine/form";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   Container,
   Row,
@@ -13,24 +15,15 @@ import {
   FormText,
   Textarea
 } from "reactstrap";
-//import HelpBox from "@/shared/hosting/HelpBox";
+import PageActions from "@/shared/hosting/page-actions";
 
-const Index = () => {
-  const form = useForm({
-    initialValues: { name: "", email: "", age: 0 },
-
-    // functions will be used to validate values at corresponding key
-    validate: {
-      name: (value) =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      age: (value) =>
-        value < 18 ? "You must be at least 18 to register" : null,
-    },
-  });
+const Media = () => {
+  const router = useRouter();
+  const { id } = router.query;
 
   return (
-    <div className="page" id="searchPage">
+    <div className="page">
+    <div className="page-content">
       <Container>
         <Row>
 
@@ -199,8 +192,13 @@ Form Feedback
             </Col> 
         </Row>
       </Container>
+      <PageActions
+        backUrl={"/hosting/100"}
+        nextUrl={"/hosting/100/media"}
+      />
+    </div>
     </div>
   );
 };
 
-export default Index;
+export default Media;

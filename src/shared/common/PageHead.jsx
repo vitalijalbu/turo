@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Container, Group, Title, Text, Button } from '@mantine/core';
+import { Row, Container, Group, Title, Text, Button } from 'reactstrap';
 
 
 const PageHead = (props) => {
@@ -20,12 +20,12 @@ const PageHead = (props) => {
       </div>
     </div>
     {/* - texts*/}
-    <Container size="xl">
+    <Container>
       <div className="row">
         <div className="col-12">
           <div className="hero-text-wrapper bg-dark">
-            {props.title &&  <Title>{props.title}</Title>}
-            {props.subtitle && <Text>Cerca i migliori annunci</Text>}
+            {props.title &&  <Title>{props.title}</h1>}
+            {props.subtitle && <p>Cerca i migliori annunci</p>}
             {props.primaryAction && <Button>{props.primaryAction}</Button>}
           </div>
         </div>

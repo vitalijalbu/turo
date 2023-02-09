@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Drawer, Button, Title, Text, Box, NavLink } from '@mantine/core';
+import { Drawer, Button, Title, Text, Box, NavLink } from 'reactstrap';
 
 
 
@@ -80,7 +80,7 @@ const DrawerMenu = ({ opened, close }) => {
       >
     {Navigation.map((nav, i) => (
       <>
-        <Title key={i} order={4}>{nav.title}</Title>
+        <Title key={i} order={4}>{nav.title}</h1>
             <ul id={nav.id} key={i} noHairlines noHairlinesBetween noChevron>
               {nav.links.map((link, l) =>
                 link.external === true ? (

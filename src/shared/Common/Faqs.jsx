@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
-import { Container, Button, AspectRatio, Image, Grid, Accordion } from '@mantine/core';
-import faqList from '@/data/faqs.json';
 import Link from 'next/link';
+import { Container, Button, Row, Col, UncontrolledAccordion, AccordionItem, AccordionHeader, AccordionBody } from 'reactstrap';
+import faqList from '@/data/faqs.json';
 import { IconArrowUpRight } from '@tabler/icons-react';;
 
 
@@ -10,33 +10,65 @@ const Faqs = () => {
 
   return (
     <section className="section-content faqs">
-    <Container size="xl">
-        <Grid>
-            <Grid.Col span={6}>
-            <AspectRatio ratio={16 / 9}>
-      <Image
-        src="https://via.placeholder.com/800x533"
-        alt="Panda"
-      />
-    </AspectRatio>
-      </Grid.Col>
-      <Grid.Col span={6}>
+    <Container>
+      <Row>
+      <Col lg={8} md={12} className="mx-auto"> 
       <h3>Domande più frequenti</h3>
-      <Accordion defaultValue="customization">
-      {faqList.data.faqs.map((data, i) => (
-        <Accordion.Item value={data.id} key={i}>
-        <Accordion.Control>{data.title}</Accordion.Control>
-        <Accordion.Panel><p>{data.content}</p></Accordion.Panel>
-      </Accordion.Item>
-      ))} 
-      </Accordion>
+     
+<UncontrolledAccordion defaultOpen="1" flush>
+  <AccordionItem>
+    <AccordionHeader targetId="1">
+      Accordion Item 1
+    </AccordionHeader>
+    <AccordionBody accordionId="1">
+      <strong>
+        This is the first item's accordion body.
+      </strong>
+      You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the{' '}
+      <code>
+        .accordion-body
+      </code>
+      , though the transition does limit overflow.
+    </AccordionBody>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionHeader targetId="2">
+      Accordion Item 2
+    </AccordionHeader>
+    <AccordionBody accordionId="2">
+      <strong>
+        This is the second item's accordion body.
+      </strong>
+      You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the{' '}
+      <code>
+        .accordion-body
+      </code>
+      , though the transition does limit overflow.
+    </AccordionBody>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionHeader targetId="3">
+      Accordion Item 3
+    </AccordionHeader>
+    <AccordionBody accordionId="3">
+      <strong>
+        This is the third item's accordion body.
+      </strong>
+      You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the{' '}
+      <code>
+        .accordion-body
+      </code>
+      , though the transition does limit overflow.
+    </AccordionBody>
+  </AccordionItem>
+</UncontrolledAccordion>
 
       <Link href="/help" target="_blank" passHref>
-    <Button compact className="mt-1" component="a" target="_blank" rel="noopener noreferrer" variant="outline" rightIcon={<IconArrowUpRight/>}>Vai al centro supporto</Button>
+    <Button color="primary" size="sm" rel="noopener noreferrer" outline>Vai al centro supporto <IconArrowUpRight/></Button>
     </Link>
-    </Grid.Col>
+    </Col>
 
-      </Grid>
+      </Row>
       </Container>
     </section>
   );

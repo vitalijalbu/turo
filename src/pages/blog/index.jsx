@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PageHead from "@/shared/common/PageHead";
 
-import { Container, Title} from '@mantine/core';
+import { Container, Title} from 'reactstrap';
 
 const Help = () => {
   return (
     <div className="page">
     <PageHead title="Blog"/>
-    <Container size="xl">
+    <Container>
       <div className="section-title">
         no posts yet
       </div>

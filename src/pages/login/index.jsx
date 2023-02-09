@@ -7,21 +7,22 @@ import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {
   const [form, setFormValues] = useState({});
-  console.log('form', form)
-    /* Input change parent state */
-    const handleOnChange = (e) => {
-      setFormValues((prevState) => {
-        return { ...prevState, [e.target.name]: e.target.value };
-      });
-    };
+  console.log("form", form);
+  /* Input change parent state */
+  const handleOnChange = (e) => {
+    setFormValues((prevState) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
+  };
 
   return (
     <div className="page">
-      <Container>
-        <Row>
-          <Col className="mx-auto" md={4}>
+      <div className="page-content py-5">
+        <Container>
+          <Row>
+            <Col className="mx-auto" md={4}>
               {/* Title */}
-              <h1 className="mb-2 h3">Accedi al tuo account</h1>
+              <h3 className="mb-4 text-center">Accedi al tuo account</h3>
               {/* Google and facebook button */}
               <div className="vstack gap-3">
                 <Button outline>
@@ -37,7 +38,7 @@ const Index = () => {
               <div className="position-relative my-4">
                 <hr />
                 <p className="small bg-mode position-absolute top-50 start-50 translate-middle px-2">
-                  Oppure accedi
+                  Oppure
                 </p>
               </div>
 
@@ -46,7 +47,12 @@ const Index = () => {
                 {/* Email */}
                 <div className="mb-3">
                   <label className="form-label">Email</label>
-                  <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
+                  <Input
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    onChange={handleOnChange}
+                  />
                 </div>
                 {/* Password */}
                 <div className="mb-3 position-relative">
@@ -84,9 +90,10 @@ const Index = () => {
                 </p>
               </form>
               {/* Form END */}
-          </Col>
-        </Row>
-      </Container>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 };

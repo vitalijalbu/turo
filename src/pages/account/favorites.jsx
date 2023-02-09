@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col} from "reactstrap";
 import ItemCard from "@/shared/snippets/listing-card";
-import Head from "@/shared/account/head";
+import PageHead from "@/shared/account/page-head";
 import Entries from "@/data/entries.json";
 import Link from 'next/link';
 
 const Favorites = () => {
   return (
     <div className="page pt-0">
-      <Head title={"Preferiti"}/>
-      <Container size="xl">
+      <PageHead title={"Preferiti"}/>
+      <Container>
 <Row>
 {Array.isArray(Entries.data.entries) ? (
    <> 

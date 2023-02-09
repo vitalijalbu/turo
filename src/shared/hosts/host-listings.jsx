@@ -5,7 +5,7 @@ import ItemCard from "../snippets/listing-card";
 
 const HostListings = ({data}) => {
 
-  if(!data && (<Text>Nessun annuncio ancora pubblicato</Text>));
+  if(!data && (<p>Nessun annuncio ancora pubblicato</p>));
   return (
     <section id="host-data">
       {Array.isArray(data) ? (

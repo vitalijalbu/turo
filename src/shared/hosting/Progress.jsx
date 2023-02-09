@@ -1,4 +1,4 @@
-import { Progress } from '@mantine/core';
+import { Progress } from 'reactstrap';
 
 function ProgressBar() {
   return (
