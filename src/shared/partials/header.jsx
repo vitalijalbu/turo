@@ -39,12 +39,12 @@ const Header = () => {
   return (
     <>
       {navOpen && <SideMenu opened={navOpen} toggle={openSideNav} />}
-      <div id="site-header">
+      <div id="site-header" className="fixed-top bg-white">
         <div className="container">
           <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2">
           <Link
               href="/"
-              className="d-flex align-items-center col-md-3 mb-2 mb-md-0"
+              className="d-flex align-items-center mb-2 mb-md-0"
             >
               <img src="/img/logo.svg" className="site-logo"/>
             </Link>
@@ -72,7 +72,7 @@ const Header = () => {
             </ul>
             <ul className="nav">
             <li className="nav-item">
-                  <Link href="/account/favorites" className="nav-link"><IconHeart/> Preferiti</Link>
+                  <Link href="/account/favorites" className="nav-link"><IconHeart size={20}/> Preferiti</Link>
               </li>
               <li className="nav-item">
            <UncontrolledDropdown>
@@ -81,16 +81,16 @@ const Header = () => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem tag="a">
-                <Link href="/account"><IconUserCircle/>Il mio acount</Link>
+                <Link href="/account"><IconUserCircle size={20}/>Il mio acount</Link>
               </DropdownItem>
               <DropdownItem tag="a">
-                <Link href="/account/listings"><IconListDetails /> I miei annunci</Link>
+                <Link href="/account/listings"><IconListDetails size={20}/> I miei annunci</Link>
               </DropdownItem>              
               <DropdownItem tag="a">
-                <Link href="/account/requests"><IconMessage2 /> Richieste</Link>
+                <Link href="/account/requests"><IconMessage2 size={20}/> Richieste</Link>
               </DropdownItem>
               <DropdownItem tag="a" className="mt-2">
-                <Link href="/account/settings"><IconSettings/> Impostazioni</Link>
+                <Link href="/account/settings"><IconSettings size={20}/> Impostazioni</Link>
               </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={handleLogout}>Esci</DropdownItem>
