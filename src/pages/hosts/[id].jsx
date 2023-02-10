@@ -24,7 +24,7 @@ const View = () => {
 
   /* Toggle Item Popup */
   const toggleContactPopup = () => {
-    setContactPopup(true);
+    setContactPopup(!popupContact);
   };
   
   useEffect(() => {
@@ -39,7 +39,7 @@ const View = () => {
 
   return (
     <>
-    {!popupContact && (<PupupContact/>)}
+    {!popupContact && (<PupupContact opened={popupContact} toggle={toggleContactPopup}/>)}
     <div className="page">
     <div className="page-content">
       <Container>

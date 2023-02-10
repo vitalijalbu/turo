@@ -13,15 +13,18 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Badge,
 } from "reactstrap";
 import confirm from "@/shared/components/confirm/";
 import PageHead from "@/shared/account/page-head";
 import { getUserListings } from "@/lib/graphql/queries/user";
 import Link from "next/link";
+import PopupStatus from "@/shared/hosting/popup-status";
 
 const Listings = () => {
   const [loading, setLoading] = useState(false);
   const [entries, setEntries] = useState([]);
+  const [popupContact, setContactPopup] = useState(false);
 
   useEffect(() => {
     getUserListings().then((res) => {
@@ -64,7 +67,16 @@ const Listings = () => {
     });
   };
 
+  /* Toggle Item Popup */
+  const toggleContactPopup = () => {
+    setContactPopup(!popupContact);
+  };
+
   return (
+    <>
+          {popupContact && (
+        <PopupStatus opened={popupContact} toggle={toggleContactPopup} />
+      )}
     <div className="page">
       <PageHead
         title={"I miei annunci"}
@@ -125,6 +137,9 @@ const Listings = () => {
                           </div>
                         </th>
                         <td>
+                          <Badge>{entry?.listing_status}</Badge>
+                        </td>
+ <td>
                           <span className="d-block">{`Creato il ${entry?.dateCreated}`}</span>
                           <span className="d-block">{`Ultima modifica ${entry?.dateUpdated}`}</span>
                         </td>
@@ -141,6 +156,9 @@ const Listings = () => {
                                     Modifica
                                   </Link>
                                 </DropdownItem>
+                                <DropdownItem onClick={toggleContactPopup}>
+                                  Stato dell'annuncio
+                                </DropdownItem> 
                                 <DropdownItem onClick={handleArchive}>
                                   Archivia
                                 </DropdownItem>
@@ -167,6 +185,7 @@ const Listings = () => {
         </Container>
       </div>
     </div>
+    </>
   );
 };
 

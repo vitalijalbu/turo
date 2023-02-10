@@ -10,7 +10,6 @@ import {
   List,
   ThemeIcon,
 } from "reactstrap";
-import pricingList from "@/data/pricing-plans.json";
 
 
 const Pricing = () => (

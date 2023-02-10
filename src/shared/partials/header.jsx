@@ -61,7 +61,7 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <Link href="/requests" className="nav-link px-2 link-dark">
-                  Richieste
+                Lascia la tua richiesta
                 </Link>
               </li>
               <li className="nav-item">

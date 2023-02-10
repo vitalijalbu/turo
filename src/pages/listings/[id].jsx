@@ -308,7 +308,7 @@ const Page = () => {
                     color="dark"
                     onClick={toggleContactPopup}
                   >
-                    Contatta agenzia
+                    Contatta l'inserzionista
                   </Button>
                 </div>
                 <div className="d-block">

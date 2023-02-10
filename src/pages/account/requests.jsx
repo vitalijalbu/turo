@@ -4,7 +4,10 @@ import {
   Container,
   Row,
   Col,
-  Button
+  Button,
+  Nav,
+  NavItem,
+  NavLink
 } from "reactstrap";
 import PageHead from "@/shared/account/page-head";
 import { IconMessage2 } from "@tabler/icons-react";
@@ -35,6 +38,20 @@ const Index = () => {
       />
       <div className="page-content">
       <Container>
+      <Row>
+            <Col md={12}>
+              <Nav pills>
+                <NavItem>
+                  <NavLink href="#" active>
+                    Richieste specifiche
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#">Richieste generiche</NavLink>
+                </NavItem>
+              </Nav>
+            </Col>
+          </Row>
         <Row>
           <Col md={12}>
           {Array.isArray(entries) ? (
