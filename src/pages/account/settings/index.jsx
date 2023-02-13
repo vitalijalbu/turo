@@ -15,6 +15,8 @@ import {
 import { IconMessageCircle, IconBookmark } from "@tabler/icons-react";
 import SideNav from "@/shared/settings/side-nav";
 import { getProfile } from "@/lib/graphql/queries/user";
+import { useForm, Controller } from "react-hook-form";
+
 
 const Settings = () => {
   const [loading, setLoading] = useState(false);
