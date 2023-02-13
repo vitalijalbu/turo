@@ -34,10 +34,11 @@ const PopupShare = ({ opened, toggle }) => {
   return (
     <Modal
       centered
+      size="sm"
       toggle={toggle}
       isOpen={opened}
     >
-      <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+      <ModalHeader toggle={toggle}>Condividi questo annuncio</ModalHeader>
         <ModalBody>
       <div className="list media-list">
         <ul>

@@ -19,6 +19,7 @@ const Index = ({ data }) => {
 
   return (
     <div className="page">
+      <div className="page-content">
       <Container>
         <div className="section-head">
           <h1 className="section-title">Agenzie</h1>
@@ -31,6 +32,7 @@ const Index = ({ data }) => {
           ))}
         </Row>
       </Container>
+      </div>
     </div>
   );
 };

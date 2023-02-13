@@ -89,7 +89,7 @@ const Listings = () => {
         <Container>
           <Row>
             <Col md={12}>
-              <Nav pills>
+              <Nav className="subnav" tabs>
                 <NavItem>
                   <NavLink href="#" active>
                     Annunci attivi

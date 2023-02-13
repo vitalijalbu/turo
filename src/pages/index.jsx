@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchForm from "@/shared/form-fields/search-form";
-import Faqs from "@/shared/common/Faqs";
+import Faqs from "@/shared/Common/faqs";
 import SpotlightListings from "@/shared/sections/listings-spotlight";
 import ListingTypes from "@/shared/sections/listing-types";
 //import LocationsLinks from "@/shared/common/LocationsLinks";

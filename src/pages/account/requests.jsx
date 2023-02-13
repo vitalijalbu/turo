@@ -38,9 +38,9 @@ const Index = () => {
       />
       <div className="page-content">
       <Container>
-      <Row>
+      <Row className="subnav">
             <Col md={12}>
-              <Nav pills>
+            <Nav tabs>
                 <NavItem>
                   <NavLink href="#" active>
                     Richieste specifiche

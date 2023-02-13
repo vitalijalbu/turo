@@ -25,7 +25,7 @@ const PopupMedia = ({ opened, toggle, data, props, tab }) => {
     isOpen={opened}
 
   >
-    <ModalHeader toggle={toggle}>Media annuncio</ModalHeader>
+    <ModalHeader toggle={toggle}/>
       <ModalBody>
       <Nav justified pills tabs className='py-2'>
         <NavItem><NavLink value="photos" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'photos'}>Foto </NavLink></NavItem>

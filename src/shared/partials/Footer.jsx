@@ -40,7 +40,7 @@ const Navigation = [
         url: "/search",
       },
       {
-        label: "Hosts",
+        label: "Agenzie",
         url: "/hosts",
       },
       {

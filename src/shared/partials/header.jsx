@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu, Button } from "reactstrap";
 import SideMenu from "./side-menu";
@@ -10,14 +10,20 @@ import {
   IconSearch,
 } from "@tabler/icons-react";
 import confirm from '@/shared/components/confirm/';
-
+import { getSession, removeSession } from "@/lib/graphql/client";
 
 const Header = () => {
+  const session = getSession();
+  const user = session.user;
+  
+  const [isLodded, setIsAuthenticated] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [searchOpen, setsearchOpen] = useState(false);
+  
+
    /* actions */ 
   const openSideNav = () => setNavOpen(!navOpen);
-  const openSearch = () => setsearchOpen(!searchOpen);
+
 
   /* Confirm */
   const handleLogout = () => {
@@ -26,20 +32,20 @@ const Header = () => {
       message: 'auth.logout_cta',
       cancelText: 'Annulla',
       confirmText: 'Esci',
-      confirmColor: 'primary',
+      confirmColor: 'danger',
     }).then((confirmed) => {
       if (confirmed) {
-        dispatch(logout());
-        //history.push('/');
-        //window.location.href="/";
+        removeSession();
+        window.location.href="/";
       }
     });
   };
 
+
   return (
     <>
       {navOpen && <SideMenu opened={navOpen} toggle={openSideNav} />}
-      <div id="site-header" className="fixed-top bg-white">
+      <div id="site-header" className="app-header">
         <div className="container">
           <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2">
           <Link
@@ -64,20 +70,22 @@ const Header = () => {
                 Lascia la tua richiesta
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link href="/login" className="nav-link px-2 link-dark">
-                  Login
-                </Link>
-              </li>
+
             </ul>
             <ul className="nav">
+            {session ? (
+              <>
             <li className="nav-item">
                   <Link href="/account/favorites" className="nav-link"><IconHeart size={20}/> Preferiti</Link>
-              </li>
-              <li className="nav-item">
+              </li>     
+              <li className="ps-3 border-start nav-item">
            <UncontrolledDropdown>
-              <DropdownToggle nav caret>
-                Account
+              <DropdownToggle nav caret className="p-0">
+              <img
+      src={session.user.photo?.url ?? '/img/placeholder.svg'}
+      className="avatar avatar-sm"
+      alt=""
+    /> {session.user.fullName}
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem tag="a">
@@ -96,13 +104,11 @@ const Header = () => {
                 <DropdownItem onClick={handleLogout}>Esci</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            </li>
-            {/*<li className="nav-item"><Link href="/login" className="px-2">
-                <Button color="primary" outline>
-                  <IconUserCircle /> Accedi
-                </Button>
-              </Link>
-              </li>*/}
+            </li></>): (<li className="nav-item">
+                <Link href="/login" className="btn btn-dark">
+                  Accedi
+                </Link>
+              </li>)}
             </ul>
           
           </header>

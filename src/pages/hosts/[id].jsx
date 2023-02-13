@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import HostListings from "@/shared/hosts/host-listings";
 import {
   Container,
   Row,
   Col,
   Button,
-  Card
+  Card,
+  CardBody
 } from "reactstrap";
+import {
+  IconPlus,
+} from "@tabler/icons-react";
 import { useRouter } from "next/router";
-import graphQLClient from "@/lib/graphql/client";
-import { GET_HOST } from "@/lib/graphql/queries/hosts";
 import { getHostDetails } from "@/lib/graphql/queries/hosts";
 import PupupContact from "@/shared/components/popup-contact";
 
 const View = () => {
   
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState();
+  const [user, setData] = useState();
   const [listings, setListings] = useState([]);
   const [popupContact, setContactPopup] = useState(false);
   const [popupShare, setSharePopup] = useState(false);
@@ -46,7 +49,7 @@ const View = () => {
         <Row>
           <Col md={3}>
             <Card shadow="sm" withBorder p="xl">
-            <div className="text-center mb-3">
+            <CardBody className="text-center mb-3">
               {/* Avatar */}
               <div className="avatar avatar-xl mb-2">
                 <img
@@ -55,15 +58,22 @@ const View = () => {
                   alt=""
                 />
               </div>
-              <h6 className="mb-0">{data?.fullName}</h6>
-            </div>
+              <h6 className="mb-0">{user?.fullName}</h6>
+              <span>{`Data creazione ${user?.dateCreated}`}</span>
+                      <hr/>
+                      <div className="d-block">
+                        <Button block color="dark" onClick={toggleContactPopup}>
+                          Contatta l'inserzionista
+                        </Button>
+                      </div>
+                        </CardBody>
             </Card>
           </Col>
           <Col md={9}>
             <div className="section-head">
               <h1 className="page-title">Annunci</h1>
             </div>
-            <HostListings data={listings}/>
+            <HostListings user={listings}/>
           </Col>
         </Row>
       </Container>

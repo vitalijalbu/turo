@@ -20,7 +20,7 @@ const Action = () => {
   return (
     <UncontrolledDropdown>
       <DropdownToggle color="default" className="border">
-        Tipologia
+        Locali
       </DropdownToggle>
       <DropdownMenu className="p-3 mt-2 filter-dropdown">
         <h6 className="text-muted">Seleziona Tipologia</h6>

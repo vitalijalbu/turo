@@ -1,18 +1,34 @@
 import { useState } from "react";
 import Link from "next/link";
-import { Container, Row, Col, Button, Input } from "reactstrap";
-import IconGoogle from "@/shared/common/IconGoogle";
-import IconFacebook from "@/shared/common/IconFacebook";
+import { Container, Row, Col, Button, Form, Input, UncontrolledAlert  } from "reactstrap";
+import IconGoogle from "@/shared/components/IconGoogle";
+import { IconBrandFacebook } from "@tabler/icons-react";
 import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {
+  const [loading, setLoading] = useState(false);
   const [form, setFormValues] = useState({});
-  console.log("form", form);
+  const [error, setError] = useState('');
+
+
   /* Input change parent state */
   const handleOnChange = (e) => {
     setFormValues((prevState) => {
       return { ...prevState, [e.target.name]: e.target.value };
     });
+  };
+
+  const handleAuth = (event, values) => {
+    setLoading(true);
+    authAction(form)
+      .then(() => {
+        window.location.replace('/');
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false)
+      });
   };
 
   return (
@@ -22,16 +38,17 @@ const Index = () => {
           <Row>
             <Col className="mx-auto" md={4}>
               {/* Title */}
-              <h3 className="mb-4 text-center">Accedi al tuo account</h3>
-              {/* Google and facebook button */}
+              {!!error && <UncontrolledAlert color="danger">{error}</UncontrolledAlert>}
+              <h3 className="mb-4 text-center">Ti diamo il benvenuto su Resthotels</h3>
+              {/* Google and facebook Button */}
               <div className="vstack gap-3">
                 <Button outline>
                   <IconGoogle />
-                  Accedi con Google
+                  Continua con Google
                 </Button>
-                <Button outline>
-                  <IconFacebook />
-                  Accedi con Facebook
+                <Button style={{background: "#3b5998"}}>
+                  <IconBrandFacebook />
+                  Continua con Facebook
                 </Button>
               </div>
               {/* Divider */}
@@ -43,7 +60,7 @@ const Index = () => {
               </div>
 
               {/* Form START */}
-              <form className="mt-4 text-start">
+              <Form className="mt-4 text-start">
                 {/* Email */}
                 <div className="mb-3">
                   <label className="form-label">Email</label>
@@ -67,28 +84,18 @@ const Index = () => {
                 </div>
                 {/* Remember me */}
                 <div className="mb-3 d-sm-flex justify-content-between">
-                  <div>
-                    <Input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="rememberCheck"
-                    />
-                    <label className="form-check-label" htmlFor="rememberCheck">
-                      Remember me?
-                    </label>
-                  </div>
-                  <Link href="/forgot-password">Password diemnticata?</Link>
+                  <Link href="/forgot-password" className="color-link">Password dimenticata?</Link>
                 </div>
                 {/* Button */}
                 <div>
-                  <button type="submit" className="btn btn-primary w-100 mb-0">
-                    Login
-                  </button>
+                  <Button color="dark" block onClick={handleAuth} disabled={loading}>
+                    Accedi
+                  </Button>
                 </div>
                 <p className="mt-3">
-                  Nom hai un account ?<Link href="/register"> Creane uno</Link>
+                  Nom hai un account ?<Link href="/register" className="color-link"> Creane uno</Link>
                 </p>
-              </form>
+              </Form>
               {/* Form END */}
             </Col>
           </Row>

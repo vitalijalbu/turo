@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Container, Row, Col, Button, Input, FormGroup } from "reactstrap";
 import IconGoogle from "@/shared/common/IconGoogle";
-import IconFacebook from "@/shared/common/IconFacebook";
+import IconFacebook from "@/shared/components/IconFacebook";
 import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {

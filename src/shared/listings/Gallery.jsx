@@ -88,10 +88,10 @@ const Gallery = ({ props }) => {
 
 
       <ButtonGroup className="gallery-cta">
-      <Button outline color="primary" onClick={() => toggleMediaPopup('photos')}>Vedi più foto</Button>
-      <Button outline color="primary" onClick={() => toggleMediaPopup('planimetry')}>Pianimetria</Button>
-      <Button outline color="primary" onClick={() => toggleMediaPopup('video')}>Video</Button>
-      <Button outline color="primary" onClick={() => toggleMediaPopup('tour')}>360° Tour</Button>
+      <Button color="dark" onClick={() => toggleMediaPopup('photos')}>Vedi più foto</Button>
+      <Button color="dark" onClick={() => toggleMediaPopup('planimetry')}>Pianimetria</Button>
+      <Button color="dark" onClick={() => toggleMediaPopup('video')}>Video</Button>
+      <Button color="dark" onClick={() => toggleMediaPopup('tour')}>360° Tour</Button>
     </ButtonGroup>
     </div>
     </div>

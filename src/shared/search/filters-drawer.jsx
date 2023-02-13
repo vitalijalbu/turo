@@ -63,10 +63,10 @@ useEffect(() => {
 
   return (
     <div id="side-nav">
-      <Offcanvas isOpen={opened} toggle={toggle}>
+      <Offcanvas isOpen={opened} toggle={toggle} direction="end">
         <OffcanvasHeader toggle={toggle}>Altri filtri</OffcanvasHeader>
         <OffcanvasBody>
-        <UncontrolledAccordion defaultOpen="1">
+        <UncontrolledAccordion defaultOpen="1" flush>
         <AccordionItem>
     <AccordionHeader targetId="1">
       Tipologia

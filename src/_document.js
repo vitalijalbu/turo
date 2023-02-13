@@ -1,6 +1,30 @@
+import React, { useState, useEffect, useCallback } from "react";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
+  const [scrolled, setScrolled] = useState(false);
+  const handleScroll = useCallback(
+    (e) => {
+      const scrollTop = window.scrollY;
+      const offsetHeight = 80;
+      if (scrollTop > offsetHeight) {
+        if (!scrolled) {
+          setScrolled(true);
+        }
+      } else {
+        if (scrolled) {
+          setScrolled(false);
+        }
+      }
+    },
+    [scrolled]
+  );
+
+  useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+
   return (
     <Html lang="it">
       <Head>
@@ -17,7 +41,7 @@ export default function Document() {
           crossorigin=""
         ></script>
       </Head>
-      <body>
+      <body className={scrolled ? 'sticky' : null}>
         <Main />
         <NextScript />
       </body>

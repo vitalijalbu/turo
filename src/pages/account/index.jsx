@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, CardBody, CardHeader} from "reactstrap";
 import PageHead from "@/shared/account/page-head";
-
+import { getSession } from "@/lib/graphql/client";
 
 const Account = () => {
+  const session = getSession();
+  const user = session.user;
+
   return (
     <div className="page">
       <PageHead
-        title={"Benvenuto User"}
+        title={`Bentornato, ${user.fullName}`}
         nextAction={{
           url: "/hosting/create",
           content: "Crea annuncio",

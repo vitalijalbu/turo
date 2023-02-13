@@ -1,0 +1,319 @@
+{
+        "categories": [
+            {
+                "id": "153",
+                "title": "Strutture ricettive",
+                "slug": "strutture-ricettive",
+                "media_url": [
+                    {
+                        "url": "https://beta.resthotels.it/web/uploads/static/static-hotel.jpeg"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": "158",
+                        "title": "Agriturismo",
+                        "media_url": []
+                    },
+                    {
+                        "id": "154",
+                        "title": "Hotel",
+                        "media_url": []
+                    },
+                    {
+                        "id": "162",
+                        "title": "Bed & Breakfast",
+                        "media_url": []
+                    },
+                    {
+                        "id": "163",
+                        "title": "Campeggio",
+                        "media_url": []
+                    },
+                    {
+                        "id": "177",
+                        "title": "Villaggio turistico",
+                        "media_url": []
+                    },
+                    {
+                        "id": "178",
+                        "title": "Motel",
+                        "media_url": []
+                    },
+                    {
+                        "id": "179",
+                        "title": "Resort",
+                        "media_url": []
+                    },
+                    {
+                        "id": "180",
+                        "title": "Residence",
+                        "media_url": []
+                    },
+                    {
+                        "id": "181",
+                        "title": "Albergo diffuso",
+                        "media_url": []
+                    }
+                ]
+            },
+            {
+                "id": "158",
+                "title": "Agriturismo",
+                "slug": "agriturismo",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "154",
+                "title": "Hotel",
+                "slug": "hotel",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "162",
+                "title": "Bed & Breakfast",
+                "slug": "bed-breakfast",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "163",
+                "title": "Campeggio",
+                "slug": "campeggio",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "177",
+                "title": "Villaggio turistico",
+                "slug": "villaggio-turistico",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "178",
+                "title": "Motel",
+                "slug": "motel",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "179",
+                "title": "Resort",
+                "slug": "resort",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "180",
+                "title": "Residence",
+                "slug": "residence",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "181",
+                "title": "Albergo diffuso",
+                "slug": "albergo-diffuso",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "161",
+                "title": "Immobile commerciale",
+                "slug": "immobile-commerciale",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "164",
+                "title": "Strutture di ristorazione",
+                "slug": "strutture-ristorazione",
+                "media_url": [],
+                "children": [
+                    {
+                        "id": "166",
+                        "title": "Bar",
+                        "media_url": []
+                    },
+                    {
+                        "id": "167",
+                        "title": "Ristorante",
+                        "media_url": []
+                    },
+                    {
+                        "id": "168",
+                        "title": "Tavola calda",
+                        "media_url": []
+                    },
+                    {
+                        "id": "169",
+                        "title": "Enoteca",
+                        "media_url": []
+                    },
+                    {
+                        "id": "170",
+                        "title": "Gelateria",
+                        "media_url": []
+                    },
+                    {
+                        "id": "171",
+                        "title": "Pasticceria",
+                        "media_url": []
+                    },
+                    {
+                        "id": "172",
+                        "title": "Pizzeria",
+                        "media_url": []
+                    },
+                    {
+                        "id": "173",
+                        "title": "Rosticceria",
+                        "media_url": []
+                    },
+                    {
+                        "id": "174",
+                        "title": "Birreria-pub",
+                        "media_url": []
+                    },
+                    {
+                        "id": "175",
+                        "title": "Cocktail bar",
+                        "media_url": []
+                    },
+                    {
+                        "id": "176",
+                        "title": "Paninoteca",
+                        "media_url": []
+                    },
+                    {
+                        "id": "183",
+                        "title": "Discoteca - night club",
+                        "media_url": []
+                    },
+                    {
+                        "id": "184",
+                        "title": "Panificio",
+                        "media_url": []
+                    },
+                    {
+                        "id": "185",
+                        "title": "Pastificio",
+                        "media_url": []
+                    },
+                    {
+                        "id": "186",
+                        "title": "Pescheria",
+                        "media_url": []
+                    }
+                ]
+            },
+            {
+                "id": "166",
+                "title": "Bar",
+                "slug": "bar",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "167",
+                "title": "Ristorante",
+                "slug": "ristorante",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "168",
+                "title": "Tavola calda",
+                "slug": "tavola-calda",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "169",
+                "title": "Enoteca",
+                "slug": "enoteca",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "170",
+                "title": "Gelateria",
+                "slug": "gelateria",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "171",
+                "title": "Pasticceria",
+                "slug": "pasticceria",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "172",
+                "title": "Pizzeria",
+                "slug": "pizzeria",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "173",
+                "title": "Rosticceria",
+                "slug": "rosticceria",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "174",
+                "title": "Birreria-pub",
+                "slug": "birreria-pub",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "175",
+                "title": "Cocktail bar",
+                "slug": "cocktail-bar",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "176",
+                "title": "Paninoteca",
+                "slug": "paninoteca",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "183",
+                "title": "Discoteca - night club",
+                "slug": "discoteca-night-club",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "184",
+                "title": "Panificio",
+                "slug": "panificio",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "185",
+                "title": "Pastificio",
+                "slug": "pastificio",
+                "media_url": [],
+                "children": []
+            },
+            {
+                "id": "186",
+                "title": "Pescheria",
+                "slug": "pescheria",
+                "media_url": [],
+                "children": []
+            }
+        ]
+}

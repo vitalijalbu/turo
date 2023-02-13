@@ -70,11 +70,11 @@ const Page = () => {
       )}
       <div className="page">
         <div className="page-content pt-0">
-          <section className="py-0 pt-sm-5">
-            <div className="container position-relative">
+          <section className="py-0 pt-sm-5 bg-light">
+            <Container>
               {/* p and button START */}
-              <div className="row mb-5">
-                <div className="col-12">
+              <Row>
+                <Col>
                   <Breadcrumb>
                     <BreadcrumbItem>
                       <Link href="/">Home</Link>
@@ -85,13 +85,13 @@ const Page = () => {
                     <BreadcrumbItem active>{entry?.title}</BreadcrumbItem>
                   </Breadcrumb>
                   {/* Meta */}
-                  <div className="d-lg-flex justify-content-lg-between mb-1">
+                  <div className="d-lg-flex justify-content-lg-between mb-3">
                     {/* p */}
                     <div className="mb-2 mb-lg-0">
                       <h1 className="fs-2">{entry?.title}</h1>
                       {/* Location */}
                       <p className="fw-bold mb-0">{entry?.location?.address}</p>
-                      <Link href="#location" className="d-block">
+                      <Link href="#location" className="text-primary d-block">
                         <IconMapPin />
                         Vedi sulla mappa
                       </Link>
@@ -112,17 +112,17 @@ const Page = () => {
                       </li>
                     </ul>
                   </div>
-                </div>
-              </div>
-              {/* p and button END */}
-            </div>
-          </section>
-
-          <Container>
-            <section id="listing-gallery" className="mb-4">
+                </Col>
+              </Row>
+              <Row>
+            <div id="listing-gallery" className="mb-4">
               <Gallery />
+            </div>
+            </Row>
+            </Container>
             </section>
-
+            <section className="mt-3">
+            <Container>
             <Row>
               <Col md={7} className="gap-5">
                 <section
@@ -384,9 +384,9 @@ const Page = () => {
                         alt=""
                       />
                       <h5>{entry?.author?.fullName}</h5>
-                    </CardBody>
-                    <CardBody>
-                      <div className="d-block mb-1">
+                      <span>{`Data creazione ${entry?.postDate}`}</span>
+                      <hr/>
+                      <div className="d-block mb-2">
                         <Button block color="dark" onClick={toggleContactPopup}>
                           Contatta l'inserzionista
                         </Button>
@@ -404,6 +404,7 @@ const Page = () => {
               </Col>
             </Row>
           </Container>
+          </section>
         </div>
         <RelatedListings entries={related_entries} />
       </div>

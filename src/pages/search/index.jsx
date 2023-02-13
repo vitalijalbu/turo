@@ -12,19 +12,17 @@ import {
   DropdownItem,
   DropdownToggle,
   DropdownMenu,
-  Dropdown,
+  Dropdown
 } from "reactstrap";
-import FiltersDrawer from "@/shared/search/filters-drawer";
 import PopupMap from "@/shared/search/popup-map";
 import Filters from "@/shared/search/filters";
 import ListingItem from "@/shared/snippets/listing-item";
 import { IconMap2 } from "@tabler/icons-react";
 
 const Search = () => {
-  const [navOpen, setNavOpen] = useState(false);
+  
   const [mapOpen, setMapOpen] = useState(false);
   /* actions */
-  const openSideNav = () => setNavOpen(!navOpen);
   const toggleMapPopup = () => setMapOpen(!mapOpen);
   const [loading, setLoading] = useState(false);
   const [entries, setEntries] = useState([]);
@@ -42,7 +40,6 @@ const Search = () => {
 
   return (
     <>
-      {navOpen && <FiltersDrawer opened={navOpen} toggle={openSideNav} />}
       {mapOpen && <PopupMap opened={mapOpen} toggle={toggleMapPopup} />}
       <div className="page" id="searchPage">
         <Container>

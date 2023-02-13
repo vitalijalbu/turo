@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Card, Button } from "reactstrap";
+import { Card, Button, Badge } from "reactstrap";
 import Link from "next/link";
-import { IconHeart, IconShare, IconPlus, IconStairs, IconMapPin } from '@tabler/icons-react';
+import { IconArrowAutofitContent, IconHeart, IconShare, IconStairs, IconMapPin } from '@tabler/icons-react';
 import ListingSwiper from "./listing-swiper";
 
 
@@ -26,7 +26,7 @@ const ListingItem = ({ data }) => {
         <div className="card-body py-md-2 d-flex flex-column h-100 position-relative">
         <div className="d-flex justify-content-between align-items-center">
           {/* Rating and buttons */}
-          <Link href={`/search?city=${data.location.parts ? data.location.parts.city : null}`} className="mb-2">
+          <Link href={`/search?city=${data.location.parts ? data.location.parts.city : null}`} className="mb-2 text-primary">
           <span>
             <IconMapPin/> {data.location ? data.location.parts.city : null}
           </span>
@@ -34,11 +34,11 @@ const ListingItem = ({ data }) => {
           <ul className="list-inline mb-0 z-index-2">
               {/* Heart icon */}
               <li className="list-inline-item">
-              <Button outline><IconHeart size={16} onClick={() => addToFavorite()}/></Button>
+              <Button outline><IconHeart onClick={() => addToFavorite()}/></Button>
               </li>
               {/* Share icon */}
               <li className="list-inline-item dropdown">
-              <Button outline><IconShare size={16} /></Button>
+              <Button outline><IconShare /></Button>
               </li>
             </ul>
             </div>
@@ -46,25 +46,30 @@ const ListingItem = ({ data }) => {
           <h5 className="card-title d-block">
           <Link href={`/listings/${data.id}`}>{data.title}</Link>
           </h5>
-
-          
-
-          
+          {data.category.length > 0 ? (<div><span className="badge rounded-pill text-bg-primary">{data.category[0].title}</span></div>) : null}
           {/* Amenities */}
-          <ul className="list-group-flush mb-0 mt-2">
-            <li className="list-group-item d-flex py-1">
-              <IconStairs/>
-              {data.total_floors}
+          <ul className="d-flex list-unstyled my-3">
+            <li className="me-3">
+            <span>Locali</span> 
+              <span className="fw-bold d-block">{data.totalRooms ? data.totalRooms : '-'}</span>
             </li>
-            <li className="list-group-item d-flex py-1">
-            <IconStairs/>
-              Free Breakfast
+            <li className="me-3">
+            <span>Mq</span> 
+              <span className="fw-bold d-block">{data.superficieTotale ? `${data.superficieTotale} mq` : '-'}</span>
+            </li>
+            <li className="me-3">
+              <span>Anno costruzione</span>
+            <span className="fw-bold d-block">{data.yearConstruction ? data.yearConstruction  : '-'}</span>
+            </li>
+            <li className="me-3">
+                <span>Stato</span>
+              <span className="fw-bold d-block">{data.property_status ? data.property_status : '-'}</span>
             </li> 
-            <li className="list-group-item d-flex py-1">
-            {`Anno costruzione ${data?.year_construction}`}
-            </li>
           </ul>
           {/* Price and Button */}
+          <div>
+            <hr />
+         
           <div className="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
             {/* Button */}
 
@@ -84,6 +89,7 @@ const ListingItem = ({ data }) => {
             <div className="d-flex align-items-center text-primary">
               <h5 className="fw-bold mb-0 me-1">{data.pricing ? data.pricing : "Trattativa riservata"}</h5>
             </div> 
+          </div>
           </div>
         </div>
       </div>
