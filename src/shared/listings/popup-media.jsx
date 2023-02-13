@@ -1,60 +1,57 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Modal, ModalBody, ModalHeader, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from "reactstrap";
 import TabPhotos from './TabPhotos';
 import TabPlanimetry from './TabPlanimetry';
 import TabTour from './TabTour';
 import TabVideo from './TabVideo';
 
-const PopupMedia = ({ opened, toggle, data, props }) => {
+const PopupMedia = ({ opened, toggle, data, props, tab }) => {
+  const [activeTab, setActiveTab] = useState('photos');
+  
+  const toggleTab = (value) => { 
+    //console.log('tabs', value)
+    if (activeTab !== value) {
+      setActiveTab(value);
+      console.log('tabs', activeTab)
+    }
+  }
 
   return (
     <Modal
     centered
-    size="xl"
+    fullscreen
     fade={false}
     toggle={toggle}
     isOpen={opened}
 
   >
-    <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+    <ModalHeader toggle={toggle}>Media annuncio</ModalHeader>
       <ModalBody>
-      <Nav tabs>
-      <NavItem value="photos">Foto</NavItem>
-        <NavItem value="planimetry">Pianimetria</NavItem>
-        <NavItem value="video">Video</NavItem>
-        <NavItem value="tour">Virtual Tour</NavItem>
-          <NavItem>
-            <NavLink
-              onClick={() => { this.toggle('1'); }}
-            >
-              Tab1
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              onClick={() => { this.toggle('2'); }}
-            >
-              Moar Tabs
-            </NavLink>
-          </NavItem>
+      <Nav justified pills tabs className='py-2'>
+        <NavItem><NavLink value="photos" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'photos'}>Foto </NavLink></NavItem>
+        <NavItem><NavLink value="planimetry" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'planimetry'}>Pianimetria </NavLink></NavItem>
+        <NavItem><NavLink value="video" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'video'}>Video </NavLink></NavItem>
+        <NavItem><NavLink value="tour" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'tour'}>Virtual Tour </NavLink></NavItem>
         </Nav>
-      <TabContent activeTab="1">
-      <TabPane value="photos" pt="xs">
+        <div className="tabs-modal py-4">
+      <TabContent activeTab={activeTab}>
+      <TabPane tabId="photos">
        <TabPhotos/>
       </TabPane>
 
-      <TabPane value="planimetry" pt="xs">
+      <TabPane tabId="planimetry">
       <TabPlanimetry/>
       </TabPane>  
-      <TabPane value="video" pt="xs">
+      <TabPane tabId="video">
        <TabVideo/>
       </TabPane>
 
-      <TabPane value="tour" pt="xs">
+      <TabPane tabId="tour">
      <TabTour/>
       </TabPane>
 
   </TabContent>
+  </div>
     </ModalBody>
   </Modal>
   );

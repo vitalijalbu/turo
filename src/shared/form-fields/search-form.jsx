@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Card, Button, ButtonDropdownProps, ButtonGroup } from "reactstrap"
+import { Card, CardBody, Button, ButtonDropdownProps, ButtonGroup } from "reactstrap"
 import AddressField from "./address-field";
 import TypeDropdown from "./type-dropdown";
 const SearchForm = () => { 
@@ -7,7 +7,8 @@ const SearchForm = () => {
 
   return (
     <Card>
-      <form className="row g-4 align-items-center">
+    <CardBody>
+      <form className="row align-items-center">
         <div className="col-xl-10">
           <div className="row g-4">
             {/* Pickup */}
@@ -47,12 +48,13 @@ const SearchForm = () => {
             </div>
           </div>
         </div>
-        <div className="col-xl-2 d-grid mt-xl-auto">
-          <Button type="submit" color="primary">
+        <div className="col-xl-2">
+          <Button type="submit" color="primary" block>
             Cerca
           </Button>
         </div>
       </form>
+  </CardBody>
   </Card>
   )
 }

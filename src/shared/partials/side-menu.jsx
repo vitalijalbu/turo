@@ -11,49 +11,75 @@ import {
   AccordionHeader,
   AccordionBody,
   ListGroup,
+  NavItem,
   ListGroupItem,
 } from "reactstrap";
 
+const Navigation = [
+  {
+    id: 'Generale',
+    title: 'Generale',
+    links: [
+      {
+        label: 'Home',
+        url: '/'
+      },      
+      {
+        label: 'Cerca',
+        url: '/search'
+      },
+      {
+        label: 'Su di noi',
+        url: '/about'
+      },
+      {
+        label: 'Aiuto?',
+        url: '/help'
+      },
+      {
+        label: 'Crea un annuncio',
+        url: '/hosting/details',
+        icon: 'plus_circle'
+      }
+    ],
+  },
+  {
+    id: 'hosting',
+    title: 'Hosting',
+    links: [
+      {
+        label: 'Il mio account',
+        url: '/account',
+        icon: 'person_crop_circle'
+      }, 
+      {
+        label: 'Preferiti',
+        url: '/account/favorites',
+        icon: 'heart'
+      },
+      {
+        label: 'I miei avvisi',
+        url: '/account/alerts',
+        icon: 'bell'
+      }, 
+      {
+        label: 'Gestisci gli annunci',
+        url: '/account/listings',
+        icon: 'list_bullet_below_rectangle'
+      },
+      {
+        label: 'Impostazioni',
+        url: '/settings/account',
+        icon: 'gear_alt'
+      }
+    ],
+  }
+];
+
 const SideMenu = ({ opened, toggle }) => {
+  const router = useRouter();
+  const { pathname } = router.query;
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(false);
-  const [open, setOpen] = useState("");
-  const toggleMenu = (id) => {
-    if (open === id) {
-      setOpen();
-    } else {
-      setOpen(id);
-    }
-  }
-
-  const FOCUS_QUERY = `query{
-    categories(group: "news", show_in_menu:true) {
-      id
-      title
-      slug
-    }
-  }
-  `;
-
-
-
-
-async function getData() {
-  try {
-    const response = await graphQLClient.request(FOCUS_QUERY);
-    if (response) {
-      setData(response);
-    }
-  } catch (err) {
-    console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
-  } finally {
-    setLoading(false);
-  }
-}
-
-useEffect(() => {
-  getData();
-}, []);
 
 
 
@@ -62,9 +88,22 @@ useEffect(() => {
       <Offcanvas isOpen={opened} toggle={toggle}>
         <OffcanvasHeader toggle={toggle}>Menu</OffcanvasHeader>
         <OffcanvasBody>
-        <span class="MainMenuVertical_mainTitle__n5xMf">Sezioni</span>
+        {Navigation.map((link, l) =>
+                link.external === true ? (
+                  <Link href={link.url} passHref>
+                    <NavItem component="a" label={link.label} active={pathname === link.slug} />
+                  </Link>
+                ) : link.action ? (
+                  <Link href={link.url} passHref>
+                  <NavItem component="a" label={link.label} active={pathname === link.slug} />
+                </Link>
+                ) : (
+                  <Link href={link.url} passHref>
+                  <NavItem component="a" label={link.label} active={pathname === link.slug} />
+                </Link>
+                )
+              )}
           <Accordion flush open={open} toggle={toggleMenu}>
-          {data?.categories?.map((topic, i) => (
             <AccordionItem key={i}>
               <AccordionHeader targetId={topic.id}>{topic.title}</AccordionHeader>
               <AccordionBody accordionId={topic.id}>
@@ -87,7 +126,7 @@ useEffect(() => {
                 </ListGroup>
               </AccordionBody>
             </AccordionItem> 
-            ))}
+
           </Accordion>
         </OffcanvasBody>
         <OffcanvasBody>

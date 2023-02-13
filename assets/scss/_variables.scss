@@ -4,7 +4,9 @@ $headings-font-family: 'Work Sans', sans-serif;
 $font-family-sans-serif: 'Work Sans', sans-serif;
 
 $card-border-radius: 8px;
-
+$dropdown-min-width: 14rem;
+// Vertical base space
+$v-gap: 8px !default;
 
 $swiper-navigation-size: 20px;
 $swiper-theme-color: #121212;
@@ -29,6 +31,24 @@ $form-fs-lg: 1.2rem;
 $form-fs-md: 1rem;
 $form-fs-sm: 0.875rem;
 
+// Modal
+$modal-sm:                          300px;
+$modal-md:                          630px;
+$modal-lg:                          1000px;
+$modal-xl:                          1140px;
+$modal-transition:                  translate3d(0,0,0);
+$modal-fade-transform:             translate3d(0,0vh,0);
 // Body Line Height
 $body-line-height: 1.6em;
 
+// Gridlist **************
+$grid-item-df-proportion: 66.81222707423581%;
+$grid-item-df-double-proportion: 33.4061135371179%;
+$grid-item-text-size: 1rem;
+$grid-item-text-size-mob: 0.8rem;
+$grid-list-default-gap: 2px;
+$grid-list-text-gap: $v-gap;
+$grid-item-sm-col: 50%;
+$grid-item-lg-col: 33.333333%;
+$grid-item-icon-mob-size: 24px;
+$grid-item-icon-size-desk: 32px;

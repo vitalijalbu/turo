@@ -9,6 +9,7 @@ const Favorites = () => {
   return (
     <div className="page pt-0">
       <PageHead title={"Preferiti"}/>
+      <div className="page-content">
       <Container>
 <Row>
 {Array.isArray(Entries.data.entries) ? (
@@ -24,6 +25,7 @@ const Favorites = () => {
 )}
 </Row>
 </Container>
+</div>
 </div>
   );
 };

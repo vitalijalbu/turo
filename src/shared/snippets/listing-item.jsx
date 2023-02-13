@@ -26,9 +26,9 @@ const ListingItem = ({ data }) => {
         <div className="card-body py-md-2 d-flex flex-column h-100 position-relative">
         <div className="d-flex justify-content-between align-items-center">
           {/* Rating and buttons */}
-          <Link href={`/search?city=${data.location?.parts.city}`} className="mb-2">
+          <Link href={`/search?city=${data.location.parts ? data.location.parts.city : null}`} className="mb-2">
           <span>
-            <IconMapPin/> {data.location?.parts.city}
+            <IconMapPin/> {data.location ? data.location.parts.city : null}
           </span>
           </Link>
           <ul className="list-inline mb-0 z-index-2">

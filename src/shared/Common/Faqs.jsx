@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import Link from 'next/link';
 import { Container, Button, Row, Col, UncontrolledAccordion, AccordionItem, AccordionHeader, AccordionBody } from 'reactstrap';
-import faqList from '@/data/faqs.json';
 import { IconArrowUpRight } from '@tabler/icons-react';;
 
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Row, Col, Button, Form, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Row, Col, Button, Form, FormGroup, Label, FormText, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
 
@@ -7,35 +7,85 @@ const PopupContact = ({ opened, onSubmit, toggle, data }) => {
 
 
   return (
-    <Modal isOpen={opened} toggle={toggle} centered={true} fade={false}>
+    <Modal size="md" isOpen={opened} toggle={toggle} centered={true}>
     <ModalHeader
       toggle={toggle}
     >
       {'Contatta l\'intersezionista'}
     </ModalHeader>
-    <Form onValidSubmit={onSubmit} model={data || {}}>
-      <ModalBody>
-        <Row>
-          <Col>
-            <Input name="first_name" label="Nome" required />
-          </Col>
-          <Col>
-            <Input name="last_name" label="Cognome" />
-          </Col>
-        </Row>
-        <Input name="email" label="Indirizzo email" type="email" />
-        <Input name="phone_number" label="Telefono" />
-        <Input name="notes" label="Note (facoltativo)" type="textarea" />
-      </ModalBody>
-      <ModalFooter>
-        <Button color="light" onClick={toggle}>
-          Chiudi
-        </Button>
-        <Button color="primary" type="submit">
-          Salva
-        </Button>
-      </ModalFooter>
-    </Form>
+    <ModalBody>
+    <Form>
+  <FormGroup>
+    <Label for="exampleEmail">
+      Email
+    </Label>
+    <Input
+      id="exampleEmail"
+      name="email"
+      placeholder="with a placeholder"
+      type="email"
+    />
+  </FormGroup>
+  <FormGroup>
+    <Label for="examplePassword">
+      Password
+    </Label>
+    <Input
+      id="examplePassword"
+      name="password"
+      placeholder="password placeholder"
+      type="password"
+    />
+  </FormGroup>
+  <FormGroup>
+    <Label for="exampleSelect">
+      Select
+    </Label>
+    <Input
+      id="exampleSelect"
+      name="select"
+      type="select"
+    >
+      <option>
+        1
+      </option>
+      <option>
+        2
+      </option>
+      <option>
+        3
+      </option>
+      <option>
+        4
+      </option>
+      <option>
+        5
+      </option>
+    </Input>
+  </FormGroup>
+  <FormGroup>
+    <Label for="exampleText">
+      Text Area
+    </Label>
+    <Input
+      id="exampleText"
+      name="text"
+      type="textarea"
+    />
+  </FormGroup>
+
+  <FormGroup check>
+    <Input type="checkbox" />
+    {' '}
+    <Label check>
+      Check me out
+    </Label>
+  </FormGroup>
+  <Button>
+    Submit
+  </Button>
+</Form>
+  </ModalBody>
   </Modal>
   );
 };

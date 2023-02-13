@@ -36,7 +36,7 @@ const PopupConfirm = ({
     <Modal
       isOpen
       centered
-      size={size}
+      size="sm"
       fade={false}
       toggle={() => onClose(false)}
       className={`confirm-modal ${className}`}
@@ -62,8 +62,7 @@ PopupConfirm.defaultProps = {
   confirmColor: 'primary',
   cancelColor: 'light',
   className: '',
-  buttonsComponent: null,
-  size: 'sm',
+  buttonsComponent: null
 };
 
 export default PopupConfirm;
