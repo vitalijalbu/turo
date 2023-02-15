@@ -5,6 +5,7 @@
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
+@import './components/_swiper';
 
 @import './_variables';
 @import "~bootstrap/scss/bootstrap";
@@ -12,13 +13,15 @@
 @import "~bootstrap/scss/functions";
 
 @import './app';
-@import './components/_swiper';
+
+@import './custom/_container';
 @import './custom/_form';
+@import './custom/_button';
 @import './components/_filters';
 @import './components/_map';
 @import './components/_section';
 @import './components/_avatar';
-@import './components/_card';
+@import './custom/_card';
 @import './components/_utilities';
 @import './components/_search-form';
 @import './components/_navbar';

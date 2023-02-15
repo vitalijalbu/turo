@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "value": "daRistrutturare",
+            "label": "Da ristrutturare"
+        }, 
+        {
+            "value": "good",
+            "label": "Buono"
+        },
+        {
+            "value": "excellent",
+            "label": "Ottimo"
+        }, 
+        {
+            "value": "nuovoInCostruzione",
+            "label": "Nuovo / In costruzione"
+        },
+        {
+            "value": "ristrutturato",
+            "label": "Ristrutturato"
+        },
+        {
+            "value": "abitabile",
+            "label": "Abitabile"
+        },
+        {
+            "value": "abitabile",
+            "label": "In costruzione"
+        }
+    ]
+}

@@ -10,7 +10,7 @@ const ListingSwiper = ({ media }) => {
     <Swiper
       navigation={true}
       pagination={{
-        dynamicBullets: true,
+        bullets: true,
       }}
       modules={[Navigation, Pagination]} className="mySwiper">
       {Array.isArray(media) && media.length > 0 ? (

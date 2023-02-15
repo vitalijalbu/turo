@@ -13,7 +13,7 @@ import {
 import { IconArrowUpRight } from "@tabler/icons-react";
 import data from "@/data/faqs.json";
 
-const Help = () => {
+const Faqs = () => {
   return (
     <section className="section-content faqs">
       <Container>
@@ -50,4 +50,4 @@ const Help = () => {
   );
 };
 
-export default Help;
+export default Faqs;

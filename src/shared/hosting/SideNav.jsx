@@ -97,7 +97,7 @@ const SideNav = () => {
     <Box>
     {Navigation.map((nav, i) => (
       <>
-        <Title key={i} order={4}>{nav.title}</h1>
+        <h1 key={i} order={4}>{nav.title}</h1>
             <ul id={nav.id} key={i} noHairlines noHairlinesBetween noChevron>
               {nav.links.map((link, l) =>
                 link.external === true ? (

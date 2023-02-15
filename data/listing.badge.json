@@ -1,0 +1,12 @@
+{
+    "data": [
+        {
+            "value": "prime",
+            "label": "Prime"
+        }, 
+        {
+            "value": "exclusive",
+            "label": "Exclusive"
+        }
+    ]
+}

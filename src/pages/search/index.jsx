@@ -42,20 +42,9 @@ const Search = () => {
     <>
       {mapOpen && <PopupMap opened={mapOpen} toggle={toggleMapPopup} />}
       <div className="page" id="searchPage">
+        <div className="page-content pt-0">
         <Container>
-          <Row>
-            <Col md={12}>
-              <Breadcrumb>
-                <BreadcrumbItem>
-                  <Link href="/">Home</Link>
-                </BreadcrumbItem>
-                <BreadcrumbItem>
-                  <Link href={`/search`} active>
-                    Ricerca
-                  </Link>
-                </BreadcrumbItem>
-              </Breadcrumb>
-            </Col>
+          <Row className="mb-2">
             <Col md={12}>
             <div className="d-flex justify-content-between align-items-center filters-subnav">
               <div className="filters-block flex-grow-1">
@@ -71,8 +60,7 @@ const Search = () => {
             </div>
             </Col>
           </Row>
-          
-          <Row>
+          <Row className="mb-2">
             <Col md={12}>
               <div className="section-head d-flex justify-content-between align-items-center">
                 <div className="section-title flex-grow-1">
@@ -106,6 +94,7 @@ const Search = () => {
             </Col>
           </Row>
         </Container>
+      </div>
       </div>
     </>
   );

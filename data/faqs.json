@@ -1,48 +1,35 @@
-{
-    "data": {
-        "faqs": [{
-                "id": "17",
-                "title": "Demo listing one",
-                "content": "Demo text here"
-            },
-            {
-                "id": "19",
-                "title": "Demo listing twog",
-                "postDate": "2021-12-29T10:10:00-08:00",
-                "dateCreated": "2021-12-29T10:10:00-08:00",
-                "slug": "demo-listing-two",
-                "status": "live",
-                "excerpt": "Demo text here",
-                "author": {
-                    "id": "1",
-                    "fullName": "Super Admin"
-                }
-            },
-            {
-                "id": "21",
-                "title": "Demo listing three",
-                "postDate": "2021-12-29T10:10:00-08:00",
-                "dateCreated": "2021-12-29T10:10:00-08:00",
-                "slug": "demo-listing-three",
-                "status": "live",
-                "excerpt": "Demo text here",
-                "author": {
-                    "id": "1",
-                    "fullName": "Super Admin"
-                }
-            },
-            {
-                "id": "23",
-                "title": "Demo listing four",
-                "postDate": "2021-12-29T10:10:00-08:00",
-                "dateCreated": "2021-12-29T10:10:00-08:00",
-                "slug": "demo-listing-four",
-                "status": "live",
-                "author": {
-                    "id": "1",
-                    "fullName": "Super Admin"
-                }
-            }
-        ]
-    }
-}
+
+    [
+        {
+        "title": "Come registrarsi sul portale?",
+        "content": "<p>Per registrarsi sul portale cliccare in alto a destra della home page del portale sulla voce accedi"
+        },
+        {
+        "title": "Come accedere al portale se sei già registrato?",
+        "content": "Per accedere al portale se siete già registrati occorrerà cliccare su “ accedi” in alto a destra della home page del portale e vi basterà inserire la email e la password che avete usato per registrarvi e cliccare infine su “accedi”."
+        },
+        {
+        "title": "Come modificare la password?",
+        "content": "Per modificare la password di accesso cliccare in alto a destra della home page del portale sulla voce “accedi”, individuare la voce “ password dimenticata?” una volta cliccato su quest’ultima voce vi basterà inserire la vostra email utilizzata per la registrazione al portale e cliccare su “ recupera password” una volta fatto questo procedimento vi arriverà un email all’indirizzo segnalato che vi permetterà di reimpostare la password."
+        },
+        {
+        "title": "Come inserire un annuncio?",
+        "content": "Prima di tutto sarà necessario entrare con le vostre credenziali, una volta all’interno del vostro profilo individuare la voce in alto a destra “ aggiungi annuncio” dopo di che cliccare su “ crea annuncio” da qui potrete iniziare a inserire le informazioni relative al vostro annuncio seguendo i vari step."
+        },
+        {
+        "title": "Come contattare l’inserzionista?",
+        "content": "Per contattare l’inserzionista dell’annuncio vi basterà entrare all’interno dell’inserzione di vostro interesse e individuare subito sotto le fotografie il campo dedicato ai contatti, una volta cliccato su “contatta” vi basterà inserire il vostro nome e cognome, telefono, indirizzo email e un messaggio di testo in caso di domande o richieste da porre all’inserzionista, cliccare infine su “ invia richiesta”."
+        },
+        {
+        "title": "Come segnalare un annuncio?",
+        "content": "All’interno dell’annuncio sotto la voce “contatti “ troverete il tab “ segnala questo annuncio”, una volta inserita la vostra segnalazione cliccare su “Invia richiesta”."
+        },
+        {
+        "title": "Come cancellare il profilo?",
+        "content": "All’interno del vostro profilo cliccare su “ impostazioni” dopo di che cliccare sul tab “ il mio account” e alla fine della pagina cliccare sul tab “ cancella account”."
+        },
+        {
+        "title": "Come salvare un annuncio?",
+        "content": "Per salvare un annuncio occorrerà aprire l’inserzione di vostro interesse e individuare in alto a destra il tab a forma di cuore denominato"
+        }
+    ]

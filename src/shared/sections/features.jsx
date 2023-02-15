@@ -1,5 +1,5 @@
 import {
-  Container
+  Container, Row, Col
 } from "reactstrap"
 
 export const MOCKDATA = [
@@ -26,7 +26,19 @@ const Features = () => {
   return (
   <section className="section-content features">
     <Container>
-      demo
+      <Row>
+        <Col md={4}>
+  <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+    <div class="features-icons-icon d-flex">
+      <i class="bi-window m-auto text-primary"></i>
+    </div>
+    <h3>Fully Responsive</h3>
+    <p class="lead mb-0">
+      This theme will look great on any device, no matter the size!
+    </p>
+  </div>
+        </Col>
+        </Row>
     </Container>
     </section>
   )

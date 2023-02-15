@@ -11,19 +11,7 @@ import {
 } from "reactstrap";
 import SideNav from "@/shared/hosting/SideNav";
 
-const Settings = () => {
-  const form = useForm({
-    initialValues: { name: "", email: "", age: 0 },
-
-    // functions will be used to validate values at corresponding key
-    validate: {
-      name: (value) =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      age: (value) =>
-        value < 18 ? "You must be at least 18 to register" : null,
-    },
-  });
+const Pricing = () => {
 
   return (
     <div className="page" id="searchPage">
@@ -35,7 +23,7 @@ const Settings = () => {
             </div>
           </Col>
           <Col span={9}>
-            <Title large>Impostazioni account</h1>
+            <h1 large>Impostazioni account</h1>
             <Card withBorder>
               <form onSubmit={form.onSubmit(console.log)}>
                 <Card.Section inheritPadding py="md">
@@ -76,4 +64,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Pricing;

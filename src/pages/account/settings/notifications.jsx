@@ -12,7 +12,7 @@ const Settings = () => (
        <div className="medium-only"><SideNav/></div>
       </Col>
       <Col span={9}>
-      <Title large>Notifiche</h1>
+      <h1 large>Notifiche</h1>
       <Paper radius="lg" p="lg" withBorder>
       <p>Paper is the most basic ui component</p>
       <p>

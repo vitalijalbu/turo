@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import LegalTabs from "@/shared/Other/LegalTabs";
+
 import {
   Container,
   Row,
@@ -14,9 +14,9 @@ const Cookies = () => {
   return (
     <div className="page">
       <Container>
-      <LegalTabs/>
+      
         <Row>
-          ciao testo
+          pagine legali
         </Row>
       </Container>
     </div>

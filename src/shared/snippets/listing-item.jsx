@@ -34,11 +34,11 @@ const ListingItem = ({ data }) => {
           <ul className="list-inline mb-0 z-index-2">
               {/* Heart icon */}
               <li className="list-inline-item">
-              <Button outline><IconHeart onClick={() => addToFavorite()}/></Button>
+              <Button color="link"><IconHeart onClick={() => addToFavorite()}/></Button>
               </li>
               {/* Share icon */}
               <li className="list-inline-item dropdown">
-              <Button outline><IconShare /></Button>
+              <Button color="link"><IconShare /></Button>
               </li>
             </ul>
             </div>

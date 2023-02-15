@@ -28,14 +28,15 @@ const Item = ({ data }) => {
             href={"/search?location=" + data?.slug}
             size="sm"
           >
-            <IconMapPin/> {data?.location?.parts?.city}
+            <IconMapPin/> {data.location ? data.location.parts.city : null}
           </span>
           </Link>
+          <h5 className="card-title">
           <Link href={`/listings/${data?.id}`}>
-          <h3>
             {data?.title}
-          </h3>
-        </Link>
+            </Link>
+          </h5>
+        
       
       <div>
         {data?.total_floors ?? (
@@ -52,7 +53,7 @@ const Item = ({ data }) => {
           </div>
         )}
       </div>
-      <span className="text-blue">
+      <span className="color-link">
         {data?.pricing ?? "Trattativa riservata"}
       </span>
       </CardBody>

@@ -12,11 +12,11 @@ const SideNav = () => {
     <div className="user-card-profile">
       <div className="d-flex mb-4">
   <div className="flex-shrink-0">
-    <img src={user.photo? user.photo.url : '/img/placeholder.svg'} className="rounded-circle"/>
+    <img src={'/img/placeholder.svg'} className="rounded-circle"/>
   </div>
   <div className="flex-grow-1 ms-3">
       <h5 class="profile__name d-block">{user.email}</h5>
-				<span class="profile__email d-block">{user.id}</span>
+				<span class="profile__email d-block">ciao</span>
   </div>
 </div>
 

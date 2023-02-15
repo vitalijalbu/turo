@@ -35,7 +35,7 @@ const Settings = () => {
             </div>
           </Col>
           <Col span={9}>
-            <Title large>Impostazioni account</h1>
+            <h1 large>Impostazioni account</h1>
             <Card withBorder>
               <form onSubmit={form.onSubmit(console.log)}>
                 <Card.Section inheritPadding py="md">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Link from "next/link";
 import {
   Container,
   Row,
@@ -9,135 +9,132 @@ import {
   Form,
   FormGroup,
   Label,
-  Input, 
+  Input,
   FormText,
-  Textarea
+  Textarea,
 } from "reactstrap";
-import PageActions from "@/shared/hosting/page-actions";
-import { getAllCategories } from "@/lib/graphql/queries/categories";
+import { useForm } from "react-hook-form";
+import data from "@/data/categories.json";
+import sale from "@/data/listing.sale.json";
+import status from "@/data/listing.status.json";
 
-const Index = () => {
-  const [form, setFormValues] = useState({});
-  console.log("👀 FORM here", form);
-  /* Input change parent state */
-  const handleOnChange = (e) => {
-    setFormValues((prevState) => {
-      return { ...prevState, [e.target.name]: e.target.value };
-    });
+const Create = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
   };
-
 
   return (
     <div className="page">
-    <div className="page-content">
-      <Container>
-        <Row>
-        <Col className="py-2">
-          <h1 className="fs-2 mb-2">Aggiungi nuova proprietà</h1>
-          <p className="mb-0">
-            Iniziamo dalle basi
-          </p>
-        </Col>
+      <div className="page-content">
+        <Container>
+          <Row>
+            <Col className="py-2">
+              <h1 className="fs-2 mb-2">Crea una nuova proprietà</h1>
+              <p className="mb-0">Iniziamo dalle basi</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={7}>
+              <Form onSubmit={handleSubmit(onSubmit)}>
+                <FormGroup>
+                  <Label for="title">Titolo</Label>
+                  <input
+                    id="title"
+                    className={`form-control ${errors.title ? "is-invalid" : ""}`}
+                    {...register("title", { required: true })}
+                  />
+                   {errors.title && (
+                  <div className="invalid-feedback">Name must be required</div>
+                )}
+                </FormGroup>
+                <FormGroup tag="fieldset">
+                  <Label for="status">Tipologia</Label>
+                  {sale.data.map((sale) => (
+                      <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id={sale.value}
+                        {...register("typeSale")}
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor={sale.value}
+                      >
+                        {sale.label}
+                      </label>
+                    </div>
+                      ))}
+                </FormGroup>   
+                <FormGroup>
+                  <Label for="category">Seleziona categoria</Label>
+                  <select
+                    id="category"
+                    className="form-select"
+                    name="select"
+                    type="select"
+                    {...register("category")}
+                  >
+                     {data.categories.map((category) => (
+                      <option value={category.id}>{category.title}</option>
+                      ))}
+                  </select>
+                </FormGroup>
+                <FormGroup>
+                  <Label for="body">Descrizione</Label>
+                  <textarea
+                    id="body"
+                    name="body"
+                    className="form-control"
+                    rows="10"
+                    {...register("body")}
+                  />
+                </FormGroup>
+                <FormGroup tag="fieldset">
+                  <Label for="status">Stato</Label>
+                  {status.data.map((status) => (
+                      <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id={status.value}
+                        {...register("typeSale")}
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor={status.value}
+                      >
+                        {status.label}
+                      </label>
+                    </div>
+                      ))}
+                </FormGroup>  
+                <FormGroup>
+                  <Row>
+                    <Col md={12}>
+                      <hr />
 
-        </Row>
-        <Row>
-           <Col md={7}>
-           <Form>
-  <FormGroup>
-    <Label for="exampleEmail">
-      Titolo
-    </Label>
-    <Input
-      id="exampleEmail"
-      name="title"
-      type="title"
-    />
-  </FormGroup>
-  <FormGroup>
-    <Label for="exampleSelect">
-      Seleziona categoria
-    </Label>
-    <Input
-      id="exampleSelect"
-      name="select"
-      type="select"
-    >
-      <option>
-        1
-      </option>
-      <option>
-        2
-      </option>
-      <option>
-        3
-      </option>
-      <option>
-        4
-      </option>
-      <option>
-        5
-      </option>
-    </Input>
-  </FormGroup>
-  <FormGroup>
-    <Label for="excerpt">
-      Descrizione
-    </Label>
-    <Input
-      id="excerpt"
-      name="excerpt"
-      type="textarea"
-      rows="10"
-    />
-  </FormGroup>
-  <FormGroup tag="fieldset">
-  <Label for="status">
-  Stato
-    </Label>
-    <FormGroup check>
-      <Input
-        name="status"
-        type="radio"
-      />
-     
-      <Label check>
-        Ristrutturato
-      </Label>
-    </FormGroup>
-    <FormGroup check>
-      <Input
-        name="status"
-        type="radio"
-      />
-     
-      <Label check>
-        Ottimo
-      </Label>
-    </FormGroup>
-    <FormGroup
-      check
-      disabled
-    >
-      <Input
-        name="status"
-        type="radio"
-      />
-     
-      <Label check>
-        Da ristrutturare
-      </Label>
-    </FormGroup>
-  </FormGroup>
-</Form>
-            </Col> 
-        </Row>
-      </Container>
-      <PageActions
-        nextUrl={"/hosting/100/media"}
-      />
-    </div>
+                      <Button color="primary" type="submit">
+                        Continua
+                      </Button>
+                    </Col>
+                  </Row>
+                </FormGroup>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 };
 
-export default Index;
+export default Create;

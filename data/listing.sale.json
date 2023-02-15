@@ -1,0 +1,16 @@
+{
+        "data": [
+            {
+                "value": "sale",
+                "label": "Vendita"
+            }, 
+            {
+                "value": "rent",
+                "label": "Affitto"
+            }, 
+            {
+                "value": "auction",
+                "label": "Asta"
+            }
+        ]
+}

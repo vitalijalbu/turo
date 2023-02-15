@@ -7,21 +7,11 @@ import {
   CustomInput,
   FormGroup,
 } from 'reactstrap';
-import { getAllCategories } from '@/lib/graphql/queries/categories';
+import data from "@/data/categories.json";
 
 const TypeDropdown = ({ onChange, label, value = [] }) => {
   const [options, setOptions] = useState([]);
 
-  console.log('options-222', options)
-
-  useEffect(() => {
-    getAllCategories().then(({data}) => {
-      setOptions(data?.categories || []);
-      console.log('data?.categories', data?.categories)
-    }).catch((error) => {
-      console.log(error);
-    });
-  }, []);
 
   const handleChange = (id) => {
     onChange('categories', value.includes(id) ? value.filter((i) => i !== id) : [...value, id]);
@@ -49,17 +39,20 @@ const TypeDropdown = ({ onChange, label, value = [] }) => {
           <span>{titles || 'Seleziona'}</span>
         </DropdownToggle>
         <DropdownMenu>
-          {options.map((item) => (
-            <div className="dropdown-item" key={item.id}>
-              <CustomInput
-                type="checkbox"
-                id={`category_${item.id}`}
-                label={item.title}
-                onChange={() => handleChange(item.id)}
-                checked={value.includes(item.id)}
-              />
-            </div>
-          ))}
+        <FormGroup>
+                  <Label for="category">Seleziona categoria</Label>
+                  <select
+                    id="category"
+                    className="form-select"
+                    name="select"
+                    type="select"
+
+                  >
+                     {data.categories.map((category) => (
+                      <option value={category.id}>{category.title}</option>
+                      ))}
+                  </select>
+                </FormGroup>
         </DropdownMenu>
       </Dropdown>
     </FormGroup>

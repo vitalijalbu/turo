@@ -10,7 +10,11 @@ import {
   CardBody
 } from "reactstrap";
 import {
-  IconPlus,
+  IconPhone,
+  IconMail,
+  IconBuildingEstate,
+  IconDiscountCheck,
+  IconWorldWww
 } from "@tabler/icons-react";
 import { useRouter } from "next/router";
 import { getHostDetails } from "@/lib/graphql/queries/hosts";
@@ -47,7 +51,7 @@ const View = () => {
     <div className="page-content">
       <Container>
         <Row>
-          <Col md={3}>
+          <Col md={4}>
             <Card shadow="sm" withBorder p="xl">
             <CardBody className="text-center mb-3">
               {/* Avatar */}
@@ -59,21 +63,38 @@ const View = () => {
                 />
               </div>
               <h6 className="mb-0">{user?.fullName}</h6>
-              <span>{`Data creazione ${user?.dateCreated}`}</span>
+              <span>{`Membro da ${user?.dateCreated}`}</span>
+              <ul className="list-unstyled">
+                <li><IconDiscountCheck/> Identità verificata</li>
+              </ul>
                       <hr/>
                       <div className="d-block">
                         <Button block color="dark" onClick={toggleContactPopup}>
-                          Contatta l'inserzionista
+                          Contatta l'agenzia
                         </Button>
                       </div>
                         </CardBody>
             </Card>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
+            <section className="section-content mt-0 mb-5">
             <div className="section-head">
-              <h1 className="page-title">Annunci</h1>
+              <h2 className="page-title">Informazioni</h2>
             </div>
-            <HostListings user={listings}/>
+            <div>
+              <ul className="list-unstyled">
+                <li className="list-item mb-2"><IconPhone/> + 12435</li>
+                <li className="list-item mb-2"><IconMail/> + 12435</li>
+                <li><IconWorldWww/> + 12435</li>
+              </ul>
+            </div>
+            </section>
+            <section className="section-content">
+            <div className="section-head">
+              <h2 className="page-title">Annunci pubblicati</h2>
+            </div>
+            <HostListings data={listings}/>
+            </section>
           </Col>
         </Row>
       </Container>

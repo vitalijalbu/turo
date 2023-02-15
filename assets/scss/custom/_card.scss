@@ -1,20 +1,17 @@
-// 
-// card.scss
-// Extended from Bootstrap
-//
+.card-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-// 
-// Additional styles for theme
-// 
-
-// Quick fix for border radius issue in safari
 .card.overflow-hidden, .tiny-slider.overflow-hidden{
     will-change: transform;
   }
   
   .card-header-title{
     margin-bottom: 0;
-  }
+  } 
+
   
   // Card image overlay z index
   .card{

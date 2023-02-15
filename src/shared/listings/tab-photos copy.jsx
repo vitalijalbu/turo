@@ -27,8 +27,7 @@ const TabPhotos = ({ media }) => {
           </figure>
         </div>
       </SwiperSlide>
-    ))
-    }</>) : (
+    ))}</>) : (
       <SwiperSlide className="img-responsive-wrapper" key={1}>
       <div className="img-responsive">
       <figure className="img-wrapper">

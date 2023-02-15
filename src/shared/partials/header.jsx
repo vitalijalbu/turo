@@ -4,10 +4,10 @@ import { UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu, Butto
 import SideMenu from "./side-menu";
 import SearchOverlay from "./search-overlay";
 import {
-  IconHaze,
   IconMessage2,
   IconListDetails , IconHeart, IconSettings, IconUserCircle,
-  IconSearch,
+  IconBuildingEstate,
+  IconPlus
 } from "@tabler/icons-react";
 import confirm from '@/shared/components/confirm/';
 import { getSession, removeSession } from "@/lib/graphql/client";
@@ -47,7 +47,7 @@ const Header = () => {
       {navOpen && <SideMenu opened={navOpen} toggle={openSideNav} />}
       <div id="site-header" className="app-header">
         <div className="container">
-          <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2">
+          <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
           <Link
               href="/"
               className="d-flex align-items-center mb-2 mb-md-0"
@@ -67,17 +67,20 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <Link href="/requests" className="nav-link px-2 link-dark">
-                Lascia la tua richiesta
+                Cosa stai cercando?
                 </Link>
               </li>
-
             </ul>
             <ul className="nav">
+            <li className="nav-item">
+                  <Link href="/hosting/create" className="btn btn-primary"><IconPlus size={20}/> Pubblica annuncio</Link>
+              </li>
             {session ? (
               <>
             <li className="nav-item">
                   <Link href="/account/favorites" className="nav-link"><IconHeart size={20}/> Preferiti</Link>
-              </li>     
+              </li>  
+     
               <li className="ps-3 border-start nav-item">
            <UncontrolledDropdown>
               <DropdownToggle nav caret className="p-0">
@@ -88,16 +91,24 @@ const Header = () => {
     /> {session.user.fullName}
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem tag="a">
-                <Link href="/account"><IconUserCircle size={20}/>Il mio acount</Link>
+                <DropdownItem>
+                <Link href="/account"><IconUserCircle size={20}/> Il mio acount</Link>
               </DropdownItem>
-              <DropdownItem tag="a">
+             
+              <DropdownItem>
                 <Link href="/account/listings"><IconListDetails size={20}/> I miei annunci</Link>
+              </DropdownItem>            
+              <DropdownItem>
+                <Link href="/hosting/create"><IconPlus size={20}/> Pubblica annuncio</Link>
               </DropdownItem>              
-              <DropdownItem tag="a">
+              <DropdownItem>
                 <Link href="/account/requests"><IconMessage2 size={20}/> Richieste</Link>
               </DropdownItem>
-              <DropdownItem tag="a" className="mt-2">
+              <DropdownItem divider />
+              <DropdownItem>
+                <Link href={`/hosts/${session.user.id}`}><IconBuildingEstate size={20}/> Profilo pubblico</Link>
+              </DropdownItem>
+              <DropdownItem className="mt-2">
                 <Link href="/account/settings"><IconSettings size={20}/> Impostazioni</Link>
               </DropdownItem>
                 <DropdownItem divider />

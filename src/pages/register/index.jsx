@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Container, Row, Col, Button, Input, FormGroup } from "reactstrap";
-import IconGoogle from "@/shared/common/IconGoogle";
-import IconFacebook from "@/shared/components/IconFacebook";
 import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {
@@ -25,11 +23,11 @@ const Index = () => {
               {/* Google and facebook button */}
               <div className="vstack gap-3">
                 <Button outline>
-                  <IconGoogle />
+             
                   Accedi con Google
                 </Button>
                 <Button outline>
-                  <IconFacebook />
+              
                   Accedi con Facebook
                 </Button>
               </div>

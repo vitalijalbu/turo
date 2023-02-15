@@ -7,7 +7,7 @@ import {
   Button,   
   Row, Col } from 'reactstrap';
 
-const Contacts = () => {
+const Requests = () => {
   return (
     
    <div className="page">
@@ -190,4 +190,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default Requests;

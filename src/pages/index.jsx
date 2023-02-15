@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SearchForm from "@/shared/form-fields/search-form";
-import Faqs from "@/shared/Common/faqs";
+import Faqs from "@/shared/sections/faqs";
 import SpotlightListings from "@/shared/sections/listings-spotlight";
 import ListingTypes from "@/shared/sections/listing-types";
+import Features from "@/shared/sections/features";
 //import LocationsLinks from "@/shared/common/LocationsLinks";
 import PromoBanner from "@/shared/snippets/hero-banner";
 import { Container, Row } from "reactstrap";
@@ -43,6 +44,7 @@ const Home = () => {
       </section>
       </Container>
      
+      <Features />
       <ListingTypes />
       {/*
        <Features />

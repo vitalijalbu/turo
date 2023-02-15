@@ -30,14 +30,14 @@ const SpotlightListings = () => {
       <Col>
         <div className="section-head d-flex justify-content-between">
             <h1 className="section-title">Annunci in evidenza</h1>
-            <Link href={'/search'}><Button radius={"xl"} rightIcon={<IconArrowRight/>} variant="outline" color="dark">Vedi di più</Button></Link>
+            <Link href={'/search'}><Button radius={"xl"} outline color="dark">Vedi di più <IconArrowRight/></Button></Link>
           </div>
           </Col>
           </Row>
         <Row>
           {entries.map((item) => (
             <Col md={6} lg={3} xs={6} key={item.id}>
-              <ItemCard entries={item}/>
+              <ItemCard data={item}/>
             </Col>
           ))}
         </Row>
