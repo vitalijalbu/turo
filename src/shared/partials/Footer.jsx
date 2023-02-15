@@ -6,6 +6,36 @@ import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin, IconBrandTwit
 
 const Navigation = [
   {
+    id: "general",
+    title: "Generale",
+    links: [
+      {
+        label: "Home",
+        url: "/",
+      },       
+      {
+        label: "Resthotels",
+        url: "/about",
+      }, 
+      {
+        label: "Ricerca",
+        url: "/search",
+      },
+      {
+        label: "Agenzie",
+        url: "/hosts",
+      },
+      {
+        label: "Piani e prezzi",
+        url: "/pricing",
+      },
+      {
+        label: "Cosa stai cercando?",
+        url: "/requests",
+      },
+    ],
+  },
+  {
     id: "utils",
     title: "Link utili",
     links: [
@@ -28,28 +58,6 @@ const Navigation = [
         exact: false,
         label: "Pubblicità",
         url: "/contacts",
-      },
-    ],
-  },
-  {
-    id: "general",
-    title: "Generale",
-    links: [
-      {
-        label: "Cerca",
-        url: "/search",
-      },
-      {
-        label: "Agenzie",
-        url: "/hosts",
-      },
-      {
-        label: "Piani e prezzi",
-        url: "/pricing",
-      },
-      {
-        label: "Blog",
-        url: "/blog",
       },
     ],
   },
@@ -83,20 +91,7 @@ const Footer = () => {
           <img src="/img/logo.svg" className="site-logo"/>
         </Link>
         <p className="my-3 text-muted">
-          Departure defective arranging rapturous did believe him all had
-          supported.
-        </p>
-        <p className="mb-2">
-          <a href="#" className="text-muted text-primary-hover">
-            <i className="bi bi-telephone me-2" />
-            +1234 568 963
-          </a>
-        </p>
-        <p className="mb-0">
-          <a href="#" className="text-muted text-primary-hover">
-            <i className="bi bi-envelope me-2" />
-            example@gmail.com
-          </a>
+        La piattaforma immobiliare per ristoranti e hotel.
         </p>
       </div>
       {/* Widget 1 END */}
@@ -138,7 +133,6 @@ const Footer = () => {
     <div className="row g-4 justify-content-between mt-0 mt-md-2">
       {/* Payment card */}
       <div className="col-sm-7 col-md-6 col-lg-4">
-        <h5 className="mb-2">Payment &amp; Security</h5>
         <ul className="list-inline mb-0 mt-3">
           <li className="list-inline-item">
             

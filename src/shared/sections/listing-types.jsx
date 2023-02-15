@@ -5,24 +5,9 @@ import {
   Col
 } from "reactstrap";
 import Link from "next/link";
-import { getAllCategories } from "@/lib/graphql/queries/categories";
+import data from "@/data/categories.json";
 
 const ListingTypes = () => {
-  const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-      getAllCategories()
-      .then((data) => {
-        setCategories(data?.categories);
-        console.log('🐝 API response CATEGORIES', data)
-      }).catch((error) => {
-        console.log(error);
-      });
-    }, []);
-
-    if (!categories) return <p>Nessun dato</p>;
-    
   return (
     <section className="section-content">
       <Container>
@@ -31,7 +16,7 @@ const ListingTypes = () => {
         </div>
 
         <Row>
-          {categories?.map((category) => (
+          {data.categories.map((category) => (
             <Col md={6} lg={4} xs={6} key={category.id}>
                 <div className="card border rounded-3 overflow-hidden">
                   <div className="row g-0 align-items-center">
@@ -44,7 +29,7 @@ const ListingTypes = () => {
                     </div>
                     <div className="col-sm-6">
                       <div className="card-body px-3">
-                        <h6 className="card-title">
+                        <h6 className="card-text">
                           <Link href={`/search/?category=${category.slug}`} className="stretched-link">
                           {category.title}
                           </Link>

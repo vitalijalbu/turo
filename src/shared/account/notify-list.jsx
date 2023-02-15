@@ -1,6 +1,7 @@
 import React from "react";
 import notifications from "@/data/account.notifications.json"
 import EmptyState from "@/shared/components/empty-state";
+import Link from "next/link";
 
 const NotifyList = () => {
 
@@ -12,13 +13,15 @@ const NotifyList = () => {
     {Array.isArray(notifications) ? (
         <ul className="list-group list-group-flush notify-list">
         {notifications.map((notify, i) => (
-            <li className="list-group-item d-flex justify-content-between align-items-center" key={i}>
-            <div className="flex-shrink-0">
+            <li className="list-group-item d-flex" key={i}>
+            <Link href={notify.url}>
+                <div className="flex-shrink-0">
               <div className="icon">icon</div>
             </div>
             <div className="flex-grow-1 ms-3">
               {notify.title}
             </div>
+            </Link>
           </li>
         ))}
       </ul>

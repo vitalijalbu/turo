@@ -10,7 +10,7 @@ const HeroBanner = (props) => {
     <div
       className="position-relative rounded-3 overflow-hidden p-3 p-sm-5"
       style={{
-        backgroundImage: props.imageUrl,
+        backgroundImage: "https://via.placeholder.com/1280",
         backgroundPosition: "center left",
         backgroundSize: "cover"
       }}

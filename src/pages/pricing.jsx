@@ -14,6 +14,7 @@ import {
 
 const Pricing = () => (
   <div className="page">
+  <div className="page-content">
          <section className="price-wrap pt-4 pt-sm-0">
   <div className="container">
     <div className="row">
@@ -284,6 +285,7 @@ const Pricing = () => (
   </div>
 </section>
 
+  </div>
   </div>
 );
 

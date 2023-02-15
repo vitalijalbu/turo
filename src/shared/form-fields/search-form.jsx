@@ -10,22 +10,22 @@ const SearchForm = () => {
     <CardBody>
       <form className="row align-items-center">
         <div className="col-xl-10">
-          <div className="row g-4">
+          <div className="row">
             {/* Pickup */}
-            <div className="col-md-6 col-xl-4">
+            <div className="col-md-6 col-xl-6">
               <div className="form-size-lg">
                 <AddressField/>
               </div>
             </div>
             {/* Drop */}
-            <div className="col-md-6 col-xl-4">
+            <div className="col-md-3 col-xl-3">
               <div className="form-size-lg">
                 <label className="form-label">Categoria</label>
                 <TypeDropdown/>
               </div>
             </div>
             {/* Time */}
-            <div className="col-md-6 col-xl-2">
+            <div className="col-md-3 col-xl-3">
             <label className="form-label">Tipologia</label>
              <ButtonGroup>
         <Button
