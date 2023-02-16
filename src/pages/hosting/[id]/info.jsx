@@ -16,7 +16,7 @@ import {
 import Toolbar from "@/shared/hosting/toolbar";
 import PageActions from "@/shared/hosting/page-actions";
 
-const Pricing = () => {
+const Info = () => {
   const {
     register,
     handleSubmit,
@@ -35,7 +35,7 @@ const Pricing = () => {
         <Row>
 
         <Col className="py-2">
-          <h1 className="fs-2 mb-2">Prezzi</h1>
+          <h1 className="fs-2 mb-2">Altre informazioni</h1>
           <p className="mb-0">
             Praise effects wish change way and any wanted. Lively use looked latter
             regard had.
@@ -82,4 +82,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default Info;

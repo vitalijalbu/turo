@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
-import graphQLClient from "@/lib/graphql/client";
-import { GET_ALL_HOSTS } from "@/lib/graphql/queries/hosts";
 import HostCard from "@/shared/snippets/host-card";
+import { getAllHosts } from "@/lib/graphql/queries/hosts";
 
-export async function getStaticProps(context) {
-  const data = await graphQLClient.request(GET_ALL_HOSTS);
 
-  return {
-    props: { data },
-  };
-}
-
-const Index = ({ data }) => {
+const Index = () => {
   const [loading, setLoading] = useState(false);
+  const [data, setEntries] = useState([]);
 
-  if (!data) return <p>Nessun dato</p>;
+  useEffect(() => {
+    getAllHosts().then((data) => {
+      setEntries(data?.users || []);
+      console.log('🐝 API response', data)
+    }).catch((error) => {
+      console.log(error);
+    });
+  }, []);
 
   return (
     <div className="page">
@@ -25,7 +25,7 @@ const Index = ({ data }) => {
           <h1 className="section-title">Agenzie</h1>
         </div>
         <Row>
-          {data.users.map((host, i) => (
+          {data.map((host, i) => (
             <Col md={6} lg={2} xs={6}>
               <HostCard data={host} key={i} />
             </Col>

@@ -16,8 +16,16 @@ import { getAllRequests } from "@/lib/graphql/queries/requests";
 import PopupRequest from "@/shared/account/popup-request";
 
 const Index = () => {
+  const [loading, setLoading] = useState(false);
   const [entries, setEntries] = useState([]);
   const [navOpen, setNavOpen] = useState(false);
+  const [archived, setArchived] = useState(false);
+  
+
+  const setTabs = () =>{
+    setArchived(!archived);
+    setLoading(true);
+  }
    /* actions */ 
    const openSideNav = () => setNavOpen(!navOpen);
 
@@ -40,14 +48,14 @@ const Index = () => {
       <Container>
       <Row className="subnav">
             <Col md={12}>
-            <Nav tabs>
+            <Nav pills>
                 <NavItem>
-                  <NavLink href="#" active>
+                  <NavLink href="#" onClick={setTabs} active={archived === false}>
                     Richieste specifiche
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#">Richieste generiche</NavLink>
+                  <NavLink href="#" onClick={setTabs} active={archived === true}>Richieste generiche</NavLink>
                 </NavItem>
               </Nav>
             </Col>
@@ -81,8 +89,8 @@ const Index = () => {
                     <span className="d-block">{`Ultima modifica ${entry?.dateUpdated}`}</span>
                     </td> 
 
-                    <td className="text-right">
-                    <Button color="dark" onClick={openSideNav}>
+                    <td className="text-end">
+                    <Button color="dark" outline onClick={openSideNav}>
         Vedi dettagli
       </Button>
                       </td>

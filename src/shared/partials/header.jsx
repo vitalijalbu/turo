@@ -29,7 +29,7 @@ const Header = () => {
   const handleLogout = () => {
     confirm({
       title: 'Sei sicuro di voler uscire?',
-      message: 'auth.logout_cta',
+      message: 'Potrai sempre accedere di nuovo in qualsiasi istante.',
       cancelText: 'Annulla',
       confirmText: 'Esci',
       confirmColor: 'danger',
@@ -72,7 +72,7 @@ const Header = () => {
               </li>
             </ul>
             <ul className="nav">
-            <li className="nav-item">
+            <li className="nav-item px-2">
                   <Link href="/hosting/create" className="btn btn-primary"><IconPlus size={20}/> Pubblica annuncio</Link>
               </li>
             {session ? (

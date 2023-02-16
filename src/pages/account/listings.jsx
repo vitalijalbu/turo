@@ -24,19 +24,37 @@ import PopupStatus from "@/shared/hosting/popup-status";
 const Listings = () => {
   const [loading, setLoading] = useState(false);
   const [entries, setEntries] = useState([]);
-  const [popupContact, setContactPopup] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [popupStatus, setStatusPopup] = useState(false);
+  const [archived, setArchived] = useState(false);
+  
+
+  const setTabs = () =>{
+    setArchived(!archived);
+    setLoading(true);
+  }
+
 
   useEffect(() => {
     getUserListings().then((res) => {
       setEntries(res?.entries);
-      console.log("entries", res);
+      //console.log("entries", res);
     });
   }, []);
+
+
+  const toggleTab = (value) => { 
+    //console.log('tabs', value)
+    if (activeTab !== value) {
+      setActiveTab(value);
+    }
+  }
+
 
   /* Confirm */
   const handleDelete = () => {
     confirm({
-      title: "Sei sicuro di voler eliminare l'annuncio?",
+      title: "Sei sicuro di voler eliminare l\'annuncio?",
       message: "auth.logout_cta",
       cancelText: "Annulla",
       confirmText: "Elimina",
@@ -53,11 +71,11 @@ const Listings = () => {
   /* Confirm */
   const handleArchive = () => {
     confirm({
-      title: "Sei sicuro di voler archiviare l'annuncio?",
+      title: "Sei sicuro di voler archiviare l\'annuncio?",
       message: "auth.logout_cta",
       cancelText: "Annulla",
-      confirmText: "Elimina",
-      confirmColor: "danger",
+      confirmText: "Archivia",
+      confirmColor: "primary",
     }).then((confirmed) => {
       if (confirmed) {
         dispatch(logout());
@@ -68,14 +86,15 @@ const Listings = () => {
   };
 
   /* Toggle Item Popup */
-  const toggleContactPopup = () => {
-    setContactPopup(!popupContact);
+  const toggleStatusPopup = (id) => {
+    setStatusPopup(!popupStatus);
+    setSelected(id);
   };
 
   return (
     <>
-          {popupContact && (
-        <PopupStatus opened={popupContact} toggle={toggleContactPopup} />
+          {popupStatus && (
+        <PopupStatus opened={popupStatus} toggle={toggleStatusPopup} id={selected}/>
       )}
     <div className="page">
       <PageHead
@@ -89,14 +108,14 @@ const Listings = () => {
         <Container>
           <Row>
             <Col md={12}>
-              <Nav className="subnav" tabs>
+              <Nav className="subnav" pills>
                 <NavItem>
-                  <NavLink href="#" active>
+                  <NavLink href="#" onClick={setTabs} active={archived === false}>
                     Annunci attivi
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#">Annunci archiviati</NavLink>
+                  <NavLink href="#" onClick={setTabs} active={archived === true}>Annunci archiviati</NavLink>
                 </NavItem>
               </Nav>
             </Col>
@@ -137,14 +156,14 @@ const Listings = () => {
                           </div>
                         </th>
                         <td>
-                          <Badge>{entry?.listing_status}</Badge>
+                          <Badge pill color="primary">{entry?.status}</Badge>
                         </td>
  <td>
                           <span className="d-block">{`Creato il ${entry?.dateCreated}`}</span>
                           <span className="d-block">{`Ultima modifica ${entry?.dateUpdated}`}</span>
                         </td>
 
-                        <td>
+                        <td className="text-end">
                           <div className="hstack gap-2 mt-3 mt-sm-0">
                             <UncontrolledDropdown>
                               <DropdownToggle caret outline>
@@ -152,11 +171,11 @@ const Listings = () => {
                               </DropdownToggle>
                               <DropdownMenu>
                                 <DropdownItem>
-                                  <Link href={`/account/hosting/${entry.id}`}>
+                                  <Link href={`/hosting/${entry.id}`}>
                                     Modifica
                                   </Link>
                                 </DropdownItem>
-                                <DropdownItem onClick={toggleContactPopup}>
+                                <DropdownItem onClick={() => toggleStatusPopup(entry.id)}>
                                   Stato dell'annuncio
                                 </DropdownItem> 
                                 <DropdownItem onClick={handleArchive}>

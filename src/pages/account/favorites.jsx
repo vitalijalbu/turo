@@ -15,7 +15,7 @@ const Favorites = () => {
     getUserFavorites()
     .then((data) => {
       setentries(data?.entries);
-      console.log('🐝 API response FAVORITES', data)
+      //console.log('🐝 API response FAVORITES', data)
     }).catch((error) => {
       console.log(error);
     });
@@ -24,7 +24,7 @@ const Favorites = () => {
   if (!entries) return <p>Nessun dato</p>;
   return (
     <div className="page pt-0">
-      <PageHead title={"Preferiti"}/>
+      <PageHead title={"I miei Preferiti"}/>
       <div className="page-content">
       <Container>
 <Row>

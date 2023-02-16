@@ -1,79 +1,85 @@
 import React from "react";
-
+import { useForm } from "react-hook-form";
 import {
   Container,
   Row,
-  Title,
+  Col,
+  ButtonGroup,
   Button,
-  Card,
-  NumberInput,
-  TextInput,
+  Form,
+  FormGroup,
+  Label,
+  Input, 
+  FormText,
+  Textarea
 } from "reactstrap";
-import SideNav from "@/shared/hosting/SideNav";
+import Toolbar from "@/shared/hosting/toolbar";
+import PageActions from "@/shared/hosting/page-actions";
 
-const Settings = () => {
-  const form = useForm({
-    initialValues: { name: "", email: "", age: 0 },
+const Location = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    // functions will be used to validate values at corresponding key
-    validate: {
-      name: (value) =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      age: (value) =>
-        value < 18 ? "You must be at least 18 to register" : null,
-    },
-  });
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
 
   return (
-    <div className="page" id="searchPage">
+    <div className="page">
+    <div className="page-content">
       <Container>
-        <Row gutter="lg">
-          <Col span={3}>
-            <div className="medium-only">
-              <SideNav />
-            </div>
-          </Col>
-          <Col span={9}>
-            <h1 large>Impostazioni account</h1>
-            <Card withBorder>
-              <form onSubmit={form.onSubmit(console.log)}>
-                <Card.Section inheritPadding py="md">
-                  <TextInput
-                    label="Name"
-                    placeholder="Name"
-                    {...form.getInputProps("name")}
+        <Row>
+
+        <Col className="py-2">
+          <h1 className="fs-2 mb-2">Posizione</h1>
+          <p className="mb-0">
+            Praise effects wish change way and any wanted. Lively use looked latter
+            regard had.
+          </p>
+        </Col>
+
+        </Row>
+        <Toolbar/>
+        <Row>
+          <Col md={8} lg={8} sm={12}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <FormGroup>
+                  <Label for="title">Video URL</Label>
+                  <input
+                    id="title"
+                    className={`form-control ${errors.title ? "is-invalid" : ""}`}
+                    {...register("title", { required: true })}
                   />
-                  <TextInput
-                    mt="sm"
-                    label="Email"
-                    placeholder="Email"
-                    {...form.getInputProps("email")}
+                   {errors.title && (
+                  <div className="invalid-feedback">Name must be required</div>
+                )}
+                </FormGroup> 
+                <FormGroup>
+                  <Label for="title">Virtual Tour URL</Label>
+                  <input
+                    id="title"
+                    className={`form-control ${errors.title ? "is-invalid" : ""}`}
+                    {...register("title", { required: true })}
                   />
-                  <NumberInput
-                    mt="sm"
-                    label="Age"
-                    placeholder="Age"
-                    min={0}
-                    max={99}
-                    {...form.getInputProps("age")}
-                  />
-                </Card.Section>
-                <Card.Section inheritPadding py="md">
-                  <Button type="submit" mt="sm">
-                    Indietro
-                  </Button>
-                  <Button type="submit" mt="sm">
-                    Salva
-                  </Button>
-                </Card.Section>
-              </form>
-            </Card>
+                   {errors.title && (
+                  <div className="invalid-feedback">Name must be required</div>
+                )}
+                </FormGroup>
+                </Form>
           </Col>
         </Row>
       </Container>
+      <PageActions
+        prevUrl={"/pricing"}
+        nextUrl={"/media"}
+      />
+    </div>
     </div>
   );
 };
 
-export default Settings;
+export default Location;

@@ -1,0 +1,17 @@
+[
+        {
+            "value": "live",
+            "label": "Pubblicato",
+            "text": "Gli utenti possono trovare il tuo annuncio nei risultati di ricerca."
+        }, 
+        {
+            "value": "pending",
+            "label": "Nascosto",
+            "text": "Gli ospiti non possono prenotare il tuo annuncio o trovarlo nei risultati di ricerca."
+        },
+        {
+            "value": "disabled",
+            "label": "Disattiva",
+            "text": "Rimuovi definitivamente il tuo annuncio da Resthotels."
+        }
+    ]

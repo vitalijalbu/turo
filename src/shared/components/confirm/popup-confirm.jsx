@@ -46,7 +46,7 @@ const PopupConfirm = ({
       </ModalHeader>
       {!!message && (
         <ModalBody className="p-4 text-center">
-          <h4 className="text-muted">{message}</h4>
+          <p className="text-muted">{message}</p>
         </ModalBody>
       )}
       <ModalFooter>{buttonsContent}</ModalFooter>

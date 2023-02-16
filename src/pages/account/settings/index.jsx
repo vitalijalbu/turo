@@ -16,7 +16,7 @@ import { IconMessageCircle, IconBookmark } from "@tabler/icons-react";
 import SideNav from "@/shared/settings/side-nav";
 import { getProfile } from "@/lib/graphql/queries/user";
 import { useForm, Controller } from "react-hook-form";
-
+import confirm from '@/shared/components/confirm/';
 
 const Settings = () => {
   const [loading, setLoading] = useState(false);
@@ -24,6 +24,22 @@ const Settings = () => {
   const [error, setError] = useState('');
   const [alert, setAlert] = useState(null);
 
+    /* Confirm */
+    const handleDelete = () => {
+      confirm({
+        title: 'Sei sicuro di voler eliminare l\'account?',
+        message: 'Tutti i tuo idati personali verranno rimossi, annunci etc... Non saranno più recuperabili',
+        cancelText: 'Annulla',
+        confirmText: 'Procedi',
+        confirmColor: 'danger',
+      }).then((confirmed) => {
+        if (confirmed) {
+          removeSession();
+          window.location.href="/";
+        }
+      });
+    };
+  
 
   /* Input change parent state */
   const handleOnChange = (e) => {
@@ -101,6 +117,12 @@ const Settings = () => {
                   </Button>
                 </div>
               </Form>
+              <hr />
+                <div>
+                  <Button color="danger" onClick={handleDelete}>
+                    Elimina account
+                  </Button>
+                </div>
             </Col>
           </div>
         </Container>

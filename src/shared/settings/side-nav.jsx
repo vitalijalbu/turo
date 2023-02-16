@@ -11,12 +11,12 @@ const SideNav = () => {
   return (
     <div className="user-card-profile">
       <div className="d-flex mb-4">
-  <div className="flex-shrink-0">
-    <img src={'/img/placeholder.svg'} className="rounded-circle"/>
+  <div className="flex-shrink-0 avatr">
+    <img src={user.photo?.url ?? '/img/placeholder.png'} className="avatar-lg rounded-circle"/>
   </div>
   <div className="flex-grow-1 ms-3">
-      <h5 class="profile__name d-block">{user.email}</h5>
-				<span class="profile__email d-block">ciao</span>
+      <h5 class="profile__name d-block">{user.fullName}</h5>
+				<span class="profile__email d-block">{user.email}</span>
   </div>
 </div>
 
@@ -26,7 +26,7 @@ const SideNav = () => {
       <Link href="/account/settings"><IconUserCircle/> Il mio profilo</Link>
     </ListGroupItem>
     <ListGroupItem tag="a">
-      <Link href="/account/settings/billing"><IconBuildingEstate/> La mia agenzia</Link>
+      <Link href="/account/settings/company"><IconBuildingEstate/> La mia agenzia</Link>
     </ListGroupItem>
     <ListGroupItem tag="a">
       <Link href="/account/settings/security"><IconLock/> Password e sicurezza</Link>

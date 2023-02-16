@@ -1,4 +1,7 @@
 import React from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import {
   Container,
@@ -13,10 +16,12 @@ import {
   FormText,
   Textarea
 } from "reactstrap";
-import Toolbar from "@/shared/hosting/toolbar";
 import PageActions from "@/shared/hosting/page-actions";
+import Toolbar from "@/shared/hosting/toolbar";
 
-const Pricing = () => {
+const Media = () => {
+  const router = useRouter();
+  const { id } = router.query;
   const {
     register,
     handleSubmit,
@@ -27,7 +32,6 @@ const Pricing = () => {
     console.log(data);
   };
 
-
   return (
     <div className="page">
     <div className="page-content">
@@ -35,7 +39,7 @@ const Pricing = () => {
         <Row>
 
         <Col className="py-2">
-          <h1 className="fs-2 mb-2">Prezzi</h1>
+          <h1 className="fs-2 mb-2">Foto e Video</h1>
           <p className="mb-0">
             Praise effects wish change way and any wanted. Lively use looked latter
             regard had.
@@ -45,8 +49,8 @@ const Pricing = () => {
         </Row>
         <Toolbar/>
         <Row>
-          <Col md={8} lg={8} sm={12}>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+           <Col md={8} lg={8} sm={12}>
+           <Form onSubmit={handleSubmit(onSubmit)}>
                 <FormGroup>
                   <Label for="title">Video URL</Label>
                   <input
@@ -74,12 +78,12 @@ const Pricing = () => {
         </Row>
       </Container>
       <PageActions
-        prevUrl={"/pricing"}
-        nextUrl={"/media"}
+        prevUrl={"/location"}
+        nextUrl={"/info"}
       />
     </div>
     </div>
   );
 };
 
-export default Pricing;
+export default Media;

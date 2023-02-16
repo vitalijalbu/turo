@@ -9,7 +9,8 @@ const Billing = () => {
 
 
   return (
-    
+    <div className="page">
+    <div className="page-content">
     <Container>
     <div className="row g-5">
     <div className="col-md-4">
@@ -69,6 +70,8 @@ const Billing = () => {
     </div>
     
           </Container>
+          </div>
+      </div>
   );
 };
 
