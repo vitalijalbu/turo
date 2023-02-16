@@ -1,0 +1,19 @@
+{
+      "categories": [
+        {
+          "id": "622",
+          "title": "Mura",
+          "slug": "mura"
+        },
+        {
+          "id": "623",
+          "title": "Attività con mura",
+          "slug": "con-mura"
+        },
+        {
+          "id": "624",
+          "title": "Attività senza mura",
+          "slug": "senza-mura"
+        }
+      ]
+  }

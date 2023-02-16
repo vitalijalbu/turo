@@ -43,6 +43,14 @@ const SearchForm = () => {
           active={rSelected === 2}
         >
           Vendita
+        </Button> 
+        <Button
+          color="primary"
+          outline
+          onClick={() => setRSelected(3)}
+          active={rSelected === 3}
+        >
+          Asta
         </Button>
       </ButtonGroup>
             </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Container, Row, Col
 } from "reactstrap"
@@ -16,10 +17,11 @@ const Features = () => {
                  <use xlinkHref="#collection" />
                </svg>
              </div>
-             <h5 className="fs-2">{feature.title}</h5>
+             <h5>{feature.title}</h5>
              <p>
              {feature.content}
              </p>
+             {feature.url && <Link href={feature.url} className="btn btn-dark-outline">Scopri di più</Link>}
            </div>
           ))}
 

@@ -148,7 +148,7 @@ const Listings = () => {
 
                         <td className="text-end">
                         <div className="d-flex">
-                          <div className="me-1"><Button color="primary" size="sm"><IconChartBar/> Aumenta visibilità</Button></div>
+                          <div className="me-1"><Button color="primary" size="sm"><IconChartBar/> Promuovi</Button></div>
                           <div>
                             <UncontrolledDropdown>
                               <DropdownToggle caret outline>

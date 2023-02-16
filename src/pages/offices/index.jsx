@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Container, Row, Col, Button } from "reactstrap";
 import { getAllHosts } from "@/lib/graphql/queries/offices";
-
+import Filters from "@/shared/offices/filters";
 
 const Index = () => {
   const [loading, setLoading] = useState(false);
@@ -20,6 +20,7 @@ const Index = () => {
   return (
     <div className="page">
       <div className="page-content">
+        <Filters/>
       <Container>
         <div className="section-head">
           <h1 className="section-title">Agenzie</h1>

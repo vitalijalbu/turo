@@ -47,6 +47,13 @@ const Toolbar = () => {
     >
       Altre informazioni
     </Link>
+  </NavItem>   
+  <NavItem>
+    <Link 
+      className="nav-link" href={`/hosting/${id}/promote`}
+    >
+      Promuovi
+    </Link>
   </NavItem>
 </Nav>
 </Row>

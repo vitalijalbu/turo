@@ -1,15 +1,18 @@
 
 [
     {
+    "title": "Trova la soluzione ideale",
+    "content": "scegli la durata di pubblicazione e se scegli la formula mensile puoi disdire quando vuoi",
+    "url": "/search"
+    },
+    {
+    "title": "Lascia la tua richiesta",
+    "content": "una lista dedicata alle offerte del momento in homepage e nelle pagine di ricerca, la pubblicazione di un annuncio durerà 30 giorni con la possibilità di rinnovarlo",
+    "url": "/search"
+    },
+    {
     "title": "Pubblica un annuncio",
-    "content": "scegli la durata di pubblicazione e se scegli la formula mensile puoi disdire quando vuoi"
-    },
-    {
-    "title": "Lista annunci in evidenza:",
-    "content": "una lista dedicata alle offerte del momento in homepage e nelle pagine di ricerca, la pubblicazione di un annuncio durerà 30 giorni con la possibilità di rinnovarlo"
-    },
-    {
-    "title": "Valuta Immobile",
-    "content": "Porta il tuo annuncio sul podio per vendere o affittare in tempi più veloci"
+    "content": "Hai un immobile commeriale o un'attività da vendere?",
+    "url": "/search"
     }
 ]
