@@ -5,6 +5,7 @@ import PageHead from "@/shared/account/page-head";
 import { getSession } from "@/lib/graphql/client";
 import NotifyList from "@/shared/account/notify-list";
 import { IconEyeCheck } from "@tabler/icons-react";
+import Toolbar from "@/shared/account/toolbar";
 
 const Account = () => {
   const session = getSession();
@@ -19,6 +20,7 @@ const Account = () => {
           content: "Crea annuncio",
         }}
       />
+      <Toolbar/>
       <div className="page-content">
         <Container>
           <Row>

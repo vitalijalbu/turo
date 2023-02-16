@@ -12,40 +12,44 @@ const Toolbar = () => {
     <Container>
     <Row>
 <Nav
-  tabs
+  pills
 >
   <NavItem>
-    <Link className="nav-link"
-      active
-       href={`/hosting/${id}`}>
+    <Link className="nav-link active"
+       href="/account">
     
-      Dettagli
+      Bacheca
     </Link>
   </NavItem>
   <NavItem>
-    <Link className="nav-link" href={`/hosting/${id}/pricing`}>
-      Prezzi
+    <Link className="nav-link" href="/account/listings">
+      I miei annunci
+    </Link>
+  </NavItem>  
+  <NavItem>
+    <Link className="nav-link" href="/pricing">
+      Aumenta visibilità <span className="badge bg-primary">NEW</span>
     </Link>
   </NavItem>
   <NavItem>
     <Link 
-      className="nav-link" href={`/hosting/${id}/location`}
+      className="nav-link" href="/account/favorites"
     >
-      Posizione
+      Preferiti
     </Link>
   </NavItem>  
   <NavItem>
     <Link 
-      className="nav-link" href={`/hosting/${id}/photos`}
+      className="nav-link" href="/account/requests"
     >
-      Foto e video
+      Richieste
     </Link>
   </NavItem> 
    <NavItem>
     <Link 
-      className="nav-link" href={`/hosting/${id}/info`}
+      className="nav-link" href="/accout/settings"
     >
-      Altre informazioni
+      Impostazioni
     </Link>
   </NavItem>
 </Nav>

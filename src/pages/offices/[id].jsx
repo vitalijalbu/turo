@@ -17,7 +17,7 @@ import {
   IconWorldWww
 } from "@tabler/icons-react";
 import { useRouter } from "next/router";
-import { getHostDetails } from "@/lib/graphql/queries/hosts";
+import { getHostDetails } from "@/lib/graphql/queries/offices";
 import PupupContact from "@/shared/components/popup-contact";
 
 const View = () => {
@@ -70,7 +70,7 @@ const View = () => {
                       <hr/>
                       <div className="d-block">
                         <Button block color="dark" onClick={toggleContactPopup}>
-                          Contatta l'agenzia
+                          Contatta l'inserzionista
                         </Button>
                       </div>
                         </CardBody>

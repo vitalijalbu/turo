@@ -7,6 +7,9 @@
 a {
     text-decoration: none;
 }
+span {
+    font-weight: 400;
+}
 ol, ul {
     padding-left: 0;
     margin: 0;
@@ -45,3 +48,6 @@ figure {
     height: 94%;
 }
 */
+.table > :not(caption) > * > *{
+    padding: 1.5rem 0.5rem;
+}

@@ -11,7 +11,7 @@
         },
         {
             "value": "disabled",
-            "label": "Disattiva",
-            "text": "Rimuovi definitivamente il tuo annuncio da Resthotels."
+            "label": "Archivio",
+            "text": "Sposta il tuo annuncio nell'archivio"
         }
     ]

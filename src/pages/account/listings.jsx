@@ -3,9 +3,7 @@ import {
   Container,
   Row,
   Col,
-  Input,
-  Group,
-  Avatar,
+  Button,
   Nav,
   NavItem,
   NavLink,
@@ -20,6 +18,8 @@ import PageHead from "@/shared/account/page-head";
 import { getUserListings } from "@/lib/graphql/queries/user";
 import Link from "next/link";
 import PopupStatus from "@/shared/hosting/popup-status";
+import Toolbar from "@/shared/account/toolbar";
+import { IconChartBar } from "@tabler/icons-react";
 
 const Listings = () => {
   const [loading, setLoading] = useState(false);
@@ -68,22 +68,6 @@ const Listings = () => {
     });
   };
 
-  /* Confirm */
-  const handleArchive = () => {
-    confirm({
-      title: "Sei sicuro di voler archiviare l\'annuncio?",
-      message: "auth.logout_cta",
-      cancelText: "Annulla",
-      confirmText: "Archivia",
-      confirmColor: "primary",
-    }).then((confirmed) => {
-      if (confirmed) {
-        dispatch(logout());
-        //history.push('/');
-        //window.location.href="/";
-      }
-    });
-  };
 
   /* Toggle Item Popup */
   const toggleStatusPopup = (id) => {
@@ -104,6 +88,7 @@ const Listings = () => {
           content: "Crea un nuovo annuncio",
         }}
       />
+      <Toolbar/>
       <div className="page-content">
         <Container>
           <Row>
@@ -111,11 +96,11 @@ const Listings = () => {
               <Nav className="subnav" pills>
                 <NavItem>
                   <NavLink href="#" onClick={setTabs} active={archived === false}>
-                    Annunci attivi
+                    Annunci attivi (3)
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#" onClick={setTabs} active={archived === true}>Annunci archiviati</NavLink>
+                  <NavLink href="#" onClick={setTabs} active={archived === true}>Annunci archiviati (1)</NavLink>
                 </NavItem>
               </Nav>
             </Col>
@@ -123,12 +108,12 @@ const Listings = () => {
           <Row>
             <Col md={12}>
               {Array.isArray(entries) ? (
-                <table class="table">
+                <table className="table">
                   <tbody>
                     {entries.map((entry) => (
                       <tr key={entry.id}>
                         <th scope="row">
-                          <div class="d-flex align-items-center">
+                          <div className="d-flex align-items-center">
                             <div className="avatar avatar-xl mb-2">
                               <img
                                 src={
@@ -139,11 +124,11 @@ const Listings = () => {
                               />
                             </div>
 
-                            <div class="ms-2">
-                              <h5 class="mb-1">
+                            <div className="ms-2">
+                              <h5 className="mb-1">
                                 <Link
-                                  class="text-primary"
-                                  href={`/lavoro/${entry.id}`}
+                                  className="text-primary"
+                                  href={`/hosting/${entry.id}`}
                                   data-focus-mouse="false"
                                 >
                                   {entry.title}
@@ -152,19 +137,19 @@ const Listings = () => {
                               <span className="text-blue">
                                 {entry?.pricing ?? "Trattativa riservata"}
                               </span>
+                              <div className="d-block"><Badge pill color="primary">{entry?.status}</Badge></div>
                             </div>
                           </div>
                         </th>
-                        <td>
-                          <Badge pill color="primary">{entry?.status}</Badge>
-                        </td>
  <td>
                           <span className="d-block">{`Creato il ${entry?.dateCreated}`}</span>
                           <span className="d-block">{`Ultima modifica ${entry?.dateUpdated}`}</span>
                         </td>
 
                         <td className="text-end">
-                          <div className="hstack gap-2 mt-3 mt-sm-0">
+                        <div className="d-flex">
+                          <div className="me-1"><Button color="primary" size="sm"><IconChartBar/> Aumenta visibilità</Button></div>
+                          <div>
                             <UncontrolledDropdown>
                               <DropdownToggle caret outline>
                                 Azioni
@@ -178,9 +163,6 @@ const Listings = () => {
                                 <DropdownItem onClick={() => toggleStatusPopup(entry.id)}>
                                   Stato dell'annuncio
                                 </DropdownItem> 
-                                <DropdownItem onClick={handleArchive}>
-                                  Archivia
-                                </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem
                                   onClick={handleDelete}
@@ -190,6 +172,7 @@ const Listings = () => {
                                 </DropdownItem>
                               </DropdownMenu>
                             </UncontrolledDropdown>
+                          </div>
                           </div>
                         </td>
                       </tr>

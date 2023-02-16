@@ -23,7 +23,7 @@ const Navigation = [
       },
       {
         label: "Agenzie",
-        url: "/hosts",
+        url: "/offices",
       },
       {
         label: "Piani e prezzi",
