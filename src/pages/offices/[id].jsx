@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import HostListings from "@/shared/hosts/host-listings";
+import HostListings from "@/shared/offices/host-listings";
 import {
   Container,
   Row,

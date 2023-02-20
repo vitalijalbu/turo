@@ -1,4 +1,6 @@
-[
+{
+
+    "data": [
         {
             "id": "1",
             "pricing": "0",
@@ -27,3 +29,4 @@
             "photoUrl": "https://via.placeholder.com/80"
         }
     ]
+}
