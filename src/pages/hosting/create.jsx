@@ -108,7 +108,7 @@ const Create = () => {
           </div>
           
           
-        </Container>
+        </div>
         <PageActions
         nextUrl={"/pricing"}
       />

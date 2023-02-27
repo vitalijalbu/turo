@@ -76,7 +76,7 @@ const Settings = () => {
     <div className="page">
       <div className="page-content">
         
-        <Container>
+        <div className="container">
           <div className="row g-5">
             <div className="col-md-4">
               <div className="position-sticky" style={{ top: "2rem" }}>
@@ -125,7 +125,7 @@ const Settings = () => {
                 </div>
             </Col>
           </div>
-        </Container>
+        </div>
       </div>
     </div>
   );

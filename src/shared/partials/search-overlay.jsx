@@ -15,14 +15,14 @@ const SearchOverlay = ({ opened, toggle }) => {
     <div id="search-overlay">
       <Offcanvas isOpen={opened} toggle={toggle} direction="top">
         <OffcanvasHeader toggle={toggle}>
-          <Container>
+          <div className="container">
             <Row>
               <Col>Ricerca su GardaToday</Col>
             </Row>
-          </Container>
+          </div>
         </OffcanvasHeader>
         <OffcanvasBody>
-          <Container>
+          <div className="container">
             <Row>
               <Col>
                 <div>
@@ -30,7 +30,7 @@ const SearchOverlay = ({ opened, toggle }) => {
                 </div>
               </Col>
             </Row>
-          </Container>
+          </div>
         </OffcanvasBody>
       </Offcanvas>
     </div>

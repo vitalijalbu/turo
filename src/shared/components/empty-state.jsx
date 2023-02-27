@@ -7,7 +7,7 @@ const EmptyState = (props) => {
   //console.log("props", props);
   return (
 <section className="section-content text-center">
-  <Container>
+  <div className="container">
   
      <Row>
      <Col md={12}>
@@ -32,7 +32,7 @@ const EmptyState = (props) => {
               </div>
         </Col>
     </Row>
-    </Container>
+    </div>
 </section>
 
   );

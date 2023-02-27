@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, Row, Nav, NavItem  } from "reactstrap";
+import {
+  Container
+} from "@chakra-ui/react";
 
 const Toolbar = () => {
   const router = useRouter();
@@ -9,55 +11,53 @@ const Toolbar = () => {
 
   return(
     <section className="my-3">
-    <Container>
+    <div className="container">
     <Row>
-<Nav
-  tabs
->
-  <NavItem>
+<ul className="nav">
+  <li className="nav-item">
     <Link className="nav-link"
       active
        href={`/hosting/${id}`}>
     
       Dettagli
     </Link>
-  </NavItem>
-  <NavItem>
+  </li>
+  <li className="nav-item">
     <Link className="nav-link" href={`/hosting/${id}/pricing`}>
       Prezzi
     </Link>
-  </NavItem>
-  <NavItem>
+  </li>
+  <li className="nav-item">
     <Link 
       className="nav-link" href={`/hosting/${id}/location`}
     >
       Posizione
     </Link>
-  </NavItem>  
-  <NavItem>
+  </li>  
+  <li className="nav-item">
     <Link 
       className="nav-link" href={`/hosting/${id}/photos`}
     >
       Foto e video
     </Link>
-  </NavItem> 
-   <NavItem>
+  </li> 
+   <li className="nav-item">
     <Link 
       className="nav-link" href={`/hosting/${id}/info`}
     >
       Altre informazioni
     </Link>
-  </NavItem>   
-  <NavItem>
+  </li>   
+  <li className="nav-item">
     <Link 
       className="nav-link" href={`/hosting/${id}/promote`}
     >
       Promuovi
     </Link>
-  </NavItem>
-</Nav>
+  </li>
+</ul>
 </Row>
-</Container>
+</div>
 </section>
   )
   };

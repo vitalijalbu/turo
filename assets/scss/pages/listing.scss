@@ -44,7 +44,6 @@
         flex-shrink: 0;
         position: relative;
         right: -$v-gap;
-        fill: $primary;
         width: $grid-item-icon-mob-size;
         height: $grid-item-icon-mob-size;
       }
@@ -98,49 +97,3 @@
     }
   }
   
-  //small - tablet
-  @include media-breakpoint-up(sm) {
-    .it-masonry {
-      .it-grid-item-wrapper {
-        .img-responsive {
-          padding-bottom: initial;
-          height: auto;
-          .img-wrapper {
-            position: inherit;
-            left: initial;
-            right: initial;
-            width: initial;
-            height: initial;
-            img {
-              height: auto;
-              object-fit: initial;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  //Tablet horizontal / small desktop
-  @include media-breakpoint-up(lg) {
-    .it-grid-item-wrapper {
-      &.it-grid-item-overlay {
-        .it-griditem-text-wrapper {
-          padding: $v-gap * 2 $v-gap * 3;
-          .it-griditem-text {
-            font-size: $grid-item-text-size;
-          }
-        }
-      }
-      // text
-      .it-griditem-text-wrapper {
-        .it-griditem-text {
-          font-size: $grid-item-text-size;
-        }
-        .icon {
-          width: $grid-item-icon-size-desk;
-          height: $grid-item-icon-size-desk;
-        }
-      }
-    }
-  }

@@ -23,7 +23,7 @@ import {
   FormLabel,
   Input,
   Switch,
-  Checkbox, 
+  Checkbox,
   CheckboxGroup,
   Center,
   Heading,
@@ -35,7 +35,7 @@ import {
   RangeSliderFilledTrack,
   RangeSliderThumb,
   Spacer,
-  Flex
+  Flex,
 } from "@chakra-ui/react";
 
 const FiltersPopup = ({ opened, toggle }) => {
@@ -91,33 +91,27 @@ const FiltersPopup = ({ opened, toggle }) => {
     >
       <ModalOverlay />
       <ModalContent>
-      <ModalHeader>
+        <ModalHeader>
           <ModalCloseButton />
-          </ModalHeader>
+        </ModalHeader>
         <ModalBody>
-          <Container maxW="lg">
+          <div className="container">
             <Center>
               <Heading>Più filtri</Heading>
             </Center>
             <form>
-               {/* Type */}
-               <Box className="filter-block">
+              {/* Type */}
+              <Box className="filter-block">
                 <h2 className="filter-block_title">Tipologia di vendita</h2>
                 <Stack pl={6} mt={1} spacing={1}>
-        <Checkbox value="1">
-          Attività con mura
-        </Checkbox>
-        <Checkbox>
-        Attività senza mura
-        </Checkbox>        
-        <Checkbox>
-        Mura
-        </Checkbox>
-      </Stack>
+                  <Checkbox value="1">Attività con mura</Checkbox>
+                  <Checkbox>Attività senza mura</Checkbox>
+                  <Checkbox>Mura</Checkbox>
+                </Stack>
               </Box>
-              <hr /> 
+              <hr />
               {/* Type */}
-               <Box className="filter-block">
+              <Box className="filter-block">
                 <h2 className="filter-block_title">Tipologia</h2>
                 <SimpleGrid columns={2} spacing={10}>
                   <Box>
@@ -134,9 +128,9 @@ const FiltersPopup = ({ opened, toggle }) => {
                   </Box>
                 </SimpleGrid>
               </Box>
-              <hr /> 
+              <hr />
               {/* Status */}
-               <Box className="filter-block">
+              <Box className="filter-block">
                 <h2 className="filter-block_title">Stato</h2>
                 <SimpleGrid columns={2} spacing={10}>
                   <Box>
@@ -242,23 +236,23 @@ const FiltersPopup = ({ opened, toggle }) => {
               {/* Luxury */}
               <Box className="filter-block">
                 <h2 className="filter-block_title">Lusso</h2>
-                <FormControl display='flex' alignItems='center'>
-                <FormLabel htmlFor='email-alerts' mb='0'>
-                  Solo immobil idi lusso
-                </FormLabel>
-                <Switch id='email-alerts' />
-              </FormControl>
+                <FormControl display="flex" alignItems="center">
+                  <FormLabel htmlFor="email-alerts" mb="0">
+                    Solo immobil idi lusso
+                  </FormLabel>
+                  <Switch id="email-alerts" />
+                </FormControl>
               </Box>
               <hr />
               {/* Rooms */}
               <Box className="filter-block">
                 <h2 className="filter-block_title">Numero di camere</h2>
-                  <SimpleGrid columns={2} spacing={10}>
-                    <Box>
+                <SimpleGrid columns={2} spacing={10}>
+                  <Box>
                     <h3>Bagni</h3>
-                    </Box>
-                    <Spacer/>
-                    <Box>
+                  </Box>
+                  <Spacer />
+                  <Box>
                     <Button>
                       <IconPlus />
                     </Button>
@@ -266,25 +260,25 @@ const FiltersPopup = ({ opened, toggle }) => {
                     <Button>
                       <IconMinus />
                     </Button>
-                    </Box>
-                  </SimpleGrid>
-                  <Flex minWidth='max-content' alignItems='center' gap='2'>
-                    <h3>Camere</h3>
-                    <Spacer/>
-                    <Button>
-                      <IconPlus />
-                    </Button>
-                    <Input value="1" />
-                    <Button>
-                      <IconMinus />
-                    </Button>
-                  </Flex>
+                  </Box>
+                </SimpleGrid>
+                <Flex minWidth="max-content" alignItems="center" gap="2">
+                  <h3>Camere</h3>
+                  <Spacer />
+                  <Button>
+                    <IconPlus />
+                  </Button>
+                  <Input value="1" />
+                  <Button>
+                    <IconMinus />
+                  </Button>
+                </Flex>
               </Box>
             </form>
-          </Container>
+          </div>
         </ModalBody>
         <ModalFooter>
-          <Container>
+          <div className="container">
             <Box>
               <Button variant="link" mr={"3"}>
                 Annulla filtri
@@ -297,7 +291,7 @@ const FiltersPopup = ({ opened, toggle }) => {
                 Applica filtri
               </Button>
             </Box>
-          </Container>
+          </div>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -42,7 +42,7 @@ const ListingTypes = () => {
          </Card>
           ))}
         </Row>
-      </Container>
+      </div>
     </section>
   );
 };

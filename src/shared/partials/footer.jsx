@@ -9,61 +9,115 @@ import {
 } from "@chakra-ui/react"
 
 
+const Navigation = [
+  {
+    id: "general",
+    title: "Generale",
+    links: [
+      {
+        label: "Home",
+        url: "/",
+      },       
+      {
+        label: "Resthotels",
+        url: "/about",
+      }, 
+      {
+        label: "Ricerca",
+        url: "/search",
+      },
+      {
+        label: "Agenzie",
+        url: "/offices",
+      },
+      {
+        label: "Piani e prezzi",
+        url: "/pricing",
+      },
+      {
+        label: "Cosa stai cercando?",
+        url: "/requests",
+      },
+    ],
+  },
+  {
+    id: "utils",
+    title: "Link utili",
+    links: [
+      {
+        exact: true,
+        label: "Il mio account",
+        url: "/account",
+      },
+      {
+        exact: true,
+        label: "Piano",
+        url: "/settings/billing",
+      },
+      {
+        exact: false,
+        label: "Impostazioni",
+        url: "/settings",
+      },
+      {
+        exact: false,
+        label: "Pubblicità",
+        url: "/contacts",
+      },
+    ],
+  },
+  {
+    id: "help",
+    title: "Aiuto",
+    links: [
+      {
+        label: "Assistenza",
+        url: "/help",
+      },
+      {
+        label: "Feedback",
+        url: "mailto:partner@ceebo.com?subject=Feedback Ceebo Partner",
+        external: true,
+      },
+    ],
+  },
+];
 
-
-export default function LargeWithLogoLeft() {
+export default function Footer() {
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-    >
-      <Container as={Stack} maxW={"6xl"} py={10}>
-        <SimpleGrid
-          templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 1fr 1fr" }}
-          spacing={8}
-        >
-          <Stack spacing={6}>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="row">
+        <div className="col-3 col-xs-6">
             <Box>
             <img src="/img/logo.svg" className="site-logo"/>
             </Box>
-            <Text fontSize={"sm"}>
-              © 2022 Chakra Templates. All rights reserved
+            <Text fontSize={"md"}>
+            La piattaforma immobiliare per ristoranti e hotel.
             </Text>
-          </Stack>
-          <Stack align={"flex-start"}>
-            <Text>Product</Text>
-            <Link href={"#"}>Overview</Link>
-            <Link href={"#"}>Features</Link>
-            <Link href={"#"}>Tutorials</Link>
-            <Link href={"#"}>Pricing</Link>
-            <Link href={"#"}>Releases</Link>
-          </Stack>
-          <Stack align={"flex-start"}>
-            <Text>Company</Text>
-            <Link href={"#"}>About</Link>
-            <Link href={"#"}>Press</Link>
-            <Link href={"#"}>Careers</Link>
-            <Link href={"#"}>Contact</Link>
-            <Link href={"#"}>Partners</Link>
-          </Stack>
-          <Stack align={"flex-start"}>
-            <Text>Support</Text>
-            <Link href={"#"}>Help Center</Link>
-            <Link href={"#"}>Terms of Service</Link>
-            <Link href={"#"}>Legal</Link>
-            <Link href={"#"}>Privacy Policy</Link>
-            <Link href={"#"}>Status</Link>
-          </Stack>
-          <Stack align={"flex-start"}>
-            <Text>Follow Us</Text>
-            <Link href={"#"}>Facebook</Link>
-            <Link href={"#"}>Twitter</Link>
-            <Link href={"#"}>Dribbble</Link>
-            <Link href={"#"}>Instagram</Link>
-            <Link href={"#"}>LinkedIn</Link>
-          </Stack>
-        </SimpleGrid>
-      </Container>
-    </Box>
+          </div>
+          {Navigation.map((nav, i) => (
+              <div className="col-3 col-xs-6">
+              <Text fontSize="md">{nav.title}</Text>
+              <ul className=""
+                id={nav.id}
+                key={i}
+              >
+                {nav.links.map((link, l) => (
+                  <li key={l} className="d-block w-100">
+                    <Link
+                      href={link.url ?? '#'}
+                      key={l}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              </div>
+          ))}
+        </div>
+      </div>
+    </footer>
   )
 }

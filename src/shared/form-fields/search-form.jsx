@@ -62,7 +62,7 @@ function SearchForm() {
         </Button>
       </Flex>
     </Box>
-    </Container>
+    </div>
   );
 }
 

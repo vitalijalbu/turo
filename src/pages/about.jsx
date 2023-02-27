@@ -9,7 +9,7 @@ const About = () => {
    <div className="page">
    <div className="page-content">
   
-   <Container>
+   <div className="container">
    <div className="col-xl-10 mx-auto text-center mb-3">
   {/* Title */}
   <h1>Il portale dedicato esclusivamente alla ricerca di hotel e ristoranti già esistenti o da realizzare</h1>
@@ -38,7 +38,7 @@ le mura o attività con destinazione di ristoro o ricettiva. Pubblica subito il 
 gratis.
       </Col>
     </Row>
-   </Container>
+   </div>
     </div>
     </div>
     

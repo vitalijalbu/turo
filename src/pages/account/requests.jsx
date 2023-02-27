@@ -45,7 +45,7 @@ const Index = () => {
         title={"Richieste dei clienti"}
       />
       <div className="page-content">
-      <Container>
+      <div className="container">
       <Row className="subnav">
             <Col md={12}>
             <Nav pills>
@@ -90,7 +90,7 @@ const Index = () => {
                     </td> 
 
                     <td className="text-end">
-                    <Button color="dark" outline onClick={openSideNav}>
+                    <Button outline onClick={openSideNav}>
         Vedi dettagli
       </Button>
                       </td>
@@ -104,7 +104,7 @@ const Index = () => {
               )}
           </Col>
         </Row>
-      </Container>
+      </div>
       </div>
     </div>
     </>

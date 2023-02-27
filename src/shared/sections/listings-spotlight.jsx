@@ -42,7 +42,7 @@ const SpotlightListings = () => {
             </Col>
           ))}
         </Row>
-      </Container>
+      </div>
     </section>
   );
 };

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Button, Container } from "@chakra-ui/react";
 import { IconArrowLeft, IconPlus } from '@tabler/icons-react';;
+import Toolbar from "./toolbar";
 
 const PageHead = (props) => {
   //console.log("props", props);
   return (
 <section className="page-heading">
-  <Container>
+  <div className="container">
   
-     <Row>
-     <Col md={12}>
+     <div>
+
             <div className="d-flex">
                 <div className="flex-grow-1">
                 <h1 className="page-title">{props.title}</h1>
@@ -36,9 +37,9 @@ const PageHead = (props) => {
               </div>
               </div>
 
-        </Col>
-    </Row>
-    </Container>
+    </div>
+    <Toolbar/>
+    </div>
 </section>
 
   );

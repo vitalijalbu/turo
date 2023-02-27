@@ -51,7 +51,7 @@ const Index = () => {
     <div className="page">
       <div className="page-content">
         <Filters/>
-      <Container>
+      <div className="container">
         <div className="section-head">
         
           <h1 className="section-title serif">Agenzie</h1>
@@ -106,7 +106,7 @@ const Index = () => {
               )}
             </Col>
         </Row>
-      </Container>
+      </div>
       </div>
     </div>
     </>

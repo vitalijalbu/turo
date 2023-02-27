@@ -87,7 +87,7 @@ const Page = () => {
       <div className="page">
         <div className="page-content pt-0">
           <section className="py-0 pt-sm-5 bg-light">
-            <Container>
+            <div className="container">
               {/* p and button START */}
               <Row>
                 <Col>
@@ -123,10 +123,10 @@ const Page = () => {
                   <Gallery media={entry?.media_photos} />
                 </div>
               </Row>
-            </Container>
+            </div>
           </section>
           <section className="mt-3">
-            <Container>
+            <div className="container">
               <Row>
                 <Col md={7} className="gap-5">
                   <section className="section-content border-bottom mb-5">
@@ -494,7 +494,7 @@ const Page = () => {
                   </div>
                 </Col>
               </Row>
-            </Container>
+            </div>
           </section>
         </div>
         <RelatedListings entries={related_entries} />

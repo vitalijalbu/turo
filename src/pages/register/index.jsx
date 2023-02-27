@@ -33,7 +33,7 @@ const Index = () => {
   };
   return (
     <div className="page">
-      <Container>
+      <div className="container">
     <Box w="100%" p={4}>
       <Heading>Crea il tuo account</Heading>
       <Box py="4">
@@ -105,7 +105,7 @@ const Index = () => {
         </Button>
       </form>
     </Box>
-    </Container>
+    </div>
     </div>
   );
 };

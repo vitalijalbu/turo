@@ -48,7 +48,7 @@ const PopupMedia = ({ opened, toggle }) => {
   >
     <ModalHeader toggle={toggle}/>
       <ModalBody>
-        <Container>
+        <div className="container">
       <Nav justified pills tabs className='py-2'>
         <NavItem><NavLink disabled={photos.length !== null} href="#" value="photos" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'photos'}>Foto </NavLink></NavItem>
         <NavItem><NavLink disabled={planimetry.length !== null} href="#" value="planimetry" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'planimetry'}>Pianimetria </NavLink></NavItem>
@@ -74,7 +74,7 @@ const PopupMedia = ({ opened, toggle }) => {
 
   </TabContent>
   </div>
-  </Container>
+  </div>
     </ModalBody>
   </Modal>
   );

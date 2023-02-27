@@ -10,16 +10,16 @@ const Filters = () => {
 
   return (
     <section className="filters">
-        <Container>
+        <div className="container">
       <div className="d-flex align-items-center">
          <div className="filters-block me-2">
          <input className="form-control"/>
         </div>
         <div className="filters-block me-2">
-         <Button color="dark"><IconFilter/> Filtra</Button>
+         <Button><IconFilter/> Filtra</Button>
         </div>
         </div>
-        </Container>
+        </div>
         </section>
     
   )

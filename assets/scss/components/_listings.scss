@@ -189,7 +189,7 @@ clip-path: polygon(0% 0%, 100% 0%, 0% 50%, 100% 100%, 0% 100%);
 
 .listing-card{
   & img{
-    border-top-right-radius: $card-border-radius;
-    border-top-left-radius: $card-border-radius;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
   }
 }

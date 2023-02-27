@@ -1,0 +1,17 @@
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    border-bottom: 1px solid $border-color;
+    height: 50px;
+
+    .nav-link {
+        display: block;
+        padding: 15px 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    }
+}

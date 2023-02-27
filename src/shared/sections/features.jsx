@@ -44,7 +44,7 @@ const Features = () => {
           
         </SimpleGrid>
       </Box>
-      </Container>
+      </div>
     )
   }
   

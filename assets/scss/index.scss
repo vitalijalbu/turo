@@ -3,30 +3,23 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 @import './components/_swiper';
-
 @import './_variables';
-@import "~bootstrap/scss/bootstrap";
-// Required
-@import "~bootstrap/scss/functions";
 
 @import './app';
 
-@import './custom/_container';
-@import './custom/_form';
-@import './custom/_button';
-@import './components/form/_slider';
-
+@import './components/_header';
 @import './components/_property-item';
 @import './components/_filters';
 @import './components/_map';
 @import './components/_section';
-@import './components/_avatar';
-@import './custom/_card';
 @import './components/_utilities';
+@import './components/_page';
+@import './components/_grid';
 @import './components/_search-form';
 @import './components/_navbar';
+@import './components/_toolbar';
+@import './components/_table';
 @import './components/_footer';
-@import './components/_hero';
 
 @import './components/_listings';
 @import './components/_header';

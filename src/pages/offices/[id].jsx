@@ -67,7 +67,7 @@ const View = () => {
     {!popupContact && (<PupupContact opened={popupContact} toggle={toggleContactPopup}/>)}
     <div className="page">
     <div className="page-content">
-      <Container>
+      <div className="container">
         <Row>
           <Col md={4}>
             <Card shadow="sm" withBorder p="xl">
@@ -120,7 +120,7 @@ const View = () => {
             </section>
           </Col>
         </Row>
-      </Container>
+      </div>
     </div>
     </div>
     </>

@@ -35,7 +35,7 @@ const Index = () => {
   return (
     <div className="page">
       <div className="page-content">
-        <Container>
+        <div className="container">
           <Row>
             <Col className="py-2">
               <h1 className="fs-2 mb-2">Dettagli annuncio</h1>
@@ -127,7 +127,7 @@ const Index = () => {
               </Form>
             </Col>
           </Row>
-        </Container>
+        </div>
         <PageActions
         nextUrl={"/pricing"}
       />

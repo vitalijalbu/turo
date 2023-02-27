@@ -7,7 +7,7 @@ const RelatedListings = ({entries}) => {
 
   return (
     <section id="related-listings" className="padding-vertical">
-          <Container>
+          <div className="container">
           <div className="section-title">
         <h1>Annunci simili</h1>
         <p>In base alle tue ricerche, pensiamo possano interessarti anche questi annunci</p>
@@ -24,7 +24,7 @@ const RelatedListings = ({entries}) => {
       ) : (
         <p>Nessun dato</p>
       )}
-    </Container>
+    </div>
     </section>
   );
       

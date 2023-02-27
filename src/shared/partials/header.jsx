@@ -17,7 +17,7 @@ import {
   useColorModeValue,
   Stack,
 } from "@chakra-ui/react";
-
+import SideMenu from "./side-menu";
 import {
   IconMenu,
   IconClose,
@@ -38,6 +38,7 @@ const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [searchOpen, setsearchOpen] = useState(false);
 
+  console.log('menu', navOpen)
   /* actions */
   const openSideNav = () => setNavOpen(!navOpen);
 
@@ -57,21 +58,17 @@ const Header = () => {
     });
   };
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
+    <header className="site-header">
+    <SideMenu opened={navOpen} toggle={openSideNav} />
       <Box id="site-header" px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <IconClose /> : <IconMenu />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
+          <Button onClick={() => openSideNav()} aria-label={"Open Menu"} display={{ md: "none" }}>Menu</Button>
           <HStack spacing={8} alignItems={"center"}>
-            <Box><img src="/img/logo.svg" className="site-logo"/></Box>
+            <Box>
+              <img src="/img/logo.svg" className="site-logo" />
+            </Box>
           </HStack>
           <Flex alignItems={"center"}>
             <HStack
@@ -102,6 +99,18 @@ const Header = () => {
                 href="/search"
               >
                 Cerca
+              </Link>              
+              <Link
+                px={2}
+                py={1}
+                rounded={"md"}
+                _hover={{
+                  textDecoration: "none",
+                  bg: useColorModeValue("gray.200", "gray.700"),
+                }}
+                href="/request"
+              >
+                Lascia una richiesta
               </Link>
 
               <Button
@@ -110,7 +119,7 @@ const Header = () => {
                 mr={4}
                 leftIcon={<IconPlus />}
               >
-                Crea un annuncio
+                <Link href="/hosting/create">Crea un annuncio</Link>
               </Button>
               <Menu>
                 <MenuButton
@@ -128,41 +137,31 @@ const Header = () => {
                   />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>
-                    <Link href="/account">
-                      <IconUserCircle size={20} /> Il mio acount
-                    </Link>
+                  <MenuItem icon={<IconUserCircle size={20} />}>
+                    <Link href="/account"> Il mio acount</Link>
                   </MenuItem>
 
-                  <MenuItem>
-                    <Link href="/account/listings">
-                      <IconListDetails size={20} /> I miei annunci
-                    </Link>
+                  <MenuItem icon={<IconListDetails size={20} />}>
+                    <Link href="/account/listings">I miei annunci</Link>
                   </MenuItem>
-                  <MenuItem>
-                    <Link href="/hosting/create">
-                      <IconPlus size={20} /> Pubblica annuncio
-                    </Link>
+                  <MenuItem icon={<IconPlus size={20} />}>
+                    <Link href="/hosting/create">Pubblica annuncio</Link>
                   </MenuItem>
-                  <MenuItem>
-                    <Link href="/account/requests">
-                      <IconMessage2 size={20} /> Richieste
-                    </Link>
+                  <MenuItem icon={<IconMessage2 size={20} />}>
+                    <Link href="/account/requests">Richieste</Link>
                   </MenuItem>
-                  <MenuItem divider />
-                  <MenuItem>
+                  <MenuDivider />
+                  <MenuItem icon={<IconBuildingEstate size={20} />}>
                     <Link
                       href={`/offices/${
                         session === true ? session.user.id : null
                       }`}
                     >
-                      <IconBuildingEstate size={20} /> Profilo pubblico
+                      Profilo pubblico
                     </Link>
                   </MenuItem>
-                  <MenuItem className="mt-2">
-                    <Link href="/account/settings">
-                      <IconSettings size={20} /> Impostazioni
-                    </Link>
+                  <MenuItem icon={<IconSettings />}>
+                    <Link href="/account/settings">Impostazioni</Link>
                   </MenuItem>
                   <MenuDivider />
                   <MenuItem onClick={handleLogout}>Esci</MenuItem>
@@ -171,10 +170,8 @@ const Header = () => {
             </HStack>
           </Flex>
         </Flex>
-
-        {isOpen && <SideMenu opened={isOpen} toggle={onOpen} />}
       </Box>
-    </>
+    </header>
   );
 };
 

@@ -11,7 +11,7 @@ const Contacts = () => {
   return (
     
    <div className="page">
-    <Container>
+    <div className="container">
     <section className="pt-4 pt-md-5">
   <div className="container">
     <div className="row mb-5">
@@ -184,7 +184,7 @@ const Contacts = () => {
 
     
         
-      </Container>
+      </div>
     </div>
     
   );

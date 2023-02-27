@@ -31,7 +31,7 @@ const Info = () => {
   return (
     <div className="page">
     <div className="page-content">
-      <Container>
+      <div className="container">
         <Row>
 
         <Col className="py-2">
@@ -72,7 +72,7 @@ const Info = () => {
                 </Form>
           </Col>
         </Row>
-      </Container>
+      </div>
       <PageActions
         prevUrl={"/pricing"}
         nextUrl={"/media"}

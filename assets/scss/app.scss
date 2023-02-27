@@ -30,9 +30,6 @@ input[type="radio"]{
 */
 
 
-.serif, .serif *{
-    font-family: $font-family-serif;
-}
 a {
     text-decoration: none;
 }
@@ -53,30 +50,4 @@ ol, ul {
 }
 figure {
     margin: 0;
-}
-
-.page-content{
-    padding: 50px 0;
-}
-.page-heading{
-    background-color: #F4F5F2;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-.dropdown-item {
-    padding: 0 var(--bs-dropdown-item-padding-x);
-    min-height: 50px;
-    line-height: 50px;
-}
-/*
-.modal-fullscreen {
-    width: 90vw;
-    margin: auto;
-}
-.modal-fullscreen .modal-content {
-    height: 94%;
-}
-*/
-.table > :not(caption) > * > *{
-    padding: 1.5rem 0.5rem;
 }

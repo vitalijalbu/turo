@@ -8,7 +8,7 @@ const LocationsLinks = () => {
 
   return (
     <section id="related-listings" className="section-content">
-        <Container>
+        <div className="container">
         <div className="section-title">
         <h1>Città in primo piano</h1>
     </div>    
@@ -30,7 +30,7 @@ const LocationsLinks = () => {
       ) : (
         <Row strong>Nessun dato</Row>
       )}
-    </Container>
+    </div>
     </section>
   );
       

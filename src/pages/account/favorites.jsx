@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Container, Row, Col} from "reactstrap";
 import ItemCard from "@/shared/snippets/listing-card";
 import PageHead from "@/shared/account/page-head";
 import { getUserFavorites } from "@/lib/graphql/queries/favorites";
+import { Container, SimpleGrid } from "@chakra-ui/react";
 
 
 const Favorites = () => {
@@ -23,24 +23,24 @@ const Favorites = () => {
 
   if (!entries) return <p>Nessun dato</p>;
   return (
-    <div className="page pt-0">
+    <div className="page">
+    <div className="page-content">
       <PageHead title={"I miei Preferiti"}/>
-      <div className="page-content">
-      <Container>
-<Row>
+      <div className="container">
+<div className="row">
 {Array.isArray(entries) ? (
    <> 
     {entries.map((item, i) => (
-      <Col md={6} lg={3} xs={6}>
+      <div className="col-4 col-sx-6">
        <ItemCard data={item}/>
-       </Col>
+       </div>
     ))}
   </>
 ) : (
   <p strong>Nessun dato</p>
 )}
-</Row>
-</Container>
+</div>
+</div>
 </div>
 </div>
   );

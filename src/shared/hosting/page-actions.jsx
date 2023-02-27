@@ -1,45 +1,31 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Container, Flex, Button, Spacer } from "@chakra-ui/react";
 
 const PageActions = (props) => {
   const router = useRouter();
   const { id } = router.query;
   return (
 <section className="page-actions">
-  <Container>
+  <div className="container">
   
-     <Row>
-     <Col md={12}>
-      <hr/>
-            <div className="d-flex justify-content-between">
-              <div>
-                {props.prevUrl && (
-                  <Link href={`/hosting/${id}${props.prevUrl}`}>
-                    <Button color="light">
-                      Indietro
-                  </Button>
-                  </Link>
-                )}  
-                 </div>              
-                 <div>              
-                {props.nextUrl && (
+  <Flex className="filter-popover_footer">
+            <Button variant="outline">Chiudi</Button>
+            <Spacer />
+            {props.nextUrl && (
                   <Link href={`/hosting/${id}${props.nextUrl}`}>
-                    <Button color="primary">
+                    <Button colorScheme="blue">
                       Continua
                   </Button>
                   </Link>
                 )}
-              </div>
-              </div>
-
-        </Col>
-    </Row>
-    </Container>
+            </Flex>
+    </div>
 </section>
 
   );
 };
 
 export default PageActions;
+

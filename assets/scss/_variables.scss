@@ -1,55 +1,19 @@
-// Font Variable
-$font-family-base: 'Archivo', sans-serif;
-$headings-font-family: 'Archivo', sans-serif;
-$font-family-sans-serif: 'Archivo', sans-serif;
-$font-family-serif: 'Lora', serif;
-$light: #F4F5F2;
+
 
 $h1-font-size: 1.75rem;
 
-$border-color-strong: #979797;
-$border-color: #c4c4c4;
 
-$card-border-radius: 8px;
-$card-cap-bg: #fff;
-$dropdown-min-width: 14rem;
+$bg-light: #F4F5F2;
 
 $swiper-navigation-size: 20px;
 $swiper-theme-color: #121212;
 $link-color: #121212;
-// Font Size
-$body-font-size: 14px;
-$link-color: #121212;
-$nav-link-color: #121212;
-$btn-border-radius: 999px;
-$btn-border-radius-sm: 999px;
-$btn-border-radius-lg: 999px;
-$nav-pills-border-radius: 999px;
 
-// Avatar
+// Borders
+$border-radius: 6px;
+$border-color-strong: #979797;
+$border-color: #c4c4c4;
 
-$avatar-size-base: 3rem;
-$avatar-size-xs: 2.1875rem;
-$avatar-size-sm: 2.5rem;
-$avatar-size-lg: 4rem;
-$avatar-size-xl: 5.125rem;
-$avatar-size-xxl: 8rem;
-$avatar-size-xxxl: 11rem;
-
-// Form font size
-$form-fs-lg: 1.2rem;
-$form-fs-md: 1rem;
-$form-fs-sm: 0.875rem;
-
-// Modal
-$modal-sm:                          400px;
-$modal-md:                          630px;
-$modal-lg:                          1000px;
-$modal-xl:                          1140px;
-$modal-transition:                  translate3d(0,0,0);
-$modal-fade-transform:             translate3d(0,0vh,0);
-// Body Line Height
-$body-line-height: 1.6em;
 // Vertical base space
 $v-gap: 8px !default;
 

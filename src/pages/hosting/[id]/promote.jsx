@@ -35,7 +35,7 @@ const Media = () => {
   return (
     <div className="page">
     <div className="page-content">
-      <Container>
+      <div className="container">
         <Row>
 
         <Col className="py-2">
@@ -76,7 +76,7 @@ const Media = () => {
                 </Form>
           </Col>
         </Row>
-      </Container>
+      </div>
       <PageActions
         prevUrl={"/location"}
         nextUrl={"/info"}

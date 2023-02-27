@@ -13,12 +13,12 @@ const Cookies = () => {
 
   return (
     <div className="page">
-      <Container>
+      <div className="container">
       
         <Row>
           pagine legali
         </Row>
-      </Container>
+      </div>
     </div>
   );
 };

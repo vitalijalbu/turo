@@ -19,7 +19,7 @@ const Billing = () => {
   return (
     <div className="page">
     <div className="page-content">
-    <Container>
+    <div className="container">
     <div className="row g-5">
     <div className="col-md-4">
         <div className="position-sticky" style={{ top: "2rem" }}>
@@ -72,7 +72,7 @@ const Billing = () => {
                     </td> 
 
                     <td className="text-right">
-                    <Button color="dark" outline size="sm">
+                    <Button outline size="sm">
         <IconCloudDownload/> Scarica fattura
       </Button>
                       </td>
@@ -90,7 +90,7 @@ const Billing = () => {
     
     </div>
     
-          </Container>
+          </div>
           </div>
       </div>
   );

@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { Modal, ModalBody, Button, ModalFooter, ModalHeader } from 'reactstrap';
+import {
+  Button,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+} from '@chakra-ui/react'
 
 const PopupConfirm = ({
   size,
@@ -33,24 +41,22 @@ const PopupConfirm = ({
   }
 
   return (
-    <Modal
-      isOpen
-      centered
-      size="sm"
-      fade={false}
-      toggle={() => onClose(false)}
-      className={`confirm-modal ${className}`}
+    <AlertDialog
+        motionPreset='slideInBottom'
+        onClose={() => onClose(false)}
+        isOpen
+        isCentered
     >
-      <ModalHeader>
+      <AlertDialogContent>
         {title}
-      </ModalHeader>
+      </AlertDialogContent>
       {!!message && (
-        <ModalBody className="p-4 text-center">
+        <AlertDialogBody className="p-4 text-center">
           <p className="text-muted">{message}</p>
-        </ModalBody>
+        </AlertDialogBody>
       )}
-      <ModalFooter>{buttonsContent}</ModalFooter>
-    </Modal>
+      <AlertDialogFooter>{buttonsContent}</AlertDialogFooter>
+    </AlertDialog>
   );
 };
 

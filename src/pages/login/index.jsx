@@ -34,7 +34,7 @@ const Index = () => {
   return (
     <div className="page">
       <div className="page-content py-5">
-        <Container>
+        <div className="container">
           <Row>
             <Col className="mx-auto" md={4}>
               {/* Title */}
@@ -88,7 +88,7 @@ const Index = () => {
                 </div>
                 {/* Button */}
                 <div>
-                  <Button color="dark" block onClick={handleAuth} disabled={loading}>
+                  <Button block onClick={handleAuth} disabled={loading}>
                     Accedi
                   </Button>
                 </div>
@@ -99,7 +99,7 @@ const Index = () => {
               {/* Form END */}
             </Col>
           </Row>
-        </Container>
+        </div>
       </div>
     </div>
   );

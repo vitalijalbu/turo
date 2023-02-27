@@ -22,7 +22,7 @@ const Account = () => {
       />
       <Toolbar/>
       <div className="page-content">
-        <Container>
+        <div className="container">
           <Row>
             <Col md={6} lg={9} xs={6}>
               <section className="section-content mb-3">
@@ -117,7 +117,7 @@ const Account = () => {
               </Card>
             </Col>
           </Row>
-        </Container>
+        </div>
       </div>
     </div>
   );

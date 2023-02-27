@@ -16,7 +16,7 @@ import data from "@/data/faqs.json";
 const Faqs = () => {
   return (
     <section className="section-content faqs">
-      <Container>
+      <div className="container">
         <Row>
           <Col lg={8} md={12} className="mx-auto">
             <h3>Domande più frequenti</h3>
@@ -45,7 +45,7 @@ const Faqs = () => {
             </Link>
           </Col>
         </Row>
-      </Container>
+      </div>
     </section>
   );
 };
