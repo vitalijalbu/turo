@@ -150,7 +150,7 @@ const Listings = () => {
                         </td>
 
                         <td className="text-end">
-                          <div className="d-flex justify-content-space-between">
+                          <div className="d-flex justify-content-end">
                             <div className="me-1">
                               <Button
                                 variant="outline"
@@ -180,7 +180,7 @@ const Listings = () => {
                                     Stato dell'annuncio
                                   </MenuItem>
                                   <MenuDivider />
-                                  <MenuItem onClick={handleDelete}>
+                                  <MenuItem onClick={handleDelete} className="text-danger">
                                     Elimina
                                   </MenuItem>
                                 </MenuList>

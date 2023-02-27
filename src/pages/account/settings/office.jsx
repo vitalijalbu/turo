@@ -17,7 +17,7 @@ import { getProfile } from "@/lib/graphql/queries/user";
 import { useForm, Controller } from "react-hook-form";
 import confirm from '@/shared/components/confirm/';
 
-const Security = () => {
+const Office = () => {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -95,10 +95,36 @@ const Security = () => {
               </div>
             </div>
             <div className="col-md-8">
-              <h1 className="section-title">Password e sicurezza</h1>
+              <h1 className="section-title">La mia agenzia</h1>
               {/* Form */}
-              <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl isInvalid={errors.email}>
+              <form onSubmit={handleSubmit(onSubmit)} className="mb-3">
+                <div className="row">
+                <div className="col">
+      <FormControl isInvalid={errors.nome}>
+        <FormLabel htmlFor="nome">Nome</FormLabel>
+        <Input
+          type="text"
+          id="nome"
+          placeholder="Inserisci il tuo nome"
+          {...register("nome", { required: "Campo obbligatorio" })}
+        />
+        <FormErrorMessage>{errors.nome?.message}</FormErrorMessage>
+      </FormControl>
+      </div>
+      <div className="col">
+      <FormControl isInvalid={errors.cognome} mt={4}>
+        <FormLabel htmlFor="cognome">Cognome</FormLabel>
+        <Input
+          type="text"
+          id="cognome"
+          placeholder="Inserisci il tuo cognome"
+          {...register("cognome", { required: "Campo obbligatorio" })}
+        />
+        <FormErrorMessage>{errors.cognome?.message}</FormErrorMessage>
+      </FormControl>
+      </div>
+      </div>
+      <FormControl isInvalid={errors.email} mt={4}>
         <FormLabel htmlFor="email">Email</FormLabel>
         <Input
           type="email"
@@ -114,45 +140,28 @@ const Security = () => {
         />
         <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
       </FormControl>
-                <div className="row">
-                <div className="col">
-      <FormControl isInvalid={errors.nome}>
-        <FormLabel htmlFor="nome">Nome</FormLabel>
+      <FormControl isInvalid={errors.telefono} mt={4}>
+        <FormLabel htmlFor="telefono">Telefono</FormLabel>
         <Input
           type="text"
-          id="nome"
-          placeholder="Inserisci il tuo nome"
-          {...register("nome", { required: "Campo obbligatorio" })}
+          id="telefono"
+          placeholder="Inserisci il tuo numero di telefono"
+          {...register("telefono", { required: "Campo obbligatorio" })}
         />
-        <FormErrorMessage>{errors.nome?.message}</FormErrorMessage>
+        <FormErrorMessage>{errors.telefono?.message}</FormErrorMessage>
       </FormControl>
-      </div>
-      <div className="col">
-      <FormControl isInvalid={errors.cognome}>
-        <FormLabel htmlFor="cognome">Cognome</FormLabel>
-        <Input
-          type="text"
-          id="cognome"
-          placeholder="Inserisci il tuo cognome"
-          {...register("cognome", { required: "Campo obbligatorio" })}
-        />
-        <FormErrorMessage>{errors.cognome?.message}</FormErrorMessage>
-      </FormControl>
-      </div>
-      </div>
-
       <Button
         type="submit"
         colorScheme="blue"
         isLoading={submitting}
-       
+        mt={4}
       >
-        Reimposta nuova password
+        Salva
       </Button>
     </form>
               {/* End Form */}
               <hr />
-                <div>
+                <div className="mt-5">
                   <Button color="danger" onClick={handleDelete}>
                     Elimina account
                   </Button>
@@ -165,4 +174,4 @@ const Security = () => {
   );
 };
 
-export default Security;
+export default Office;

@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { authAction } from "@/lib/graphql/mutations/auth";
-import IconFacebook from "@/shared/components/IconFacebook";
+import IconFacebook from "@/shared/components/icons/IconFacebook";
 import IconGoogle from "@/shared/components/IconGoogle";
 
 

@@ -14,7 +14,7 @@ const PageHead = (props) => {
 
             <div className="d-flex">
                 <div className="flex-grow-1">
-                <h1 className="page-title">{props.title}</h1>
+                <h1 className="section-title">{props.title}</h1>
                 {props.subtitle && (
                   <p>
                     {props.subtitle}

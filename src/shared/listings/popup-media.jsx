@@ -1,12 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getListingMedia } from "@/lib/graphql/queries/listings";
-import {  Modal, ModalBody, ModalHeader, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from "reactstrap";
-import TabPhotos from './tab-photos';
-import TabPlanimetry from './tab-planimetry';
-import TabTour from './tab-tour';
-import TabVideo from './tab-video';
-
+import {
+  Grid,
+  Stack,
+  GridItem,
+  SimpleGrid,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react";
+import TabPhotos from "./tab-photos";
+import TabPlanimetry from "./tab-planimetry";
+import TabTour from "./tab-tour";
+import TabVideo from "./tab-video";
 
 const PopupMedia = ({ opened, toggle }) => {
   const router = useRouter();
@@ -15,14 +32,14 @@ const PopupMedia = ({ opened, toggle }) => {
   const [photos, setPhotos] = useState([]);
   const [planimetry, setPlanimetry] = useState([]);
   const [entry, setEntry] = useState(null);
-  const [activeTab, setActiveTab] = useState('photos');
-  
-  const toggleTab = (value) => { 
+  const [activeTab, setActiveTab] = useState("photos");
+
+  const toggleTab = (value) => {
     //console.log('tabs', value)
     if (activeTab !== value) {
       setActiveTab(value);
     }
-  }
+  };
 
   useEffect(() => {
     getListingMedia(id)
@@ -39,44 +56,46 @@ const PopupMedia = ({ opened, toggle }) => {
 
   return (
     <Modal
-    centered
-    fullscreen
-    fade={false}
-    toggle={toggle}
-    isOpen={opened}
+      size={"full"}
+      onClose={toggle}
+      isOpen={opened}
+      motionPreset="slideInBottom"
+    >
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <ModalCloseButton />
+        </ModalHeader>
+        <ModalBody>
+  <div className="container">
+  <Tabs isFitted variant='soft-rounded'>
+  <TabList>
+    <Tab>Foto</Tab>
+    <Tab>Pianimetria</Tab>
+    <Tab>Video</Tab>
+    <Tab>Virtual Tour</Tab>
+  </TabList>
 
-  >
-    <ModalHeader toggle={toggle}/>
-      <ModalBody>
-        <div className="container">
-      <Nav justified pills tabs className='py-2'>
-        <NavItem><NavLink disabled={photos.length !== null} href="#" value="photos" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'photos'}>Foto </NavLink></NavItem>
-        <NavItem><NavLink disabled={planimetry.length !== null} href="#" value="planimetry" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'planimetry'}>Pianimetria </NavLink></NavItem>
-        <NavItem><NavLink disabled={entry?.linkVideo?.length !== null} href="#" value="video" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'video'}>Video </NavLink></NavItem>
-        <NavItem><NavLink disabled={entry?.linkVirtualTour?.length !== null} href="#" value="tour" onClick={(e) => toggleTab(e.target.getAttribute('value'))} active={activeTab === 'tour'}>Virtual Tour </NavLink></NavItem>
-        </Nav>
-        <div className="tabs-modal py-4">
-      <TabContent activeTab={activeTab}>
-      <TabPane tabId="photos">
-       <TabPhotos data={photos}/>
-      </TabPane>
+  <TabPanels>
+    <TabPanel>
+      <TabPhotos data={photos} />
+    </TabPanel>
+    <TabPanel>
+    <TabPlanimetry data={planimetry} />
+    </TabPanel>
+    <TabPanel>
+    <TabVideo data={entry?.linkVideo} />
+    </TabPanel> 
+    <TabPanel>
+    <TabTour data={entry?.linkVirtualTour} />
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
-      <TabPane tabId="planimetry">
-      <TabPlanimetry data={planimetry}/>
-      </TabPane>  
-      <TabPane tabId="video">
-       <TabVideo data={entry?.linkVideo}/>
-      </TabPane>
-
-      <TabPane tabId="tour">
-     <TabTour data={entry?.linkVirtualTour}/>
-      </TabPane>
-
-  </TabContent>
-  </div>
-  </div>
-    </ModalBody>
-  </Modal>
+          </div>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
-}
+};
 export default PopupMedia;

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import { Badge } from "@chakra-ui/react";
 
 const Toolbar = () => {
   const router = useRouter();
@@ -26,16 +26,9 @@ const Toolbar = () => {
   </li>  
  <li className="nav-item">
     <Link className="nav-link" href="/pricing">
-      Aumenta visibilità <span className="badge bg-primary">NEW</span>
+      Aumenta visibilità <Badge style={{position: 'absolute', top: '0', right: '0'}} colorScheme='green'>NEW</Badge>
     </Link>
   </li>
- <li className="nav-item">
-    <Link 
-      className="nav-link" href="/account/favorites"
-    >
-      Preferiti
-    </Link>
-  </li>  
  <li className="nav-item">
     <Link 
       className="nav-link" href="/account/requests"
@@ -45,7 +38,14 @@ const Toolbar = () => {
   </li> 
   <li className="nav-item">
     <Link 
-      className="nav-link" href="/accout/settings"
+      className="nav-link" href="/account/favorites"
+    >
+      Preferiti
+    </Link>
+  </li>  
+  <li className="nav-item">
+    <Link 
+      className="nav-link" href="/account/settings"
     >
       Impostazioni
     </Link>

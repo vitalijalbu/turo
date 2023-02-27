@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import {  Row, Col, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import {  Button } from '@chakra-ui/react';
 import { IconMessageCircle, IconBookmark } from '@tabler/icons-react';
 import SideNav from '@/shared/settings/side-nav';
 import bills from "@/data/billing.json";
@@ -29,40 +29,29 @@ const Billing = () => {
         </div>
       </div>
       <div className="col-md-8">
-        <h3 className="pb-4 mb-4 border-bottom">Fatturazione</h3>
+        <h1 className="section-title">Fatturazione</h1>
         <div>
-        <Row>
-            <Col md={12}>
-              <Nav className="subnav" pills>
-                <NavItem>
-                  <NavLink href="#" onClick={setTabs} active={archived === false}>
+        <div>
+            <div md={12}>
+              <ul className="subnav" pills>
+                <li>
+                  <a href="#" onClick={setTabs} active={archived === false}>
                     Piano abbonamento
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#" onClick={setTabs} active={archived === true}>Acquisti in-app</NavLink>
-                </NavItem>
-              </Nav>
-            </Col>
-          </Row>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onClick={setTabs} active={archived === true}>Acquisti in-app</a>
+                </li>
+              </ul>
+            </div>
+          </div>
           {Array.isArray(bills) ? (
           <table className="table">
                 <tbody>
                   {bills.map((entry) => (
                     <tr key={entry.id}>
                     <th scope="row">
-                    <div className="d-flex align-items-center">
-      <div className="icon-lg bg-light rounded-circle flex-shrink-0">
-        <IconReceipt />
-      </div>
-      {/* Title */}
-      <div className="ms-2">
-        <h6 className="card-title mb-0">{entry.id}</h6>
-        <ul className="nav nav-divider small">
-          <li className="nav-item">{`Numero: #${entry.id}`}</li>
-        </ul>
-      </div>
-    </div>
+          <Link href="#">{`#${entry.id}`}</Link>
                     </th>
                     <td>
                       <span className="d-block">{entry.message}</span>
@@ -71,9 +60,8 @@ const Billing = () => {
                       <span className="d-block">{`Data ${entry?.dateCreated}`}</span>
                     </td> 
 
-                    <td className="text-right">
-                    <Button outline size="sm">
-        <IconCloudDownload/> Scarica fattura
+                    <td className="text-end">
+                    <Button variant="outline" leftIcon={<IconCloudDownload/>}> Scarica fattura
       </Button>
                       </td>
                     </tr>

@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  
-  Row,
-  Col,
   Button,
-  Form,
-  FormGroup,
-  Label,
-  FormText,
+  FormControl,
+  FormHelperText,
+  FormErrorMessage,
+  FormLabel,
   Input,
-  UncontrolledAlert
-} from "reactstrap";
+  Switch,
+  Checkbox,
+  CheckboxGroup,
+} from "@chakra-ui/react";
 import { IconMessageCircle, IconBookmark } from "@tabler/icons-react";
 import SideNav from "@/shared/settings/side-nav";
 import { getProfile } from "@/lib/graphql/queries/user";
 import { useForm, Controller } from "react-hook-form";
 import confirm from '@/shared/components/confirm/';
 
-const Settings = () => {
+const Index = () => {
   const [loading, setLoading] = useState(false);
-  const [form, setFormValues] = useState({});
-  const [error, setError] = useState('');
-  const [alert, setAlert] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [submitting, setSubmitting] = useState(false);
+
+  const onSubmit = (data) => {
+    setSubmitting(true);
+    // Submit data to server or perform other actions here
+    console.log(data);
+    setSubmitting(false);
+  };
+
 
     /* Confirm */
     const handleDelete = () => {
@@ -31,7 +41,7 @@ const Settings = () => {
         message: 'Tutti i tuo idati personali verranno rimossi, annunci etc... Non saranno più recuperabili',
         cancelText: 'Annulla',
         confirmText: 'Procedi',
-        confirmColor: 'danger',
+        confirmdivor: 'danger',
       }).then((confirmed) => {
         if (confirmed) {
           removeSession();
@@ -75,7 +85,6 @@ const Settings = () => {
   return (
     <div className="page">
       <div className="page-content">
-        
         <div className="container">
           <div className="row g-5">
             <div className="col-md-4">
@@ -85,45 +94,79 @@ const Settings = () => {
                 </div>
               </div>
             </div>
-            <Col md={8}>
-            {!!alert && <UncontrolledAlert color={alert.color}>{alert.message}</UncontrolledAlert>}
-              <h3 className="pb-4 mb-4 border-bottom">Impostazioni account</h3>
-              <Form>
-                <FormGroup>
-                  <Row>
-                    <Col>
-                      <Label for="firstName">Nome</Label>
-                      <Input id="firstName" name="firstName" type="text" value={form.firstName}/>
-                    </Col>
-                    <Col>
-                      <Label for="lastName">Cognome</Label>
-                      <Input id="lastName" name="lastName" type="text"value={form.lastName} />
-                    </Col>
-                  </Row>
-                </FormGroup>
-                <FormGroup>
-                  <Label for="email">Indirizzo email</Label>
-                  <Input id="email" name="email" type="email" value={form.email}/>
-                </FormGroup>
-                <FormGroup>
-                  <Label for="v">Telefono</Label>
-                  <Input id="phoneNumber" name="phoneNumber" type="num" value={form.phoneNumber}/>
-                </FormGroup>
-
-                <hr />
-                <div className="d-flex justify-content-end">
-                  <Button type="button" color="primary" disabled={loading} className={loading ? 'btn-loading' : ''} onClick={handleUpdate}>
-                    Salva
-                  </Button>
-                </div>
-              </Form>
+            <div className="col-md-8">
+              <h1 className="section-title">Impostazioni account</h1>
+              {/* Form */}
+              <form onSubmit={handleSubmit(onSubmit)} className="mb-3">
+                <div className="row">
+                <div className="col">
+      <FormControl isInvalid={errors.nome}>
+        <FormLabel htmlFor="nome">Nome</FormLabel>
+        <Input
+          type="text"
+          id="nome"
+          placeholder="Inserisci il tuo nome"
+          {...register("nome", { required: "Campo obbligatorio" })}
+        />
+        <FormErrorMessage>{errors.nome?.message}</FormErrorMessage>
+      </FormControl>
+      </div>
+      <div className="col">
+      <FormControl isInvalid={errors.cognome} mt={4}>
+        <FormLabel htmlFor="cognome">Cognome</FormLabel>
+        <Input
+          type="text"
+          id="cognome"
+          placeholder="Inserisci il tuo cognome"
+          {...register("cognome", { required: "Campo obbligatorio" })}
+        />
+        <FormErrorMessage>{errors.cognome?.message}</FormErrorMessage>
+      </FormControl>
+      </div>
+      </div>
+      <FormControl isInvalid={errors.email} mt={4}>
+        <FormLabel htmlFor="email">Email</FormLabel>
+        <Input
+          type="email"
+          id="email"
+          placeholder="Inserisci la tua email"
+          {...register("email", {
+            required: "Campo obbligatorio",
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Email non valida",
+            },
+          })}
+        />
+        <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+      </FormControl>
+      <FormControl isInvalid={errors.telefono} mt={4}>
+        <FormLabel htmlFor="telefono">Telefono</FormLabel>
+        <Input
+          type="text"
+          id="telefono"
+          placeholder="Inserisci il tuo numero di telefono"
+          {...register("telefono", { required: "Campo obbligatorio" })}
+        />
+        <FormErrorMessage>{errors.telefono?.message}</FormErrorMessage>
+      </FormControl>
+      <Button
+        type="submit"
+        colorScheme="blue"
+        isLoading={submitting}
+        mt={4}
+      >
+        Salva
+      </Button>
+    </form>
+              {/* End Form */}
               <hr />
-                <div>
+                <div className="mt-5">
                   <Button color="danger" onClick={handleDelete}>
                     Elimina account
                   </Button>
                 </div>
-            </Col>
+            </div>
           </div>
         </div>
       </div>
@@ -131,4 +174,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Index;

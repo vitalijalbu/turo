@@ -15,7 +15,7 @@ const ListingItem = ({data }) => {
   return (
     <Box className="item-listing">
     <Flex>
-      <div className="item-media">
+      <div className="property-media">
     <Link href={`/listings/${data.id}`}>
       <ListingSwiper media={data?.media_photos} />
       </Link>

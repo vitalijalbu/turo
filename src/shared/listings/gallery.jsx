@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
-import { ButtonGroup, Button } from "reactstrap";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import PopupMedia from "@/shared/listings/popup-media";
 import { IconPhoto } from '@tabler/icons-react';
 
@@ -81,7 +81,7 @@ const Gallery = ({ media }) => {
                 </div>
               </div>
               <span className="it-griditem-text-wrapper">
-          <span className="it-griditem-text"><Button outline color="white" size="sm"><IconPhoto/> Vedi tutte le foto</Button></span>
+          <span className="it-griditem-text"><Button colorScheme='blackAlpha' size="sm" leftIcon={<IconPhoto/>}>Vedi tutte le foto</Button></span>
         </span>
             </a>
           </div>
@@ -90,11 +90,11 @@ const Gallery = ({ media }) => {
     </div>
 
 
-      <ButtonGroup className="gallery-cta">
-      <Button color="white" onClick={() => toggleMediaPopup('photos')}>Vedi più foto</Button>
-      <Button color="white" onClick={() => toggleMediaPopup('planimetry')}>Pianimetria</Button>
-      <Button color="white" onClick={() => toggleMediaPopup('video')}>Video</Button>
-      <Button color="white" onClick={() => toggleMediaPopup('tour')}>360° Tour</Button>
+      <ButtonGroup colorScheme='blackAlpha' spacing="1" size="sm" className="gallery-cta">
+      <Button onClick={() => toggleMediaPopup('photos')}>Vedi più foto</Button>
+      <Button onClick={() => toggleMediaPopup('planimetry')}>Pianimetria</Button>
+      <Button onClick={() => toggleMediaPopup('video')}>Video</Button>
+      <Button onClick={() => toggleMediaPopup('tour')}>360° Tour</Button>
     </ButtonGroup>
     </div>
     </div>

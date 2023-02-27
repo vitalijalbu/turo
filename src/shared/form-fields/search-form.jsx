@@ -1,15 +1,14 @@
 import { useForm } from "react-hook-form";
 import {
-  Flex,
-  Box,
-  Heading,
   FormControl,
   FormLabel,
   Input,
   Select,
-  Button,
-  
+  Button
 } from "@chakra-ui/react";
+import { IconSearch } from "@tabler/icons-react";
+import AddressField from "./address-field";
+import data from "@/data/categories.json";
 
 function SearchForm() {
   const { register, handleSubmit } = useForm();
@@ -19,50 +18,46 @@ function SearchForm() {
   };
 
   return (
+    <section className="py-3">
     <div className="container">
-    <Box w="100%" p={4}>
-      <Flex as="form" onSubmit={handleSubmit(onSubmit)}>
+    <div className="row">
+      <form as="form" onSubmit={handleSubmit(onSubmit)} className="d-flex align-items-end">
         <FormControl flex={1} mr={4}>
-          <FormLabel htmlFor="location">Location</FormLabel>
-          <Input
-            id="location"
-            type="text"
-            placeholder="Where are you going?"
-            {...register("location")}
-          />
+          <FormLabel htmlFor="location">Città</FormLabel>
+          <AddressField/>
         </FormControl>
         <FormControl flex={1} mr={4}>
-          <FormLabel htmlFor="guests">Guests</FormLabel>
+          <FormLabel htmlFor="category">Tipologia</FormLabel>
           <Select
-            id="guests"
-            placeholder="Select guests"
-            {...register("guests")}
+            id="category"
+            placeholder="Tipologia"
+            {...register("category")}
           >
-            <option value={1}>1 guest</option>
-            <option value={2}>2 guests</option>
-            <option value={3}>3 guests</option>
-            <option value={4}>4 guests</option>
+            {data.categories.map((category) => (
+            <option key={category.slug} value={category.slug}>{category.title}</option>
+            ))}
           </Select>
         </FormControl> 
         <FormControl flex={1} mr={4}>
-          <FormLabel htmlFor="guests">Guests</FormLabel>
+          <FormLabel htmlFor="category">Guests</FormLabel>
           <Select
-            id="guests"
-            placeholder="Select guests"
-            {...register("guests")}
+            id="category"
+            placeholder="Tipologia"
+            {...register("category")}
           >
             <option value={1}>1 guest</option>
-            <option value={2}>2 guests</option>
-            <option value={3}>3 guests</option>
-            <option value={4}>4 guests</option>
+            <option value={2}>2 category</option>
+            <option value={3}>3 category</option>
+            <option value={4}>4 category</option>
           </Select>
         </FormControl>
         <Button type="submit" colorScheme="blue">
-          Search
+          <IconSearch/> Cerca
         </Button>
-      </Flex>
-    </Box>
+      </form>
     </div>
+    </div>
+    </section>
   );
 }
 

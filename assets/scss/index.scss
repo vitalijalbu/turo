@@ -2,20 +2,25 @@
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
-@import './components/_swiper';
 @import './_variables';
+@import './components/_utilities';
+@import './components/_grid';
+@import './components/_swiper';
+
 
 @import './app';
 
 @import './components/_header';
+@import './components/_list';
 @import './components/_property-item';
 @import './components/_filters';
 @import './components/_map';
 @import './components/_section';
-@import './components/_utilities';
+
 @import './components/_page';
-@import './components/_grid';
+
 @import './components/_search-form';
+
 @import './components/_navbar';
 @import './components/_toolbar';
 @import './components/_table';
@@ -25,6 +30,7 @@
 @import './components/_header';
 @import './components/_dropzone';
 @import './components/_hosting';
-@import './components/_list';
+
+@import './components/_autocomplete';
 @import './pages/search';
 @import './pages/listing';

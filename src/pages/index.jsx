@@ -16,12 +16,12 @@ import {
   VStack,
   useBreakpointValue,
 } from '@chakra-ui/react';
+
 const Home = () => {
 
   return (
     <div className="page">
-    
-      
+    <div className="page-content">
 
     <Flex
       w={'full'}
@@ -62,7 +62,7 @@ const Home = () => {
         </Stack>
       </VStack>
     </Flex>
-    <div className="page-content">
+
     <SearchForm/>
       <Features />
       <ListingTypes />

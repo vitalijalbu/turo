@@ -4,17 +4,15 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { getListing } from "@/lib/graphql/queries/listings";
 import {
-  
-  Row,
-  Col,
   Card,
   CardBody,
   Button,
   Breadcrumb,
   BreadcrumbItem,
-} from "reactstrap";
+  Avatar,
+} from "@chakra-ui/react";
 import PupupContact from "@/shared/components/popup-contact";
-import PopupShare from "@/shared/listings/popup-share";
+import PopupShare from "@/shared/components/popup-share";
 import Gallery from "@/shared/listings/gallery";
 import {
   IconCornerRightUp,
@@ -85,50 +83,53 @@ const Page = () => {
         <PupupContact opened={popupContact} toggle={toggleContactPopup} />
       )}
       <div className="page">
-        <div className="page-content pt-0">
+        <div className="page-content">
           <section className="py-0 pt-sm-5 bg-light">
             <div className="container">
               {/* p and button START */}
-              <Row>
-                <Col>
+              <div className="row">
+                <div className="col">
                   {/* Meta */}
                   <div className="d-lg-flex justify-content-lg-between mb-3">
                     {/* p */}
-                    <Link href={`/search`}>
-                      <IconChevronLeft /> Ricerca
+                    <Button variant="outline" leftIcon={<IconChevronLeft />}>
+                      <Link href={`/search`}>
+                       Ricerca
                     </Link>
+                    </Button>
                     {/* Buttons */}
                     <ul className="list-inline text-end">
                       {/* Heart icon */}
                       <li className="list-inline-item">
-                        <Button color="white" onClick={() => addToFavorite()}>
-                          <IconHeart /> Salva
+                        <Button variant="outline" leftIcon={<IconHeart />} onClick={() => addToFavorite()}>
+                           Salva
                         </Button>
                       </li>
                       {/* Share icon */}
                       <li className="list-inline-item dropdown">
                         <Button
-                          color="white"
+                          variant="outline"
+                          leftIcon={<IconCornerRightUp />} 
                           onClick={() => togglePopupShare()}
                         >
-                          <IconCornerRightUp /> Condividi
+                          Condividi
                         </Button>
                       </li>
                     </ul>
                   </div>
-                </Col>
-              </Row>
-              <Row>
+                </div>
+              </div>
+              <div className="row">
                 <div id="listing-gallery" className="mb-4">
                   <Gallery media={entry?.media_photos} />
                 </div>
-              </Row>
+              </div>
             </div>
           </section>
           <section className="mt-3">
             <div className="container">
-              <Row>
-                <Col md={7} className="gap-5">
+              <div className="row">
+                <div className="col-md-8 gap-5">
                   <section className="section-content border-bottom mb-5">
                     {/* p */}
                     <div className="d-block mb-3">
@@ -450,16 +451,16 @@ const Page = () => {
                     </div>
                     mappa
                   </section>
-                </Col>
-                <Col md={5}>
+                </div>
+                <div className="col-md-4">
                   <div className="position-sticky" style={{ top: "4.5rem" }}>
-                    <Card>
+                    <Card variant="outline">
                       <CardBody className="text-center">
                       <Link href={`/offices/${entry?.office[0]?.id}`} passHref>
                         {/* Image */}
-                        <img
+                        <Avatar
+                        size="lg"
                           src={entry?.office?.[0]?.avatarImg?.[0]?.url ?? "/img/placeholder.svg"}
-                          className="rounded-circle avatar-xl"
                         />
                         <h5>{entry?.author?.fullName}</h5>
                         <span>{entry?.office[0]?.title}</span>
@@ -467,33 +468,36 @@ const Page = () => {
                         <hr />
                         <div className="d-block mb-2">
                           <Button
-                            block
-                            outline
-                            color="primary"
+                            w="full"
+                            variant="outline"
+                            colorScheme="blue"
+                            leftIcon={<IconPhone /> }
                             onClick={() => handleRowClick(entry?.office[0]?.phoneNumber)}>
-                              <IconPhone /> {selected === entry?.office[0]?.phoneNumber ? entry?.office[0]?.phoneNumber : 'Mostra numero'} 
+                              {selected === entry?.office[0]?.phoneNumber ? entry?.office[0]?.phoneNumber : 'Mostra numero'} 
                           </Button>
                         </div>
                         <div className="d-block mb-2">
                           <Button
-                            block
-                            color="dark"
+                            w="full"
+                            variant="outline"
+                            leftIcon={<IconMail /> }
                             onClick={toggleContactPopup}
                           >
-                            <IconMail /> Invia messaggio
+                            Invia messaggio
                           </Button>
                         </div>
                         <hr />
                         <div className="d-block">
-                          <Link href={`/offices/${entry?.office[0]?.id}`} passHref>
-                            <IconPlus /> Annunci dell'inserzionista
+                          <Button variant="link" leftIcon={<IconPlus />}><Link href={`/offices/${entry?.office[0]?.id}`} passHref>
+                             Annunci dell'inserzionista
                           </Link>
+                          </Button>
                         </div>
                       </CardBody>
                     </Card>
                   </div>
-                </Col>
-              </Row>
+                </div>
+              </div>
             </div>
           </section>
         </div>

@@ -30,13 +30,19 @@
    }
  }
  @media (min-width: 1200px) {
-   .container-xl, .container-lg, .container-md, .container-sm, .container {
+   .container-xl, .container-lg, .container-md, .container {
      max-width: 1140px;
+   }
+   .container-sm{
+    max-width: 768px;
    }
  }
  @media (min-width: 1400px) {
    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
      max-width: 1280px;
+   }
+   .container-sm{
+    max-width: 768px;
    }
  }
  .row {

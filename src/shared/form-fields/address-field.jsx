@@ -1,44 +1,73 @@
-import React, { useRef, useState } from 'react';
-import Link from 'next/link';
-import { NavLink, FormGroup, Label, FormText, Input, DropdownMenu, DropdownItem, UncontrolledDropdown } from 'reactstrap';
-import { getLocation } from '@/lib/api/geojson';
+import { useState } from "react";
+import Link from "next/link";
+import axios from "axios";
+import {
+  Input,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverHeader,
+  PopoverBody,
+  List,
+  ListItem,
+  ListIcon
+} from "@chakra-ui/react";
+import { IconSearch } from "@tabler/icons-react";
 
-const AddressField = ({ label, name, placeholder, required, readOnly, initialValue }) => {
-  const [loading, setLoading] = useState(false);
-  const [geojson, setGeoData] = useState([]);
-  const [selected, setCity] = useState();
-  const [activeDropdown, setActiveDropdown] = useState(false);
 
+const AddressField = () => {
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
 
-  /* Query API here */
-   const handleChange = (value) => {
-    setCity(value);
-    console.log('geocity', value);
-     getLocation(value)
-      .then(({ data }) => {
-        setLoading(true);
-        setActiveDropdown(true);
-        setGeoData(data);
-        console.log('geojson', data);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  const handleChange = async (event) => {
+    const query = event.target.value;
+    setQuery(query);
+
+    if (query.length > 2) {
+      try {
+        const response = await axios.get(
+          `https://nominatim.openstreetmap.org/search?format=json&countrycodes=it&addressdetails=0&limit=5&q=${query}`
+        );
+        setResults(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setResults([]);
+    }
   };
 
   return (
-    <FormGroup>
-      <Label>Cerca per città</Label>
-        <Input name={name} placeholder={placeholder} required={required} onChange={(e) => handleChange(e.target.value)} />
-        <UncontrolledDropdown isOpen={activeDropdown}>
-          <DropdownMenu>
-          {geojson.map((city, i) => (
-            <DropdownItem><NavLink><Link href="">{city.display_name}</Link></NavLink></DropdownItem>
-            ))}
-          </DropdownMenu>
-        </UncontrolledDropdown>
-    </FormGroup>
+    <div>
+      <Input
+        type="text"
+        value={query}
+        onChange={handleChange}
+        placeholder="Type to search..."
+      />
+      {results.length > 0 && (
+        <div className="list media-list">
+          <ul className="autocomplete">
+        {results.map((result) => (
+           <li key={result.place_id}>
+           <Link href="#" className="item-link item-content">
+             <div className="item-media">
+               <IconSearch/>
+             </div>
+             <div className="item-inner">
+               <div className="item-title">{result.display_name}</div>
+             </div>
+           </Link>
+         </li>
+        ))}
+      </ul>
+      </div>
+      )}
+    </div>
   );
 };
+
 
 export default AddressField;

@@ -4,11 +4,8 @@ import { useForm } from "react-hook-form";
 import graphQLClient from "@/lib/graphql/client";
 import { IconMinus, IconPlus, IconSearch } from "@tabler/icons-react";
 import {
-  
   Grid,
   Stack,
-  GridItem,
-  SimpleGrid,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -101,52 +98,52 @@ const FiltersPopup = ({ opened, toggle }) => {
             </Center>
             <form>
               {/* Type */}
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Tipologia di vendita</h2>
                 <Stack pl={6} mt={1} spacing={1}>
                   <Checkbox value="1">Attività con mura</Checkbox>
                   <Checkbox>Attività senza mura</Checkbox>
                   <Checkbox>Mura</Checkbox>
                 </Stack>
-              </Box>
+              </div>
               <hr />
               {/* Type */}
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Tipologia</h2>
-                <SimpleGrid columns={2} spacing={10}>
-                  <Box>
+                <div className="row" columns={2} spacing={10}>
+                  <div className="col">
                     <FormControl id="firstName" isRequired>
                       <FormLabel>Min</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                  <Box>
+                  </div>
+                  <div className="col">
                     <FormControl id="lastName">
                       <FormLabel>Max</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                </SimpleGrid>
-              </Box>
+                  </div>
+                </div>
+              </div>
               <hr />
               {/* Status */}
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Stato</h2>
-                <SimpleGrid columns={2} spacing={10}>
-                  <Box>
+                <div className="row" columns={2} spacing={10}>
+                  <div>
                     <FormControl id="firstName" isRequired>
                       <FormLabel>Min</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                  <Box>
+                  </div>
+                  <div>
                     <FormControl id="lastName">
                       <FormLabel>Max</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                </SimpleGrid>
-              </Box>
+                  </div>
+                </div>
+              </div>
               <hr />
 
               <FormControl as="fieldset" className="filter-block">
@@ -164,7 +161,7 @@ const FiltersPopup = ({ opened, toggle }) => {
                 <FormHelperText>Select only if you're a fan.</FormHelperText>
               </FormControl>
               <hr />
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Prezzi</h2>
                 <FormControl as="fieldset" className="filter-block">
                   <FormLabel as="legend">Favorite Naruto Character</FormLabel>
@@ -179,62 +176,62 @@ const FiltersPopup = ({ opened, toggle }) => {
                     <RangeSliderThumb index={1} />
                   </RangeSlider>
                 </FormControl>
-                <SimpleGrid columns={2} spacing={10}>
-                  <Box>
+                <div className="row" columns={2} spacing={10}>
+                  <div>
                     <FormControl id="firstName" isRequired>
                       <FormLabel>Min</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                  <Box>
+                  </div>
+                  <div>
                     <FormControl id="lastName">
                       <FormLabel>Max</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                </SimpleGrid>
-              </Box>
+                  </div>
+                </div>
+              </div>
               <hr />
               {/* Pricing */}
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Prezzi</h2>
-                <SimpleGrid columns={2} spacing={10}>
-                  <Box>
+                <div className="row" columns={2} spacing={10}>
+                  <div>
                     <FormControl id="firstName" isRequired>
                       <FormLabel>Min</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                  <Box>
+                  </div>
+                  <div>
                     <FormControl id="lastName">
                       <FormLabel>Max</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                </SimpleGrid>
-              </Box>
+                  </div>
+                </div>
+              </div>
               <hr />
               {/* Locals */}
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Superficie</h2>
-                <SimpleGrid columns={2} spacing={10}>
-                  <Box>
+                <div className="row" columns={2} spacing={10}>
+                  <div>
                     <FormControl id="firstName" isRequired>
                       <FormLabel>Min m&sup2;</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                  <Box>
+                  </div>
+                  <div>
                     <FormControl id="lastName">
                       <FormLabel>Max m&sup2;</FormLabel>
                       <Input type="text" />
                     </FormControl>
-                  </Box>
-                </SimpleGrid>
-              </Box>
+                  </div>
+                </div>
+              </div>
               <hr />
               {/* Luxury */}
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Lusso</h2>
                 <FormControl display="flex" alignItems="center">
                   <FormLabel htmlFor="email-alerts" mb="0">
@@ -242,17 +239,17 @@ const FiltersPopup = ({ opened, toggle }) => {
                   </FormLabel>
                   <Switch id="email-alerts" />
                 </FormControl>
-              </Box>
+              </div>
               <hr />
               {/* Rooms */}
-              <Box className="filter-block">
+              <div className="filter-block">
                 <h2 className="filter-block_title">Numero di camere</h2>
-                <SimpleGrid columns={2} spacing={10}>
-                  <Box>
+                <div className="row" columns={2} spacing={10}>
+                  <div>
                     <h3>Bagni</h3>
-                  </Box>
+                  </div>
                   <Spacer />
-                  <Box>
+                  <div>
                     <Button>
                       <IconPlus />
                     </Button>
@@ -260,8 +257,8 @@ const FiltersPopup = ({ opened, toggle }) => {
                     <Button>
                       <IconMinus />
                     </Button>
-                  </Box>
-                </SimpleGrid>
+                  </div>
+                </div>
                 <Flex minWidth="max-content" alignItems="center" gap="2">
                   <h3>Camere</h3>
                   <Spacer />
@@ -273,13 +270,13 @@ const FiltersPopup = ({ opened, toggle }) => {
                     <IconMinus />
                   </Button>
                 </Flex>
-              </Box>
+              </div>
             </form>
           </div>
         </ModalBody>
         <ModalFooter>
           <div className="container">
-            <Box>
+            <div>
               <Button variant="link" mr={"3"}>
                 Annulla filtri
               </Button>
@@ -290,7 +287,7 @@ const FiltersPopup = ({ opened, toggle }) => {
               >
                 Applica filtri
               </Button>
-            </Box>
+            </div>
           </div>
         </ModalFooter>
       </ModalContent>

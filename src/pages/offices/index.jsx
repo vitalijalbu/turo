@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Avatar, Button } from "@chakra-ui/react";
-import { getAllHosts } from "@/lib/graphql/queries/offices";
+import { getAllOffices } from "@/lib/graphql/queries/offices";
 import Filters from "@/shared/offices/filters";
 import PupupContact from "@/shared/components/popup-contact";
 import { IconPhone, IconMail } from "@tabler/icons-react";
@@ -13,7 +13,7 @@ const Index = () => {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    getAllHosts().then((data) => {
+    getAllOffices().then((data) => {
       setEntries(data?.entries || []);
       console.log('🐝 API response', data)
     }).catch((error) => {
