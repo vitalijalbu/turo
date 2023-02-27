@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import HostListings from "@/shared/offices/host-listings";
 import {
-  Container,
+  
   Row,
   Col,
   Button,

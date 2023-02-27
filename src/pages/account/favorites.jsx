@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ItemCard from "@/shared/snippets/listing-card";
 import PageHead from "@/shared/account/page-head";
 import { getUserFavorites } from "@/lib/graphql/queries/favorites";
-import { Container, SimpleGrid } from "@chakra-ui/react";
+import {  SimpleGrid } from "@chakra-ui/react";
 
 
 const Favorites = () => {

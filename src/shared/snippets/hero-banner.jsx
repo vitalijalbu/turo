@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Container, Group, Title, Text, Button } from 'reactstrap';
+import { Row,  Group, Title, Text, Button } from 'reactstrap';
 
 
 const HeroBanner = (props) => {

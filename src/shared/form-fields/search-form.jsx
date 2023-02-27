@@ -8,7 +8,7 @@ import {
   Input,
   Select,
   Button,
-  Container,
+  
 } from "@chakra-ui/react";
 
 function SearchForm() {
@@ -19,7 +19,7 @@ function SearchForm() {
   };
 
   return (
-    <Container maxW="xl">
+    <div className="container">
     <Box w="100%" p={4}>
       <Flex as="form" onSubmit={handleSubmit(onSubmit)}>
         <FormControl flex={1} mr={4}>

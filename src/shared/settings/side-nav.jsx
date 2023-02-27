@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { Container, ListGroup, ListGroupItem } from 'reactstrap';
+import {  ListGroup, ListGroupItem } from 'reactstrap';
 import { IconLock, IconReceipt2, IconBuildingEstate, IconUserCircle } from '@tabler/icons-react';
 import { getSession } from "@/lib/graphql/client";
 

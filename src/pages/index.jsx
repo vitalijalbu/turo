@@ -7,7 +7,7 @@ import ListingTypes from "@/shared/sections/listing-types";
 import Features from "@/shared/sections/features";
 //import LocationsLinks from "@/shared/common/LocationsLinks";
 import PromoBanner from "@/shared/snippets/hero-banner";
-import { Container, Row } from "reactstrap";
+import {  Row } from "reactstrap";
 import {
   Stack,
   Flex,

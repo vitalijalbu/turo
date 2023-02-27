@@ -73,7 +73,7 @@
   
   .table-primary {
     --table-color: #000;
-    #fff: #cfe2ff;
+    background-color: #cfe2ff;
     $border-color: #bacbe6;
     --table-striped-bg: #c5d7f2;
     --table-striped-color: #000;
@@ -87,7 +87,7 @@
   
   .table-secondary {
     --table-color: #000;
-    #fff: #e2e3e5;
+    background-color: #e2e3e5;
     $border-color: #cbccce;
     --table-striped-bg: #d7d8da;
     --table-striped-color: #000;
@@ -101,7 +101,7 @@
   
   .table-success {
     --table-color: #000;
-    #fff: #d1e7dd;
+    background-color: #d1e7dd;
     $border-color: #bcd0c7;
     --table-striped-bg: #c7dbd2;
     --table-striped-color: #000;
@@ -115,7 +115,7 @@
   
   .table-info {
     --table-color: #000;
-    #fff: #cff4fc;
+    background-color: #cff4fc;
     $border-color: #badce3;
     --table-striped-bg: #c5e8ef;
     --table-striped-color: #000;
@@ -129,7 +129,7 @@
   
   .table-warning {
     --table-color: #000;
-    #fff: #fff3cd;
+    background-color: #fff3cd;
     $border-color: #e6dbb9;
     --table-striped-bg: #f2e7c3;
     --table-striped-color: #000;
@@ -143,7 +143,7 @@
   
   .table-danger {
     --table-color: #000;
-    #fff: #f8d7da;
+    background-color: #f8d7da;
     $border-color: #dfc2c4;
     --table-striped-bg: #eccccf;
     --table-striped-color: #000;
@@ -157,7 +157,7 @@
   
   .table-light {
     --table-color: #000;
-    #fff: #f8f9fa;
+    background-color: #f8f9fa;
     $border-color: #dfe0e1;
     --table-striped-bg: #ecedee;
     --table-striped-color: #000;
@@ -171,7 +171,7 @@
   
   .table-dark {
     --table-color: #fff;
-    #fff: #212529;
+    background-color: #212529;
     $border-color: #373b3e;
     --table-striped-bg: #2c3034;
     --table-striped-color: #fff;

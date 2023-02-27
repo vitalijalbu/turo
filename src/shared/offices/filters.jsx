@@ -1,27 +1,69 @@
-import { IconFilter } from "@tabler/icons-react";
-import React, { useState, useEffect } from "react";
-import { Button, Container } from "reactstrap";
+import { useForm } from "react-hook-form";
+import {
+  Flex,
+  Box,
+  Heading,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  Button,
+  
+} from "@chakra-ui/react";
 
-const Filters = () => {
-  const [filtersOpen, setFiltersOpen] = useState(false);
+function Filters() {
+  const { register, handleSubmit } = useForm();
 
-  /* actions */
-  const toggleSideFilters = () => setFiltersOpen(!filtersOpen);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
-    <section className="filters">
-        <div className="container">
-      <div className="d-flex align-items-center">
-         <div className="filters-block me-2">
-         <input className="form-control"/>
-        </div>
-        <div className="filters-block me-2">
-         <Button><IconFilter/> Filtra</Button>
-        </div>
-        </div>
-        </div>
-        </section>
-    
-  )
+    <div className="container">
+    <Box w="100%" p={4}>
+      <Flex as="form" onSubmit={handleSubmit(onSubmit)}>
+        <FormControl flex={1} mr={4}>
+          <FormLabel htmlFor="location">Location</FormLabel>
+          <Input
+            id="location"
+            type="text"
+            placeholder="Where are you going?"
+            {...register("location")}
+          />
+        </FormControl>
+        <FormControl flex={1} mr={4}>
+          <FormLabel htmlFor="guests">Guests</FormLabel>
+          <Select
+            id="guests"
+            placeholder="Select guests"
+            {...register("guests")}
+          >
+            <option value={1}>1 guest</option>
+            <option value={2}>2 guests</option>
+            <option value={3}>3 guests</option>
+            <option value={4}>4 guests</option>
+          </Select>
+        </FormControl> 
+        <FormControl flex={1} mr={4}>
+          <FormLabel htmlFor="guests">Guests</FormLabel>
+          <Select
+            id="guests"
+            placeholder="Select guests"
+            {...register("guests")}
+          >
+            <option value={1}>1 guest</option>
+            <option value={2}>2 guests</option>
+            <option value={3}>3 guests</option>
+            <option value={4}>4 guests</option>
+          </Select>
+        </FormControl>
+        <Button type="submit" colorScheme="blue">
+          Search
+        </Button>
+      </Flex>
+    </Box>
+    </div>
+  );
 }
+
 export default Filters;

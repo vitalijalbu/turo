@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { searchListings } from "@/lib/graphql/queries/search";
 import {
-  Container,
+  
   Select,
   Flex,
   Box,

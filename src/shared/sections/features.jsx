@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Container, Box, SimpleGrid, Icon, Text, Stack, Flex } from "@chakra-ui/react"
+import {  Box, SimpleGrid, Icon, Text, Stack, Flex } from "@chakra-ui/react"
 import data from "@/data/static.features.json";
 
 const Features = () => {
 
   
     return (
-      <Container maxW="xl">
+      <div className="container">
       <Box p={4}>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         <Stack>

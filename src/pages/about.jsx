@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-import { Button, Col, Container, Row} from 'reactstrap';
+import { Button, Col,  Row} from 'reactstrap';
 
 const About = () => {
   return (

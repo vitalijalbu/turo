@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import { Container, Row, Col, Button, Form, Input, UncontrolledAlert  } from "reactstrap";
+import {  Row, Col, Button, Form, Input, UncontrolledAlert  } from "reactstrap";
 import IconGoogle from "@/shared/components/IconGoogle";
 import { IconBrandFacebook } from "@tabler/icons-react";
 import { authAction } from "@/lib/graphql/mutations/auth";

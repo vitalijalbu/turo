@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Container, Row, Col, Button, Form, FormGroup, Label, FormText, Input } from 'reactstrap';
+import {  Row, Col, Button, Form, FormGroup, Label, FormText, Input } from 'reactstrap';
 import { IconMessageCircle, IconBookmark } from '@tabler/icons-react';
 import SideNav from '@/shared/settings/side-nav';
 

@@ -3,14 +3,14 @@ import {
   Row,
   Col
 } from "reactstrap";
-import { Container, Card, CardBody, Heading, Text, Image, Stack } from "@chakra-ui/react";
+import {  Card, CardBody, Heading, Text, Image, Stack } from "@chakra-ui/react";
 import Link from "next/link";
 import data from "@/data/categories.json";
 
 const ListingTypes = () => {
   return (
     <section className="section-content">
-      <Container maxW="xl">
+      <div className="container">
         <div className="section-head">
           <h1 className="section-title">Sfoglia annunci</h1>
         </div>

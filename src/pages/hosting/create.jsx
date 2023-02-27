@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import {
-  Container,
+  
   Box,
   Button,
   Checkbox,
@@ -34,7 +34,7 @@ const Create = () => {
   return (
     <div className="page">
       <div className="page-content">
-        <Container maxW="xl">
+        <div className="container">
           <div>
             <div className="py-2">
               <h1 className="fs-2 mb-2">Dettagli annuncio</h1>

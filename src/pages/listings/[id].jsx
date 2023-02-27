@@ -4,7 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { getListing } from "@/lib/graphql/queries/listings";
 import {
-  Container,
+  
   Row,
   Col,
   Card,

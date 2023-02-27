@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { getListingMedia } from "@/lib/graphql/queries/listings";
-import { Container, Modal, ModalBody, ModalHeader, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from "reactstrap";
+import {  Modal, ModalBody, ModalHeader, TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from "reactstrap";
 import TabPhotos from './tab-photos';
 import TabPlanimetry from './tab-planimetry';
 import TabTour from './tab-tour';

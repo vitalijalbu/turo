@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-import { Container, Row, Col } from "reactstrap";
+import {  Row, Col } from "reactstrap";
 import { getAllHosts } from "@/lib/graphql/queries/offices";
 import Filters from "@/shared/offices/filters";
 import PupupContact from "@/shared/components/popup-contact";

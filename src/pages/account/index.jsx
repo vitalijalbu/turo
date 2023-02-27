@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Container, Row, Col, Card, CardBody, CardHeader } from "reactstrap";
+import {  Row, Col, Card, CardBody, CardHeader } from "reactstrap";
 import PageHead from "@/shared/account/page-head";
 import { getSession } from "@/lib/graphql/client";
 import NotifyList from "@/shared/account/notify-list";

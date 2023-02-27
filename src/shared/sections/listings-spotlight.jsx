@@ -26,7 +26,7 @@ const SpotlightListings = () => {
 
   return (
     <section id="spotlight-listings" className="padding-vertical">
-      <Container maxW="xl">
+      <div className="container">
       <Row>
       <Col>
         <div className="section-head d-flex justify-content-between">

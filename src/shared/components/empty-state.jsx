@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Button,  Row, Col } from "reactstrap";
 import { IconArrowLeft, IconPlus } from '@tabler/icons-react';;
 
 const EmptyState = (props) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Container, Group, Button, Title } from 'reactstrap';
+import { Row,  Group, Button, Title } from 'reactstrap';
 import Cities from "@/data/cities.json";
 import Link from 'next/link';
 
