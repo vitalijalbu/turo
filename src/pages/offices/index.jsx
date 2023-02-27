@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
-import {  Row, Col } from "reactstrap";
+import { Avatar, Button } from "@chakra-ui/react";
 import { getAllHosts } from "@/lib/graphql/queries/offices";
 import Filters from "@/shared/offices/filters";
 import PupupContact from "@/shared/components/popup-contact";
@@ -26,7 +25,7 @@ const Index = () => {
   const toggleContactPopup = (value) => {
     setPopupContact(!popupContact);
     if (popupContact === true) {
-      // Clicked the same row twice, clear the selected value
+      // Clicked the same div twice, clear the selected value
       setSelected(value);
     } else {
       setSelected(null);
@@ -36,7 +35,7 @@ const Index = () => {
   /* Toggle Phone Number */ 
   const handleRowClick = (value) => {
     if (value === selected) {
-      // Clicked the same row twice, clear the selected value
+      // Clicked the same div twice, clear the selected value
       setSelected(null);
     } else {
       setSelected(value);
@@ -53,25 +52,21 @@ const Index = () => {
         <Filters/>
       <div className="container">
         <div className="section-head">
-        
-          <h1 className="section-title serif">Agenzie</h1>
+          <h1 className="section-title">Agenzie</h1>
         </div>
-        <Row>
-        <Col md={12}>
+        <div>
+        <div md={12}>
               {Array.isArray(entries) ? (
                 <table className="table">
                   <tbody>
                     {entries.map((entry) => (
                       <tr key={entry.id}>
-                        <th scope="row">
-                          <div className="d-flex align-items-center">
-                            <div className="avatar avatar-xl mb-2">
-                              <img
+                        <th scope="div">
+                          <div className="d-flex">
+                              <Avatar
                                 src={entry.avatarImg ? entry.avatarImg[0].url : '/img/placeholder.svg'}
                                 className="avatar-img rounded-circle border border-2 border-white"
                               />
-                            </div>
-
                             <div className="ms-2">
                               <h5 className="mb-1">
                                 <Link
@@ -95,17 +90,20 @@ const Index = () => {
                         </th>
                          <td className="text-end">
                          
-                         ciao
+                         <Button className="me-2" onClick={() => handleRowClick(entry?.phoneNumber)} leftIcon={<IconPhone />}>
+                              {selected === entry?.phoneNumber ? entry?.phoneNumber : 'Mostra numero'}
+                              </Button>
+                         <Button leftIcon={<IconMail/>}>Invia messaggio</Button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               ) : (
-                <Row>Nessun dato</Row>
+                <div>Nessun dato</div>
               )}
-            </Col>
-        </Row>
+            </div>
+        </div>
       </div>
       </div>
     </div>

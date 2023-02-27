@@ -92,8 +92,8 @@ const Listings = () => {
           />
 
           <div className="container">
-            <div>
-              <div md={12}>
+            <div className="row">
+              <div className="col">
                 <ul>
                   <li href="#" onClick={setTabs} active={archived === false}>
                     Annunci attivi (3)
@@ -150,12 +150,11 @@ const Listings = () => {
                         </td>
 
                         <td className="text-end">
-                          <div className="d-flex">
+                          <div className="d-flex justify-content-space-between">
                             <div className="me-1">
                               <Button
-                                divor="primary"
+                                variant="outline"
                                 leftIcon={<IconChartBar />}
-                                size="sm"
                               >
                                 Promuovi
                               </Button>
@@ -164,7 +163,7 @@ const Listings = () => {
                               <Menu>
                                 <MenuButton
                                   as={Button}
-                                  size="sm"
+                                  variant="outline"
                                   rightIcon={<IconChevronDown />}
                                 >
                                   Azioni

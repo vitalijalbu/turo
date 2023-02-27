@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import HostListings from "@/shared/offices/host-listings";
-import {
-  
-  Row,
-  Col,
-  Button,
-  Card,
-  CardBody
-} from "reactstrap";
+import { Card, CardBody, Avatar, Button } from "@chakra-ui/react";
 import {
   IconPhone,
   IconMail,
@@ -36,7 +29,7 @@ const View = () => {
    const toggleContactPopup = (value) => {
     setPopupContact(!popupContact);
     if (popupContact === true) {
-      // Clicked the same row twice, clear the selected value
+      // Clicked the same div twice, clear the selected value
       setSelected(value);
     } else {
       setSelected(null);
@@ -52,9 +45,9 @@ const View = () => {
   }, []);
 
         /* Toggle Phone Number */ 
-        const handleRowClick = (value) => {
+        const handledivClick = (value) => {
           if (value === selected) {
-            // Clicked the same row twice, clear the selected value
+            // Clicked the same div twice, clear the selected value
             setSelected(null);
           } else {
             setSelected(value);
@@ -68,18 +61,17 @@ const View = () => {
     <div className="page">
     <div className="page-content">
       <div className="container">
-        <Row>
-          <Col md={4}>
-            <Card shadow="sm" withBorder p="xl">
+        <div className="row">
+        <div className="col-md-4 col-xs-6">
+            <Card variant="outline">
             <CardBody className="text-center mb-3">
               {/* Avatar */}
-              <div className="avatar avatar-xl mb-2">
-                <img
-                  className="avatar-img rounded-circle border border-2 border-white"
-                  src="/img/placeholder.svg"
+                <Avatar
+                size="lg"
+                  src={entry.avatarImg ? entry.avatarImg[0].url : '/img/placeholder.svg'}
                   alt=""
                 />
-              </div>
+  
               <h3 className="mb-2 serif">{entry?.title}</h3>
               <span>{`Membro da ${entry?.dateCreated}`}</span>
               <ul className="list-unstyled">
@@ -93,15 +85,15 @@ const View = () => {
                       </div>
                         </CardBody>
             </Card>
-          </Col>
-          <Col md={8}>
+          </div>
+          <div className="col-md-8 col-xs-12">
             <section className="section-content mt-0 mb-5">
             <div className="section-head">
               <h2 className="page-title">Informazioni</h2>
             </div>
             <div>
               <ul className="list-unstyled">
-                <li className="list-item mb-2"><Button color="link" onClick={() => handleRowClick(entry?.phoneNumber)}><IconPhone/> {selected === entry?.phoneNumber ? entry?.phoneNumber : "Mostra numero"}</Button></li>
+                <li className="list-item mb-2"><Button color="link" onClick={() => handledivClick(entry?.phoneNumber)}><IconPhone/> {selected === entry?.phoneNumber ? entry?.phoneNumber : "Mostra numero"}</Button></li>
                 <li className="list-item mb-2" onClick={() => toggleContactPopup(entry?.id)}><IconMail/> Invia messaggio</li>
                 {entry?.website && (
                   <li>
@@ -112,14 +104,14 @@ const View = () => {
               </ul>
             </div>
             </section>
-            <section className="section-content">
+            <section className="border-top section-content">
             <div className="section-head">
               <h2 className="page-title">Annunci pubblicati</h2>
             </div>
             <HostListings data={listings}/>
             </section>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </div>
     </div>
     </div>

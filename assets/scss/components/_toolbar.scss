@@ -5,7 +5,6 @@
     margin-bottom: 0;
     list-style: none;
     border-bottom: 1px solid $border-color;
-    height: 50px;
 
     .nav-link {
         display: block;
@@ -13,5 +12,8 @@
         font-weight: 600;
         text-decoration: none;
         transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+        &.active{
+            box-shadow: inset 0px -2px 0 $color-primary;
+        }
     }
 }

@@ -56,7 +56,7 @@ const Home = () => {
               rounded={'full'}
               color={'white'}
               _hover={{ bg: 'whiteAlpha.500' }}>
-              Sei un'agenzia?
+              <Link href="/business">Sei un'agenzia?</Link>
             </Button>
           </Stack>
         </Stack>

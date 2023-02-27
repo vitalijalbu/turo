@@ -112,7 +112,26 @@ const Header = () => {
               >
                 Lascia una richiesta
               </Link>
-
+              <Link
+                px={2}
+                py={1}
+                rounded={"md"}
+                _hover={{
+                  textDecoration: "none",
+                  bg: useColorModeValue("gray.200", "gray.700"),
+                }}
+                href="/business"
+              >
+                Sei un'agenzia ?
+              </Link>
+              <Menu isLazy>
+  <MenuButton>Aiuto</MenuButton>
+  <MenuList>
+    {/* MenuItems are not rendered unless Menu is open */}
+    <MenuItem><Link href="/faqs">Faqs</Link></MenuItem>
+    <MenuItem><Link href="/contacts">Contattaci</Link></MenuItem>
+  </MenuList>
+</Menu>
               <Button
                 variant={"solid"}
                 size={"sm"}

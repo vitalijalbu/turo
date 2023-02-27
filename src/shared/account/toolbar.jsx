@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {  Row, Nav, NavItem  } from "reactstrap";
+
 
 const Toolbar = () => {
   const router = useRouter();
@@ -10,50 +10,48 @@ const Toolbar = () => {
   return(
     <section className="my-3">
     <div className="container">
-    <Row>
-<Nav
-  pills
->
-  <NavItem>
+    <div className="row">
+<ul className="nav">
+ <li className="nav-item">
     <Link className="nav-link active"
        href="/account">
     
       Bacheca
     </Link>
-  </NavItem>
-  <NavItem>
+  </li>
+ <li className="nav-item">
     <Link className="nav-link" href="/account/listings">
       I miei annunci
     </Link>
-  </NavItem>  
-  <NavItem>
+  </li>  
+ <li className="nav-item">
     <Link className="nav-link" href="/pricing">
       Aumenta visibilità <span className="badge bg-primary">NEW</span>
     </Link>
-  </NavItem>
-  <NavItem>
+  </li>
+ <li className="nav-item">
     <Link 
       className="nav-link" href="/account/favorites"
     >
       Preferiti
     </Link>
-  </NavItem>  
-  <NavItem>
+  </li>  
+ <li className="nav-item">
     <Link 
       className="nav-link" href="/account/requests"
     >
       Richieste
     </Link>
-  </NavItem> 
-   <NavItem>
+  </li> 
+  <li className="nav-item">
     <Link 
       className="nav-link" href="/accout/settings"
     >
       Impostazioni
     </Link>
-  </NavItem>
-</Nav>
-</Row>
+  </li>
+</ul>
+</div>
 </div>
 </section>
   )

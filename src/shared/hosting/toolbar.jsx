@@ -1,9 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-  Container
-} from "@chakra-ui/react";
 
 const Toolbar = () => {
   const router = useRouter();
@@ -12,7 +9,7 @@ const Toolbar = () => {
   return(
     <section className="my-3">
     <div className="container">
-    <Row>
+    <div className="row">
 <ul className="nav">
   <li className="nav-item">
     <Link className="nav-link"
@@ -56,7 +53,7 @@ const Toolbar = () => {
     </Link>
   </li>
 </ul>
-</Row>
+</div>
 </div>
 </section>
   )

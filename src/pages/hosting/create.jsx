@@ -35,7 +35,7 @@ const Create = () => {
     <div className="page">
       <div className="page-content">
         <div className="container">
-          <div>
+          <div className="row">
             <div className="py-2">
               <h1 className="fs-2 mb-2">Dettagli annuncio</h1>
               <p className="mb-0">
@@ -45,8 +45,7 @@ const Create = () => {
             </div>
           </div>
           <Toolbar/>
-          <div md={8} lg={8} sm={12}>
-              <Box w="100%" p={4}>
+          <div className="col-md-8 col-xs-12">
       <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl flex={1} mr={4}>
             <FormLabel htmlFor="title">Title</FormLabel>
@@ -103,8 +102,6 @@ const Create = () => {
 
 
           </form>
-          </Box>
- 
           </div>
           
           

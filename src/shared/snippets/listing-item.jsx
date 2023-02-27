@@ -35,7 +35,7 @@ const ListingItem = ({data }) => {
         lineHeight="tight"
         isTruncated
       >
-        <Text fontSize="lg">{data?.title}</Text>
+        <Text fontSize="lg"><Link href={`/listings/${data.id}`}>{data.title}</Link></Text>
       </Box>
       <Box d="flex" alignItems="baseline">
         <Text fontWeight="semibold" fontSize="sm" color="gray.500" mr="2">

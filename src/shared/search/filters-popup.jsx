@@ -95,7 +95,7 @@ const FiltersPopup = ({ opened, toggle }) => {
           <ModalCloseButton />
         </ModalHeader>
         <ModalBody>
-          <div className="container">
+          <div className="container-sm">
             <Center>
               <Heading>Più filtri</Heading>
             </Center>

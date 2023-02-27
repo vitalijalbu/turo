@@ -5,7 +5,6 @@ import PageHead from "@/shared/account/page-head";
 import { getSession } from "@/lib/graphql/client";
 import NotifyList from "@/shared/account/notify-list";
 import { IconEyeCheck } from "@tabler/icons-react";
-import Toolbar from "@/shared/account/toolbar";
 
 const Account = () => {
   const session = getSession();
@@ -13,6 +12,7 @@ const Account = () => {
 
   return (
     <div className="page">
+      <div className="page-content">
       <PageHead
         title={`Bentornato, ${user.fullName}`}
         nextAction={{
@@ -20,8 +20,7 @@ const Account = () => {
           content: "Crea annuncio",
         }}
       />
-      <Toolbar/>
-      <div className="page-content">
+      
         <div className="container">
           <Row>
             <Col md={6} lg={9} xs={6}>

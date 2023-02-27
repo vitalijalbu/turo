@@ -805,3 +805,20 @@ li.list-group-title,
   --f7-list-chevron-icon-color: transparent;
   --f7-list-chevron-icon-area: 0px;
 }
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline-item {
+  display: inline-block;
+}
+.list-inline-item:not(:last-child) {
+  margin-right: 0.5rem;
+}

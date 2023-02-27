@@ -1,15 +1,13 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import {
-  
   Button,
-  Row,
-  Col,
-  UncontrolledAccordion,
+  Accordion,
   AccordionItem,
-  AccordionHeader,
-  AccordionBody,
-} from "reactstrap";
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from '@chakra-ui/react';
 import { IconArrowUpRight } from "@tabler/icons-react";
 import data from "@/data/faqs.json";
 
@@ -17,34 +15,39 @@ const Faqs = () => {
   return (
     <section className="section-content faqs">
       <div className="container">
-        <Row>
-          <Col lg={8} md={12} className="mx-auto">
-            <h3>Domande più frequenti</h3>
-            <UncontrolledAccordion defaultOpen="1" flush>
+        <div className="row">
+          <div className="col-md-8 mx-auto">
+            <h2 className="section-title">Domande più frequenti</h2>
+            <Accordion defaultOpen="1" flush>
               {data?.map((faq, i) => (
                 <AccordionItem key={i}>
-                  <AccordionHeader targetId={i}>{faq.title}</AccordionHeader>
-                  <AccordionBody accordionId={i}>
+                  <AccordionButton targetId={i}>
+                    <div className="d-flex">{faq.title}
+                    <AccordionIcon/>
+                    </div>
+                  </AccordionButton>
+                  <AccordionPanel accordionId={i}>
                     <div
                       dangerouslySetInnerHTML={{ __html: faq.content }}
                     ></div>
-                  </AccordionBody>
+                  </AccordionPanel>
                 </AccordionItem>
               ))}
-            </UncontrolledAccordion>
-
+            </Accordion>
+            </div>
+            <div className="col-md-8 mx-auto d-block mt-3">
             <Link href="/help" target="_blank" passHref>
               <Button
-                color="primary"
+                variant="outline"
+                colorScheme="blue"
                 size="sm"
                 rel="noopener noreferrer"
-                outline
               >
                 Vai al centro supporto <IconArrowUpRight />
               </Button>
             </Link>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </div>
     </section>
   );

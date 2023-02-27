@@ -33,11 +33,14 @@ const Index = () => {
   };
   return (
     <div className="page">
-      <div className="container">
-    <Box w="100%" p={4}>
-      <Heading>Crea il tuo account</Heading>
-      <Box py="4">
-       {/* Facebook */}
+      <div className="page-content py-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4 col-xs-12 mx-auto">
+              <h3 className="mb-4 text-center">Ti diamo il benvenuto su Resthotels</h3>
+              {/* Google and facebook Button */}
+              <div className="vstack gap-3">
+                 {/* Facebook */}
        <Button w={'full'} colorScheme={'facebook'} leftIcon={<IconFacebook />} mb="2">
           <Center>
             <Text>Continua con Facebook</Text>
@@ -50,8 +53,16 @@ const Index = () => {
             <Text>Accedi con Google</Text>
           </Center>
         </Button>
-        </Box>
-        <hr my="3"/>
+              </div>
+              {/* Divider */}
+              <div className="position-relative my-4">
+                <hr />
+                <p className="small bg-white position-absolute top-50 start-50 translate-middle px-2">
+                  Oppure
+                </p>
+              </div>
+
+              {/* Form START */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl mb={4}>
           <FormLabel htmlFor="registrationType">Registration Type</FormLabel>
@@ -104,8 +115,12 @@ const Index = () => {
           Crea account
         </Button>
       </form>
-    </Box>
-    </div>
+
+     {/* Form END */}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

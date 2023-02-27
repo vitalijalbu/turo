@@ -1,11 +1,25 @@
 import { useState } from "react";
 import Link from "next/link";
-import {  Row, Col, Button, Form, Input, UncontrolledAlert  } from "reactstrap";
+import { useForm } from "react-hook-form";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Radio,
+  RadioGroup,
+  Stack,
+  Center,
+  Text,
+  Heading,
+} from "@chakra-ui/react";
+import IconFacebook from "@/shared/components/IconFacebook";
 import IconGoogle from "@/shared/components/IconGoogle";
-import { IconBrandFacebook } from "@tabler/icons-react";
 import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
   const [form, setFormValues] = useState({});
   const [error, setError] = useState('');
@@ -16,6 +30,10 @@ const Index = () => {
     setFormValues((prevState) => {
       return { ...prevState, [e.target.name]: e.target.value };
     });
+  };
+
+  const onSubmit = (value) => {
+    setRegistrationType(value);
   };
 
   const handleAuth = (event, values) => {
@@ -35,32 +53,35 @@ const Index = () => {
     <div className="page">
       <div className="page-content py-5">
         <div className="container">
-          <Row>
-            <Col className="mx-auto" md={4}>
-              {/* Title */}
-              {!!error && <UncontrolledAlert color="danger">{error}</UncontrolledAlert>}
+          <div className="row">
+            <div className="col-md-4 col-xs-12 mx-auto">
               <h3 className="mb-4 text-center">Ti diamo il benvenuto su Resthotels</h3>
               {/* Google and facebook Button */}
               <div className="vstack gap-3">
-                <Button outline>
-                  <IconGoogle />
-                  Continua con Google
-                </Button>
-                <Button style={{background: "#3b5998"}}>
-                  <IconBrandFacebook />
-                  Continua con Facebook
-                </Button>
+                 {/* Facebook */}
+       <Button w={'full'} colorScheme={'facebook'} leftIcon={<IconFacebook />} mb="2">
+          <Center>
+            <Text>Continua con Facebook</Text>
+          </Center>
+        </Button>
+
+        {/* Google */}
+        <Button w={'full'} variant={'outline'} leftIcon={<IconGoogle />}>
+          <Center>
+            <Text>Accedi con Google</Text>
+          </Center>
+        </Button>
               </div>
               {/* Divider */}
               <div className="position-relative my-4">
                 <hr />
-                <p className="small bg-mode position-absolute top-50 start-50 translate-middle px-2">
+                <p className="small bg-white position-absolute top-50 start-50 translate-middle px-2">
                   Oppure
                 </p>
               </div>
 
               {/* Form START */}
-              <Form className="mt-4 text-start">
+              <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Email */}
                 <div className="mb-3">
                   <label className="form-label">Email</label>
@@ -88,17 +109,17 @@ const Index = () => {
                 </div>
                 {/* Button */}
                 <div>
-                  <Button block onClick={handleAuth} disabled={loading}>
+                  <Button w={'full'} onClick={handleAuth} colorScheme={'blue'} disabled={loading}>
                     Accedi
                   </Button>
                 </div>
                 <p className="mt-3">
                   Nom hai un account ?<Link href="/register" className="color-link"> Creane uno</Link>
                 </p>
-              </Form>
+              </form>
               {/* Form END */}
-            </Col>
-          </Row>
+            </div>
+          </div>
         </div>
       </div>
     </div>
