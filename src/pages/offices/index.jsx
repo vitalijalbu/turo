@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Container, Row, Col, Button } from "reactstrap";
+
+import { Container, Row, Col } from "reactstrap";
 import { getAllHosts } from "@/lib/graphql/queries/offices";
 import Filters from "@/shared/offices/filters";
+import PupupContact from "@/shared/components/popup-contact";
+import { IconPhone, IconMail } from "@tabler/icons-react";
 
 const Index = () => {
   const [loading, setLoading] = useState(false);
+  const [popupContact, setPopupContact] = useState(false);
   const [entries, setEntries] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     getAllHosts().then((data) => {
@@ -17,13 +22,39 @@ const Index = () => {
     });
   }, []);
 
+   /* Toggle Phone Number */ 
+  const toggleContactPopup = (value) => {
+    setPopupContact(!popupContact);
+    if (popupContact === true) {
+      // Clicked the same row twice, clear the selected value
+      setSelected(value);
+    } else {
+      setSelected(null);
+    }
+  };   
+  
+  /* Toggle Phone Number */ 
+  const handleRowClick = (value) => {
+    if (value === selected) {
+      // Clicked the same row twice, clear the selected value
+      setSelected(null);
+    } else {
+      setSelected(value);
+    }
+  };
+
   return (
+    <>
+      {popupContact && (
+        <PupupContact opened={popupContact} toggle={toggleContactPopup} />
+      )}
     <div className="page">
       <div className="page-content">
         <Filters/>
       <Container>
         <div className="section-head">
-          <h1 className="section-title">Agenzie</h1>
+        
+          <h1 className="section-title serif">Agenzie</h1>
         </div>
         <Row>
         <Col md={12}>
@@ -63,8 +94,8 @@ const Index = () => {
                           </div>
                         </th>
                          <td className="text-end">
-                          <Button outline color="dark" className="me-2">Mostra numero</Button>
-                          <Button outline color="dark">Invia messaggio</Button>
+                         
+                         ciao
                         </td>
                       </tr>
                     ))}
@@ -78,6 +109,7 @@ const Index = () => {
       </Container>
       </div>
     </div>
+    </>
   );
 };
 

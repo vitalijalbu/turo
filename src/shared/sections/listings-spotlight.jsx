@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { getSpotlightListings } from "@/lib/graphql/queries/listings";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Row, Col, Button } from "reactstrap";
 import ItemCard from "@/shared/snippets/listing-card";
 import { IconArrowRight } from '@tabler/icons-react';
-
+import { Heading } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 
 const SpotlightListings = () => {
   const [loading, setLoading] = useState(false);
@@ -25,11 +26,11 @@ const SpotlightListings = () => {
 
   return (
     <section id="spotlight-listings" className="padding-vertical">
-      <Container>
+      <Container maxW="xl">
       <Row>
       <Col>
         <div className="section-head d-flex justify-content-between">
-            <h1 className="section-title">Annunci in evidenza</h1>
+            <Heading className="section-title">Annunci in evidenza</Heading>
             <Link href={'/search'}><Button radius={"xl"} outline color="dark">Vedi di più <IconArrowRight/></Button></Link>
           </div>
           </Col>

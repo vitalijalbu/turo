@@ -1,38 +1,87 @@
 import React, { useState, useEffect } from "react";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
-//import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
-//import "leaflet/dist/leaflet.css";
+import Link from "next/link";
+import graphQLClient from "@/lib/graphql/client";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button
+} from '@chakra-ui/react'
 
 const PopupMap = ({ opened, toggle }) => {
-  useEffect(() => {
-    const position = [45.60522, 10.5141089];
-  }, []);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(false);
+  const [open, setOpen] = useState("");
+  const toggleMenu = (id) => {
+    if (open === id) {
+      setOpen();
+    } else {
+      setOpen(id);
+    }
+  }
+
+  const FOCUS_QUERY = `query{
+    categories(group: "news", show_in_menu:true) {
+      id
+      title
+      slug
+    }
+  }
+  `;
+
+
+
+
+async function getData() {
+  try {
+    const response = await graphQLClient.request(FOCUS_QUERY);
+    if (response) {
+      setData(response);
+    }
+  } catch (err) {
+    console.log("ERROR FROM GRAPHQL-REQUEST API CALL", err);
+  } finally {
+    setLoading(false);
+  }
+}
+
+useEffect(() => {
+  getData();
+}, []);
+
 
 
   return (
-    <Modal isOpen={opened} toggle={toggle} centered={true} fade={false} fullscreen>
-    <ModalHeader
-      toggle={toggle}
-    >
-      Mappa annunci
-    </ModalHeader>
-    <ModalBody>
-          <div className="map-container">
-            {/*<MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={position}>
-                <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-              </Marker>
-  </MapContainer>*/}
-          </div>
-        </ModalBody>
-    </Modal>
+    <Modal
+    size={'full'}
+        onClose={toggle}
+        isOpen={opened}
+        motionPreset='slideInBottom'
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title
+          <ModalCloseButton />
+          </ModalHeader>
+          
+          <ModalBody>
+            dsdvsevsw
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={toggle}>
+              Close
+            </Button>
+            <Button variant='ghost'>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
   )
 }
 
 export default PopupMap;
+

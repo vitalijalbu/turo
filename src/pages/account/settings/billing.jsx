@@ -46,7 +46,7 @@ const Billing = () => {
             </Col>
           </Row>
           {Array.isArray(bills) ? (
-          <table class="table">
+          <table className="table">
                 <tbody>
                   {bills.map((entry) => (
                     <tr key={entry.id}>

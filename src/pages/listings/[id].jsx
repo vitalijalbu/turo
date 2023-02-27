@@ -33,10 +33,13 @@ const Page = () => {
   const router = useRouter();
   const { id } = router.query;
   const [loading, setLoading] = useState(false);
+  const [selected, setSelected] = useState(null);
   const [popupContact, setContactPopup] = useState(false);
   const [popupShare, setPopupShare] = useState(false);
   const [entry, setEntry] = useState(null);
   const [related_entries, setRelatedEntries] = useState([]);
+
+
 
   useEffect(() => {
     getListing(id)
@@ -49,6 +52,17 @@ const Page = () => {
         console.log(error);
       });
   }, [id]);
+
+      /* Toggle Phone Number */ 
+      const handleRowClick = (value) => {
+        if (value === selected) {
+          // Clicked the same row twice, clear the selected value
+          setSelected(null);
+        } else {
+          setSelected(value);
+        }
+      };
+      
 
   /* Toggle Item Popup */
   const toggleContactPopup = () => {
@@ -441,23 +455,23 @@ const Page = () => {
                   <div className="position-sticky" style={{ top: "4.5rem" }}>
                     <Card>
                       <CardBody className="text-center">
+                      <Link href={`/offices/${entry?.office[0]?.id}`} passHref>
                         {/* Image */}
                         <img
-                          src={"/img/placeholder.svg"}
+                          src={entry?.office?.[0]?.avatarImg?.[0]?.url ?? "/img/placeholder.svg"}
                           className="rounded-circle avatar-xl"
-                          alt=""
                         />
                         <h5>{entry?.author?.fullName}</h5>
-                        <span>{`Data creazione ${entry?.postDate}`}</span>
+                        <span>{entry?.office[0]?.title}</span>
+                        </Link>
                         <hr />
                         <div className="d-block mb-2">
                           <Button
                             block
                             outline
                             color="primary"
-                            onClick={toggleContactPopup}
-                          >
-                            <IconPhone /> Mostra numero
+                            onClick={() => handleRowClick(entry?.office[0]?.phoneNumber)}>
+                              <IconPhone /> {selected === entry?.office[0]?.phoneNumber ? entry?.office[0]?.phoneNumber : 'Mostra numero'} 
                           </Button>
                         </div>
                         <div className="d-block mb-2">
@@ -466,12 +480,12 @@ const Page = () => {
                             color="dark"
                             onClick={toggleContactPopup}
                           >
-                            <IconMail /> Richiedi info
+                            <IconMail /> Invia messaggio
                           </Button>
                         </div>
                         <hr />
                         <div className="d-block">
-                          <Link href={`/hosts/${entry?.id}`} passHref>
+                          <Link href={`/offices/${entry?.office[0]?.id}`} passHref>
                             <IconPlus /> Annunci dell'inserzionista
                           </Link>
                         </div>

@@ -1,59 +1,58 @@
-import React, { useState, useMemo } from 'react';
-import { Button, DropdownToggle, DropdownMenu, UncontrolledDropdown, Input } from 'reactstrap';
-import data from "@/data/categories.json";
+import {
+  Box,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Checkbox,
+  Stack,
+  Flex,
+  Spacer,
+  CheckboxGroup,
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 
-const Categories = () => {
-  const [opened, setOpened] = useState(false);
-  const [checked, setChecked] = useState('standard');
+export default function Categories() {
+  const { register, handleSubmit } = useForm();
 
-  const togglePopup = () => {
-    setOpened((prev) => !prev);
+  const onSubmit = (data) => {
+    console.log(data);
   };
-
-  const handleApply = () => {
-    togglePopup();
-  };
-
-  const handleCancel = () => {
-    togglePopup();
-  };
-
-  const handleChange = (id) => {
-    onChange('categories', value.includes(id) ? value.filter((i) => i !== id) : [...value, id]);
-  };
-
-
 
   return (
-    <UncontrolledDropdown>
-      <DropdownToggle color="default" className="border">
-      {'Categoria'}
-      </DropdownToggle>
-      <DropdownMenu className="p-3 mt-2 filter-dropdown">
-        <h6 className="text-muted">Seleziona categoria</h6>
-        {data.categories.map((item) => (
-            <div className="dropdown-item" key={item.id}>
-              <Input
-                type="checkbox"
-                id={`category_${item.id}`}
-                value={item.slug}
-                label={item.title}
-                onChange={() => handleChange(item.id)}
-                checked={item.slug}
-              />
-            </div>
-          ))}
-        <div className="d-flex justify-content-between mt-3">
-          <Button color="secondary" className="mr-2" outline size="sm" onClick={handleCancel}>
-            Chiudi
-          </Button>
-          <Button color="primary" className="ml-2" outline size="sm" id="apply_filter" onClick={handleApply}>
-            Applica
-          </Button>
-        </div>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+    <Popover>
+      <PopoverTrigger>
+        <Button colorScheme='gray' variant='outline'>Categoria</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverBody>
+          <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+            <FormControl>
+              <FormLabel>Status</FormLabel>
+              <Stack pl={6} mt={1} spacing={1}>
+        <Checkbox value="1">
+          Attività con mura
+        </Checkbox>
+        <Checkbox>
+        Attività senza mura
+        </Checkbox>        
+        <Checkbox>
+        Mura
+        </Checkbox>
+      </Stack>
+            </FormControl>
+            <Flex className="filter-popover_footer">
+            <Button variant="outline">Chiudi</Button>
+            <Spacer />
+            <Button type="submit" colorScheme='blue'>Applica</Button>
+            </Flex>
+          </Box>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
   );
-};
-
-export default Categories;
+}

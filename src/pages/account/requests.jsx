@@ -63,7 +63,7 @@ const Index = () => {
         <Row>
           <Col md={12}>
           {Array.isArray(entries) ? (
-          <table class="table">
+          <table className="table">
                 <tbody>
                   {entries.map((entry) => (
                     <tr key={entry.id}>

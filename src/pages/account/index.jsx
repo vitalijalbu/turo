@@ -100,7 +100,7 @@ const Account = () => {
                         </a>
                       </li>
                       <li className="">
-                        <Link className="item-link color-link" href={`/hosts/100`}>
+                        <Link className="item-link color-link" href={`/offices/100`}>
                           <div className="item-content">
                             <div className="item-inner">
                               <div className="item-title">Profilo pubblico</div>

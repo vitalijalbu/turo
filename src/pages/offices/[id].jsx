@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import HostListings from "@/shared/offices/host-listings";
 import {
   Container,
@@ -16,32 +17,49 @@ import {
   IconDiscountCheck,
   IconWorldWww
 } from "@tabler/icons-react";
-import { useRouter } from "next/router";
-import { getHostDetails } from "@/lib/graphql/queries/offices";
+
+import { viewOffice } from "@/lib/graphql/queries/offices";
 import PupupContact from "@/shared/components/popup-contact";
 
 const View = () => {
-  
+  const router = useRouter();
+  const { id } = router.query;
   const [loading, setLoading] = useState(false);
-  const [user, setData] = useState();
+  const [entry, setData] = useState();
+  const [selected, setSelected] = useState(null);
   const [listings, setListings] = useState([]);
-  const [popupContact, setContactPopup] = useState(false);
+  const [popupContact, setPopupContact] = useState(false);
   const [popupShare, setSharePopup] = useState(false);
   const [form, setFormValues] = useState({});
 
-  /* Toggle Item Popup */
-  const toggleContactPopup = () => {
-    setContactPopup(!popupContact);
-  };
+   /* Toggle Phone Number */ 
+   const toggleContactPopup = (value) => {
+    setPopupContact(!popupContact);
+    if (popupContact === true) {
+      // Clicked the same row twice, clear the selected value
+      setSelected(value);
+    } else {
+      setSelected(null);
+    }
+  };   
   
   useEffect(() => {
-    getHostDetails()
-    .then((res) => {
-      console.log('res', res);
-      setData(res?.user);
-      setListings(res?.listings);
+    viewOffice(id)
+    .then((data) => {
+      setData(data?.entry);
+      setListings(data?.entries);
     });
   }, []);
+
+        /* Toggle Phone Number */ 
+        const handleRowClick = (value) => {
+          if (value === selected) {
+            // Clicked the same row twice, clear the selected value
+            setSelected(null);
+          } else {
+            setSelected(value);
+          }
+        };
 
 
   return (
@@ -62,14 +80,14 @@ const View = () => {
                   alt=""
                 />
               </div>
-              <h6 className="mb-0">{user?.fullName}</h6>
-              <span>{`Membro da ${user?.dateCreated}`}</span>
+              <h3 className="mb-2 serif">{entry?.title}</h3>
+              <span>{`Membro da ${entry?.dateCreated}`}</span>
               <ul className="list-unstyled">
-                <li><IconDiscountCheck/> Identità verificata</li>
+                <li><IconDiscountCheck color="red" size={20}/> Identità verificata</li>
               </ul>
                       <hr/>
                       <div className="d-block">
-                        <Button block color="dark" onClick={toggleContactPopup}>
+                        <Button block color="dark" onClick={() => toggleContactPopup(entry?.id)}>
                           Contatta l'inserzionista
                         </Button>
                       </div>
@@ -83,9 +101,14 @@ const View = () => {
             </div>
             <div>
               <ul className="list-unstyled">
-                <li className="list-item mb-2"><IconPhone/> + 12435</li>
-                <li className="list-item mb-2"><IconMail/> + 12435</li>
-                <li><IconWorldWww/> + 12435</li>
+                <li className="list-item mb-2"><Button color="link" onClick={() => handleRowClick(entry?.phoneNumber)}><IconPhone/> {selected === entry?.phoneNumber ? entry?.phoneNumber : "Mostra numero"}</Button></li>
+                <li className="list-item mb-2" onClick={() => toggleContactPopup(entry?.id)}><IconMail/> Invia messaggio</li>
+                {entry?.website && (
+                  <li>
+                    <Link href={entry.website} target="_blank">
+                      <IconWorldWww /> Visita sito</Link>
+                  </li>
+                )}
               </ul>
             </div>
             </section>

@@ -1,41 +1,58 @@
-import React, { useState } from 'react';
-import { Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, Dropdown, CustomInput } from 'reactstrap';
+import {
+  Box,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Checkbox,
+  Flex,
+  SimpleGrid,
+  Spacer,
+  CheckboxGroup,
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 
-const Action = () => {
-  const [opened, setOpened] = useState(false);
-  const [checked, setChecked] = useState('standard');
+export default function Local() {
+  const { register, handleSubmit } = useForm();
 
-  const togglePopup = () => {
-    setOpened((prev) => !prev);
-  };
-
-  const handleApply = () => {
-    togglePopup();
-  };
-
-  const handleCancel = () => {
-    togglePopup();
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
-    <UncontrolledDropdown>
-      <DropdownToggle color="default" className="border">
-        Locali
-      </DropdownToggle>
-      <DropdownMenu className="p-3 mt-2 filter-dropdown">
-        <h6 className="text-muted">Seleziona Tipologia</h6>
-       demo
-        <div className="d-flex justify-content-between mt-3">
-          <Button color="secondary" className="mr-2" outline size="sm" onClick={handleCancel}>
-            Chiudi
-          </Button>
-          <Button color="primary" className="ml-2" outline size="sm" id="apply_filter" onClick={handleApply}>
-            Applica
-          </Button>
-        </div>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+    <Popover>
+      <PopoverTrigger>
+        <Button colorScheme='gray' variant='outline'>Locali</Button>
+      </PopoverTrigger>
+      <PopoverContent className="filter-popover">
+        <PopoverBody>
+          <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+          <SimpleGrid columns={2} spacing={10}>
+                  <Box>
+                    <FormControl id="firstName" isRequired>
+                      <FormLabel>Min</FormLabel>
+                      <Input type="text" />
+                    </FormControl>
+                  </Box>
+                  <Box>
+                    <FormControl id="lastName">
+                      <FormLabel>Max</FormLabel>
+                      <Input type="text" />
+                    </FormControl>
+                  </Box>
+                </SimpleGrid>
+                <Flex className="filter-popover_footer">
+            <Button variant="outline">Chiudi</Button>
+            <Spacer />
+            <Button type="submit" colorScheme='blue'>Applica</Button>
+            </Flex>
+          </Box>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
   );
-};
-
-export default Action;
+}

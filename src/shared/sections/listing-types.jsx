@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from "react";
 import {
-  Container,
   Row,
   Col
 } from "reactstrap";
+import { Container, Card, CardBody, Heading, Text, Image, Stack } from "@chakra-ui/react";
 import Link from "next/link";
 import data from "@/data/categories.json";
 
 const ListingTypes = () => {
   return (
     <section className="section-content">
-      <Container>
+      <Container maxW="xl">
         <div className="section-head">
           <h1 className="section-title">Sfoglia annunci</h1>
         </div>
 
         <Row>
           {data.categories.map((category) => (
-            <Col md={6} lg={4} xs={6} key={category.id}>
-                <div className="card border rounded-3 overflow-hidden">
-                  <div className="row g-0 align-items-center">
-                    <div className="col-sm-6">
-                      <img
-                        src={category?.media_url[0]?.url ?? '/img/placeholder.png'}
-                        className="card-img rounded-0"
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-sm-6">
-                      <div className="card-body px-3">
-                        <h6 className="card-text">
-                          <Link href={`/search/?category=${category.slug}`} className="stretched-link">
-                          {category.title}
-                          </Link>
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </Col>
+           <Card
+           direction={{ base: 'column', sm: 'row' }}
+           overflow='hidden'
+           variant='outline'
+         >
+           <Image
+             objectFit='cover'
+             maxW={{ base: '100%', sm: '200px' }}
+             src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
+             alt='Caffe Latte'
+           />
+         
+           <Stack>
+             <CardBody>
+               <Heading size='md'>The perfect latte</Heading>
+         
+               <Text py='2'>
+                 Caffè latte is a coffee beverage of Italian origin made with espresso
+                 and steamed milk.
+               </Text>
+             </CardBody>
+           </Stack>
+         </Card>
           ))}
         </Row>
       </Container>

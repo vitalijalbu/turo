@@ -1,61 +1,50 @@
-import React, { useState } from "react";
 import {
+  Box,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
   Button,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  Dropdown,
-  FormGroup,
+  FormControl,
+  FormLabel,
   Input,
-  Label,
-} from "reactstrap";
+  Flex,
+  Spacer,
+  Checkbox,
+  CheckboxGroup,
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 
-const Action = () => {
-  const [checked, setChecked] = useState("standard");
+export default function Action() {
+  const { register, handleSubmit } = useForm();
 
-  const handleApply = () => {
-    togglePopup();
-  };
-
-  const handleCancel = () => {
-    togglePopup();
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
-    <UncontrolledDropdown>
-      <DropdownToggle color="default" className="border">
-        Vendita
-      </DropdownToggle>
-      <DropdownMenu className="p-3 mt-2 filter-dropdown">
-        <h6 className="text-muted">Seleziona</h6>
-        <FormGroup check>
-    <Input type="checkbox" />
-    <Label check>
-      Vendita
-    </Label>
-    
-  </FormGroup>
-  <FormGroup check>
-    <Input type="checkbox" />
-    <Label check>
-      Affitto 
-    </Label>
-  </FormGroup>
-        <div className="d-flex justify-content-between mt-3">
-          <Button
-            color="primary"
-            className="ml-2"
-            outline
-            size="sm"
-            id="apply_filter"
-            onClick={handleApply}
-          >
-            Applica
-          </Button>
-        </div>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+    <Popover>
+      <PopoverTrigger>
+        <Button colorScheme='gray' variant='outline'>Tipologia</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverBody>
+          <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+            <FormControl>
+              <FormLabel>Status</FormLabel>
+              <CheckboxGroup>
+                <Checkbox {...register("statusNew")}>New</Checkbox>
+                <Checkbox {...register("statusUsed")}>Used</Checkbox>
+              </CheckboxGroup>
+            </FormControl>
+            <Flex className="filter-popover_footer">
+            <Button variant="outline">Chiudi</Button>
+            <Spacer />
+            <Button type="submit" colorScheme='blue'>Applica</Button>
+            </Flex>
+          </Box>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
   );
-};
-
-export default Action;
+}

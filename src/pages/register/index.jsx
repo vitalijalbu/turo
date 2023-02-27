@@ -1,112 +1,111 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import {
+  Container,
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Radio,
+  RadioGroup,
+  Stack,
+  Center,
+  Text,
+  Heading,
+} from "@chakra-ui/react";
 import Link from "next/link";
-import { Container, Row, Col, Button, Input, FormGroup } from "reactstrap";
 import { authAction } from "@/lib/graphql/mutations/auth";
+import IconFacebook from "@/shared/components/IconFacebook";
+import IconGoogle from "@/shared/components/IconGoogle";
+
 
 const Index = () => {
-  const [form, setFormValues] = useState({});
-  console.log('form', form)
-    /* Input change parent state */
-    const handleOnChange = (e) => {
-      setFormValues((prevState) => {
-        return { ...prevState, [e.target.name]: e.target.value };
-      });
-    };
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [registrationType, setRegistrationType] = useState("business");
 
+  const onSubmit = (data) => {
+    console.log(data); // Submit form data to the server
+  };
+
+  const handleRegistrationTypeChange = (value) => {
+    setRegistrationType(value);
+  };
   return (
     <div className="page">
       <Container>
-        <Row>
-          <Col className="mx-auto" md={4}>
-              {/* Title */}
-              <h1 className="mb-2 h3">Crea un account</h1>
-              {/* Google and facebook button */}
-              <div className="vstack gap-3">
-                <Button outline>
-             
-                  Accedi con Google
-                </Button>
-                <Button outline>
-              
-                  Accedi con Facebook
-                </Button>
-              </div>
-              {/* Divider */}
-              <div className="position-relative my-4">
-                <hr />
-                <p className="small bg-mode position-absolute top-50 start-50 translate-middle px-2">
-                  Oppure accedi
-                </p>
-              </div>
+    <Box w="100%" p={4}>
+      <Heading>Crea il tuo account</Heading>
+      <Box py="4">
+       {/* Facebook */}
+       <Button w={'full'} colorScheme={'facebook'} leftIcon={<IconFacebook />} mb="2">
+          <Center>
+            <Text>Continua con Facebook</Text>
+          </Center>
+        </Button>
 
-              {/* Form START */}
-              <form className="mt-4 text-start">
-                <FormGroup>
-                  <Row>
-                    <Col>
-                    <label className="form-label">Nome</label>
-                    <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
-                    </Col>
-                    <Col>
-                    <label className="form-label">Cognome</label>
-                    <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
-                    </Col>
-                  </Row>
-                </FormGroup>
-                {/* Email */}
-                <div className="mb-3">
-                  <label className="form-label">Email</label>
-                  <Input type="email" name="email" className="form-control" onChange={handleOnChange}/>
-                </div>
-                {/* Password */}
-                <div className="mb-3 position-relative">
-                  <label className="form-label">Password</label>
-                  <Input
-                    className="form-control"
-                    type="password"
-                    name="password"
-                    onChange={handleOnChange}
-                    id="psw-input"
-                  />
-                </div>
-                 {/* Password */}
-                 <div className="mb-3 position-relative">
-                  <label className="form-label">Conferma Password</label>
-                  <Input
-                    className="form-control"
-                    type="password"
-                    name="password"
-                    onChange={handleOnChange}
-                    id="psw-input"
-                  />
-                </div>
-                {/* Remember me */}
-                <div className="mb-3 d-sm-flex justify-content-between">
-                  <div>
-                    <Input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="rememberCheck"
-                    />
-                    <label className="form-check-label" htmlFor="rememberCheck">
-                      Accetto i temrmini e le condizioni
-                    </label>
-                  </div>
-                </div>
-                {/* Button */}
-                <div>
-                  <button type="submit" className="btn btn-primary w-100 mb-0">
-                    Login
-                  </button>
-                </div>
-                <p className="mt-3">
-                  Hai già un account ?<Link href="/login"> Accedi qui</Link>
-                </p>
-              </form>
-              {/* Form END */}
-          </Col>
-        </Row>
-      </Container>
+        {/* Google */}
+        <Button w={'full'} variant={'outline'} leftIcon={<IconGoogle />}>
+          <Center>
+            <Text>Accedi con Google</Text>
+          </Center>
+        </Button>
+        </Box>
+        <hr my="3"/>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl mb={4}>
+          <FormLabel htmlFor="registrationType">Registration Type</FormLabel>
+          <RadioGroup
+            id="registrationType"
+            value={registrationType}
+            
+          >
+            <Stack direction="row">
+              <Radio value="personal" onChange={(e) => handleRegistrationTypeChange(e.target.value)}>Personal</Radio>
+              <Radio value="business" onChange={(e) => handleRegistrationTypeChange(e.target.value)}>Business</Radio>
+            </Stack>
+          </RadioGroup>
+        </FormControl>
+
+        {registrationType === "personal" ? (
+          <>
+            <FormControl mb={4}>
+              <FormLabel htmlFor="name">Name</FormLabel>
+              <Input {...register("name", { required: true })} id="name" type="text" />
+              {errors.name && <Text color="red">Name is required</Text>}
+            </FormControl>
+            <FormControl mb={4}>
+              <FormLabel htmlFor="surname">Surname</FormLabel>
+              <Input {...register("surname", { required: true })} id="surname" type="text" />
+              {errors.surname && <Text color="red">Surname is required</Text>}
+            </FormControl>
+            <FormControl mb={4}>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <Input {...register("email", { required: true })} id="email" type="email" />
+              {errors.email && <Text color="red">Email is required</Text>}
+            </FormControl>
+          </>
+        ) : (
+          <>
+            <FormControl mb={4}>
+              <FormLabel htmlFor="companyName">Company Name</FormLabel>
+              <Input {...register("companyName", { required: true })} id="companyName" type="text" />
+              {errors.companyName && <Text color="red">Company name is required</Text>}
+            </FormControl>
+            <FormControl mb={4}>
+              <FormLabel htmlFor="vatNumber">VAT Number</FormLabel>
+              <Input {...register("vatNumber", { required: true })} id="vatNumber" type="text" />
+              {errors.vatNumber && <Text color="red">VAT number is required</Text>}
+            </FormControl>
+          </>
+        )}
+
+        <Button type="submit" colorScheme="blue" mt={4}>
+          Crea account
+        </Button>
+      </form>
+    </Box>
+    </Container>
     </div>
   );
 };

@@ -1,10 +1,14 @@
 // Font Variable
-$font-family-base: 'Work Sans', sans-serif;
-$headings-font-family: 'Work Sans', sans-serif;
-$font-family-sans-serif: 'Work Sans', sans-serif;
+$font-family-base: 'Archivo', sans-serif;
+$headings-font-family: 'Archivo', sans-serif;
+$font-family-sans-serif: 'Archivo', sans-serif;
+$font-family-serif: 'Lora', serif;
 $light: #F4F5F2;
 
 $h1-font-size: 1.75rem;
+
+$border-color-strong: #979797;
+$border-color: #c4c4c4;
 
 $card-border-radius: 8px;
 $card-cap-bg: #fff;
@@ -60,3 +64,5 @@ $grid-item-sm-col: 50%;
 $grid-item-lg-col: 33.333333%;
 $grid-item-icon-mob-size: 24px;
 $grid-item-icon-size-desk: 32px;
+
+

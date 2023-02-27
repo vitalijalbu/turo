@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import SearchForm from "@/shared/form-fields/search-form";
 import Faqs from "@/shared/sections/faqs";
 import SpotlightListings from "@/shared/sections/listings-spotlight";
@@ -7,43 +8,62 @@ import Features from "@/shared/sections/features";
 //import LocationsLinks from "@/shared/common/LocationsLinks";
 import PromoBanner from "@/shared/snippets/hero-banner";
 import { Container, Row } from "reactstrap";
-
-
-
+import {
+  Stack,
+  Flex,
+  Button,
+  Text,
+  VStack,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 const Home = () => {
 
   return (
     <div className="page">
-      <Container>
-      <section className="hero-wrapper dark overlay" style={{borderRadius: '12px'}}>
-        {/* - img*/}
-        <div className="img-responsive-wrapper">
-          <div className="img-responsive">
-            <div className="img-wrapper">
-              <img
-                src="https://images.unsplash.com/photo-1585418694458-dc80a5c20294?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1664&q=80"
-                title="titolo immagine"
-                alt="descrizione immagine"
-              />
-            </div>
-          </div>
-        </div>
-        {/* - texts*/}
-        <Container>
-          <div className="row">
-            <div className="col-12">
-              <div className="hero-text-wrapper bg-dark">
-                <h1>
-                  La piattaforma immobiliare per ristoranti e hotel.
-                </h1>
-                <SearchForm />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-      </Container>
-     
+    
+      
+
+    <Flex
+      w={'full'}
+      h={'40vh'}
+      backgroundImage={
+        'url(https://images.unsplash.com/photo-1585418694458-dc80a5c20294?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1664&q=80)'
+      }
+      backgroundSize={'cover'}
+      backgroundPosition={'center center'}>
+      <VStack
+        w={'full'}
+        justify={'center'}
+        px={useBreakpointValue({ base: 4, md: 8 })}
+        bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
+        <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
+          <Text
+            color={'white'}
+            fontWeight={700}
+            lineHeight={1.2}
+            fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
+            La piattaforma immobiliare per ristoranti e hotel.
+          </Text>
+          <Stack direction={'row'}>
+            <Button
+              bg={'white'}
+              rounded={'full'}
+              _hover={{ bg: 'blue.500' }}>
+              <Link href="/search">Cerca immobili</Link>
+            </Button>
+            <Button
+              bg={'whiteAlpha.300'}
+              rounded={'full'}
+              color={'white'}
+              _hover={{ bg: 'whiteAlpha.500' }}>
+              Sei un'agenzia?
+            </Button>
+          </Stack>
+        </Stack>
+      </VStack>
+    </Flex>
+    <div className="page-content">
+    <SearchForm/>
       <Features />
       <ListingTypes />
       {/*
@@ -55,6 +75,7 @@ const Home = () => {
       title="Crea un account" 
       subtitle="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."/>
       <Faqs />
+    </div>
     </div>
   );
 };

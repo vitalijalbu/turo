@@ -16,3 +16,18 @@
     height: 100%;
     width: 100%;
 }
+
+.filter-block{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.filter-block_title {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 15px;
+}
+.filter-popover_footer{
+    border-top: 1px solid $border-color;
+    margin-top: 15px;
+    padding-top: 15px;
+}

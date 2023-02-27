@@ -1,41 +1,51 @@
-import React, { useState } from 'react';
-import { Button, DropdownToggle, DropdownMenu, UncontrolledDropdown, CustomInput } from 'reactstrap';
+import {
+  Box,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Flex,
+  Spacer,
+  Checkbox,
+  CheckboxGroup,
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 
-const Pricing = () => {
-  const [opened, setOpened] = useState(false);
-  const [checked, setChecked] = useState('standard');
+export default function Pricing() {
+  const { register, handleSubmit } = useForm();
 
-  const togglePopup = () => {
-    setOpened((prev) => !prev);
-  };
-
-  const handleApply = () => {
-    togglePopup();
-  };
-
-  const handleCancel = () => {
-    togglePopup();
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
-    <UncontrolledDropdown>
-      <DropdownToggle color="default" className="border">
-        Prezzi
-      </DropdownToggle>
-      <DropdownMenu className="p-3 mt-2 filter-dropdown">
-        <h6 className="text-muted">Seleziona Regimi alimentari</h6>
-        ciao
-        <div className="d-flex justify-content-between mt-3">
-          <Button color="secondary" className="mr-2" outline size="sm" onClick={handleCancel}>
-            Chiudi
-          </Button>
-          <Button color="primary" className="ml-2" outline size="sm" id="apply_filter" onClick={handleApply}>
-            Applica
-          </Button>
-        </div>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+    <Popover>
+      <PopoverTrigger>
+        <Button colorScheme='gray' variant='outline'>Prezzi</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverBody>
+          <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+            <FormControl>
+              <FormLabel>Pricing Min</FormLabel>
+              <Input type="number" {...register("pricingMin")} />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Pricing Max</FormLabel>
+              <Input type="number" {...register("pricingMax")} />
+            </FormControl>
+            <Flex className="filter-popover_footer">
+            <Button variant="outline">Chiudi</Button>
+            <Spacer />
+            <Button type="submit" colorScheme='blue'>Applica</Button>
+            </Flex>
+          </Box>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
   );
-};
-
-export default Pricing;
+}

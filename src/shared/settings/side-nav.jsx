@@ -15,8 +15,8 @@ const SideNav = () => {
     <img src={user.photo?.url ?? '/img/placeholder.png'} className="avatar-lg rounded-circle"/>
   </div>
   <div className="flex-grow-1 ms-3">
-      <h5 class="profile__name d-block">{user.fullName}</h5>
-				<span class="profile__email d-block">{user.email}</span>
+      <h5 className="profile__name d-block">{user.fullName}</h5>
+				<span className="profile__email d-block">{user.email}</span>
   </div>
 </div>
 

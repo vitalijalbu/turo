@@ -1,29 +1,4 @@
-.form-control,
-.form-select{
-    min-height: 46px;
-}
-.form-label {
-    display: block;
-        font-weight: 500;
-        color: initial;
-}
-.form-selectgroup-label {
-    position: relative;
-    display: block;
-    min-width: calc(1.4285714286em + 0.875rem + calc(var(--bs-border-width) * 2));
-    margin: 0;
-    padding: 0.4375rem 0.75rem;
-    font-size: .875rem;
-    line-height: 1.4285714286;
-    color: var(--bs-muted);
-    background: var(--bs-bg-forms);
-    text-align: center;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
-    border-radius: 3px;
-    transition: border-color .3s,background .3s,color .3s;
+.chakra-form-control {
+    width: 100%;
+    justify-content: space-between;
 }

@@ -80,8 +80,8 @@ const Gallery = ({ media }) => {
                   </div>
                 </div>
               </div>
-              <span class="it-griditem-text-wrapper">
-          <span class="it-griditem-text"><Button outline color="white" size="sm"><IconPhoto/> Vedi tutte le foto</Button></span>
+              <span className="it-griditem-text-wrapper">
+          <span className="it-griditem-text"><Button outline color="white" size="sm"><IconPhoto/> Vedi tutte le foto</Button></span>
         </span>
             </a>
           </div>

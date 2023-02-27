@@ -3,7 +3,36 @@
     --bs-card-cap-bg: #fff;
     --bs-dropdown-min-width: 14rem;
 }
+hr{
+    border-color: $border-color;
+}
+/*
+**
+** CHAKRA UI 
+**
+*/
+.chakra-modal__footer {
+    border-top: 1px solid $border-color;
+}
+input,
+input[type="text"],
+input[type="number"],
+input[type="checkbox"],
+input[type="radio"]{
+    border-color: $border-color;
+}
 
+/* Forms */
+/*
+**
+** 
+**
+*/
+
+
+.serif, .serif *{
+    font-family: $font-family-serif;
+}
 a {
     text-decoration: none;
 }

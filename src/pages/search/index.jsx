@@ -1,24 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { searchListings } from "@/lib/graphql/queries/search";
-import {
-  Container,
-  Row,
-  Col,
-  Breadcrumb,
-  BreadcrumbItem,
-  Button,
-  UncontrolledDropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
-  Dropdown
-} from "reactstrap";
+import { Container, Select, Flex, Box, Spacer, Heading } from "@chakra-ui/react";
 import PopupMap from "@/shared/search/popup-map";
 import Filters from "@/shared/search/filters";
 import ListingItem from "@/shared/snippets/listing-item";
 import { IconMap2 } from "@tabler/icons-react";
-
+import { Button } from "@chakra-ui/react";
 const Search = () => {
   
   const [mapOpen, setMapOpen] = useState(false);
@@ -42,46 +30,28 @@ const Search = () => {
     <>
       {mapOpen && <PopupMap opened={mapOpen} toggle={toggleMapPopup} />}
       <div className="page" id="searchPage">
-        <div className="page-content pt-0">
-        <Container>
-          <Row className="mb-2">
-            <Col md={12}>
-            <div className="d-flex justify-content-between align-items-center filters-subnav">
-              <div className="filters-block flex-grow-1">
-                <div className="filters-block">
-                  <Filters />
-                </div>
+        <div className="page-content">
+        <Container maxW="5xl">
+        <Filters />
+                  <Button color="dark" outline onClick={toggleMapPopup} leftIcon={<IconMap2 />}>Mostra la mappa</Button>
+          <div className="mb-2">
+            <div md={12}>
+            <Flex minWidth='max-content' alignItems='center' gap='2'>
+  <Box p='2'>
+    <Heading>22 risultati trovati</Heading>
+  </Box>
+  <Spacer />
+  <Box p='2'>
+  <Select placeholder='Select option'>
+  <option value='option1'>Option 1</option>
+  <option value='option2'>Option 2</option>
+  <option value='option3'>Option 3</option>
+</Select>
+</Box>
+</Flex>
+
               </div>
-              <div className="filters-block text-right">
-                <Button onClick={toggleMapPopup} color="dark" outline>
-                  Mostra la mappa <IconMap2 />
-                </Button>
-              </div>
-            </div>
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col md={12}>
-              <div className="section-head d-flex justify-content-between align-items-center">
-                <div className="section-title flex-grow-1">
-                  <h2 className="page-title">22 risultati trovati</h2>
-                </div>
-                <div className="section-action">
-                  <UncontrolledDropdown>
-                    <DropdownToggle caret outline>
-                      Ordina per
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Data creazione</DropdownItem>
-                      <DropdownItem>Rilevanza</DropdownItem>
-                      <DropdownItem>Sponsorizzati</DropdownItem>
-                      <DropdownItem>Prezzo</DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </div>
-              </div>
-              </Col>
-              <Col md={12}>
+              <div md={12}>
               {Array.isArray(entries) ? (
                 <div className="list-properties">
                   {entries.map((entry) => (
@@ -91,8 +61,8 @@ const Search = () => {
               ) : (
                 <p>Nessun dato</p>
               )}
-            </Col>
-          </Row>
+            </div>
+          </div>
         </Container>
       </div>
       </div>
