@@ -7,6 +7,8 @@ import {
   Button,
   Checkbox,
   Flex,
+  RadioGroup,
+  Radio,
   FormControl,
   FormLabel,
   Input,
@@ -18,6 +20,7 @@ import sale from "@/data/listing.sale.json";
 import status from "@/data/listing.status.json";
 import Toolbar from "@/shared/hosting/toolbar";
 import PageActions from "@/shared/hosting/page-actions";
+import PopupLayout from "layouts/popup";
 
 
 const Create = () => {
@@ -32,30 +35,60 @@ const Create = () => {
   };
 
   return (
+    <PopupLayout urlClose={'/account/listings'}>
     <div className="page">
       <div className="page-content">
-        <div className="container">
+        <div className="container-sm">
           <div className="row">
             <div className="py-2">
-              <h1 className="fs-2 mb-2">Dettagli annuncio</h1>
+              <h1 className="fs-2 mb-2">Crea un nuovo annuncio</h1>
               <p className="mb-0">
             Praise effects wish change way and any wanted. Lively use looked latter
             regard had.
           </p>
             </div>
           </div>
-          <Toolbar/>
-          <div className="col-md-8 col-xs-12">
-      <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="col-md-12 mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="section-content pb-3 mb-3 border-bottom">
+            <h2 className="section-title">Informazioni</h2>
           <FormControl flex={1} mr={4}>
-            <FormLabel htmlFor="title">Title</FormLabel>
+            <FormLabel htmlFor="title">Titolo annuncio</FormLabel>
             <Input {...register("title", { required: true })} id="title" type="text" />
             {errors.title && <span>Title is required</span>}
           </FormControl>
           <FormControl flex={1} mr={4}>
-            <FormLabel htmlFor="price">Price</FormLabel>
-            <Input {...register("price", { required: true, min: 0 })} id="price" type="number" />
-            {errors.price && <span>Price is required and must be a positive number</span>}
+            <FormLabel htmlFor="title">Tipologia di vendita</FormLabel>
+            <RadioGroup name="form-name">
+            {sale.map((sale) => (
+                      <Radio value={sale.value}>{sale.label}</Radio>
+                    ))}
+            
+          </RadioGroup>
+            {errors.title && <span>Title is required</span>}
+          </FormControl>
+          </div>
+          <div className="section-content pb-3 mb-3 border-bottom">
+            <h2 className="section-title">Prezzi</h2>
+          <FormControl flex={1} mr={4}>
+            <FormLabel htmlFor="title">Titolo annuncio</FormLabel>
+            <Input {...register("title", { required: true })} id="title" type="text" />
+            {errors.title && <span>Title is required</span>}
+          </FormControl>
+          <FormControl flex={1} mr={4}>
+            <FormLabel htmlFor="title">Tipologia di vendita</FormLabel>
+            <RadioGroup name="form-name">
+            {sale.map((sale) => (
+                      <Radio value={sale.value}>{sale.label}</Radio>
+                    ))}
+            
+          </RadioGroup>
+            {errors.title && <span>Title is required</span>}
+          </FormControl>
+          </div>
+          <FormControl flex={1} mr={4}>
+            <FormLabel htmlFor="body">Descrizione</FormLabel>
+            <Textarea {...register("body")} id="body" placeholder="Inserisci una descizione" rows="10"/>
           </FormControl>
           <FormControl flex={1} mr={4}>
             <FormLabel htmlFor="type">Property Type</FormLabel>
@@ -111,6 +144,7 @@ const Create = () => {
       />
       </div>
     </div>
+    </PopupLayout>
   );
 };
 

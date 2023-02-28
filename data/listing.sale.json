@@ -1,5 +1,4 @@
-{
-        "data": [
+[
             {
                 "value": "sale",
                 "label": "Vendita"
@@ -13,4 +12,3 @@
                 "label": "Asta"
             }
         ]
-}

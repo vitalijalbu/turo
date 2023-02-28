@@ -4,7 +4,9 @@
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-    border-bottom: 1px solid $border-color;
+    &.subnav{
+        border-bottom: 1px solid $border-color;
+    }
 
     .nav-link {
         position: relative;
@@ -17,4 +19,5 @@
             box-shadow: inset 0px -2px 0 $color-primary;
         }
     }
+
 }

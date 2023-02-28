@@ -11,7 +11,7 @@ const Toolbar = () => {
     <section className="my-3">
     <div className="container">
     <div className="row">
-<ul className="nav">
+<ul className="nav subnav">
  <li className="nav-item">
     <Link className="nav-link active"
        href="/account">

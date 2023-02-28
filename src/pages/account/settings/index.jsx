@@ -156,16 +156,10 @@ const Index = () => {
         isLoading={submitting}
         mt={4}
       >
-        Salva
+        Salva il profilo
       </Button>
     </form>
               {/* End Form */}
-              <hr />
-                <div className="mt-5">
-                  <Button color="danger" onClick={handleDelete}>
-                    Elimina account
-                  </Button>
-                </div>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ import sale from "@/data/listing.sale.json";
 import status from "@/data/listing.status.json";
 import Toolbar from "@/shared/hosting/toolbar";
 import PageActions from "@/shared/hosting/page-actions";
-
+import PopupLayout from "layouts/popup";
 
 const Index = () => {
   const {
@@ -32,6 +32,7 @@ const Index = () => {
   };
 
   return (
+    <PopupLayout urlClose={'/account/listings'}>
     <div className="page">
       <div className="page-content">
         <div className="container">
@@ -111,6 +112,7 @@ const Index = () => {
       />
       </div>
     </div>
+    </PopupLayout>
   );
 };
 

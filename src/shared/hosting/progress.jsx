@@ -1,9 +1,9 @@
-import { Progress } from 'reactstrap';
+import { Progress } from '@chakra-ui/react';
 
 function ProgressBar() {
   return (
     <>
-      <Progress value={75} label="75%" size="xl" radius="xl" />
+      <Progress hasStripe value={64} />
     </>
   );
 }

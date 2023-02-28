@@ -18,13 +18,11 @@
     backface-visibility: hidden;
     box-sizing: border-box;
     margin: 0;
-    height: calc(var(--f7-navbar-height) + var(--f7-safe-area-top));
     color: var(--f7-navbar-text-color,var(--f7-bars-text-color));
     font-size: var(--f7-navbar-font-size);
 }
 .navbar-inner {
     justify-content: space-between;
-    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;

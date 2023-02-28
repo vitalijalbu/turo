@@ -47,12 +47,12 @@ const Navigation = [
       {
         exact: true,
         label: "Piano",
-        url: "/settings/billing",
+        url: "/account/settings/billing",
       },
       {
         exact: false,
         label: "Impostazioni",
-        url: "/settings",
+        url: "/account/settings",
       },
       {
         exact: false,
