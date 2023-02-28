@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import {
-  
   Box,
   Button,
   Checkbox,
@@ -18,7 +17,7 @@ import {
 import data from "@/data/categories.json";
 import sale from "@/data/listing.sale.json";
 import status from "@/data/listing.status.json";
-import Toolbar from "@/shared/hosting/toolbar";
+import SideNav from "@/shared/hosting/side-nav";
 import PageActions from "@/shared/hosting/page-actions";
 import PopupLayout from "layouts/popup";
 

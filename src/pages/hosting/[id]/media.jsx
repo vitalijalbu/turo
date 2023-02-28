@@ -16,7 +16,7 @@ import {
 import data from "@/data/categories.json";
 import sale from "@/data/listing.sale.json";
 import status from "@/data/listing.status.json";
-import Toolbar from "@/shared/hosting/toolbar";
+import SideNav from "@/shared/hosting/side-nav";
 import PageActions from "@/shared/hosting/page-actions";
 import PopupLayout from "layouts/popup";
 
@@ -35,7 +35,7 @@ const Media = () => {
     <PopupLayout urlClose={'/account/listings'}>
     <div className="page">
       <div className="page-content">
-        <div className="container">
+        <div className="container-sm">
           <div className="row">
             <div className="py-2">
               <h1 className="fs-2 mb-2">Dettagli annuncio</h1>
@@ -46,7 +46,7 @@ const Media = () => {
             </div>
           </div>
           <Toolbar/>
-          <div className="col-md-8 col-xs-12">
+          <div className="col-md-12 mx-auto">
       <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl flex={1} mr={4}>
             <FormLabel htmlFor="title">Title</FormLabel>

@@ -23,7 +23,7 @@ import SideNav from "@/shared/hosting/side-nav";
 import PageActions from "@/shared/hosting/page-actions";
 import PopupLayout from "layouts/popup";
 
-const Pricing = () => {
+const Rooms = () => {
   const [progressValue, setProgressValue] = useState(10);
   const {
     register,
@@ -156,4 +156,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default Rooms;

@@ -25,7 +25,7 @@ const PopupLayout = ({ children, urlClose }) => {
       <ModalHeader>
         <ModalCloseButton size='lg'/>
       </ModalHeader>
-      <ModalBody>
+      <ModalBody p="0">
       {children} 
       </ModalBody>
       </ModalContent>

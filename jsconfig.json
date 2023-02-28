@@ -5,7 +5,8 @@
       "@/shared/*": ["shared/*"],
       "@/assets/*": ["../assets/*"],
       "@/data/*": ["../data/*"],
-      "@/lib/*": ["../lib/*"]
+      "@/lib/*": ["../lib/*"],
+      "@/layouts/*": ["layouts/*"]
     }
   }
 }

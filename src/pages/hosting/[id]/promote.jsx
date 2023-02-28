@@ -17,7 +17,7 @@ import {
   Textarea
 } from "reactstrap";
 import PageActions from "@/shared/hosting/page-actions";
-import Toolbar from "@/shared/hosting/toolbar";
+import SideNav from "@/shared/hosting/side-nav";
 
 const Media = () => {
   const router = useRouter();
@@ -35,7 +35,7 @@ const Media = () => {
   return (
     <div className="page">
     <div className="page-content">
-      <div className="container">
+      <div className="container-sm">
         <Row>
 
         <Col className="py-2">

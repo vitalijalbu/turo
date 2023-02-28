@@ -1,9 +1,12 @@
 import { Progress } from '@chakra-ui/react';
 
-function ProgressBar() {
+const ProgressBar = ({value}) => {
   return (
-    <>
-      <Progress hasStripe value={64} />
-    </>
+    <div>
+      <span>Stato della configurazione</span>
+      <Progress hasStripe value={value} borderRadius="8px"/>
+    </div>
   );
 }
+
+export default ProgressBar;

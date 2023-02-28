@@ -1,6 +1,9 @@
 .hosting-aside {
-    background: #fafafa;
+    //background: $bg-light;
     display: block;
+    height: 100vh;
+    position: relative;
+    border-right: 1px solid $border-color;
     height: 100%;
     position: relative;
     

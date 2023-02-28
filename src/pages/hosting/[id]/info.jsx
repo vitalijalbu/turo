@@ -16,7 +16,7 @@ import {
 import data from "@/data/categories.json";
 import sale from "@/data/listing.sale.json";
 import status from "@/data/listing.status.json";
-import Toolbar from "@/shared/hosting/toolbar";
+import SideNav from "@/shared/hosting/side-nav";
 import PageActions from "@/shared/hosting/page-actions";
 import PopupLayout from "layouts/popup";
 
@@ -35,7 +35,7 @@ const Info = () => {
     <PopupLayout urlClose={'/account/listings'}>
     <div className="page">
       <div className="page-content">
-        <div className="container">
+        <div className="container-sm">
           <div className="row">
             <div className="py-2">
               <h1 className="fs-2 mb-2">Dettagli annuncio</h1>
@@ -46,61 +46,16 @@ const Info = () => {
             </div>
           </div>
           <Toolbar/>
-          <div className="col-md-7 col-xs-12">
+          <div className="col-md-12 mx-auto">
       <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl flex={1} mr={4}>
             <FormLabel htmlFor="refNumber">Riferimento personalizzato</FormLabel>
             <Input {...register("refNumber")} id="refNumber" type="text" />
           </FormControl>
           <FormControl flex={1} mr={4}>
-            <FormLabel htmlFor="price">Price</FormLabel>
-            <Input {...register("price", { required: true, min: 0 })} id="price" type="number" />
-            {errors.price && <span>Price is required and must be a positive number</span>}
+            <FormLabel htmlFor="listingRatings">Stelle assegnate</FormLabel>
+            <Input {...register("listingRatings")} id="listingRatings" type="number" />
           </FormControl>
-          <FormControl flex={1} mr={4}>
-            <FormLabel htmlFor="type">Property Type</FormLabel>
-            <Select {...register("type")} id="type">
-              <option value="">Select property type</option>
-              <option value="house">House</option>
-              <option value="apartment">Apartment</option>
-              <option value="condo">Condo</option>
-            </Select>
-            {errors.type && <span>Property type is required</span>}
-          </FormControl>
-          <FormControl flex={1} mr={4}>
-            <FormLabel htmlFor="bedrooms">Bedrooms</FormLabel>
-            <Select {...register("bedrooms")} id="bedrooms">
-              <option value="">Select number of bedrooms</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </Select>
-            {errors.bedrooms && <span>Number of bedrooms is required</span>}
-          </FormControl>
-          <FormControl flex={1} mr={4}>
-            <FormLabel htmlFor="bathrooms">Bathrooms</FormLabel>
-            <Select {...register("bathrooms")} id="bathrooms">
-              <option value="">Select number of bathrooms</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </Select>
-            {errors.bathrooms && <span>Number of bathrooms is required</span>}
-          </FormControl>
-          <FormControl flex={1} mr={4}>
-            <FormLabel htmlFor="size">Size (sqft)</FormLabel>
-            <Input {...register("size", { required: true, min: 0 })} id="size" type="number" />
-            {errors.size && <span>Size is required and must be a positive number</span>}
-          </FormControl>
-      
-          
-        
-
-
           </form>
           </div>
           
