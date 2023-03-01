@@ -489,6 +489,12 @@ const Page = () => {
                         <hr />
                         <div className="d-block">
                           <Button variant="link" leftIcon={<IconPlus />}><Link href={`/offices/${entry?.office[0]?.id}`} passHref>
+                             Prenota una visita
+                          </Link>
+                          </Button>
+                        </div>
+                        <div className="d-block">
+                          <Button variant="link" leftIcon={<IconPlus />}><Link href={`/offices/${entry?.office[0]?.id}`} passHref>
                              Annunci dell'inserzionista
                           </Link>
                           </Button>

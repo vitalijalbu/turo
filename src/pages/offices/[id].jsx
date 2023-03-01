@@ -68,7 +68,7 @@ const View = () => {
               {/* Avatar */}
                 <Avatar
                 size="lg"
-                  src={entry.avatarImg ? entry.avatarImg[0].url : '/img/placeholder.svg'}
+                  src={entry?.avatarImg.length > 0 ? entry.avatarImg[0].url : '/img/placeholder.svg'}
                   alt=""
                 />
   

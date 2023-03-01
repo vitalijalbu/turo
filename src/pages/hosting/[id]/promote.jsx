@@ -1,27 +1,30 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import {
-  
-  Row,
-  Col,
-  ButtonGroup,
+  Box,
   Button,
-  Form,
-  FormGroup,
-  Label,
-  Input, 
-  FormText,
-  Textarea
-} from "reactstrap";
-import PageActions from "@/shared/hosting/page-actions";
+  Checkbox,
+  Flex,
+  RadioGroup,
+  Radio,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  Textarea,
+} from "@chakra-ui/react";
+import ProgressBar from "@/shared/hosting/progress";
+import HelpBox from "@/shared/components/help-box";
+import data from "@/data/categories.json";
+import sale from "@/data/listing.sale.json";
+import status from "@/data/listing.status.json";
 import SideNav from "@/shared/hosting/side-nav";
+import PageActions from "@/shared/hosting/page-actions";
+import PopupLayout from "layouts/popup";
 
-const Media = () => {
-  const router = useRouter();
-  const { id } = router.query;
+const Promote = () => {
+  const [progressValue, setProgressValue] = useState(10);
   const {
     register,
     handleSubmit,
@@ -33,57 +36,50 @@ const Media = () => {
   };
 
   return (
-    <div className="page">
-    <div className="page-content">
-      <div className="container-sm">
-        <Row>
+    <PopupLayout urlClose={"/account/listings"}>
+      <div className="page p-0">
+        <div className="page-content p-0 d-flex">
+          <div className="container">
+          <h1 className="section-title">Crea un nuovo annuncio</h1>
+          <div className="row">
+          <div className="col-md-3 hosting-aside" style={{ width: "24%" }}>
+            <div className="col">
+              <SideNav />
+            </div>
+          </div>
+         
+          <div className="col-md-9">
+          <div className="hosting-page">
+            <div className="container-sm">
+              <ProgressBar nextUrl={"/pricing"} value={progressValue} />
+              <div className="row">
+                <div className="py-2">
+                  
+                  <p className="mb-0">
+                    Praise effects wish change way and any wanted. Lively use
+                    looked latter regard had.
+                  </p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-8">
+promozione
 
-        <Col className="py-2">
-          <h1 className="fs-2 mb-2">Foto e Video</h1>
-          <p className="mb-0">
-            Praise effects wish change way and any wanted. Lively use looked latter
-            regard had.
-          </p>
-        </Col>
-
-        </Row>
-        <Toolbar/>
-        <Row>
-           <Col md={8} lg={8} sm={12}>
-           <Form onSubmit={handleSubmit(onSubmit)}>
-                <FormGroup>
-                  <Label for="title">Video URL</Label>
-                  <input
-                    id="title"
-                    className={`form-control ${errors.title ? "is-invalid" : ""}`}
-                    {...register("title", { required: true })}
-                  />
-                   {errors.title && (
-                  <div className="invalid-feedback">Name must be required</div>
-                )}
-                </FormGroup> 
-                <FormGroup>
-                  <Label for="title">Virtual Tour URL</Label>
-                  <input
-                    id="title"
-                    className={`form-control ${errors.title ? "is-invalid" : ""}`}
-                    {...register("title", { required: true })}
-                  />
-                   {errors.title && (
-                  <div className="invalid-feedback">Name must be required</div>
-                )}
-                </FormGroup>
-                </Form>
-          </Col>
-        </Row>
+                  <PageActions nextUrl={"/pricing"} />
+                </div>
+                <div className="col-md-4">
+                  <HelpBox />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
       </div>
-      <PageActions
-        prevUrl={"/location"}
-        nextUrl={"/info"}
-      />
-    </div>
-    </div>
+    </PopupLayout>
   );
 };
 
-export default Media;
+export default Promote;
