@@ -17,7 +17,7 @@ import {
 import Link from "next/link";
 import { authAction } from "@/lib/graphql/mutations/auth";
 import IconFacebook from "@/shared/components/icons/IconFacebook";
-import IconGoogle from "@/shared/components/IconGoogle";
+import IconGoogle from "@/shared/components/icons/IconGoogle";
 
 
 const Index = () => {

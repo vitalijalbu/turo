@@ -15,7 +15,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import IconFacebook from "@/shared/components/icons/IconFacebook";
-import IconGoogle from "@/shared/components/IconGoogle";
+import IconGoogle from "@/shared/components/icons/IconGoogle";
 import { authAction } from "@/lib/graphql/mutations/auth";
 
 const Index = () => {
