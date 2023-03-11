@@ -4,6 +4,7 @@ import {
   
   Badge,
   Stack,
+  Tabs, TabList, TabPanels, Tab, TabPanel,
   Menu,
   MenuButton,
   MenuList,
@@ -93,26 +94,24 @@ const Listings = () => {
 
           <div className="container">
             <div className="row">
-              <div className="col">
-                <ul>
-                  <li href="#" onClick={setTabs} active={archived === false}>
-                    Annunci attivi (3)
-                  </li>
 
-                  <li href="#" onClick={setTabs} active={archived === true}>
-                    Annunci archiviati (1)
-                  </li>
-                </ul>
-              </div>
             </div>
             <div>
+            <Tabs variant='soft-rounded' colorScheme='blue'>
+  <TabList>
+    <Tab>Annunci attivi (3)</Tab>
+    <Tab>Annunci archiviati</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+
               {Array.isArray(entries) ? (
                 <table className="table">
                   <tbody>
                     {entries.map((entry) => (
                       <tr key={entry.id}>
                         <th scope="row">
-                          <div className="d-flex align-items-center">
+                          <div className="d-flex justify-content-start">
                             <div className="avatar avatar-xl mb-2">
                               <Avatar
                               size="lg"
@@ -123,7 +122,7 @@ const Listings = () => {
                               />
                             </div>
 
-                            <div className="ms-2">
+                            <div className="ms-2 text-start">
                               <h5 className="mb-1">
                                 <Link
                                   className="text-primary"
@@ -137,7 +136,7 @@ const Listings = () => {
                                 {entry?.pricing ?? "Trattativa riservata"}
                               </span>
                               <div className="d-block">
-                                <Badge pill color="primary">
+                                <Badge colorScheme="green">
                                   {entry?.status}
                                 </Badge>
                               </div>
@@ -154,6 +153,8 @@ const Listings = () => {
                             <div className="me-1">
                               <Button
                                 variant="outline"
+                                as={Link}
+                                href={`/hosting/${entry.id}/promote`}
                                 leftIcon={<IconChartBar />}
                               >
                                 Promuovi
@@ -195,6 +196,12 @@ const Listings = () => {
               ) : (
                 <div>Nessun dato</div>
               )}
+    </TabPanel>
+    <TabPanel>
+      <p>two!</p>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
             </div>
           </div>
         </div>

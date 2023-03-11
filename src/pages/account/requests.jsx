@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button, Avatar } from "@chakra-ui/react";
+import { Button, Avatar, Tabs, TabList, TabPanels, Tab, TabPanel, } from "@chakra-ui/react";
 import PageHead from "@/shared/account/page-head";
 import { IconChevronRight, IconMail, IconMessage2 } from "@tabler/icons-react";
 import * as dayjs from "dayjs";
@@ -38,22 +38,18 @@ const Index = () => {
           <PageHead title={"Richieste dei clienti"} />
 
           <div className="container">
-            <div className="container">
-              <div className="row subnav">
-                <div className="col">
-                  <ul>
-                    <li href="#" onClick={setTabs} active={archived === false}>
-                      Richieste specifiche (3)
-                    </li>
-
-                    <li href="#" onClick={setTabs} active={archived === true}>
-                      ARichieste generiche (1)
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
+             
+              
+                
+                <Tabs variant='soft-rounded' colorScheme='blue'>
+  <TabList>
+    <Tab>Richieste specifiche</Tab>
+    <Tab>Richieste generiche</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+    <div className="row">
+    <div className="col-12">
                   {Array.isArray(entries) ? (
                     <table className="table">
                       <tbody>
@@ -105,8 +101,14 @@ const Index = () => {
                     <div>Nessun dato</div>
                   )}
                 </div>
-              </div>
-            </div>
+                </div>
+                </TabPanel>
+    <TabPanel>
+      <p>two!</p>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+            
           </div>
         </div>
       </div>

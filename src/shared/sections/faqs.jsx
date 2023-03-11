@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import {
+  Box,
   Button,
   Accordion,
   AccordionItem,
@@ -21,11 +22,18 @@ const Faqs = () => {
             <Accordion defaultOpen="1" flush>
               {data?.map((faq, i) => (
                 <AccordionItem key={i}>
+                   <h2>
                   <AccordionButton targetId={i}>
-                    <div className="d-flex">{faq.title}
-                    <AccordionIcon/>
-                    </div>
+
+        <Box as="span" flex='1' textAlign='left'>
+        {faq.title}
+        </Box>
+        <AccordionIcon />
+
+    
+
                   </AccordionButton>
+                  </h2>
                   <AccordionPanel accordionId={i}>
                     <div
                       dangerouslySetInnerHTML={{ __html: faq.content }}

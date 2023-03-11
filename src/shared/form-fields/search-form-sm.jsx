@@ -18,19 +18,15 @@ function SearchForm() {
   };
 
   return (
-    <section className="py-3">
-    <div className="container">
     <div className="row">
       <form as="form" onSubmit={handleSubmit(onSubmit)} className="d-flex align-items-end">
         <FormControl flex={1} mr={4}>
-          <FormLabel htmlFor="location">Città</FormLabel>
           <AddressField/>
         </FormControl>
         <FormControl flex={1} mr={4}>
-          <FormLabel htmlFor="category">Categoria</FormLabel>
           <Select
             id="category"
-            placeholder="Categoria"
+            placeholder="Tipologia"
             {...register("category")}
           >
             {data.categories.map((category) => (
@@ -38,25 +34,11 @@ function SearchForm() {
             ))}
           </Select>
         </FormControl> 
-        <FormControl flex={1} mr={4}>
-          <FormLabel htmlFor="category">Tipologia</FormLabel>
-          <Select
-            id="type"
-            placeholder="Tipologia"
-            {...register("category")}
-          >
-            <option value={1}>Vendita</option>
-            <option value={2}>Affitto</option>
-            <option value={3}>Asta</option>
-          </Select>
-        </FormControl>
         <Button type="submit" colorScheme="blue">
           <IconSearch/> Cerca
         </Button>
       </form>
     </div>
-    </div>
-    </section>
   );
 }
 

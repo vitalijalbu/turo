@@ -27,7 +27,7 @@ const Home = () => {
       w={'full'}
       h={'40vh'}
       backgroundImage={
-        'url(https://images.unsplash.com/photo-1585418694458-dc80a5c20294?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1664&q=80)'
+        'url(https://chakra-airbnb.vercel.app/images/airbnb-home.jpg)'
       }
       backgroundSize={'cover'}
       backgroundPosition={'center center'}>
@@ -56,7 +56,7 @@ const Home = () => {
               rounded={'full'}
               color={'white'}
               _hover={{ bg: 'whiteAlpha.500' }}>
-              <Link href="/business">Sei un'agenzia?</Link>
+              <Link href="/business">Sei un professionista?</Link>
             </Button>
           </Stack>
         </Stack>
@@ -66,12 +66,9 @@ const Home = () => {
     <SearchForm/>
       <Features />
       <ListingTypes />
-      {/*
-       <Features />
-       */}
       <SpotlightListings />
       <PromoBanner 
-      imageUrl="https://content.loft.com.br/_next/static/images/hero-background@3x-24f8cc98fdfcb97739e347ef9a70f6bf.jpg"
+      imageUrl="https://chakra-airbnb.vercel.app/images/airbnb-home.jpg"
       title="Crea un account" 
       subtitle="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."/>
       <Faqs />

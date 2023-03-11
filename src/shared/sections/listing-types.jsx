@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  Row,
-  Col
-} from "reactstrap";
 import {  Card, CardBody, Heading, Text, Image, Stack } from "@chakra-ui/react";
 import Link from "next/link";
 import data from "@/data/categories.json";
@@ -15,33 +11,32 @@ const ListingTypes = () => {
           <h1 className="section-title">Sfoglia annunci</h1>
         </div>
 
-        <Row>
-          {data.categories.map((category) => (
+        <div className="row">
+          {data.categories.map((category, i) => (
+            <div className="col" key={i}>
            <Card
            direction={{ base: 'column', sm: 'row' }}
            overflow='hidden'
            variant='outline'
+           as={Link}
+           href={`/search?category=${category.slug}`}
          >
            <Image
              objectFit='cover'
              maxW={{ base: '100%', sm: '200px' }}
-             src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-             alt='Caffe Latte'
+             src='/img/placeholder.png'
+             alt={category.title}
            />
          
            <Stack>
              <CardBody>
-               <Heading size='md'>The perfect latte</Heading>
-         
-               <Text py='2'>
-                 Caffè latte is a coffee beverage of Italian origin made with espresso
-                 and steamed milk.
-               </Text>
+               <Heading size='md'>{category.title}</Heading>
              </CardBody>
            </Stack>
          </Card>
+         </div>
           ))}
-        </Row>
+        </div>
       </div>
     </section>
   );

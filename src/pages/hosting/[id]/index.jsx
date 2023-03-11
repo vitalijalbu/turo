@@ -50,7 +50,7 @@ const Index = () => {
   ));
 
   return (
-    <div className="page p-0">
+    <div className="page">
       <div className="page-content">
         <PageHead />
         <div className="container">

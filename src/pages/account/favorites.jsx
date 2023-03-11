@@ -31,7 +31,7 @@ const Favorites = () => {
 {Array.isArray(entries) ? (
    <> 
     {entries.map((item, i) => (
-      <div className="col-4 col-sx-6">
+      <div className="col-lg-3 col-md-3 col-sm-6 col-sx-6">
        <ItemCard data={item}/>
        </div>
     ))}

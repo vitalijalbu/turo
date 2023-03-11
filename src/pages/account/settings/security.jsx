@@ -84,7 +84,7 @@ const Security = () => {
 
   return (
     <div className="page">
-      <div className="page-content">
+    <div className="page-content pt-4">
         <div className="container">
           <div className="row g-5">
             <div className="col-md-4">
@@ -97,27 +97,12 @@ const Security = () => {
             <div className="col-md-8">
               <h1 className="section-title">Password e sicurezza</h1>
               {/* Form */}
+              <div className="mb-3">
               <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl isInvalid={errors.email}>
-        <FormLabel htmlFor="email">Email</FormLabel>
-        <Input
-          type="email"
-          id="email"
-          placeholder="Inserisci la tua email"
-          {...register("email", {
-            required: "Campo obbligatorio",
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: "Email non valida",
-            },
-          })}
-        />
-        <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-      </FormControl>
                 <div className="row">
                 <div className="col">
       <FormControl isInvalid={errors.nome}>
-        <FormLabel htmlFor="nome">Nome</FormLabel>
+        <FormLabel htmlFor="nome">Nuova password</FormLabel>
         <Input
           type="text"
           id="nome"
@@ -129,7 +114,7 @@ const Security = () => {
       </div>
       <div className="col">
       <FormControl isInvalid={errors.cognome}>
-        <FormLabel htmlFor="cognome">Cognome</FormLabel>
+        <FormLabel htmlFor="cognome">Conferma nuova password</FormLabel>
         <Input
           type="text"
           id="cognome"
@@ -141,18 +126,18 @@ const Security = () => {
       </div>
       </div>
 
-      <Button
+      <FormControl><Button
         type="submit"
         colorScheme="blue"
         isLoading={submitting}
        
       >
         Reimposta nuova password
-      </Button>
-    </form>
+      </Button></FormControl>
+    </form></div>
               {/* End Form */}
               <hr />
-                <div>
+                <div className="py-3">
                   <Button color="danger" onClick={handleDelete}>
                     Elimina account
                   </Button>

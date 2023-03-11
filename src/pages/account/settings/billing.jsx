@@ -18,7 +18,7 @@ const Billing = () => {
 
   return (
     <div className="page">
-    <div className="page-content">
+    <div className="page-content pt-4">
     <div className="container">
     <div className="row g-5">
     <div className="col-md-4">

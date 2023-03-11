@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
     AlertDialog,
+    AlertDialogCloseButton,
     AlertDialogBody,
     AlertDialogFooter,
     AlertDialogHeader,
@@ -26,7 +27,6 @@ const Confirm = ({opened, toggle}) => {
 
     <AlertDialogContent>
       <AlertDialogHeader>Discard Changes?</AlertDialogHeader>
-      <AlertDialogCloseButton />
       <AlertDialogBody>
         Are you sure you want to discard all of your notes? 44 words will be
         deleted.

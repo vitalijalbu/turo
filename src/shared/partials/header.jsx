@@ -30,6 +30,7 @@ import {
   IconPlus,
   IconSearch
 } from "@tabler/icons-react";
+import SearchForm from "../form-fields/search-form-sm";
 
 const Header = () => {
   const session = getSession();
@@ -64,11 +65,12 @@ const Header = () => {
       <div className="navbar">
         <div className="navbar-inner">
           <div className="left">
-            <Link href="#" className="link icon-only">
+            <Link href="/" className="link icon-only">
               <Box>
                 <img src="/img/logo.svg" className="site-logo" />
               </Box>
             </Link>
+            <SearchForm/>
           </div>
           <div className="right">
             <Button
@@ -85,13 +87,8 @@ const Header = () => {
                 </Link>
               </li>
               <li className="menu-item">
-                <Link className="menu-link" href="/search">
-                <IconSearch/> Ricerca
-                </Link>
-              </li>
-              <li className="menu-item">
-                <Link className="menu-link" href="/business">
-                   Sei un'agenzia ?
+                <Link className="menu-link" href="/pricing">
+                   Pubblica un annuncio
                 </Link>
               </li>
               <li className="menu-item">
@@ -99,11 +96,6 @@ const Header = () => {
                    Richieste
                 </Link>
               </li>
-              <li className="menu-item">
-                <Link className="menu-link" href="/account/favorites">
-                  <IconHeart/> Preferiti
-                </Link>
-              </li> 
 
               <li className="menu-item">
                   <Menu isLazy>
@@ -132,6 +124,9 @@ const Header = () => {
                     <MenuList>
                       <MenuItem as={Link} href='/account' icon={<IconUserCircle size={20} />}>
                         Il mio acount
+                      </MenuItem>
+                      <MenuItem as={Link} href='/account/favorites' icon={<IconHeart size={20} />}>
+                      Preferiti
                       </MenuItem>
 
                       <MenuItem as={Link} href='/account/listings' icon={<IconListDetails size={20} />}>
