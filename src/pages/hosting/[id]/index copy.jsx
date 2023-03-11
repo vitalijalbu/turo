@@ -23,7 +23,7 @@ import SideNav from "@/shared/hosting/side-nav";
 import PageActions from "@/shared/hosting/page-actions";
 import PopupLayout from "layouts/popup";
 
-const Location = () => {
+const Index = () => {
   const [progressValue, setProgressValue] = useState(10);
   const {
     register,
@@ -50,17 +50,16 @@ const Location = () => {
          
           <div className="col-md-9">
           <div className="hosting-page">
-            <div className="container-sm">
+            <div className="container">
+            <h1 className="section-title">Crea un nuovo annuncio</h1>
+              <ProgressBar nextUrl={"/pricing"} value={progressValue} />
               <div className="row">
-                <div className="pb-2">
-                <h1 className="section-title">Crea un nuovo annuncio</h1>
+                <div className="py-2">
                   <p className="mb-0">
-                    Praise effects wish change way and any wanted. Lively use
-                    looked latter regard had.
+                    Compila i campi sottostanti
                   </p>
                 </div>
               </div>
-              <ProgressBar nextUrl={"/pricing"} value={progressValue} />
               <div className="row">
                 <div className="col-md-8">
                   <form onSubmit={handleSubmit(onSubmit)}>
@@ -198,4 +197,4 @@ const Location = () => {
   );
 };
 
-export default Location;
+export default Index;

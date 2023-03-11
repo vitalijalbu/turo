@@ -31,20 +31,6 @@ const Billing = () => {
       <div className="col-md-8">
         <h1 className="section-title">Fatturazione</h1>
         <div>
-        <div>
-            <div className="col-md-12">
-              <ul className="subnav" pills>
-                <li>
-                  <a href="#" onClick={setTabs} active={archived === false}>
-                    Piano abbonamento
-                  </a>
-                </li>
-                <li>
-                  <a href="#" onClick={setTabs} active={archived === true}>Acquisti in-app</a>
-                </li>
-              </ul>
-            </div>
-          </div>
           {Array.isArray(bills) ? (
           <table className="table">
                 <tbody>

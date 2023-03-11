@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Avatar, Button, Badge, useToast } from "@chakra-ui/react";
+import { Avatar, Button, Badge, useToast, Heading } from "@chakra-ui/react";
 import Link from "next/link";
 import { IconArrowAutofitContent, IconHeart, IconShare, IconStairs, IconMapPin } from '@tabler/icons-react';
 import ListingSwiperPro from "./listing-swiper-pro";
@@ -40,19 +40,19 @@ const ListingItemPro = ({ data }) => {
           <ul className="list-inline mb-0 z-index-2">
               {/* Heart icon */}
               <li className="list-inline-item">
-              <Button color="link"><IconHeart onClick={() => addToFavorite()}/></Button>
+              <Button variant="outline" size="sm"><IconHeart onClick={() => addToFavorite()}/></Button>
               </li>
               {/* Share icon */}
               <li className="list-inline-item dropdown">
-              <Button color="link"><IconShare /></Button>
+              <Button variant="outline" size="sm"><IconShare /></Button>
               </li>
             </ul>
             </div>
-                      {/* Title */}
-          <h5 className="card-title d-block">
+                       {/* Title */}
+                       <Heading as='h3' noOfLines={1} className="card-title d-block">
           <Link href={`/listings/${data.id}`}>{data.title}</Link>
-          </h5>
-          {data.category.length > 0 ? (<Badge>{data.category[0].title}</Badge>) : null}
+          </Heading>
+          <div className="d-flex justify-content-between align-items-center mt-2">{data.category.length > 0 ? (<Badge borderRadius='full' px='2' colorScheme='teal'>{data.category[0].title}</Badge>) : null}</div>
           {/* Amenities */}
           <ul className="d-flex list-unstyled my-3">
             <li className="me-3">

@@ -8,7 +8,7 @@ const PageActions = (props) => {
   const { id } = router.query;
   return (
 <section className="page-actions">
-
+<div className="container-sm">
   <div className="d-flex justify-content-between border-top mt-3 pt-3">
             <Button variant="outline">Salva e Chiudi</Button>
            
@@ -20,7 +20,7 @@ const PageActions = (props) => {
                   </Link>
                 )}
             </div>
-  
+            </div>
 </section>
 
   );

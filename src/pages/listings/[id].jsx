@@ -9,12 +9,16 @@ import {
   Button,
   Breadcrumb,
   BreadcrumbItem,
+  Badge,
   Avatar,
   Heading,
 } from "@chakra-ui/react";
 import PupupContact from "@/shared/components/popup-contact";
 import PopupShare from "@/shared/components/popup-share";
 import Gallery from "@/shared/listings/gallery";
+const Map = dynamic(() => import("@/shared/listings/map"), {
+  ssr: false,
+});
 import {
   IconCornerRightUp,
   IconHeart,
@@ -28,6 +32,7 @@ import {
   IconCalendar,
 } from "@tabler/icons-react";
 import RelatedListings from "@/shared/sections/related-listings";
+
 
 const Page = () => {
   const router = useRouter();
@@ -94,7 +99,7 @@ const Page = () => {
                   {/* Meta */}
                   <div className="d-lg-flex justify-content-lg-between mb-3">
                     {/* p */}
-                    <Button variant="outline" leftIcon={<IconChevronLeft />}>
+                    <Button variant="outline" size="sm" leftIcon={<IconChevronLeft />}>
                       <Link href={`/search`}>
                        Ricerca
                     </Link>
@@ -103,7 +108,7 @@ const Page = () => {
                     <ul className="list-inline text-end">
                       {/* Heart icon */}
                       <li className="list-inline-item">
-                        <Button variant="outline" leftIcon={<IconHeart />} onClick={() => addToFavorite()}>
+                        <Button variant="outline" size="sm" leftIcon={<IconHeart />} onClick={() => addToFavorite()}>
                            Salva
                         </Button>
                       </li>
@@ -111,6 +116,7 @@ const Page = () => {
                       <li className="list-inline-item dropdown">
                         <Button
                           variant="outline"
+                          size="sm"
                           leftIcon={<IconCornerRightUp />} 
                           onClick={() => togglePopupShare()}
                         >
@@ -145,9 +151,9 @@ const Page = () => {
                       <div className="mb-2">
                         {entry?.category.length > 0 ? (
                           <div>
-                            <span className="badge rounded-pill text-bg-primary">
+                            <Badge borderRadius='full' px='2' colorScheme='teal'>
                               {entry?.category[0].title}
-                            </span>
+                            </Badge>
                           </div>
                         ) : null}
                         {/* Amenities */}
@@ -451,7 +457,8 @@ const Page = () => {
                     <div className="section-title">
                       <h4>Posizione</h4>
                     </div>
-                    mappa
+                    <Map title={entry?.title} lat={entry?.location?.lat ?? null} lng={entry?.location?.lng ?? null} />
+
                   </section>
                 </div>
                 <div className="col-md-4">

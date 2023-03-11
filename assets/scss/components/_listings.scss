@@ -1,33 +1,7 @@
 .listing-card {
   border-bottom: 1px solid var(--f7-list-item-border-color);
 }
-.media-head.card-header {
-  overflow: hidden;
-  display: block;
-}
-.thumb-img {
-  position: absolute;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  border-radius: 12px;
-}
-.list .item-media.sm {
-  position: relative;
-  width: 66px;
-  height: 66px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.list .item-media.sm > img {
-  position: absolute;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  border-radius: 12px;
-}
+
 
 .listing-card_badge {
   position: absolute;
@@ -46,7 +20,6 @@
 }
 .list-item_swiper{
 height: 0px;
-border-radius: 4px;
 overflow: hidden;
 padding-bottom: 75%;
 
@@ -146,7 +119,6 @@ position: relative;
 padding-bottom: 64.25%;
 height: 100%;
 width: 100%;
-border-radius: 8px;
 }
 
 .img-responsive-wrapper .img-responsive .img-wrapper > img{
@@ -155,7 +127,6 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-border-radius: 8px;
 }
 .item-ribbon.chip {
 position: absolute;

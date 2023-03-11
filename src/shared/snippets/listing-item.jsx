@@ -32,9 +32,9 @@ const ListingItem = ({ data }) => {
         <div className="card-body py-md-2 d-flex flex-column h-100 position-relative">
         <div className="d-flex justify-content-between align-items-center">
           {/* Rating and buttons */}
-          <Link href={`/search?city=${data.location.parts ? data.location.parts.city : null}`} className="mb-2 text-primary">
-          <span>
-            <IconMapPin/> {data.location ? data.location.parts.city : null}
+          <Link href={`/search?city=${data.location.parts ? data.location.parts.city : null}`} className="mb-2 f-primary">
+          <span className="d-flex">
+            <IconMapPin className="mr-2"/> {data.location ? data.location.parts.city : null}
           </span>
           </Link>
           <ul className="list-inline mb-0 z-index-2">
@@ -52,7 +52,7 @@ const ListingItem = ({ data }) => {
                       <Heading as='h3' noOfLines={1} className="card-title d-block">
           <Link href={`/listings/${data.id}`}>{data.title}</Link>
           </Heading>
-          {data.category.length > 0 ? (<Badge>{data.category[0].title}</Badge>) : null}
+          <div className="d-flex justify-content-between align-items-center mt-2">{data.category.length > 0 ? (<Badge borderRadius='full' px='2' colorScheme='teal'>{data.category[0].title}</Badge>) : null}</div>
           {/* Amenities */}
           <ul className="d-flex list-unstyled my-3">
             <li className="me-3">

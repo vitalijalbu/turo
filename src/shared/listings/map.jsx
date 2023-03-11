@@ -1,37 +1,24 @@
-import React, { useEffect } from "react";
-import Link from "next/link";
-import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import { IconArrowUpRight } from "@tabler/icons-react";
+import { useEffect } from 'react';
+import L from 'leaflet';
 
-export default Map = ({ props }) => {
+export default function Map({ lat, lng, title }) {
   useEffect(() => {
-    const position = [45.60522, 10.5141089];
-   
-      return (
-        <div>
-          <div className="map-container mb-2">
-            <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={position}>
-                <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-              </Marker>
-            </MapContainer>
-          </div>
-          <Link
-            href="https://www.google.com/maps"
-            target="_blank"
-            className="btn btn-outline-primary btn-sm"
-          >
-            Apri in Google Maps <IconArrowUpRight />
-          </Link>
-        </div>
-      );
-  
-  }, []);
-};
+    if (lat !== null && lng !== null) {
+      // Create a new map instance
+      const map = L.map('listing-map').setView([lat, lng], 13);
+
+      // Add a tile layer to the map
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18,
+      }).addTo(map);
+
+      // Add a marker to the map
+      L.marker([lat, lng]).addTo(map)
+        //.bindPopup({title})
+        //.openPopup();
+    }
+  }, [lat, lng]);
+
+  return <div className="map-container" id="listing-map"/>;
+}

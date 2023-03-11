@@ -17,7 +17,7 @@ import { getProfile } from "@/lib/graphql/queries/user";
 import { useForm, Controller } from "react-hook-form";
 import confirm from '@/shared/components/confirm/';
 
-const Office = () => {
+const Index = () => {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -95,7 +95,7 @@ const Office = () => {
               </div>
             </div>
             <div className="col-md-8">
-              <h1 className="section-title">La mia agenzia</h1>
+              <h1 className="section-title">Impostazioni account</h1>
               {/* Form */}
               <form onSubmit={handleSubmit(onSubmit)} className="mb-3">
                 <div className="row">
@@ -159,6 +159,13 @@ const Office = () => {
         Salva
       </Button>
     </form>
+              {/* End Form */}
+              <hr />
+                <div className="mt-5">
+                  <Button color="danger" onClick={handleDelete}>
+                    Elimina account
+                  </Button>
+                </div>
             </div>
           </div>
         </div>
@@ -167,4 +174,4 @@ const Office = () => {
   );
 };
 
-export default Office;
+export default Index;

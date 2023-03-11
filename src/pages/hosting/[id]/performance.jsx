@@ -22,7 +22,7 @@ import status from "@/data/listing.status.json";
 import SideNav from "@/shared/hosting/side-nav";
 import PageActions from "@/shared/hosting/page-actions";
 import PageHead from "@/shared/hosting/page-head";
-const Promote = () => {
+const Performance = () => {
   const [progressValue, setProgressValue] = useState(10);
   const {
     register,
@@ -81,4 +81,4 @@ const Promote = () => {
   );
 };
 
-export default Promote;
+export default Performance;

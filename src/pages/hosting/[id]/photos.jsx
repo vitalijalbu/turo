@@ -47,7 +47,6 @@ const Photos = () => {
       <div className="page p-0">
         <div className="page-content p-0 d-flex">
           <div className="container">
-          <h1 className="section-title">Crea un nuovo annuncio</h1>
           <div className="row">
           <div className="col-md-3 hosting-aside" style={{ width: "24%" }}>
             <div className="col">
@@ -57,11 +56,11 @@ const Photos = () => {
          
           <div className="col-md-9">
           <div className="hosting-page">
-            <div className="container-sm">
+            <div className="container">
               <ProgressBar nextUrl={"/pricing"} value={progressValue} />
               <div className="row">
-                <div className="py-2">
-                  
+                <div className="pb-2">
+                <h1 className="section-title">Aggiungi foto</h1>
                   <p className="mb-0">
                     Praise effects wish change way and any wanted. Lively use
                     looked latter regard had.
@@ -70,16 +69,19 @@ const Photos = () => {
               </div>
               <div className="row">
                 <div className="col-md-8">
-                <section className="container">
-      <div {...getRootProps({className: 'dropzone'})}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      </div>
-      <aside>
-        <h4>Files</h4>
-        <ul>{files}</ul>
-      </aside>
-    </section>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="section-content pb-3 mb-3 border-bottom">
+                      <h2 className="section-title">Informazioni</h2>
+                      <div {...getRootProps({className: 'dropzone'})}>
+                        <input {...getInputProps()} />
+                        <p>Drag 'n' drop some files here, or click to select files</p>
+                      </div>
+                      <aside>
+                        <h4>Files</h4>
+                        <ul>{files}</ul>
+                      </aside>
+                    </div>
+                  </form>
 
                   <PageActions nextUrl={"/pricing"} />
                 </div>

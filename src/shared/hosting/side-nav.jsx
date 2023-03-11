@@ -17,7 +17,7 @@ const SideNav = () => {
    <div className="list no-hairlines">
     <ul>
     <li key="hosting">
-    <Link className={`nav-link ${isActive(`/hosting/${id}`) ? 'active' : ''}`} href={`/hosting/${id}`} className="item-link item-content">
+    <Link className={`nav-link ${isActive(`/hosting/${id}`) ? 'active' : ''}`} href={`/hosting/${id}`}>
              <div className="item-media">
                <IconListDetails/>
              </div>

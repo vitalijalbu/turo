@@ -6,7 +6,7 @@ import ListingSwiper from "./listing-swiper";
 
 const Item = ({ data }) => {
   return (
-<Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' marginBottom={3} as="article">
+<Box borderWidth='1px' borderRadius='lg' overflow='hidden' marginBottom={3} as="article">
   
   <Link href={`/listings/${data?.id}`}>
           <ListingSwiper media={data?.media_photos} />
@@ -15,7 +15,7 @@ const Item = ({ data }) => {
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
           <Badge borderRadius='full' px='2' colorScheme='teal'>
-            New
+            {data?.category[0]?.title}
           </Badge>
           <Box
             color='gray.500'
@@ -40,9 +40,9 @@ const Item = ({ data }) => {
         </Box>
 
         <Box>
-          {data.formattedPrice}
+          
           <Box as='span' color='gray.600' fontSize='sm'>
-            / wk
+          {data.formattedPrice}
           </Box>
         </Box>
 
