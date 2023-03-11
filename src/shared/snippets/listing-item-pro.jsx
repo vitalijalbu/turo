@@ -1,28 +1,34 @@
 import React, { useState } from "react";
-import { Card, Button, Badge } from "reactstrap";
+import { Avatar, Button, Badge, useToast } from "@chakra-ui/react";
 import Link from "next/link";
 import { IconArrowAutofitContent, IconHeart, IconShare, IconStairs, IconMapPin } from '@tabler/icons-react';
-import ListingSwiper from "./listing-swiper";
+import ListingSwiperPro from "./listing-swiper-pro";
 
 
-const ListingItem = ({ data }) => {
+const ListingItemPro = ({ data }) => {
   const [favorite, setFavorite] = useState(false);
 
-  const addToFavorite = () => {
-    console.log('added')
+  const saveSearch = () => {
+    toast({
+      title: "Ricerca salvata",
+      duration: 1500,
+      status: "success",
+      isClosable: true,
+    });
   };
 
   return (
-    <Card className="p-2 mb-3">
-    <div className="row g-0">
+    <div className="item-listing">
+    <div className="row g-3">
       {/* Card img */}
-      <div className="col-md-5 position-relative">
+      <div className="col-md-12 position-relative">
         {/* Slider START */}
-        <Link href={`/listings/${data.id}`}><ListingSwiper media={data?.media_photos} /></Link>
+        <Link href={`/listings/${data.id}`}>
+          <ListingSwiperPro media={data?.media_photos} /></Link>
         {/* Slider END */}
       </div>
       {/* Card body */}
-      <div className="col-md-7">
+      <div className="col-md-12">
         <div className="card-body py-md-2 d-flex flex-column h-100 position-relative">
         <div className="d-flex justify-content-between align-items-center">
           {/* Rating and buttons */}
@@ -46,7 +52,7 @@ const ListingItem = ({ data }) => {
           <h5 className="card-title d-block">
           <Link href={`/listings/${data.id}`}>{data.title}</Link>
           </h5>
-          {data.category.length > 0 ? (<div><span className="badge rounded-pill text-bg-primary">{data.category[0].title}</span></div>) : null}
+          {data.category.length > 0 ? (<Badge>{data.category[0].title}</Badge>) : null}
           {/* Amenities */}
           <ul className="d-flex list-unstyled my-3">
             <li className="me-3">
@@ -67,18 +73,15 @@ const ListingItem = ({ data }) => {
             </li> 
           </ul>
           {/* Price and Button */}
-          <div>
-            <hr />
          
           <div className="d-sm-flex justify-content-sm-between align-items-center mt-3 mt-md-auto">
             {/* Button */}
 
               <Link href={`/offices/${data.author.id}`} target="_blank" className="d-flex align-items-center">
                 <div className="avatar avatar-sm">
-                  <img
-                    className="avatar-img rounded-circle"
+                  <Avatar
+                    size="sm"
                     src="https://via.placeholder.com/80"
-                    alt="avatar"
                   />
                 </div>
                 <div className="ms-2">
@@ -90,13 +93,12 @@ const ListingItem = ({ data }) => {
               <h5 className="fw-bold mb-0 me-1">{data.pricing ? data.pricing : "Trattativa riservata"}</h5>
             </div> 
           </div>
-          </div>
         </div>
       </div>
     </div>
-  </Card>
+  </div>
   
   )
 }
 
-export default ListingItem;
+export default ListingItemPro;

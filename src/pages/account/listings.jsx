@@ -15,7 +15,7 @@ import {
   Button,
   Avatar
 } from "@chakra-ui/react";
-import confirm from "@/shared/components/confirm/";
+import confirm from "@/shared/components/confirm";
 import PageHead from "@/shared/account/page-head";
 import { getUserListings } from "@/lib/graphql/queries/user";
 import Link from "next/link";
@@ -115,7 +115,7 @@ const Listings = () => {
                           <div className="d-flex align-items-center">
                             <div className="avatar avatar-xl mb-2">
                               <Avatar
-                              size="md"
+                              size="lg"
                                 src={
                                   entry.media_photos[0]?.url ??
                                   "/img/placeholder.svg"

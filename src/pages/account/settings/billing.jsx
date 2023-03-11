@@ -32,7 +32,7 @@ const Billing = () => {
         <h1 className="section-title">Fatturazione</h1>
         <div>
         <div>
-            <div md={12}>
+            <div className="col-md-12">
               <ul className="subnav" pills>
                 <li>
                   <a href="#" onClick={setTabs} active={archived === false}>

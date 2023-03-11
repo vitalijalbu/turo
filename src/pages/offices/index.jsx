@@ -55,7 +55,7 @@ const Index = () => {
           <h1 className="section-title">Agenzie</h1>
         </div>
         <div>
-        <div md={12}>
+        <div className="col-md-12">
               {Array.isArray(entries) ? (
                 <table className="table">
                   <tbody>

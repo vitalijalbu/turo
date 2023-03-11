@@ -110,11 +110,11 @@ const Header = () => {
                     <MenuButton className="menu-link">Aiuto</MenuButton>
                     <MenuList>
                       {/* MenuItems are not rendered unless Menu is open */}
-                      <MenuItem>
-                        <Link href="/help">Faqs</Link>
+                      <MenuItem as={Link} href='/help'>
+                        Faqs
                       </MenuItem>
-                      <MenuItem>
-                        <Link href="/contacts">Contattaci</Link>
+                      <MenuItem as={Link} href='/contacts'>
+                        Contatti
                       </MenuItem>
                     </MenuList>
                   </Menu>
@@ -130,34 +130,28 @@ const Header = () => {
                         <span>Demo user</span></div>
                     </MenuButton>
                     <MenuList>
-                      <MenuItem icon={<IconUserCircle size={20} />}>
-                        <Link href="/account">Il mio acount</Link>
+                      <MenuItem as={Link} href='/account' icon={<IconUserCircle size={20} />}>
+                        Il mio acount
                       </MenuItem>
 
-                      <MenuItem icon={<IconListDetails size={20} />}>
-                        <Link href="/account/listings">I miei annunci</Link>
+                      <MenuItem as={Link} href='/account/listings' icon={<IconListDetails size={20} />}>
+                        I miei annunci
                       </MenuItem>
-                      <MenuItem icon={<IconPlus size={20} />}>
-                        <Link href="/hosting/create">Pubblica annuncio</Link>
+                      <MenuItem as={Link} href='/account/listings' icon={<IconPlus size={20} />}>
+                        Pubblica annuncio
                       </MenuItem>
-                      <MenuItem icon={<IconMessage2 size={20} />}>
-                        <Link href="/account/requests">Richieste</Link>
+                      <MenuItem as={Link} href='/account/requests' icon={<IconMessage2 size={20} />}>
+                        Richieste
                       </MenuItem>
                       <MenuDivider />
-                      <MenuItem icon={<IconBuildingEstate size={20} />}>
-                        <Link
-                          href={`/offices/${
-                            session === true ? session.user.id : null
-                          }`}
-                        >
+                      <MenuItem as={Link} href='/offices/12' icon={<IconBuildingEstate size={20} />}>
                           Profilo pubblico
-                        </Link>
                       </MenuItem>
-                      <MenuItem icon={<IconSettings />}>
-                        <Link href="/account/settings">Impostazioni</Link>
+                      <MenuItem as={Link} href='/account/settings' icon={<IconSettings />}>
+                        Impostazioni
                       </MenuItem>
                       <MenuDivider />
-                      <MenuItem onClick={handleLogout}>Esci</MenuItem>
+                      <MenuItem as={Button} onClick={handleLogout}>Esci</MenuItem>
                     </MenuList>
                   </Menu>
               </li>

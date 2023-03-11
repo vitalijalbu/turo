@@ -13,6 +13,7 @@ import {
 import PopupMap from "@/shared/search/popup-map";
 import Filters from "@/shared/search/filters";
 import ListingItem from "@/shared/snippets/listing-item";
+import ListingItemPro from "@/shared/snippets/listing-item-pro";
 import { IconBell, IconMap2 } from "@tabler/icons-react";
 import { Button } from "@chakra-ui/react";
 const Search = () => {
@@ -30,6 +31,7 @@ const Search = () => {
   };
   const [loading, setLoading] = useState(false);
   const [entries, setEntries] = useState([]);
+  const proEntries = entries.filter((entry) => entry.badge === 'prime');
 
   useEffect(() => {
     searchListings()
@@ -51,7 +53,7 @@ const Search = () => {
             <div className="container">
               <div className="row">
                 <div className="mb-2">
-                  <div md={12}>
+                  <div className="col-md-12">
                     <div className="d-flex justify-content-between align-items-center filters-subnav">
                       <div className="filters-block flex-grow-1">
                         <div className="filters-block">
@@ -60,13 +62,14 @@ const Search = () => {
                       </div>
                       <div className="filters-block text-right">
                         <Button
+                          variant="outline"
                           onClick={() => saveSearch()}
                           leftIcon={<IconBell />}
                         >
                           Salva ricerca
                         </Button>
                         <Button
-                          outline
+                          variant="outline"
                           onClick={toggleMapPopup}
                           leftIcon={<IconMap2 />}
                         >
@@ -79,9 +82,9 @@ const Search = () => {
               </div>
             </div>
           </section>
-          <div className="container">
+          <div className="container-sm">
             <div className="mb-2">
-              <div md={12}>
+              <div className="col-md-12">
                 <div className="section-head d-flex justify-content-between align-items-center">
                   <div className="section-title flex-grow-1">
                     <h2 className="page-title">22 risultati trovati</h2>
@@ -95,8 +98,17 @@ const Search = () => {
                   </div>
                 </div>
               </div>
-              <div md={12}>
-                {Array.isArray(entries) ? (
+              <div className="col-md-12">
+              {Array.isArray(proEntries) && proEntries.length > 0 ? (
+                  <div className="list-properties">
+                    {proEntries.map((entry) => (
+                      <ListingItemPro data={entry} key={entry.id} />
+                    ))}
+                  </div>
+                ) : null}
+              </div> 
+              <div className="col-md-12">
+                {Array.isArray(entries) && entries.length > 0 ? (
                   <div className="list-properties">
                     {entries.map((entry) => (
                       <ListingItem data={entry} key={entry.id} />

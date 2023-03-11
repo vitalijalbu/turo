@@ -10,6 +10,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Avatar,
+  Heading,
 } from "@chakra-ui/react";
 import PupupContact from "@/shared/components/popup-contact";
 import PopupShare from "@/shared/components/popup-share";
@@ -24,6 +25,7 @@ import {
   IconPhone,
   IconMail,
   IconChevronLeft,
+  IconCalendar,
 } from "@tabler/icons-react";
 import RelatedListings from "@/shared/sections/related-listings";
 
@@ -462,8 +464,7 @@ const Page = () => {
                         size="lg"
                           src={entry?.office?.[0]?.avatarImg?.[0]?.url ?? "/img/placeholder.svg"}
                         />
-                        <h5>{entry?.author?.fullName}</h5>
-                        <span>{entry?.office[0]?.title}</span>
+                        <Heading as='h3' noOfLines={1}>{entry?.office[0]?.title}</Heading>
                         </Link>
                         <hr />
                         <div className="d-block mb-2">
@@ -487,15 +488,9 @@ const Page = () => {
                           </Button>
                         </div>
                         <hr />
-                        <div className="d-block">
-                          <Button variant="link" leftIcon={<IconPlus />}><Link href={`/offices/${entry?.office[0]?.id}`} passHref>
+                        <div className="d-block mt-2">
+                          <Button w="full" variant="outline" leftIcon={<IconCalendar />}><Link href={`/offices/${entry?.office[0]?.id}`} passHref>
                              Prenota una visita
-                          </Link>
-                          </Button>
-                        </div>
-                        <div className="d-block">
-                          <Button variant="link" leftIcon={<IconPlus />}><Link href={`/offices/${entry?.office[0]?.id}`} passHref>
-                             Annunci dell'inserzionista
                           </Link>
                           </Button>
                         </div>

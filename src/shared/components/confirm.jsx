@@ -13,14 +13,13 @@ import {
   } from '@chakra-ui/react'
 import { IconArrowLeft, IconPlus } from '@tabler/icons-react';
 
-const Confirm = (props) => {
+const Confirm = ({opened, toggle}) => {
   //console.log("props", props);
   return (
   <AlertDialog
     motionPreset='slideInBottom'
-    leastDestructiveRef={cancelRef}
-    onClose={onClose}
-    isOpen={isOpen}
+    onClose={toggle}
+    isOpen={opened}
     isCentered
   >
     <AlertDialogOverlay />
@@ -33,7 +32,7 @@ const Confirm = (props) => {
         deleted.
       </AlertDialogBody>
       <AlertDialogFooter>
-        <Button ref={cancelRef} onClick={onClose}>
+        <Button onClick={onClose}>
           No
         </Button>
         <Button colorScheme='red' ml={3}>

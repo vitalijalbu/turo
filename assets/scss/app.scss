@@ -8,6 +8,9 @@
 hr{
     border-color: $border-color;
 }
+img, svg, video, canvas, audio, iframe, embed, object{
+    display: inline-block;
+}
 /*
 **
 ** CHAKRA UI 

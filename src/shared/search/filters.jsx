@@ -34,7 +34,7 @@ const Filters = () => {
         <Pricing/>
         </div>
         <div className="filters-block">
-                  <Button outline onClick={toggleSideFilters} leftIcon={<IconAdjustmentsHorizontal />}>Altri filtri</Button>
+                  <Button variant="outline" onClick={toggleSideFilters} leftIcon={<IconAdjustmentsHorizontal />}>Altri filtri</Button>
                 </div>
         </div>
         </>
