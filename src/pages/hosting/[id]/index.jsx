@@ -6,6 +6,7 @@ import {
   Button,
   Checkbox,
   Flex,
+  Stack,
   RadioGroup,
   Radio,
   FormControl,
@@ -25,7 +26,7 @@ import status from "@/data/listing.status.json";
 import SideNav from "@/shared/hosting/side-nav";
 import PageActions from "@/shared/hosting/page-actions";
 import PageHead from "@/shared/hosting/page-head";
-import { IconCurrencyEuro, IconFileInvoice } from "@tabler/icons-react";
+import { IconCurrencyEuro, IconFileInvoice, IconCoinEuro, IconCameraPlus, IconDots, IconMap2, Icon360View, IconBath, IconListDetails, IconBrandYoutube } from "@tabler/icons-react";
 
 
 const Index = () => {
@@ -65,6 +66,7 @@ const Index = () => {
                 <div className="row">
                   <div className="col-md-8">
                     <form onSubmit={handleSubmit(onSubmit)}>
+                      {/* NEW SECTION */}
                       <div className="section-content pb-3 mb-3 border-bottom">
                         <h2 className="section-title">Informazioni</h2>
                         <FormControl flex={1} mr={4}>
@@ -81,13 +83,51 @@ const Index = () => {
                             Tipologia di vendita
                           </FormLabel>
                           <RadioGroup name="form-name">
+                          <Stack direction='row'>
                             {sale.map((sale) => (
                               <Radio value={sale.value}>{sale.label}</Radio>
                             ))}
+                            </Stack>
                           </RadioGroup>
                           {errors.title && <span>Title is required</span>}
                         </FormControl>
-                        <FormControl flex={1} mr={4}>
+                        <div className="row">
+                        <div className="col">
+                      <FormControl flex={1} mr={4}>
+                        <FormLabel htmlFor="type">Tipologia</FormLabel>
+                        <Select
+                          {...register("type", { required: true })}
+                          id="type"
+                        >
+                          <option value="">Select property type</option>
+                          <option value="house">House</option>
+                          <option value="apartment">Apartment</option>
+                          <option value="condo">Condo</option>
+                        </Select>
+                        {errors.type && <span>Property type is required</span>}
+                      </FormControl>
+                      </div>
+                      <div className="col">
+                      <FormControl flex={1} mr={4}>
+                        <FormLabel htmlFor="bedrooms">Bedrooms</FormLabel>
+                        <Select
+                          {...register("bedrooms", { required: true })}
+                          id="bedrooms"
+                        >
+                          <option value="">Select number of bedrooms</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </Select>
+                        {errors.bedrooms && (
+                          <span>Number of bedrooms is required</span>
+                        )}
+                      </FormControl>
+                      </div>
+                      </div>
+                      <FormControl flex={1} mr={4}>
                           <FormLabel htmlFor="body">Descrizione</FormLabel>
                           <Textarea
                             {...register("body")}
@@ -96,7 +136,10 @@ const Index = () => {
                             rows="10"
                           />
                         </FormControl>
-                      </div>
+                        
+                        </div>
+             
+                      {/* NEW SECTION */}
                       <div className="section-content pb-3 mb-3 border-bottom">
                         <h2 className="section-title">Foto e Video</h2>
                         <div {...getRootProps({ className: "dropzone" })}>
@@ -170,59 +213,34 @@ const Index = () => {
                         </div>
                       </div>
                       <div className="section-content pb-3 mb-3 border-bottom">
-                        <h2 className="section-title">Vitual Tour</h2>
+                        <h2 className="section-title">Video e Virtual Tour</h2>
                         <FormControl flex={1} mr={4}>
                           <FormLabel htmlFor="linkVirtualTour">URL</FormLabel>
-                          <Input
-                            {...register("linkVirtualTour")}
-                            id="linkVirtualTour"
+                          <InputGroup>
+    <InputLeftAddon children={<Icon360View/>} />
+    <Input
+                            {...register("pricing")}
+                            id="pricing"
                             type="text"
                           />
+
+  </InputGroup>
                         </FormControl>
-                      </div>
-                      <div className="section-content pb-3 mb-3 border-bottom">
-                        <h2 className="section-title">Link Video</h2>
                         <FormControl flex={1} mr={4}>
                           <FormLabel htmlFor="linkVideo">URL</FormLabel>
-                          <Input
-                            {...register("linkVideo")}
-                            id="linkVideo"
+                          <InputGroup>
+    <InputLeftAddon children={<IconBrandYoutube/>} />
+    <Input
+                            {...register("pricing")}
+                            id="pricing"
                             type="text"
                           />
+
+  </InputGroup>
                           {errors.title && <span>Title is required</span>}
                         </FormControl>
                       </div>
 
-                      <FormControl flex={1} mr={4}>
-                        <FormLabel htmlFor="type">Property Type</FormLabel>
-                        <Select
-                          {...register("type", { required: true })}
-                          id="type"
-                        >
-                          <option value="">Select property type</option>
-                          <option value="house">House</option>
-                          <option value="apartment">Apartment</option>
-                          <option value="condo">Condo</option>
-                        </Select>
-                        {errors.type && <span>Property type is required</span>}
-                      </FormControl>
-                      <FormControl flex={1} mr={4}>
-                        <FormLabel htmlFor="bedrooms">Bedrooms</FormLabel>
-                        <Select
-                          {...register("bedrooms", { required: true })}
-                          id="bedrooms"
-                        >
-                          <option value="">Select number of bedrooms</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </Select>
-                        {errors.bedrooms && (
-                          <span>Number of bedrooms is required</span>
-                        )}
-                      </FormControl>
                       <FormControl flex={1} mr={4}>
                         <FormLabel htmlFor="bathrooms">Bathrooms</FormLabel>
                         <Select
@@ -283,7 +301,9 @@ const Index = () => {
                         </FormControl>
                         </div>
                         </div>
-                      </div> 
+                        
+                        </div>
+                
                     </form>
                   </div>
                   <div className="col-md-4">
@@ -293,7 +313,8 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+    
       </div>
     </div>
   );
