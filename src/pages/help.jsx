@@ -41,7 +41,7 @@ const Help = () => {
             <Link href="/help" target="_blank" passHref>
               <Button
                 variant="outline"
-                colorScheme="blue"
+                colorScheme="green"
                 size="sm"
                 rel="noopener noreferrer"
               >

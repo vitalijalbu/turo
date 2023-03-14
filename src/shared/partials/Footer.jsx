@@ -100,9 +100,9 @@ const Footer = () => {
         <div className="row g-4">
             {Navigation.map((nav, i) => (
              <div className="col-6 col-md-3">
-              <h5 className="mb-2 mb-md-4">
+              <h4 className="mb-2 mb-md-4 footer-title">
                 {nav.title}
-              </h5>
+              </h4>
               <ul className="nav flex-column text-primary-hover"
                 id={nav.id}
                 key={i}
@@ -110,7 +110,7 @@ const Footer = () => {
                 {nav.links.map((link, l) => (
                   <li key={l} className="nav-item">
                     <Link
-                      className="px-0 nav-link"
+                      className="px-0 footer-link"
                       href={link.url ?? '#'}
                       key={l}
                     >

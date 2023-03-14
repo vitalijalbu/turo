@@ -14,7 +14,7 @@ const PageActions = (props) => {
            
             {props.nextUrl && (
                   <Link href={`/hosting/${id}${props.nextUrl}`}>
-                    <Button colorScheme="blue">
+                    <Button colorScheme="green">
                       Continua
                   </Button>
                   </Link>

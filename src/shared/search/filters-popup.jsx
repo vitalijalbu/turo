@@ -281,7 +281,7 @@ const FiltersPopup = ({ opened, toggle }) => {
                 Annulla filtri
               </Button>
               <Button
-                colorScheme="blue"
+                colorScheme="green"
                 onClick={toggle}
                 leftIcon={<IconSearch />}
               >

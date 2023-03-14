@@ -48,7 +48,7 @@ const PopupStatus = ({ opened, toggle, id }) => {
       </ModalBody>
       <ModalFooter>
         <Button variant="outline" onClick={toggle} mr="2">Chiudi</Button>
-        <Button colorScheme="blue">Salva</Button>
+        <Button colorScheme="green">Salva</Button>
       </ModalFooter>
       </ModalContent>
     </Modal>

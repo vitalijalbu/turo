@@ -478,7 +478,7 @@ const Page = () => {
                           <Button
                             w="full"
                             variant="outline"
-                            colorScheme="blue"
+                            colorScheme="green"
                             leftIcon={<IconPhone /> }
                             onClick={() => handleRowClick(entry?.office[0]?.phoneNumber)}>
                               {selected === entry?.office[0]?.phoneNumber ? entry?.office[0]?.phoneNumber : 'Mostra numero'} 

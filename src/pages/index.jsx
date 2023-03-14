@@ -27,17 +27,19 @@ const Home = () => {
       w={'full'}
       h={'40vh'}
       backgroundImage={
-        'url(https://chakra-airbnb.vercel.app/images/airbnb-home.jpg)'
+        'url(https://img.freepik.com/free-photo/modern-luxury-hotel-office-reception-lounge-with-meeting-room_105762-1772.jpg?w=1800&t=st=1678785042~exp=1678785642~hmac=487fcf964652c915b16ca1877d36a70a3706a4bd85fbdde034ca03b15f8c4aa2)'
       }
       backgroundSize={'cover'}
       backgroundPosition={'center center'}>
-      <VStack
+              <VStack
         w={'full'}
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}
         bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
-        <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
+        <Stack align={'flex-start'} spacing={6}>
+        <div className="container">
           <Text
+            className="mb-5"
             color={'white'}
             fontWeight={700}
             lineHeight={1.2}
@@ -59,8 +61,10 @@ const Home = () => {
               <Link href="/business">Sei un professionista?</Link>
             </Button>
           </Stack>
+          </div>
         </Stack>
       </VStack>
+      
     </Flex>
 
     <SearchForm/>

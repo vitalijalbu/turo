@@ -1,3 +1,4 @@
+import { Heading } from '@chakra-ui/react';
 import React from 'react';
 
 
@@ -5,35 +6,44 @@ import React from 'react';
 const HeroBanner = (props) => {
 
   return (
-<section className="py-0 py-md-5">
+<section className="hero-banner overlay">
+<div className="container">
+<div className="hero-wrapper">
+  {/* - img*/}
+  <div className="img-responsive-wrapper">
+    <div className="img-responsive">
+      <div className="img-wrapper">
+        <img
+          src="https://animals.sandiegozoo.org/sites/default/files/2016-08/animals_hero_mountains.jpg"
+          title="titolo immagine"
+          alt="descrizione immagine"
+        />
+      </div>
+    </div>
+  </div>
+  {/* - texts*/}
   <div className="container">
-    <div
-      className="position-relative rounded-3 overflow-hidden p-3 p-sm-5"
-      style={{
-        backgroundImage: "https://via.placeholder.com/1280",
-        backgroundPosition: "center left",
-        backgroundSize: "cover"
-      }}
-    >
-      <div className="row position-relative z-index-9">
-        <div className="col-md-7 col-xl-5 ms-auto">
-          <div className="card card-body p-sm-5">
-            {/* Title */}
-            <h5>{props.title}</h5>
-            <p className="mb-3">
-            {props.subtitle}
-            </p>
-            {/* Button */}
-            <a href="#" className="btn btn-primary-soft mb-0 mt-3">
-              Book Now
+    <div className="row">
+      <div className="col-12">
+        <div className="hero-text-wrapper bg-dark">
+          <Heading>
+          {props.title}
+          </Heading>
+          <p className="d-none d-lg-block">
+          {props.subtitle}
+          </p>
+          <div className="btn-container">
+            <a className="btn btn-sm btn-secondary" href="#">
+              Label CTA
             </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
+  </div>
 </section>
-
 
   );
 }

@@ -50,7 +50,7 @@ function SearchForm() {
             <option value={3}>Asta</option>
           </Select>
         </FormControl>
-        <Button type="submit" colorScheme="blue">
+        <Button type="submit" colorScheme="green">
           <IconSearch/> Cerca
         </Button>
       </form>

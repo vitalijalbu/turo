@@ -57,7 +57,7 @@ function Filters() {
             <option value={4}>4 guests</option>
           </Select>
         </FormControl>
-        <Button type="submit" colorScheme="blue">
+        <Button type="submit" colorScheme="green">
           Search
         </Button>
       </Flex>

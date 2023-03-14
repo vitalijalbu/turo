@@ -4,11 +4,7 @@
                 "id": "153",
                 "title": "Strutture ricettive",
                 "slug": "strutture-ricettive",
-                "media_url": [
-                    {
-                        "url": "https://beta.resthotels.it/web/uploads/static/static-hotel.jpeg"
-                    }
-                ],
+                "media_url": "/img/static-bg-hotel.jpeg",
                 "children": [
                     {
                         "id": "158",
@@ -61,14 +57,14 @@
                 "id": "161",
                 "title": "Immobile commerciale",
                 "slug": "immobile-commerciale",
-                "media_url": [],
+                "media_url": "/img/static-bg-commercial.jpeg",
                 "children": []
             },
             {
                 "id": "164",
                 "title": "Strutture di ristorazione",
                 "slug": "strutture-ristorazione",
-                "media_url": [],
+                "media_url": "/img/static-bg-restaurant.jpeg",
                 "children": [
                     {
                         "id": "166",

@@ -3,6 +3,7 @@
 $h1-font-size: 1.75rem;
 
 
+
 $bg-light: #F4F5F2;
 
 $swiper-navigation-size: 20px;
@@ -10,6 +11,7 @@ $swiper-theme-color: #121212;
 $link-color: #121212;
 
 // Colors
+$white: #fff;
 $color-primary: #3182CE;
 $color-danger: #E53E3E;
 // Borders
@@ -33,3 +35,31 @@ $grid-item-icon-mob-size: 24px;
 $grid-item-icon-size-desk: 32px;
 
 
+//hero
+$card-category-l-spacing: 0.9px;
+$hero-height-desk: 620px;
+$hero-height-mob: 380px;
+$hero-height-sm-desk: 400px;
+$hero-height-sm-tab: 300px;
+$hero-height-sm-mob: 230px;
+$hero-text-padding: $v-gap * 3;
+$hero-text-color: #fff !default;
+$hero-cat-size: 1rem;
+$hero-heading-size: 2rem;
+$hero-heding-size-desk: 2.6666666666666665rem;
+$hero-p-size: 1rem;
+$hero-cat-spacing: $card-category-l-spacing !default;
+$hero-text-padding-desk: 120px;
+$hero-negative-margin: 80px;
+$hero-negative-margin-desk: 80px;
+$hero-negative-bottom-padding: 240px;
+$hero-negative-bottom-padding-mob: 136px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;

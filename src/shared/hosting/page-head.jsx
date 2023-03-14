@@ -61,7 +61,7 @@ const PageHead = (props) => {
                   </Button>
                 </Link>
 
-                <Button colorScheme="blue">Salva</Button>
+                <Button colorScheme="green">Salva</Button>
               </div>
             </div>
           </div>

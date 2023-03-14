@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import {
   FormControl,
-  FormLabel,
+  InputLeftAddon,
+  InputGroup,
   Input,
   Select,
-  Button
+  Button,
+  InputRightAddon
 } from "@chakra-ui/react";
 import { IconSearch } from "@tabler/icons-react";
 import AddressField from "./address-field";
@@ -20,11 +22,9 @@ function SearchForm() {
   return (
     <div className="row">
       <form as="form" onSubmit={handleSubmit(onSubmit)} className="d-flex align-items-end">
-        <FormControl flex={1} mr={4}>
-          <AddressField/>
-        </FormControl>
-        <FormControl flex={1} mr={4}>
-          <Select
+      <InputGroup>
+    <InputLeftAddon>
+    <Select
             id="category"
             placeholder="Tipologia"
             {...register("category")}
@@ -33,10 +33,15 @@ function SearchForm() {
             <option key={category.slug} value={category.slug}>{category.title}</option>
             ))}
           </Select>
-        </FormControl> 
-        <Button type="submit" colorScheme="blue">
-          <IconSearch/> Cerca
+    </InputLeftAddon>
+    <AddressField/>
+    <InputRightAddon>
+    <Button type="submit" colorScheme="green" leftIcon={<IconSearch/> }>
+          Cerca
         </Button>
+    </InputRightAddon>
+  </InputGroup>
+       
       </form>
     </div>
   );

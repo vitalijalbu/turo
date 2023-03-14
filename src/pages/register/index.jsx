@@ -111,7 +111,7 @@ const Index = () => {
           </>
         )}
 
-        <Button type="submit" colorScheme="blue" mt={4}>
+        <Button type="submit" colorScheme="green" mt={4}>
           Crea account
         </Button>
       </form>

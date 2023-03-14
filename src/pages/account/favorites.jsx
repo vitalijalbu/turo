@@ -25,7 +25,22 @@ const Favorites = () => {
   return (
     <div className="page">
     <div className="page-content">
-      <PageHead title={"I miei Preferiti"}/>
+    <section className="page-heading">
+  <div className="container">
+  
+     <div className="row">
+
+            <div className="d-flex">
+                <div className="flex-grow-1">
+                <h1 className="section-title">I miei Preferiti</h1>
+                <p classname="page-subtitle">Gli annunci e le ricerche salvate compariranno qui</p>
+              </div>
+              </div>
+
+    </div>
+    </div>
+</section>
+
       <div className="container">
 <div className="row">
 {Array.isArray(entries) ? (

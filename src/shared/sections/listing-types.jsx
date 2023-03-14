@@ -13,7 +13,7 @@ const ListingTypes = () => {
 
         <div className="row">
           {data.categories.map((category, i) => (
-            <div className="col" key={i}>
+            <div className="col-sx-6 col-md-4 mb-3" key={i}>
            <Card
            direction={{ base: 'column', sm: 'row' }}
            overflow='hidden'
@@ -23,13 +23,14 @@ const ListingTypes = () => {
          >
            <Image
              objectFit='cover'
-             maxW={{ base: '100%', sm: '200px' }}
-             src='/img/placeholder.png'
+             height="150px"
+             maxW="150px"
+             src={category.media_url}
              alt={category.title}
            />
          
            <Stack>
-             <CardBody>
+             <CardBody alignContent="center">
                <Heading size='md'>{category.title}</Heading>
              </CardBody>
            </Stack>

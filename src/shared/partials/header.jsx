@@ -117,7 +117,7 @@ const Header = () => {
                       variant={"link"}
                       cursor={"pointer"}
                       className="menu-link">
-                      <div className="d-flex border-start align-items-center  ps-3">
+                      <div className="d-flex border-start align-items-center ps-3">
                         <Avatar size="sm" name="eDan Abrahmov" className="me-1" /> 
                         <span>Demo user</span></div>
                     </MenuButton>
@@ -142,7 +142,7 @@ const Header = () => {
                       <MenuItem as={Link} href='/offices/12' icon={<IconBuildingEstate size={20} />}>
                           Profilo pubblico
                       </MenuItem>
-                      <MenuItem as={Link} href='/account/settings' icon={<IconSettings />}>
+                      <MenuItem as={Link} href='/account/settings' icon={<IconSettings size={20} />}>
                         Impostazioni
                       </MenuItem>
                       <MenuDivider />

@@ -10,7 +10,7 @@ const PageHead = (props) => {
 <section className="page-heading">
   <div className="container">
   
-     <div>
+     <div className="row">
 
             <div className="d-flex">
                 <div className="flex-grow-1">
